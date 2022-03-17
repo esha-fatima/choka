@@ -1,0 +1,124 @@
+<%-include("partials/header");-%>
+<body>
+    <span class="material-icons md-48 md-16" onclick="location.replace('homeU')">arrow_back</span>
+    <br><br><br><br><br>
+    <h1 class="urduFont urduHead"> ڈیجیٹل خواندگی سروے </h1><br><br>
+    <form action="/DLsurveyU" method="POST">
+        <div class="obj1 name col-lg-8 col-md-8 col-xs-10 col-sm-10 center-block urduFont urdusmall" dir="rtl">
+            <p> کیا آپ وائی فائی(WiFi)  سے کنیکٹ اور/یا موبائل ڈیٹا(4G/3G) آن کر سکتے ہیں؟</p>
+        </div>
+        <br><br>
+        
+        <div class="box gender col-lg-8 col-md-8 col-xs-10 col-sm-10 checkbox urduFont urdusmall" style="font-size: 10px;">
+            <p class="sizeP para"> درج ذیل آپشنز میں سے ایک کا انتخاب کریں۔</p>
+
+            <div class="dheet urdusmall" style="margin-bottom: 15px;">
+                <input style="margin-top: 27px;" class="pad radio123 urdusmall" type="radio" name="wifiVSdata" value="Yes-both">
+                <label class="sizeP pad urduFont rightAlign container urdusmall" dir="rtl" style="font-size: 20px!important;text-align:right;padding-right:25px;padding-left: 5px!important;"> 
+                    ہاں ، میں دونوں کر سکتا/سکتی ہوں۔ 
+                </label> 
+            </div>
+    
+            <div class="dheet  urdusmall" style="margin-bottom: 15px;"> 
+                <input style="margin-top: 27px;font-size: 10px" class="pad radio123" type="radio" name="wifiVSdata" value="Yes-wifi">
+                <label class="sizeP pad urduFont rightAlign container  urdusmall" dir="rtl" style="font-size: 22px!important;text-align: right;padding-right: 25px;padding-left: 5px!important;">
+                    ہاں ، موبائل پر صرف وائی فائی(WiFi) سے کنیکٹ کر سکتا/سکتی ہوں۔
+                </label> 
+            </div>
+            
+            <div class="dheet" style="margin-bottom: 15px;">
+                <input style="margin-top: 27px;" class="pad radio123" type="radio" name="wifiVSdata" value="Yes-data">
+                <label class="sizeP pad urduFont rightAlign container  urdusmall" dir="rtl" style="font-size: 22px!important;text-align: right;padding-right: 25px;padding-left: 5px!important;"> 
+                    ہاں ، موبائل پر صرف موبائل ڈیٹا(4G/3G) کنیکٹ کر سکتا/سکتی ہوں۔ 
+                </label> 
+            </div>
+    
+            <div class="dheet">
+                <input style="margin-top: 27px;" class="pad radio123" type="radio" name="wifiVSdata" value="No">
+                <label class="sizeP pad urduFont rightAlign container urdusmall" dir="rtl" style="font-size: 22px!important;text-align: right;padding-right: 25px;padding-bottom: 10px;padding-left: 5px!important;">
+                    نہیں ، میں دونوں کام نہیں کر سکتا/سکتی ہوں۔
+                </label> 
+            </div>
+            
+        </div>
+        <br><br><br>
+        
+        <div class="obj1 name col-lg-8 col-md-8 col-xs-10 col-sm-10 center-block urduFont  urdusmall">
+            <p> کیا آپ گوگل پر سرچ کر سکتے ہیں؟ </p>
+        </div>
+        <br><br>
+
+        <div class="box gender col-lg-8 col-md-8 col-xs-10 col-sm-10 checkbox urduFont urdusmall">
+            <p class="sizeP para"> درج ذیل آپشنز میں سے ایک کا انتخاب کریں۔</p>
+
+            <div class="dheet" style="margin-bottom: 15px;">
+                <input style="margin-top: 26px;" class="pad radio123  urdusmall" type="radio" name="google" value="Yes">
+                <label class="sizeP pad urduFont rightAlign  urdusmall" style="font-size: 20px!important;text-align: right;padding-right: 25px;padding-left: 5px!important;"> جی ہاں </label> 
+            </div>
+
+            <div class="dheet">
+                <input style="margin-top: 26px;" class="pad radio123" type="radio" name="google" value="No">
+                <label class="sizeP pad urduFont rightAlign" style="font-size: 20px!important;text-align: right;padding-right: 25px;padding-bottom: 10px;">نہیں</label> 
+            </div>
+            
+        </div>
+        <br><br><br>
+
+        <div class="obj1 name col-lg-8 col-md-8 col-xs-10 col-sm-10 center-block urduFont urdusmall">
+            <p> کیا آپ عام طور پر مدد کے بغیر سوشل میڈیا ایپس استعمال کر سکتے ہیں؟ </p>
+        </div>
+        <br><br>
+        <div class="box gender col-lg-8 col-md-8 col-xs-10 col-sm-10 checkbox urduFont  urdusmall">
+            <p class="sizeP para"> درج ذیل آپشنز میں سے ایک کا انتخاب کریں۔</p>
+
+            <div class="dheet" style="margin-bottom: 15px;">
+                <input style="margin-top: 26px;" class="pad radio123" type="radio" name="assistance" value="Yes">
+                <label class="sizeP pad urduFont rightAlign" style="font-size: 20px!important;text-align: right;padding-right: 25px;"> جی ہاں </label> 
+            </div>
+
+            <div class="dheet">
+                <input style="margin-top: 26px;" class="pad radio123" type="radio" name="assistance" value="No">
+                <label class="sizeP pad urduFont rightAlign" style="font-size: 20px!important;text-align: right;padding-right: 25px;padding-bottom: 10px;">نہیں</label> 
+            </div>
+            
+        </div>
+        <br><br><br>
+
+        <div class="obj1 name col-lg-8 col-md-8 col-xs-10 col-sm-10 center-block urduFont">
+            <p> وہ تمام آپشنز کا انتخاب کریں جو آپ سوشل میڈیا پر کرتے ہیں۔ </p>
+        </div>
+        <br><br>
+
+        <div class="box gender col-lg-8 col-md-8 col-xs-10 col-sm-10 checkbox urduFont">
+            <!-- <p class="sizeP para" style="padding-bottom: 25px;"> 
+                وہ تمام سرگرمیاں کا انتخاب کریں جو آپ سوشل میڈیا پر کرتے ہیں۔</p> -->
+
+            <div class="dheet" style="margin-bottom: 15px;">
+                <input style="margin-top: 26px;" class="pad radio123" type="checkbox" name="activities" value="Viewing">
+                <label class="sizeP pad urduFont rightAlign container" dir="rtl" style="font-size: 20px!important;text-align: right;padding-right: 90px;padding-left: 5px!important;"> 
+                    پوسٹس/ پیغامات/ تصاویر/ ویڈیوز/ نیوز آرٹیکلز کو دیکھنا۔
+                </label> 
+            </div>
+    
+            <div class="dheet" style="margin-bottom: 15px;"> 
+                <input style="margin-top: 26px;" class="pad radio123" type="checkbox" name="activities" value="Sharing">
+                <label class="sizeP pad urduFont rightAlign container" dir="rtl" style="font-size: 20px!important;text-align: right;padding-right: 90px;padding-left: 5px!important;">
+                    پوسٹس/ پیغامات/ تصاویر/ ویڈیوز/ نیوز آرٹیکلز شیئر کرنا۔
+                </label> 
+            </div>
+            
+            <div class="dheet">
+                <input style="margin-top: 26px;"class="pad radio123" type="checkbox" name="activities" value="Creating">
+                <label class="sizeP pad urduFont rightAlign container" dir="rtl" style="font-size: 20px!important;text-align: right;padding-right: 90px;padding-bottom: 10px;padding-left: 5px!important;"> 
+                    پوسٹس/ پیغامات/ تصاویر/ ویڈیوز/ نیوز آرٹیکلز خود بنانا۔
+                </label> 
+            </div>
+    
+        </div>
+        <br><br><br>
+        <button class="button name agree col-lg-3 col-md-3 col-xs-5 col-sm-6 center-block urduFont urdusmall" onclick="location.replace('answersU')"> یندراج کریں </button><br><br><br>
+    </form>
+    <!-- <button class="button name col-lg-3 col-md-3 col-xs-3 col-sm-3 center-block"> Leaderboard </button> --> 
+    <script src="/js/index.js"></script>
+</body>
+</html>
