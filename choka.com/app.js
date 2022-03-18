@@ -20,11 +20,23 @@ app.get("/home",(req,res)=>{
     res.render("home");
 });
 
+app.get("/register",(req,res)=>{
+    res.render("RegisterUser");
+});
+
+app.get("/handleRegister",(req,res)=>{
+    console.log("here")
+    res.render("home");
+   
+});
+
+
+
 app.get("/",(req,res)=>{
     res.render("home");
 })
 
 
 app.listen(port, '0.0.0.0', ()=>{ // '0.0.0.0' is for running via docker only
-    // console.log("Server has started on port 3000");
+     console.log("Server has started on port 3000");
 });
