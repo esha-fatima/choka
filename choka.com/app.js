@@ -66,6 +66,12 @@ app.use('/registrationRequest',(req, res, next)=>{
     
  });
 ////////////////////rendering login
+app.get('/loginRequest',(req,res)=>{
+    
+    res.render("home");
+   
+});
+
 app.get("/login",(req,res)=>{
     
     res.render("Login");
