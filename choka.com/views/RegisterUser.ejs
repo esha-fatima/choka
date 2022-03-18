@@ -1,8 +1,10 @@
 <%-include("partials/header");-%>
-<% include partials/functions %>
+
+
+
 <body>
 <div>
-    <form action="/form" method="">
+    <form action="/register">
     <div class="v13_2"></div>
         <div class="v13_23"></div>
         <span class="v13_3">Back to Home</span>
@@ -46,6 +48,7 @@
         </div>
         <span class="v13_75">Register as a:</span>
         <div class="name"></div>
+
         <span class="v13_90">Student</span>
         <div class="name"></div>
         <span class="v13_92">Tutor</span>
@@ -67,7 +70,7 @@
             <div class="v18_23"></div>
         </div>
         <div class="v18_30"></div>
-        <button class="v18_31"   onclick = <% getPriceChgArrow() %>>">Register</button>
+        <button class="v18_31" formaction="/registrationRequest"  method = "post">Register</button>
         <div class="v58_217"></div>
         <span class="v58_218">Add Image</span>
         <div class="v58_219">
@@ -79,9 +82,10 @@
         </div>
         <div class="v119_1813"></div>
         <span class="v119_1814">choka.com</span>
+        </form>>
         
     
-    </form>
+    
         
     </div>
     </body>
