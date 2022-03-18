@@ -662,6 +662,8 @@ body {
     font-size: 30px;
     opacity: 1;
     text-align: left;
+    background: transparent;
+    border: none;
   }
   .v58_217 {
     width: 302px;
