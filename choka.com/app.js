@@ -5,6 +5,19 @@ const path = require("path");
 const helmet = require("helmet");
 const ejs = require("ejs");
 const _= require("lodash");
+//const firebase = require("firebase");
+// Import the functions you need from the SDKs you need
+//import { initializeApp } from "firebase/app";
+//import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+
+
+//npm install firebase
 //const admin = require("firebase-admin");
 //const {firebase} = require("firebase");
 
@@ -16,6 +29,24 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
 const port = process.env.PORT || 3000
+/*
+const firebaseConfig = {
+    apiKey: "AIzaSyB5L-1mBbAzxi-bJwjvhCl_y4RyZ9LoZMk",
+    authDomain: "choka-9acb9.firebaseapp.com",
+    projectId: "choka-9acb9",
+    storageBucket: "choka-9acb9.appspot.com",
+    messagingSenderId: "243464704203",
+    appId: "1:243464704203:web:c1fb5412fa39410e7b0b4e",
+    measurementId: "G-RVRV9WH5CZ"
+  };
+  
+// Initialize Firebase
+initializeApp(firebaseConfig);
+// const analytics = getAnalytics(db);
+
+const db = firebase.firestore();
+*/
+//db.settings({timestampsInSnapshots:true});
 
 app.set('view engine','ejs');
 
@@ -40,6 +71,7 @@ app.use('/registrationRequest',(req, res, next)=>{
 
  app.use('/registrationRequest',(req, res, next)=>{
     request_object = req.query
+    console.log(request_object)
     if(request_object["Email"] == ''){
         res.send("Email cannot be empty");
     }
@@ -66,11 +98,27 @@ app.use('/registrationRequest',(req, res, next)=>{
     
  });
 ////////////////////rendering login
-app.get('/loginRequest',(req,res)=>{
+
+
+app.post('/loginRequest',(req,res)=>{
     
-    res.render("home");
+    //when received login request, check their password from firebase/
+    //if the password is good to go 
+    //go to dashboard page 
+    //get all the firebase stuff and store it in a json object..the details
+    console.log(req.body)
+    let obj_extracted_from_db = {
+        "name": "Esha Fatima",
+        "image" : "xx"
+    }
+    res.render("dashboard", obj_extracted_from_db)
+
+    
    
 });
+
+
+
 
 app.get("/login",(req,res)=>{
     
@@ -91,9 +139,6 @@ app.get("/home",(req,res)=>{
 app.get("/register",(req,res)=>{
     res.render("RegisterUser");
 });
-
-
-
 
 
 app.get("/",(req,res)=>{
