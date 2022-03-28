@@ -92,7 +92,7 @@
     text-align: left;
   }
   .dashboard_v22_160 {
-    width: 510px;
+    width: fit-content;
     color: rgba(3,133,182,1);
     position: absolute;
     top: 288px;
