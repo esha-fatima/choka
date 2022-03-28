@@ -66,7 +66,7 @@ app.set('view engine','ejs');
 
 app.use('/registrationRequest',(req, res, next)=>{
     console.log("A new request received at " + Date.now());
-    //console.log(req.query);
+    console.log(req.query);
     console.log(req.query["FirstName"])
     if(req.query['Password']==req.query['ConfirmPassword']){
         next();
@@ -82,7 +82,7 @@ app.use('/registrationRequest',(req, res, next)=>{
 
 
  app.use('/registrationRequest',(req, res, next)=>{
-    request_object = req.query
+    let request_object = req.query
     console.log(request_object)
     if(request_object["Email"] == ''){
         res.send("Email cannot be empty");
@@ -102,6 +102,8 @@ app.use('/registrationRequest',(req, res, next)=>{
     }
 
     else{
+
+        
         res.send("Account Created")
         
 
