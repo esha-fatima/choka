@@ -1,14 +1,25 @@
 //jshint esversion:6
-const express = require("express");
-const bodyParser = require("body-parser");
-const path = require("path");
-const helmet = require("helmet");
-const ejs = require("ejs");
-const _= require("lodash");
+//const express = require("express");
+import express from "express";
+//const bodyParser = require("body-parser");
+import bodyParser from "body-parser";
+//const path = require("path");
+import path from "path";
+//const helmet = require("helmet");
+import helmet from "helmet";
+//const ejs = require("ejs");
+import ejs from "ejs";
+//const _= require("lodash");
 //const firebase = require("firebase");
+import firebase from "firebase"
 // Import the functions you need from the SDKs you need
-//import { initializeApp } from "firebase/app";
-//import { getAnalytics } from "firebase/analytics";
+//import { initializeApp } from "firebase/app/dist/index.cjs.js";
+import pkg_1 from 'firebase/app/dist/index.cjs.js';
+const { initializeApp } = pkg_1;
+
+import pkg from 'firebase/analytics/dist/index.cjs.js'
+const { getAnalytics } = pkg;
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,17 +30,18 @@ const _= require("lodash");
 
 //npm install firebase
 //const admin = require("firebase-admin");
-//const {firebase} = require("firebase");
+
+
 
 //con firebase from "firebase"
 //const cookieParser = require('cookie-parser')
-
+import cookieParser from "cookie-parser";
 const app = express();
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
 const port = process.env.PORT || 3000
-/*
+
 const firebaseConfig = {
     apiKey: "AIzaSyB5L-1mBbAzxi-bJwjvhCl_y4RyZ9LoZMk",
     authDomain: "choka-9acb9.firebaseapp.com",
@@ -45,8 +57,8 @@ initializeApp(firebaseConfig);
 // const analytics = getAnalytics(db);
 
 const db = firebase.firestore();
-*/
-//db.settings({timestampsInSnapshots:true});
+
+db.settings({timestampsInSnapshots:true});
 
 app.set('view engine','ejs');
 
