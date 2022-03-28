@@ -15,7 +15,7 @@
             <div class="dashboard_v103_1450"></div>
             <div class="dashboard_v20_158"></div>
             <span class="dashboard_v20_157">Back to Home</span>
-            <span class="dashboard_v22_160">Welcome Bean!</span>
+            <span class="dashboard_v22_160" id = "n"></span>
             <div class="dashboard_v98_1399"></div>
             <div class="dashboard_v124_172">
                 <div class="dashboard_v124_173"></div>
@@ -73,10 +73,18 @@
                     <div class="dashboard_v99_1446"></div>
                 </div>
             </div>
-            <span class="dashboard_v101_1448">Take and view your assessments</span>
+            <span class="dashboard_v101_1448" >Take and view your assessments</span>
             <span class="dashboard_v101_1449">Let tutor find you by adding your requirements</span>
             <span class="dashboard_v103_1543">View Profile</span>
         </div>
+        <script>
+            let name = '<%-name%>'
+            name = "Welcome " + name + " !";
+            let tt = document.getElementById("n");
+            tt.innerText = name;
+
+            
+        </script>
     </body>
     </html>
     <br/>
