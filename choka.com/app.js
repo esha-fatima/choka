@@ -58,7 +58,12 @@ initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
 
-db.settings({timestampsInSnapshots:true});
+
+const dbRef = firebase.database().ref();
+
+
+
+db.settings({timestampsInSnapshots:true, merge:true});
 
 app.set('view engine','ejs');
 
@@ -66,7 +71,7 @@ app.set('view engine','ejs');
 
 app.use('/registrationRequest',(req, res, next)=>{
     console.log("A new request received at " + Date.now());
-    //console.log(req.query);
+    console.log(req.query);
     console.log(req.query["FirstName"])
     if(req.query['Password']==req.query['ConfirmPassword']){
         next();
@@ -82,7 +87,7 @@ app.use('/registrationRequest',(req, res, next)=>{
 
 
  app.use('/registrationRequest',(req, res, next)=>{
-    request_object = req.query
+    let request_object = req.query
     console.log(request_object)
     if(request_object["Email"] == ''){
         res.send("Email cannot be empty");
@@ -102,7 +107,40 @@ app.use('/registrationRequest',(req, res, next)=>{
     }
 
     else{
-        res.send("Account Created")
+        console.log(request_object)
+
+        let new_user = {
+            "Name" : request_object["FirstName"] + " "+ request_object["LastName"],
+            "Email Address":request_object["Email"],
+            "Phone Number": request_object["PhoneNumber"],
+            "Password":request_object["Password"]
+
+
+        }
+        //res.send("Account Created")
+        if(request_object["type_account"]== 'student'){
+            let  usersRef = dbRef.child('Students');
+            res.render("home")
+            //push to db here
+
+        }
+        else{
+            let usersRef = dbRef.child('Teachers');
+            res.render("home")
+            //push to db here
+        }
+        
+
+        
+        /*
+        usersRef.push(new_user, function () {
+            console.log("data has been inserted");
+            
+        })
+        
+         */   
+        
+       
         
 
     }
@@ -118,7 +156,7 @@ app.post('/loginRequest',(req,res)=>{
     //if the password is good to go 
     //go to dashboard page 
     //get all the firebase stuff and store it in a json object..the details
-    console.log(req.body)
+    //console.log(req)
     let obj_extracted_from_db = {
         "name": "Esha Fatima",
         "image" : "xx"

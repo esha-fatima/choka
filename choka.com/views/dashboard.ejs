@@ -11,6 +11,7 @@
             <span class="dashboard_v119_1818">
                 choka.com
             </span>
+            
             <div class="dashboard_v119_1817"></div>
             <div class="dashboard_v103_1450"></div>
             <div class="dashboard_v20_158"></div>
@@ -56,7 +57,9 @@
                 <div class="dashboard_v99_1415"></div>
             </div>
             <div class="dashboard_v99_1431"></div>
-            <span class="dashboard_v99_1435">Find a Tutor</span>
+            <form>
+            <button class="dashboard_v99_1435" formaction="/" method = "GET">Find a Tutor</button>
+            </form>
             <span class="dashboard_v101_1447">Find tutor over the application</span>
             <div class="dashboard_v99_1433"></div>
             <div class="dashboard_v99_1434"></div>
@@ -82,8 +85,25 @@
             name = "Welcome " + name + " !";
             let tt = document.getElementById("n");
             tt.innerText = name;
+            /*
+            let find_button = document.getElementsByClassName("dashboard_v99_1435")
+            find_button.addEventListener("click", myFunction);
+            function myFunction(){
+                console.log("here")
+                const xhttp = new HttpRequest();
+                xhttp.open("GET", "http://localhost:3000/");
+                xhttp.send();
+                const books = JSON.parse(xhttp.responseText);
+            }
+*/
 
             
+
+            
+            
+
+
+
         </script>
     </body>
     </html>

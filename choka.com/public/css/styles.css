@@ -506,13 +506,29 @@ body {
     color: rgba(3,133,182,1);
     position: absolute;
     top: 460px;
-    left: 124px;
+    left: 14px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: SemiBold;
     font-size: 25px;
     opacity: 1;
     text-align: left;
   }
+
+  .v13_90_second {
+    
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 450px;
+    left: 124px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 300;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
+
+  
+
   .name {
     color: #fff;
   }
@@ -521,13 +537,27 @@ body {
     color: rgba(3,133,182,1);
     position: absolute;
     top: 460px;
-    left: 313px;
+    left: 200px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: SemiBold;
     font-size: 25px;
     opacity: 1;
     text-align: left;
   }
+
+  .v13_92_second {
+    width: 166px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 450px;
+    left: 313px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 300;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
+
   .name {
     color: #fff;
   }
