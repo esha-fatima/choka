@@ -30,7 +30,8 @@ const { getAnalytics } = pkg;
 
 //npm install firebase
 //const admin = require("firebase-admin");
-
+var user_details;
+var document_id = "1aed"
 
 
 //con firebase from "firebase"
@@ -121,24 +122,22 @@ app.use('/registrationRequest',(req, res, next)=>{
         if(request_object["type_account"]== 'student'){
             let  usersRef = dbRef.child('Students');
             res.render("home")
+            user_details = request_object
             //push to db here
+            //set the varibale called document id as per what firebase assigns it
 
         }
         else{
             let usersRef = dbRef.child('Teachers');
+            user_details = request_object
             res.render("home")
             //push to db here
+            //set the variable called document id as per what firebase assigns it
         }
         
 
         
-        /*
-        usersRef.push(new_user, function () {
-            console.log("data has been inserted");
-            
-        })
-        
-         */   
+       
         
        
         
@@ -148,6 +147,18 @@ app.use('/registrationRequest',(req, res, next)=>{
     
  });
 ////////////////////rendering login
+app.post('/findTutors', (req,res)=>{
+    //now u are supposed to get the top 3 tutors from database.
+    //store the top 2 in top_2 variable that I am hardcoding for now
+
+    let top_2 = [
+        {},
+        {}
+    ]
+    res.render("findTutors")
+
+
+})
 
 
 app.post('/loginRequest',(req,res)=>{
@@ -159,8 +170,11 @@ app.post('/loginRequest',(req,res)=>{
     //console.log(req)
     let obj_extracted_from_db = {
         "name": "Esha Fatima",
-        "image" : "xx"
+        "image" : "xx",
+        "documentID": "123"
     }
+    
+
     res.render("dashboard", obj_extracted_from_db)
 
     
@@ -192,6 +206,7 @@ app.get("/register",(req,res)=>{
 
 
 app.get("/",(req,res)=>{
+    
     res.render("home");
 })
 
