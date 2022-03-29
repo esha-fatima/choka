@@ -58,7 +58,12 @@ initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
 
-db.settings({timestampsInSnapshots:true});
+
+const dbRef = firebase.database().ref();
+const usersRef = dbRef.child('Students');
+
+
+db.settings({timestampsInSnapshots:true, merge:true});
 
 app.set('view engine','ejs');
 
@@ -103,8 +108,25 @@ app.use('/registrationRequest',(req, res, next)=>{
 
     else{
 
+        let new_user = {
+            "Name" : request_object["FirstName"] + " "+ request_object["LastName"],
+            "Email Address":request_object["Email"],
+            "Phone Number": request_object["PhoneNumber"],
+            "Password":request_object["Password"]
+
+
+        }
+
         
-        res.send("Account Created")
+        /*
+        usersRef.push(new_user, function () {
+            console.log("data has been inserted");
+            res.send("Account Created")
+        })
+        
+         */   
+        
+       
         
 
     }
