@@ -57,8 +57,8 @@
                 <div class="dashboard_v99_1415"></div>
             </div>
             <div class="dashboard_v99_1431"></div>
-            <form>
-            <button class="dashboard_v99_1435" formaction="/" method = "GET">Find a Tutor</button>
+            <form  method="POST">
+            <button class="dashboard_v99_1435"  formaction="/findTutors" method = "POST"   >Find a Tutor</button>
             </form>
             <span class="dashboard_v101_1447">Find tutor over the application</span>
             <div class="dashboard_v99_1433"></div>
@@ -85,6 +85,8 @@
             name = "Welcome " + name + " !";
             let tt = document.getElementById("n");
             tt.innerText = name;
+
+            
             /*
             let find_button = document.getElementsByClassName("dashboard_v99_1435")
             find_button.addEventListener("click", myFunction);
@@ -96,12 +98,6 @@
                 const books = JSON.parse(xhttp.responseText);
             }
 */
-
-            
-
-            
-            
-
 
 
         </script>
