@@ -60,7 +60,7 @@ const db = firebase.firestore();
 
 
 const dbRef = firebase.database().ref();
-const usersRef = dbRef.child('Students');
+
 
 
 db.settings({timestampsInSnapshots:true, merge:true});
@@ -107,6 +107,7 @@ app.use('/registrationRequest',(req, res, next)=>{
     }
 
     else{
+        console.log(request_object)
 
         let new_user = {
             "Name" : request_object["FirstName"] + " "+ request_object["LastName"],
@@ -116,12 +117,25 @@ app.use('/registrationRequest',(req, res, next)=>{
 
 
         }
+        //res.send("Account Created")
+        if(request_object["type_account"]== 'student'){
+            let  usersRef = dbRef.child('Students');
+            res.render("home")
+            //push to db here
+
+        }
+        else{
+            let usersRef = dbRef.child('Teachers');
+            res.render("home")
+            //push to db here
+        }
+        
 
         
         /*
         usersRef.push(new_user, function () {
             console.log("data has been inserted");
-            res.send("Account Created")
+            
         })
         
          */   
@@ -142,7 +156,7 @@ app.post('/loginRequest',(req,res)=>{
     //if the password is good to go 
     //go to dashboard page 
     //get all the firebase stuff and store it in a json object..the details
-    console.log(req.body)
+    //console.log(req)
     let obj_extracted_from_db = {
         "name": "Esha Fatima",
         "image" : "xx"

@@ -433,7 +433,13 @@
     box-shadow: 4px 10px 4px rgba(0, 0, 0, 0.25);
     overflow: hidden;
   }
+
+  
+
+
   .dashboard_v99_1435 {
+    border: 0;
+    background-color: transparent;
     width: 461px;
     color: rgba(3,133,182,1);
     position: absolute;
