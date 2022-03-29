@@ -151,11 +151,16 @@ app.post('/findTutors', (req,res)=>{
     //now u are supposed to get the top 3 tutors from database.
     //store the top 2 in top_2 variable that I am hardcoding for now
 
-    let top_2 = [
-        {},
-        {}
-    ]
-    res.render("findTutors")
+    let top_2 = 
+        {
+            "Name_one": "Esha Fatima",
+            "Department_one": "Computer Science",
+            "Name_two" : "Baqar",
+            "Department_two" : "Islamic Studies"
+    
+        }
+
+    res.render("findTutors", top_2)
 
 
 })

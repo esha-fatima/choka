@@ -14,25 +14,25 @@
             <div class="findTutors_name"></div>
             <span class="findTutors_v36_26">Find a Tutor</span>
             <input class="findTutors_v36_27" placeholder="Search">
-            <div class="findTutors_v36_29">
-                
-            </div>
+            <div class="findTutors_v36_29"> </div>
             <div class="findTutors_v36_31">
-                <div class="findTutors_v36_32"></div>
+                <button> <img class = "findTutors_v36_32" src="public\images\bx_search.png" /> </button>
             </div>
             <div class="findTutors_name"></div>
             <span class="findTutors_v36_34">Recommended for you</span>
             <div class="findTutors_v44_246"></div>
             <div class="findTutors_"></div>
-            <span class="findTutors_v44_252">Mr. Bean</span>
-            <span class="findTutors_v44_253">Mathematics & Science</span>
+            <div id = "top_one">
+                
+            </div>
             <div class="findTutors_name"></div>
             <div class="findTutors_v44_260">
                 <div class="findTutors_v44_261"></div>
             </div>
             <div class="findTutors_v46_262"></div>
-            <span class="findTutors_v46_264">Dr. Suleman</span>
-            <span class="findTutors_v46_265">Computer Science</span>
+            <div id = "top_two">
+               
+            </div>
             <div class="findTutors_name"></div>
             <div class="findTutors_v46_267">
                 <div class="findTutors_v46_268"></div>
@@ -40,7 +40,17 @@
             <div class="findTutors_v46_269"></div>
         </div>
         <script>
+            let name_one = '<%-Name_one%>'
+            let dept_one = '<%-Department_one%>'
+            let top_one = document.getElementById("top_one")
+            let text_one = '<span class="findTutors_v44_252">' + name_one + '</span><span class="findTutors_v44_253">'+dept_one+'</span>'
+            top_one.innerHTML = text_one//'<span class="findTutors_v44_252">arr</span><span class="findTutors_v44_253">Mathematics & Science</span>'
             
+            let name_two = '<%-Name_two%>'
+            let dept_two = '<%-Department_two%>'
+            let top_two = document.getElementById("top_two")
+            let text_two = '<span class="findTutors_v46_264">' + name_two + '</span><span class="findTutors_v46_265">'+dept_two+'</span>'
+            top_two.innerHTML = text_two
             
         </script>
     </body>
