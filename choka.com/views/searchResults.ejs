@@ -1,0 +1,91 @@
+<%-include("partials/header");-%>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="search_v36_36">
+            <span class="search_v39_141">Find a Tutor</span>
+
+            <div id ="results">
+
+            <div class="search_v39_146"></div>
+            <div class="search_v39_171"></div>
+            <span class="search_v39_173">Send Request</span>
+            <div class="search_name"></div>
+            <span class="search_v39_152">Experience: 3 years </span>
+            <div class="search_v39_147"></div>
+            <span class="search_v39_148">Mr. Bean</span>
+            <span class="search_v39_149">Mathematics & Science</span>
+            <div class="search_name"></div>
+            <div class="search_name"></div>
+            <span class="search_v39_169">4.0</span>
+            <div class="search_v39_170"></div>
+            <span class="search_v39_172">Message</span>
+            <div class="search_v39_174"></div>
+            </div>
+
+            <form method="POST">
+                <input class="findTutors_v36_27" placeholder="Search" name="searchParameters">
+                <div class="findTutors_v36_29"> </div>
+                <div class="findTutors_v36_31">
+                    <button formaction="/searchRequest"> <img class = "findTutors_v36_32" src="public\images\bx_search.png" /> </button>
+                </div>
+               
+            </form>
+            
+            <button id = "next" > <img src="public\images\bx_search.png"/> </button>
+            <button id = "previous"> <img src="public\images\bx_search.png"/> </button>
+            
+            <div class="search_name"></div>
+            <span class="search_v43_190">Search Results</span>
+            <div class="search_v119_1837"></div>
+            <span class="search_v119_1838">choka.com</span>
+            <div class="search_v119_1839"></div>
+            <div class="search_v119_1840"></div>
+            <span class="search_v119_1841">Back </span>
+            <div class="search_name"></div>
+        </div>
+        <script>
+            let index = 0
+            document.getElementById("next").addEventListener("click", next);
+            document.getElementById("previous").addEventListener("click", previous);
+            let results_array = '<%-mine%>'
+            let len = results_array.length
+
+            function next(){
+                index = index +1;
+                if(index == len){
+                    index = 0;
+                }
+                let obj = results_array[index]
+                let name = obj["Name"]
+                let subject = obj["Subject"]
+                let experience = obj["Experience"]
+                let rating = obj["Rating"]
+                let results = document.getElementById("results");
+                let results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><span class="search_v39_173">Send Request</span> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Message</span><div class="search_v39_174"></div>'
+                results.innerHTML = '<h1>' + len + '</h1>'                      
+                                       
+                                  
+
+            }
+
+            function previous(){
+                index = index -1;
+                if(index == -1){
+                    index = len-1;
+                }
+                let obj = results_array[index]
+                
+            }
+            
+
+
+        </script>
+    </body>
+    </html>
+    <br/>
+    <br/> 
+   
+  
