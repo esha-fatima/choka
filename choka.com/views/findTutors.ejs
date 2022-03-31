@@ -13,11 +13,15 @@
             <span class="findTutors_v36_19">Back </span>
             <div class="findTutors_name"></div>
             <span class="findTutors_v36_26">Find a Tutor</span>
-            <input class="findTutors_v36_27" placeholder="Search">
+
+            <form method="POST">
+            <input class="findTutors_v36_27" placeholder="Search" name="searchParameters">
             <div class="findTutors_v36_29"> </div>
             <div class="findTutors_v36_31">
-                <button> <img class = "findTutors_v36_32" src="public\images\bx_search.png" /> </button>
+                <button formaction="/searchRequest"> <img class = "findTutors_v36_32" src="public\images\bx_search.png" /> </button>
             </div>
+            </form>
+
             <div class="findTutors_name"></div>
             <span class="findTutors_v36_34">Recommended for you</span>
             <div class="findTutors_v44_246"></div>
@@ -51,6 +55,7 @@
             let top_two = document.getElementById("top_two")
             let text_two = '<span class="findTutors_v46_264">' + name_two + '</span><span class="findTutors_v46_265">'+dept_two+'</span>'
             top_two.innerHTML = text_two
+            
             
         </script>
     </body>

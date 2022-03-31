@@ -146,6 +146,25 @@ app.use('/registrationRequest',(req, res, next)=>{
     
     
  });
+
+
+ app.post('/searchRequest',(req,res)=>{
+     //when u get request to search for an object
+     console.log(req.body)
+     //u will have the search parameters stored in the body of the request
+     //then get all the relevnat details from firebase and get the search results in the form of an array
+     let results_array = [
+        {"Name": "Rose Dunhill", "Subject": "Physics", "Experience": "3", "Rating":"4.0", "Image": "xx"},
+        {"Name": "William Jonas", "Subject": "Sociology", "Experience": "2", "Rating":"1.0", "Image": "xx"},
+        {"Name": "Sherry", "Subject": "English", "Experience": "6", "Rating":"4.0", "Image": "xx"}
+        ]
+
+    let xx = {"mine":results_array};
+     res.render("searchResults",xx)
+
+ })
+
+
 ////////////////////rendering login
 app.post('/findTutors', (req,res)=>{
     //now u are supposed to get the top 3 tutors from database.
@@ -156,7 +175,8 @@ app.post('/findTutors', (req,res)=>{
             "Name_one": "Esha Fatima",
             "Department_one": "Computer Science",
             "Name_two" : "Baqar",
-            "Department_two" : "Islamic Studies"
+            "Department_two" : "Islamic Studies",
+            "test": [1,2]
     
         }
 
