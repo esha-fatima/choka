@@ -1,20 +1,29 @@
 
 <%-include("partials/header");-%>
-
-
-
 <html>
     <head>
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
     <body>
-        <form action = "/loginRequest" method="POST">
+        <form >
         <div class="login_1">
             <div class="login_2"></div>
             <div class="login_3"></div>
-            <div class="login_4"></div>
+            <div class="login_4">
+                <i class="material-icons" style="font-size:55px;">west</i>
+            </div>
+            
             <button class="login_5">Back to Home</button>
-            <span class="login_6">choka.com</span>
+
+            <span class="login_6">
+                <div class="row d-flex align-items-start" >
+                    <img class="logimageShape " src="/images/books.png" alt="o">
+                    <h1 class="logHead1"> choka </h1>
+                    <h4 class="logHead2"> .com </h4>
+                </div>
+            </span>
+
             <span class="login_7">Sign in</span>
             <span class="login_8">Email*</span>
             <div class="login_name"></div>
@@ -23,7 +32,7 @@
             <div class="login_name"></div>
             <input type = "password" class="login_11" name="Password"  placeholder="Enter password" />
             <div class="login_12"></div>
-            <button class="login_13"  >Sign in</button>
+            <button class="login_13" formaction="/loginRequest"  method = "post" >Sign in</button>
             <div class="login_14">
                 <div class="login_15"></div>
                 <div class="login_16"></div>
@@ -32,10 +41,21 @@
                 <div class="login_18"></div>
                 <div class="login_19"></div>
             </div>
-            <button class="login_20">Forgot your password? Reset Now</button>
-            <button class="login_21">First Time? Register</button>
-            <img class="login_22" src = "../assets/login_image.jpg"/>
+
+            <div class="row d-flex align-items-start" >
+                <p class="login_20_1">Forgot your password?</p>
+                <button class="login_20_2">Reset Now</button>
+            </div>
+
+            <div class="row d-flex align-items-start" >
+                <p class="login_21_1">First Time?</p>
+                <button class="login_21_2">Register</button>
+            </div>
+
+            <!-- <button class="login_20">Forgot your password? Reset Now</button>
+            <button class="login_21">First Time? Register</button> -->
+            <img class="login_22" src = "/images/loginpage.jpeg"/>
         </div>
-        </form>
+        </form>>
     </body>
 </html>
