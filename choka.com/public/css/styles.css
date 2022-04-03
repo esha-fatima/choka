@@ -1566,7 +1566,9 @@ body {
   }
   .v59_301_r2 {
     width: 133px;
+    background-color:rgba(3,133,182,1);
     color: rgba(255,255,255,1);
+    border: none;
     position: absolute;
     top: 1169px;
     left: 530px;
