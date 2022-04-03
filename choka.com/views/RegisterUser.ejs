@@ -2,16 +2,32 @@
 
 <body>
 <div>
+    <span class="v13_75">Register as a:</span>
+    <div class="name"></div>
+    <form name = "myForm">
+    <input type="radio" name = "type_account" value = "student"  class="v13_90" onclick="checker_one()"  />
+    <label class="v13_90_second"> Student</label>
+    <input type="radio" name = "type_account" value = "tutor"  class="v13_92" onclick="checker_two()"/>
+    <label class="v13_92_second"> Tutor</label>
+    </form>
+    
+    <button class="v13_21" formaction="/login">Already have an account? Sign in</button>
+
     <form action="/register">
     <div class="v13_2"></div>
-        <img class="v13_23" src = "/views/vector_back.png" />
-        <span class="v13_3">Back to Home</span>
+        
+    <img class="v13_23" src = "/views/vector_back.png" />
+    <span class="v13_3">Back to Home</span>
+        
         <span class="v13_5">Register</span>
-        <span class="v13_21">Already have an account? Sign in</span>
+        
         <span class="v13_42">First Name*</span>
-        <span class="v13_21">Already have an account? Sign in</span>
+        
+        
+
         <span class="v13_42">First Name*</span>
         <div class="name"></div>
+
         <input class="v13_44" name="FirstName"  placeholder="Enter first name"/> 
         <span class="v13_45">Email*</span>
         <div class="name"></div>
@@ -44,16 +60,7 @@
             <div class="v18_28"></div>
             <div class="v18_29"></div>
         </div>
-        <span class="v13_75">Register as a:</span>
-        <div class="name"></div>
-
-        <input type="radio" name = "type_account" value = "student"  class="v13_90"/>
-        <label class="v13_90_second"> Student</label>
-
         
-        <div class="name"></div>
-        <input type="radio" name = "type_account" value = "tutor"  class="v13_92"/>
-        <label class="v13_92_second"> Tutor</label>
         <div class="name"></div>
         <div class="v18_5">
             <div class="v18_6"></div>
@@ -83,14 +90,53 @@
             <div class="v59_316"></div>
         </div>
         <div class="v119_1813"></div>
+    
+
+        </div>
         <img class = "v119_1814" src="/views/header_image.jpg" />
         <img class = "choka_register" src="/views/Group 9.png" />
         
         </form>
+        <div id = "cond"> </div>
+        <div id = "second"> </div>
         
     
     
         
     </div>
+    <script>
+        function checker_one(){
+                let ff = document.forms[0]
+                
+                document.getElementById("second").innerHTML = '';
+                
+
+                if(ff[0].checked){
+                let xx = document.getElementById("cond")
+                xx.innerHTML = '<p> Esha</p>'
+
+                }
+
+        }
+        function checker_two(){
+                let ff = document.forms[0]
+                
+                document.getElementById("cond").innerHTML = '';
+                
+
+                if(ff[1].checked){
+                let xx = document.getElementById("second")
+                xx.innerHTML = '<p> yay</p>'
+
+                }
+
+        }
+
+
+        
+        
+
+
+    </script>
     </body>
     

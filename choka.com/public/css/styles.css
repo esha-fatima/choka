@@ -200,6 +200,8 @@ body {
     font-size: 20px;
     opacity: 1;
     text-align: left;
+    border: 0px;
+    background-color: transparent;
   }
   .v13_42 {
     width: 185px;
