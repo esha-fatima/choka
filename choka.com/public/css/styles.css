@@ -1,6 +1,6 @@
 body {
     background-color:white;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
 }
 
@@ -12,6 +12,20 @@ body {
 }
 #cond{
   display:none
+}
+
+.v13_21_custom{
+    width: 444px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 1175px;
+    left: 91px;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+    border: 0px;
+    background-color: transparent;
+
 }
 
 .Head1 {
@@ -853,7 +867,7 @@ body {
     position: absolute;
     top: 288px;
     left: 87px;
-    font-family: Roboto;
+    
     font-weight: ExtraBold;
     font-size: 60px;
     opacity: 1;
@@ -875,7 +889,7 @@ body {
     position: absolute;
     top: 512px;
     left: 87px;
-    font-family: Roboto;
+    
     font-weight: Bold;
     font-size: 30px;
     opacity: 1;
@@ -890,7 +904,7 @@ body {
     position: absolute;
     top: 568px;
     left: 87px;
-    font-family: Roboto;
+   
     font-weight: Italic;
     font-size: 20px;
     opacity: 1;
@@ -902,7 +916,7 @@ body {
     position: absolute;
     top: 634px;
     left: 87px;
-    font-family: Roboto;
+   
     font-weight: Bold;
     font-size: 30px;
     opacity: 1;
@@ -917,7 +931,7 @@ body {
     position: absolute;
     top: 690px;
     left: 87px;
-    font-family: Roboto;
+    
     font-weight: Italic;
     font-size: 20px;
     opacity: 1;
@@ -957,7 +971,7 @@ body {
     position: absolute;
     top: 512px;
     left: 483px;
-    font-family: Roboto;
+  
     font-weight: Bold;
     font-size: 30px;
     opacity: 1;
@@ -972,7 +986,7 @@ body {
     position: absolute;
     top: 568px;
     left: 483px;
-    font-family: Roboto;
+    
     font-weight: Italic;
     font-size: 20px;
     opacity: 1;
@@ -984,7 +998,7 @@ body {
     position: absolute;
     top: 634px;
     left: 483px;
-    font-family: Roboto;
+    
     font-weight: Bold;
     font-size: 30px;
     opacity: 1;
@@ -999,7 +1013,7 @@ body {
     position: absolute;
     top: 690px;
     left: 526px;
-    font-family: Roboto;
+    
     font-weight: Regular;
     font-size: 20px;
     opacity: 1;
@@ -1011,7 +1025,7 @@ body {
     position: absolute;
     top: 756px;
     left: 89px;
-    font-family: Roboto;
+    
     font-weight: Bold;
     font-size: 30px;
     opacity: 1;
@@ -1026,7 +1040,7 @@ body {
     position: absolute;
     top: 812px;
     left: 89px;
-    font-family: Roboto;
+    
     font-weight: Italic;
     font-size: 20px;
     opacity: 1;
@@ -1038,7 +1052,6 @@ body {
     position: absolute;
     top: 756px;
     left: 483px;
-    font-family: Roboto;
     font-weight: Bold;
     font-size: 30px;
     opacity: 1;
@@ -1053,7 +1066,7 @@ body {
     position: absolute;
     top: 812px;
     left: 493px;
-    font-family: Roboto;
+    
     font-weight: Italic;
     font-size: 20px;
     opacity: 1;
@@ -1065,7 +1078,7 @@ body {
     position: absolute;
     top: 812px;
     left: 563px;
-    font-family: Roboto;
+    
     font-weight: Italic;
     font-size: 20px;
     opacity: 1;
@@ -1077,7 +1090,7 @@ body {
     position: absolute;
     top: 812px;
     left: 653px;
-    font-family: Roboto;
+    
     font-weight: Italic;
     font-size: 20px;
     opacity: 1;
@@ -1089,7 +1102,7 @@ body {
     position: absolute;
     top: 876px;
     left: 89px;
-    font-family: Roboto;
+    
     font-weight: Bold;
     font-size: 30px;
     opacity: 1;
@@ -1101,7 +1114,7 @@ body {
     position: absolute;
     top: 876px;
     left: 1011px;
-    font-family: Roboto;
+    
     font-weight: Bold;
     font-size: 30px;
     opacity: 1;
@@ -1113,7 +1126,7 @@ body {
     position: absolute;
     top: 450px;
     left: 1022px;
-    font-family: Roboto;
+    
     font-weight: Bold;
     font-size: 30px;
     opacity: 1;
@@ -1128,7 +1141,7 @@ body {
     position: absolute;
     top: 932px;
     left: 89px;
-    font-family: Roboto;
+   
     font-weight: Italic;
     font-size: 20px;
     opacity: 1;
@@ -1140,7 +1153,7 @@ body {
     position: absolute;
     top: 998px;
     left: 89px;
-    font-family: Roboto;
+    
     font-weight: Bold;
     font-size: 30px;
     opacity: 1;
@@ -1155,7 +1168,7 @@ body {
     position: absolute;
     top: 1054px;
     left: 89px;
-    font-family: Roboto;
+    
     font-weight: Italic;
     font-size: 20px;
     opacity: 1;
@@ -1195,7 +1208,7 @@ body {
     position: absolute;
     top: 998px;
     left: 483px;
-    font-family: Roboto;
+    
     font-weight: Bold;
     font-size: 30px;
     opacity: 1;
@@ -1210,7 +1223,7 @@ body {
     position: absolute;
     top: 1054px;
     left: 483px;
-    font-family: Roboto;
+    
     font-weight: Italic;
     font-size: 20px;
     opacity: 1;
@@ -1250,7 +1263,7 @@ body {
     position: absolute;
     top: 401px;
     left: 87px;
-    font-family: Roboto;
+    
     font-weight: Bold;
     font-size: 30px;
     opacity: 1;
@@ -1265,7 +1278,7 @@ body {
     position: absolute;
     top: 460px;
     left: 124px;
-    font-family: Roboto;
+    
     font-weight: SemiBold;
     font-size: 25px;
     opacity: 1;
@@ -1277,7 +1290,7 @@ body {
     position: absolute;
     top: 460px;
     left: 313px;
-    font-family: Roboto;
+    
     font-weight: SemiBold;
     font-size: 25px;
     opacity: 1;
@@ -1485,7 +1498,7 @@ body {
     position: absolute;
     top: 1169px;
     left: 530px;
-    font-family: Roboto;
+    
     font-weight: SemiBold;
     font-size: 30px;
     opacity: 1;
@@ -1512,7 +1525,7 @@ body {
     position: absolute;
     top: 657px;
     left: 1102px;
-    font-family: Roboto;
+    
     font-weight: Italic;
     font-size: 25px;
     opacity: 1;
@@ -1636,7 +1649,7 @@ body {
     position: absolute;
     top: 951px;
     left: 1110px;
-    font-family: Roboto;
+    
     font-weight: Italic;
     font-size: 20px;
     opacity: 1;
@@ -1661,7 +1674,7 @@ body {
     position: absolute;
     top: 73px;
     left: 541px;
-    font-family: Roboto;
+    
     font-weight: Bold;
     opacity: 1;
     text-align: left;
@@ -1698,7 +1711,7 @@ body {
     position: absolute;
     top: 42px;
     left: 118px;
-    font-family: Roboto;
+    
     font-weight: Bold;
     font-size: 30px;
     opacity: 1;
