@@ -1,28 +1,39 @@
 <%-include("partials/header");-%>
 
-<head>
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-</head>
-
 <body>
 <div>
-    <form action="/register">
+    <span class="v13_75">Register as a:</span>
+    <div class="name"></div>
+    <form name = "myForm">
+    <input type="radio" name = "type_account" value = "student"  class="v13_90" onclick="checker_two()"  />
+    <label class="v13_90_second"> Student</label>
+    <input type="radio" name = "type_account" value = "tutor"  class="v13_92" onclick="checker_one()"/>
+    <label class="v13_92_second"> Tutor</label>
+    </form>
+    
+    
+
+    
     <div class="v13_2"></div>
-        <div class="login_4">
-            <i class="material-icons" style="font-size:55px;">west</i>
-        </div>
-        <button class="login_5">Back to Home</button>
-        <span class="v13_5">Register</span>
-        <!-- <span class="v13_21">Already have an account? Sign in</span> -->
+        
+    <img class="v13_23" src = "/views/vector_back.png" />
+    <img class = "v119_1814" src="/views/header_image.jpg" />
+    <img class = "choka_register" src="/views/Group 9.png" />
+    <span class="v13_3">Back to Home</span>
+        
+    <span class="v13_5">Register</span>
+        
+        <div id = "testing">
+        ////////////////////////
+        <form action="/register">
+        <button class="v13_21" formaction="/login">Already have an account? Sign in</button>
         <span class="v13_42">First Name*</span>
-        <!-- <span class="v13_21">Already have an account? Sign in</span> -->
-        <div class="row d-flex align-items-start" >
-            <p class="login_21_1">Already have an account?</p>
-            <button class="login_21_2" style="left: 320px;">Sign in</button>
-        </div>
+        
+        
+
         <span class="v13_42">First Name*</span>
         <div class="name"></div>
+
         <input class="v13_44" name="FirstName"  placeholder="Enter first name"/> 
         <span class="v13_45">Email*</span>
         <div class="name"></div>
@@ -55,31 +66,17 @@
             <div class="v18_28"></div>
             <div class="v18_29"></div>
         </div>
-        <span class="v13_75">Register as a:</span>
+        
         <div class="name"></div>
-        <!-- <div class="row d-flex align-items-start" ></div> -->
-            <input class="v13_90_2" type="radio" id="html" name="value" value="student">
-            <label class="v13_90_1">Student</label>
-            <!-- <span class="v13_90">Student</span> -->
-            <!-- <div class="name"></div> -->
-            <input class="v13_92_2" type="radio" id="css" name="value" value="teacher">
-            <label class="v13_92_1">Tutor</label>
-            <!-- <span class="v13_92">Tutor</span> -->
-            <!-- <div class="name"></div> -->
-        <!-- </div> -->
-
-        <!-- <span class="v13_90">Student</span>
-        <div class="name"></div> -->
-        <!-- <span class="v13_92">Tutor</span>
-        <div class="name"></div> -->
         <div class="v18_5">
             <div class="v18_6"></div>
         </div>
+
         <div class="v18_7">
             <div class="v18_8"></div>
         </div>
         <div class="name"></div>
-        <!-- <div class="v18_17">
+        <div class="v18_17">
             <div class="v18_18"></div>
             <div class="v18_19"></div>
             <div class="v18_20"></div>
@@ -87,10 +84,11 @@
         </div>
         <div class="v18_22">
             <div class="v18_23"></div>
-        </div> -->
-        <!-- <div class="v18_30"></div> -->
-        <button class="v18_31" formaction="/registrationRequest"  method = "post">Register</button><br>
-        <div class="v58_217"></div>
+        </div>
+        <div class="v18_30"></div>
+        
+        
+        <button class="v18_31" formaction="/registrationRequest"  method = "POST">Register</button>
         <span class="v58_218">Add Image</span>
         <div class="v58_219">
             <div class="v58_220"></div>
@@ -100,17 +98,172 @@
             <div class="v59_316"></div>
         </div>
         <div class="v119_1813"></div>
-        <!-- <span class="v119_1814">choka.com</span> -->
-        <span class="login_6">
-            <div class="row d-flex align-items-start" >
-                <img class="logimageShape " src="/images/books.png" alt="o">
-                <h1 class="logHead1"> choka </h1>
-                <h4 class="logHead2"> .com </h4>
-            </div>
-        </span>
-        <br><br>
+    
+        
+        </div>
+        
+        
         </form>
+        </div>
+<!--/////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+        <div id = "cond">
+            <form action="/register">
+                <button class="v13_21_custom" formaction="/login">Already have an account? Sign in</button>
+                <span class="v59_252_r2">First Name*</span>
+                <div class="name_r2"></div>
+                <input class="v59_254_r2" name="FirstName"  placeholder="Enter first name"/> 
+                
+                <span class="v59_255_r2">Email*</span>
+                <div class="name_r2"></div>
+                
+                <input class="v59_257_r2" name="Email"  placeholder="Enter email"/>
+                <div class="v59_258_r2">
+                    <div class="v59_259_r2"></div>
+                    <div class="v59_260_r2"></div>
+                </div>
+                <span class="v59_261_r2">Last Name*</span>
+                <div class="name_r2"></div>
+                
+                <input class="v59_263_r2" name="LastName"  placeholder="Enter last name"/>
+
+                <span class="v59_264_r2">Phone Number*</span>
+                <input class="v13_60" name="PhoneNumber"  placeholder="Enter phone number" />
+                <div class="name_r2"></div>
+                <span class="v59_270_r2">Qualification*</span>
+                <div class="name_r2"></div>
+                
+                <input class="v59_272_r2" name="HighestQualification"  placeholder="Your Highest Qualification" />
+                <span class="v59_276_r2">Date of Birth*</span>
+                <div class="name_r2"></div>
+
+                <input class="v59_278_r2" placeholder="Day" name = "BirthdayDay" />
+                <input class="v59_347_r2" placeholder="Month" name = "BirthdayMonth" />
+                <input class="v59_350_r2" placeholder="Year" name = "BirthdayYear" />
+                
+            
+                <span class="v59_319_r2">Previous Experience*</span>
+                <span class="v59_355_r2">Transcript*</span>
+                <span class="v59_361_r2">Image</span>
+                <div class="name_r2"></div>
+                <input class="v59_321_r2" name="PreviousExperience"  placeholder="Write about your previous experiences of teaching..." />
+                <span class="v59_333_r2">Password*</span>
+                <div class="name_r2"></div>
+
+                
+                <input class="v59_335_r2" name="Password"  placeholder="Password" />
+                
+                <div class="v59_336_r2">
+                    <div class="v59_337_r2"></div>
+                    <div class="v59_338_r2"></div>
+                </div>
+                <span class="v59_339_r2">Confirm Password*</span>
+                <!--<div class="name_r2"></div><span class="v59_341">Password</span>-->
+                <input class="re_enter" name="ConfirmPassword"  placeholder="Re-enter password here" />
+                <div class="v59_342_r2">
+                    <div class="v59_343"></div>
+                <div class="v59_344_r2"></div>
+            </div>
+            
+            <div class="v59_288_r2">
+                <div class="v59_289_r2"></div>
+            </div>
+            <div class="v59_290_r2">
+                <div class="v59_291_r2"></div>
+            </div>
+            <div class="name_r2"></div>
+            <div class="v59_293_r2">
+                <div class="v59_294_r2"></div>
+                <div class="v59_295_r2"></div>
+                <div class="v59_296_r2"></div>
+                <div class="v59_297_r2"></div>
+            </div>
+            <div class="v59_298_r2">
+                <div class="v59_299_r2">
+
+                </div>
+            </div>
+            <div class="v59_331_r2">
+                <div class="v59_332_r2"></div>
+            </div>
+            <!--
+            <div class="v59_345_r2">
+                <div class="v59_346_r2"></div>
+            </div>
+            <div class="v59_348_r2">
+                <div class="v59_349_r2"></div>
+            </div>
+            <div class="v59_351_r2">
+                <div class="v59_352_r2"></div>
+            </div>
+            -->
+            <div class="v59_300_r2"></div>
+            
+            <button class="v59_301_r2" formaction="/registrationRequest"  method = "POST">Register</button>
+            <div class = "v59_302_r2"> </div>
+            <span class="v59_303_r2">Add Image</span>
+            <div class="v59_304_r2">
+                <div class="v59_305_r2"></div>
+                <div class="v59_306_r2"></div>
+            </div><div class="name_r2"></div>
+            <div class="v59_317_r2">
+                <div class="v59_318_r2"></div>
+            </div>
+            <div class="v59_353_r2">
+                <div class="v59_354_r2"></div>
+            </div>
+            <div class="v59_356_r2"></div>
+            <div class="v59_357_r2">
+                <div class="v59_358_r2"></div>
+                <div class="v59_359_r2"></div>
+            </div>
+            <span class="v59_360_r2">Upload Transcript</span>
+            
+            <div class="name_r2"></div>
+            </form>
+        
+
+
+
+    </div>
+        
+    
+    
         
     </div>
+    <script>
+        function checker_one(){
+                let ff = document.forms[0]
+                
+                document.getElementById("testing").style.display = "none";
+                
+
+                if(ff[1].checked){
+                let xx = document.getElementById("cond")
+                xx.style.display = "block";
+
+                }
+
+        }
+        function checker_two(){
+                let ff = document.forms[0]
+                
+                document.getElementById("cond").style.display = 'none';
+                
+
+                if(ff[0].checked){
+               document.getElementById("testing").style.display = "block";
+                
+
+                }
+
+        }
+
+
+        
+        
+
+
+    </script>
     </body>
     
