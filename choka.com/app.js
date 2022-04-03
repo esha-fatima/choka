@@ -151,6 +151,7 @@ app.use('/registrationRequest',(req, res, next)=>{
  app.post('/searchRequest',(req,res)=>{
      //when u get request to search for an object
      console.log(req.body)
+     
      //u will have the search parameters stored in the body of the request
      //then get all the relevnat details from firebase and get the search results in the form of an array
      let results_array = [
@@ -160,7 +161,8 @@ app.use('/registrationRequest',(req, res, next)=>{
         ]
 
     let xx = {"mine":results_array};
-     res.render("searchResults",xx)
+    console.log(res)
+     res.send(xx)
 
  })
 

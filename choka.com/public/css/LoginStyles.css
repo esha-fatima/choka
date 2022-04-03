@@ -125,6 +125,10 @@
     color: #fff;
   }
   .login_9 {
+    border-color: rgba(3,133,182,1);
+    border-top: none;
+    border-left: none;
+    border-right: none;
     width: 251px;
     color: rgba(3,133,182,1);
     position: absolute;
@@ -153,6 +157,11 @@
   }
   .login_11 {
     width: 251px;
+    border-color: rgba(3,133,182,1);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+
     color: rgba(3,133,182,1);
     position: absolute;
     top: 578px;
