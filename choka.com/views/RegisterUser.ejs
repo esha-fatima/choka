@@ -5,9 +5,9 @@
     <span class="v13_75">Register as a:</span>
     <div class="name"></div>
     <form name = "myForm">
-    <input type="radio" name = "type_account" value = "student"  class="v13_90" onclick="checker_one()"  />
+    <input type="radio" name = "type_account" value = "student"  class="v13_90" onclick="checker_two()"  />
     <label class="v13_90_second"> Student</label>
-    <input type="radio" name = "type_account" value = "tutor"  class="v13_92" onclick="checker_two()"/>
+    <input type="radio" name = "type_account" value = "tutor"  class="v13_92" onclick="checker_one()"/>
     <label class="v13_92_second"> Tutor</label>
     </form>
     
@@ -17,10 +17,14 @@
     <div class="v13_2"></div>
         
     <img class="v13_23" src = "/views/vector_back.png" />
+    <img class = "v119_1814" src="/views/header_image.jpg" />
+    <img class = "choka_register" src="/views/Group 9.png" />
     <span class="v13_3">Back to Home</span>
         
-        <span class="v13_5">Register</span>
+    <span class="v13_5">Register</span>
         
+        <div id = "testing">
+        ////////////////////////
         <form action="/register">
         <button class="v13_21" formaction="/login">Already have an account? Sign in</button>
         <span class="v13_42">First Name*</span>
@@ -97,10 +101,129 @@
     
         
         </div>
-        <img class = "v119_1814" src="/views/header_image.jpg" />
-        <img class = "choka_register" src="/views/Group 9.png" />
+        
         
         </form>
+        </div>
+<!--/////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+        <div id = "cond">
+
+
+            
+            <div class="v119_1950">
+                
+                <span class="v59_252">First Name*</span>
+                <div class="name"></div>
+                <span class="v59_254">First Name</span>
+                <span class="v59_255">Email*</span>
+                <div class="name"></div>
+                <span class="v59_257">Email Address</span>
+                <div class="v59_258">
+                    <div class="v59_259"></div>
+                    <div class="v59_260"></div>
+                </div>
+                <span class="v59_261">Last Name*</span>
+                <div class="name"></div>
+                <span class="v59_263">Last Name</span>
+                <span class="v59_264">Phone Number*</span>
+                <div class="name"></div>
+                <span class="v59_270">Qualification*</span>
+                <div class="name"></div>
+                <span class="v59_272">Your Highest Qualification</span>
+                <span class="v59_276">Date of Birth*</span>
+                <div class="name"></div>
+                <span class="v59_278">Day</span>
+                <span class="v59_347">Month</span>
+                <span class="v59_350">Year</span>
+                <span class="v59_319">Previous Experience*</span>
+                <span class="v59_355">Transcript*</span>
+                <span class="v59_361">Image</span>
+                <div class="name"></div>
+                <span class="v59_321">Write about your previous experiences of teaching...</span>
+                <span class="v59_333">Password*</span>
+                <div class="name"></div>
+                <span class="v59_335">Password</span>
+                <div class="v59_336">
+                    <div class="v59_337"></div>
+                    <div class="v59_338"></div>
+                </div>
+                <span class="v59_339">Confirm Password*</span>
+                <div class="name"></div><span class="v59_341">Password</span>
+                <div class="v59_342"><div class="v59_343"></div>
+                <div class="v59_344"></div>
+            </div>
+            <span class="v59_282">Regsiter as a:</span>
+            <div class="name"></div><span class="v59_284">Student</span>
+            <span class="v59_286">Tutor</span>
+            <div class="v59_288">
+                <div class="v59_289"></div>
+            </div>
+            <div class="v59_290">
+                <div class="v59_291"></div>
+            </div>
+            <div class="name"></div>
+            <div class="v59_293">
+                <div class="v59_294"></div>
+                <div class="v59_295"></div>
+                <div class="v59_296"></div>
+                <div class="v59_297"></div>
+            </div>
+            <div class="v59_298">
+                <div class="v59_299">
+
+                </div>
+            </div>
+            <div class="v59_331">
+                <div class="v59_332"></div>
+            </div>
+            <div class="v59_345">
+                <div class="v59_346"></div>
+            </div>
+            <div class="v59_348">
+                <div class="v59_349"></div>
+            </div>
+            <div class="v59_351">
+                <div class="v59_352"></div>
+            </div>
+            <div class="v59_300"></div>
+            <span class="v59_301">Register</span>
+            <div class="v59_302"></div>
+            <span class="v59_303">Add Image</span>
+            <div class="v59_304">
+                <div class="v59_305"></div>
+                <div class="v59_306"></div>
+            </div><div class="name"></div>
+            <div class="v59_317">
+                <div class="v59_318"></div>
+            </div>
+            <div class="v59_353">
+                <div class="v59_354"></div>
+            </div>
+            <div class="v59_356"></div>
+            <div class="v59_357">
+                <div class="v59_358"></div>
+                <div class="v59_359"></div>
+            </div>
+            <span class="v59_360">Upload Transcript</span>
+            <div class="v119_1951"></div>
+            <span class="v119_1952">choka.com</span>
+            <div class="v119_1953"></div>
+            <div class="v119_1954"></div>
+            <span class="v119_1955">Back to Home</span>
+            <div class="name"></div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+</div>
         
     
     
@@ -110,12 +233,12 @@
         function checker_one(){
                 let ff = document.forms[0]
                 
-                document.getElementById("second").innerHTML = '';
+                document.getElementById("testing").style.display = "none";
                 
 
-                if(ff[0].checked){
+                if(ff[1].checked){
                 let xx = document.getElementById("cond")
-                xx.innerHTML = '<p> Esha</p>'
+                xx.style.display = "block";
 
                 }
 
@@ -123,12 +246,12 @@
         function checker_two(){
                 let ff = document.forms[0]
                 
-                document.getElementById("cond").innerHTML = '';
+                document.getElementById("cond").style.display = 'none';
                 
 
-                if(ff[1].checked){
-                let xx = document.getElementById("second")
-                xx.innerHTML = '<p> yay</p>'
+                if(ff[0].checked){
+               document.getElementById("testing").style.display = "block";
+                
 
                 }
 
