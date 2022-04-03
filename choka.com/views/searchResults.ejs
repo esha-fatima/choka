@@ -56,21 +56,40 @@
             document.getElementById("next").addEventListener("click", next);
             document.getElementById("previous").addEventListener("click", previous);
             let results_array = '<%-mine%>'
-            let len = results_array.length
+            let con = JSON.parse(results_array)
+            let obj = con[index]
+            let name = obj.Name
+            let subject = obj.Subject
+            let experience = obj.Experience
+            let rating = obj.Rating
+            let results = document.getElementById("results");
+            let results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><span class="search_v39_173">Send Request</span> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Message</span><div class="search_v39_174"></div>'
+            results.innerHTML = results_content 
+
+            
+            
+
+            let len = con.length
 
             function next(){
                 index = index +1;
                 if(index == len){
                     index = 0;
                 }
-                let obj = results_array[index]
-                let name = obj["Name"]
-                let subject = obj["Subject"]
-                let experience = obj["Experience"]
-                let rating = obj["Rating"]
-                let results = document.getElementById("results");
-                let results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><span class="search_v39_173">Send Request</span> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Message</span><div class="search_v39_174"></div>'
-                results.innerHTML = '<h1>' + len + '</h1>'                      
+                
+                obj = con[index]
+                name = obj.Name
+                subject = obj.Subject
+                experience = obj.Experience
+                rating = obj.Rating
+                results = document.getElementById("results");
+                results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><span class="search_v39_173">Send Request</span> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Message</span><div class="search_v39_174"></div>'
+                results.innerHTML = results_content
+
+                //results.innerHTML = '<h1>' + index + '</h1>'
+
+
+                                 
                                        
     
             }
@@ -81,6 +100,14 @@
                     index = len-1;
                 }
                 let obj = results_array[index]
+                obj = con[index]
+                name = obj.Name
+                subject = obj.Subject
+                experience = obj.Experience
+                rating = obj.Rating
+                results = document.getElementById("results");
+                results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><span class="search_v39_173">Send Request</span> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Message</span><div class="search_v39_174"></div>'
+                results.innerHTML = results_content
                 
             }
             

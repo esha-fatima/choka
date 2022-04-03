@@ -150,19 +150,20 @@ app.use('/registrationRequest',(req, res, next)=>{
 
  app.post('/searchRequest',(req,res)=>{
      //when u get request to search for an object
-     console.log(req.body)
-     
+     //console.log(req.body)
      //u will have the search parameters stored in the body of the request
      //then get all the relevnat details from firebase and get the search results in the form of an array
+     let obj1 = JSON.stringify( {"Name": "Rose Dunhill", "Subject": "Physics", "Experience": "3", "Rating":"4.0", "Image": "xx"})
+     let obj2 = JSON.stringify( {"Name": "William Jonas", "Subject": "Sociology", "Experience": "2", "Rating":"1.0", "Image": "xx"})
+     let obj3 = JSON.stringify({"Name": "Sherry", "Subject": "English", "Experience": "6", "Rating":"4.0", "Image": "xx"})
      let results_array = [
-        {"Name": "Rose Dunhill", "Subject": "Physics", "Experience": "3", "Rating":"4.0", "Image": "xx"},
-        {"Name": "William Jonas", "Subject": "Sociology", "Experience": "2", "Rating":"1.0", "Image": "xx"},
-        {"Name": "Sherry", "Subject": "English", "Experience": "6", "Rating":"4.0", "Image": "xx"}
+        obj1, obj2, obj3
         ]
-
-    let xx = {"mine":results_array};
-    console.log(res)
-     res.send(xx)
+    let ff = JSON.stringify(results_array)
+    //console.log(ff)
+    let xx = {"mine":ff};
+    //console.log(res)
+     res.render("searchResults",xx)
 
  })
 
