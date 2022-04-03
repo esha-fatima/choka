@@ -3,7 +3,7 @@
     <!-- <span class="material-icons md-48 md-16" onclick="location.replace('/setting')">person</span> -->
     <!-- <img  class=questionmarks src="/images/studentteacher.png" alt="questionmarks"> -->
 
-    <form action="/home" method="POST">
+    <form  method="POST">
         <div class="row d-flex flex-row-reverse">
             <!-- <div class="name col-lg-6 col-md-6 col-xs-6 col-sm-6 center-block"> -->
                 <button class="buttonIn" name="home" value="home" onclick="location.replace('')"> Home </button>
@@ -22,8 +22,8 @@
 
         <div class="row d-flex ">
             <h4 class="align-items-start Head3"> Your Future in Safe Hands! </h4>
-            <button class="bot-button " name="home" value="signin" onclick="location.replace('')"> Sign in </button>
-            <button class="bot-button " name="home" value="register"> Register </button>
+            <button class="bot-button " name="home" value="signin" formaction="/login"> Sign in </button>
+            <button class="bot-button " name="home" value="register" formaction="/register"> Register </button>
         </div>
     </form>
 

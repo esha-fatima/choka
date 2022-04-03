@@ -209,7 +209,7 @@ app.post('/loginRequest',(req,res)=>{
 
 
 
-app.get("/login",(req,res)=>{
+app.post("/login",(req,res)=>{
     
     res.render("Login");
    
@@ -225,7 +225,7 @@ app.get("/home",(req,res)=>{
    
 });
 
-app.get("/register",(req,res)=>{
+app.post("/register",(req,res)=>{
     res.render("RegisterUser");
 });
 
