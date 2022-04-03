@@ -1174,6 +1174,21 @@ body {
     opacity: 1;
     text-align: left;
   }
+
+  .re_enter {
+    width: 251px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 1054px;
+    left: 490px;
+    
+    font-weight: Italic;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+  }
+
+
   .v59_336_r2 {
     width: 27px;
     height: 24px;
