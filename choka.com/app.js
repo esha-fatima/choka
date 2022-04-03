@@ -152,6 +152,8 @@ app.use('/registrationRequest',(req, res, next)=>{
      //when u get request to search for an object
      //console.log(req.body)
      //u will have the search parameters stored in the body of the request
+     ////search
+     //3 results
      //then get all the relevnat details from firebase and get the search results in the form of an array
      let obj1 = JSON.stringify( {"Name": "Rose Dunhill", "Subject": "Physics", "Experience": "3", "Rating":"4.0", "Image": "xx"})
      let obj2 = JSON.stringify( {"Name": "William Jonas", "Subject": "Sociology", "Experience": "2", "Rating":"1.0", "Image": "xx"})
@@ -179,7 +181,7 @@ app.post('/findTutors', (req,res)=>{
             "Department_one": "Computer Science",
             "Name_two" : "Baqar",
             "Department_two" : "Islamic Studies",
-            "test": [1,2]
+            
     
         }
 
