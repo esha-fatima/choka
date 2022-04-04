@@ -259,6 +259,28 @@ app.post("/viewprofile",(req,res)=>{
     res.render("viewProfile",obj_to_be_sent)
 })
 
+app.post("/editProfile",(req,res)=>{
+    //u will get the new attributes in req.body
+    //do console.log(req.body)
+    //these are the values from frontend
+    //check each of these fields with THE ALREADY EXISTING VALUES and then update the values in db accordingly
+    //then MAKE A NEW OBJECT WITH NEW VALUES OR ANY CHANGES AND STORE IT AS A JSON OBJ IN NEW OBJ
+    // I am hardcoding new_obj for now
+    //and then send new obj to frontend in the same format as i have hardcoded with any new or changed values
+    let new_obj = {
+        "name": "Esha Fatima",
+        "image" : "xx",
+        "documentID": "123",
+        "email": "23100201@lums.edu.pk",
+        "address" : "Bayview apartments",
+        "city" : "Vegas",
+        "contact": "0321-1823051"
+
+    }
+    res.render("viewProfile", new_obj)
+
+});
+
 
 
 
