@@ -87,8 +87,8 @@ app.use('/registrationRequest',(req, res, next)=>{
  });
 
 
- app.use('/registrationRequest',(req, res, next)=>{
-    let request_object = req.query
+ app.post('/registrationRequest',(req, res, next)=>{
+    let request_object = req.body
     console.log(request_object)
     if(request_object["Email"] == ''){
         res.send("Email cannot be empty");
