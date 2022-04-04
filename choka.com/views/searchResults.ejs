@@ -7,29 +7,15 @@
         <div class="search_v36_36">
             <span class="search_v39_141">Find a Tutor</span>
 
-            <div id ="results">
-
-            <div class="search_v39_146"></div>
-            <div class="search_v39_171"></div>
-            <span class="search_v39_173">Send Request</span>
-            <div class="search_name"></div>
-            <span class="search_v39_152">Experience: 3 years </span>
-            <div class="search_v39_147"></div>
-            <span class="search_v39_148">Mr. Bean</span>
-            <span class="search_v39_149">Mathematics & Science</span>
-            <div class="search_name"></div>
-            <div class="search_name"></div>
-            <span class="search_v39_169">4.0</span>
-            <div class="search_v39_170"></div>
-            <span class="search_v39_172">Message</span>
-            <div class="search_v39_174"></div>
-            </div>
+            
 
             <form method="POST">
                 <input class="findTutors_v36_27" placeholder="Search" name="searchParameters">
                 <div class="findTutors_v36_29"> </div>
                 <div class="findTutors_v36_31">
                     <button formaction="/searchRequest"> <img class = "findTutors_v36_32" src="public\images\bx_search.png" /> </button>
+                    <button formaction = "/filter"> <img class = "findTutors_v36_32_b" src="/views/filter.png" /> </button>
+
                 </div>
                
             </form>
@@ -50,27 +36,59 @@
             <div class="search_v119_1840"></div>
            
             <div class="search_name"></div>
+            <div id ="results">
+                <!--
+            <div class="search_v39_146"></div>
+            <div class="search_v39_171"></div>
+            <span class="search_v39_173">Send Request</span>
+            <div class="search_name"></div>
+            <span class="search_v39_152">Experience: 3 years </span>
+            <div class="search_v39_147"></div>
+            <span class="search_v39_148">Mr. Bean</span>
+            <span class="search_v39_149">Mathematics & Science</span>
+            <div class="search_name"></div>
+            <div class="search_name"></div>
+            <span class="search_v39_169">4.0</span>
+            <div class="search_v39_170"></div>
+            <span class="search_v39_172">Message</span>
+            <div class="search_v39_174"></div>
+            -->
+            </div>
         </div>
         <script>
             let index = 0
             document.getElementById("next").addEventListener("click", next);
             document.getElementById("previous").addEventListener("click", previous);
-            let results_array = '<%-mine%>'
+            /*
+            let obj1 = JSON.stringify( {"Name": "Rose Dunhill", "Subject": "Physics", "Experience": "3", "Rating":"4.0", "Image": "xx"})
+            let obj2 = JSON.stringify( {"Name": "William Jonas", "Subject": "Sociology", "Experience": "2", "Rating":"1.0", "Image": "xx"})
+            let obj3 = JSON.stringify({"Name": "Sherry", "Subject": "English", "Experience": "6", "Rating":"4.0", "Image": "xx"})
+            let results_array = [
+                obj1, obj2, obj3
+                ]
+            let ff = JSON.stringify(results_array)
+*/
+
+            let results_array = '<%-bl%>'
+            let results = document.getElementById("results");
+            //let results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><span class="search_v39_173">Send Request</span> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Message</span><div class="search_v39_174"></div>';
+            
             let con = JSON.parse(results_array)
-            let obj = con[index]
+            //results.innerHTML ='<h1>'+ con+ '</h1>'
+            let objx = con[index]
+            
+            let obj = objx
             let name = obj.Name
             let subject = obj.Subject
             let experience = obj.Experience
             let rating = obj.Rating
-            let results = document.getElementById("results");
-            let results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><span class="search_v39_173">Send Request</span> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Message</span><div class="search_v39_174"></div>'
-            results.innerHTML = results_content 
-
+            
+            //let results = document.getElementById("results");
+            let results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><span class="search_v39_173">Send Request</span> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Message</span>';
+            results.innerHTML =results_content 
             
             
-
             let len = con.length
-
             function next(){
                 index = index +1;
                 if(index == len){
@@ -78,45 +96,38 @@
                 }
                 
                 obj = con[index]
+                
                 name = obj.Name
                 subject = obj.Subject
                 experience = obj.Experience
                 rating = obj.Rating
                 results = document.getElementById("results");
-                results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><span class="search_v39_173">Send Request</span> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Message</span><div class="search_v39_174"></div>'
+                results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><span class="search_v39_173">Send Request</span> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Message</span>';
                 results.innerHTML = results_content
-
-                //results.innerHTML = '<h1>' + index + '</h1>'
-
-
+                
                                  
                                        
     
             }
-
             function previous(){
                 index = index -1;
                 if(index == -1){
                     index = len-1;
                 }
-                let obj = results_array[index]
+                
                 obj = con[index]
                 name = obj.Name
                 subject = obj.Subject
                 experience = obj.Experience
                 rating = obj.Rating
                 results = document.getElementById("results");
-                results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><span class="search_v39_173">Send Request</span> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Message</span><div class="search_v39_174"></div>'
+                results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><span class="search_v39_173">Send Request</span> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Message</span>'
                 results.innerHTML = results_content
                 
             }
             
-
-
         </script>
     </body>
     </html>
     <br/>
     <br/> 
-   
-  

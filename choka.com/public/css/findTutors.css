@@ -142,7 +142,7 @@
     left: 3px;
   }
   .findTutors_v36_31 {
-    width: 40px;
+    width: 75px;
     height: 40px;
     background: rgba(255,255,255,1);
     opacity: 1;
@@ -155,11 +155,23 @@
     width: 26px;
     height: 26px;
     background: rgba(3,133,182,1);
+    
     opacity: 1;
     position: absolute;
     top: 6px;
-    left: 10px;
+    left: 40px;
   }
+  .findTutors_v36_32_b {
+    width: 26px;
+    height: 26px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 6px;
+    left:0px
+    
+  }
+
   .findTutors_name {
     color: #fff;
   }
