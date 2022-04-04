@@ -3,7 +3,13 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
     </head>
     <body>
-        <div class="v124_174_view">
+        <div class="v13_2">
+        <img class="v13_23" src = "/views/vector_back.png" />
+            <img class = "v119_1814" src="/views/header_image.jpg" />
+            <img class = "choka_register" src="/views/Group 9.png" />
+            <span class="v13_3">Back to Home</span>
+        </div>
+        <div class="v124_174_view" id = "view">
             <span class="v124_175_view" id = "name">Mr. Bean Jr.</span>
             <div class="v124_176_view"></div>
             <div class="name_view"></div>
@@ -25,15 +31,45 @@
             <div class="v124_207_view"></div>
             <span class="v124_208_view">Delete Account</span>
             <div class="v124_209_view"></div>
-            <span class="v124_210_view">Edit Profile</span>
-            <div class="v13_2"></div>
-            <img class="v13_23" src = "/views/vector_back.png" />
-            <img class = "v119_1814" src="/views/header_image.jpg" />
-            <img class = "choka_register" src="/views/Group 9.png" />
-            <span class="v13_3">Back to Home</span>
+            <button class="v124_210_view_button" id = "change">Edit Profile</span>
+            
+            
+        </div>
+
+            
+
+
+        <div class="v124_174_view" id = "edit">
+
+            <span class="v124_175_view">Mr. Bean Jr.</span>
+            <div class="v124_176_view"></div>
+            <div class="name_view"></div>
+            <div class="name_view"></div>
+            <div class="v124_180_view"></div>
+            <div class="name_view"></div>
+            <div class="name_view"></div>
+            <div class="name_view"></div>
+            
+            <span class="v124_185_view" >Email: bean.jr@choka.com</span>
+            <div class="v124_180_a_view"></div>
+            <div class="v124_180_b_view"></div>
+            <div class="v124_180_c_view"></div>
+            <div class="v124_180_d_view"></div>
+            <div class="v124_180_e_view"></div>
+            <span class="v124_186_view">Contact: XXXX-XXXXXXXX</span>
+            <span class="v124_187_view">Address: DHA, Phase V</span>
+            <span class="v124_205_view">City: Lahore</span>
+            <div class="v124_207_view"></div>
+            
+            <div class="v124_209_view"></div>
+            <button class="v124_210_view_button" id = "save"> Save</span>
+            
+
+
         </div>
 
         <script>
+            document.getElementById("edit").style.display = "none";
             let name = '<%-name%>';
             let email = '<%-email%>';
             let city = '<%-city%>';
@@ -50,6 +86,23 @@
             div_address.innerHTML = "Address: " + address
             let div_contact =   document.getElementById("contact");
             div_contact.innerHTML = "Contact: " + contact
+            document.getElementById("change").addEventListener("click", switch_edit);
+            document.getElementById("save").addEventListener("click", switch_view);
+
+    
+            function switch_edit(){
+                document.getElementById("view").style.display = "none";
+                document.getElementById("edit").style.display = "block";
+
+            }
+
+            function switch_view(){
+                document.getElementById("view").style.display = "block";
+                document.getElementById("edit").style.display = "none";
+
+            }
+
+
 
 
 
