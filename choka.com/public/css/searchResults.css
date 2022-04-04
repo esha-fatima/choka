@@ -26,14 +26,18 @@
     text-align: left;
   }
 
+  .add{
+    
+  }
+
   #next{
       top: 760px;
-      left: 1350px;
+      left: 1400px;
       position: absolute;
   }
   #previous{
     top: 760px;
-    left: 100px;
+    left: 50px;
     position: absolute;
 
   }
