@@ -31,7 +31,7 @@
             <div class="v124_207_view"></div>
             <span class="v124_208_view">Delete Account</span>
             <div class="v124_209_view"></div>
-            <button class="v124_210_view_button" id = "change">Edit Profile</span>
+            <button class="v124_210_view_button" id = "change">Edit Profile</button>
             
             
         </div>
@@ -41,7 +41,7 @@
 
         <div class="v124_174_view" id = "edit">
 
-            <span class="v124_175_view">Mr. Bean Jr.</span>
+            <span class="v124_175_view_b" id = "name2"> </span>
             <div class="v124_176_view"></div>
             <div class="name_view"></div>
             <div class="name_view"></div>
@@ -49,21 +49,22 @@
             <div class="name_view"></div>
             <div class="name_view"></div>
             <div class="name_view"></div>
-            
-            <span class="v124_185_view" >Email: bean.jr@choka.com</span>
+
+            <form method="POST">
+            <span class = "placeholder_entity_one" >Email:</span><input name= "email"class="v124_185_view_input" id = "email2" >
             <div class="v124_180_a_view"></div>
             <div class="v124_180_b_view"></div>
             <div class="v124_180_c_view"></div>
             <div class="v124_180_d_view"></div>
             <div class="v124_180_e_view"></div>
-            <span class="v124_186_view">Contact: XXXX-XXXXXXXX</span>
-            <span class="v124_187_view">Address: DHA, Phase V</span>
-            <span class="v124_205_view">City: Lahore</span>
-            <div class="v124_207_view"></div>
+            <span class = "placeholder_entity_two" >Contact:</span><input name = "contact" class="v124_186_view_input" id = "contact2">
+            <span class = "placeholder_entity_three" >Address:</span><input name = "address"class="v124_187_view_input" id = "address2">
+            <span class = "placeholder_entity_four" >City:</span><input name = "city"class="v124_205_view_input" id = "city2">
+            
             
             <div class="v124_209_view"></div>
-            <button class="v124_210_view_button" id = "save"> Save</span>
-            
+            <button class="v124_210_view_button" type = "submit" formaction="/editProfile" id = "save"> Save</button>
+            </form>
 
 
         </div>
@@ -78,14 +79,24 @@
             let contact = '<%-contact%>';
             let div_name = document.getElementById("name");
             div_name.innerHTML = name
+            let div_name_2 = document.getElementById("name2");
+            div_name_2.innerHTML = name
             let div_email = document.getElementById("email");
-            div_email.innerHTML = "Email: " + email
+            let div_email2 = document.getElementById("email2");
+            div_email2.value = email
+            div_email.innerHTML = 'Email: ' + email
             let div_city = document.getElementById("city");
+            let div_city2 = document.getElementById("city2");
             div_city.innerHTML = "City: " + city
+            div_city2.value =  city
             let div_address = document.getElementById("address");
+            let div_address2 = document.getElementById("address2");
+            div_address2.value =  address
             div_address.innerHTML = "Address: " + address
             let div_contact =   document.getElementById("contact");
+            let div_contact2 =   document.getElementById("contact2");
             div_contact.innerHTML = "Contact: " + contact
+            div_contact2.value = contact
             document.getElementById("change").addEventListener("click", switch_edit);
             document.getElementById("save").addEventListener("click", switch_view);
 
