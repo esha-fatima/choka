@@ -527,6 +527,8 @@
     text-align: left;
   }
   .dashboard_v99_1443 {
+    border: 0;
+    background-color: transparent;
     width: 461px;
     color: rgba(3,133,182,1);
     position: absolute;

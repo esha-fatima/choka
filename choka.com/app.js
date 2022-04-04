@@ -259,6 +259,34 @@ app.post("/viewprofile",(req,res)=>{
     res.render("viewProfile",obj_to_be_sent)
 })
 
+
+app.post("/populateProfile",(req,res)=>{
+    res.render("populateProfile")
+})
+
+
+app.post("/populateProfileRequest",(req,res)=>{
+
+    //in req.body get all details and store those
+    //get the name of the banda who is logged in and create its json obj and store it in obj_extracted_from_db
+    //like below
+    //and then pass this and u will be redirected to dashboard
+    let obj_extracted_from_db = {
+        "name": "Esha Fatima",
+        "image" : "xx",
+        "documentID": "123"
+    }
+    
+
+    res.render("dashboard", obj_extracted_from_db)
+    //
+    
+})
+
+
+
+
+
 app.post("/editProfile",(req,res)=>{
     //u will get the new attributes in req.body
     //do console.log(req.body)
