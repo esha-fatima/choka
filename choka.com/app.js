@@ -147,6 +147,10 @@ app.use('/registrationRequest',(req, res, next)=>{
     
  });
 
+
+
+
+
  app.post('/filter',(req,res)=>{
 
 
@@ -236,6 +240,24 @@ app.post('/loginRequest',(req,res)=>{
     
    
 });
+
+app.post("/viewprofile",(req,res)=>{
+
+    //get the details of the person who is logged in a json object and then send it to the frontend.
+    //hardcodig it for now
+    let obj_to_be_sent = {
+        "name": "Esha Fatima",
+        "image" : "xx",
+        "documentID": "123",
+        "email": "23100201@lums.edu.pk",
+        "address" : "Bayview apartments",
+        "city" : "Mahooz",
+        "contact": "0321-1823051"
+
+    }
+
+    res.render("viewProfile",obj_to_be_sent)
+})
 
 
 

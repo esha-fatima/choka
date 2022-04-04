@@ -618,10 +618,14 @@
     color: rgba(255,255,255,1);
     position: absolute;
     top: 140px;
-    left: 1500px;
+    left: 1400px;
     font-family: Roboto;
     font-weight: SemiBold;
     font-size: 25px;
     opacity: 1;
     text-align: left;
+  }
+  .dashboard_new{
+    border: none;
+    background-color: transparent;
   }
