@@ -1,0 +1,61 @@
+<%-include("partials/header");-%>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="v124_174_view">
+            <span class="v124_175_view" id = "name">Mr. Bean Jr.</span>
+            <div class="v124_176_view"></div>
+            <div class="name_view"></div>
+            <div class="name_view"></div>
+            <div class="v124_180_view"></div>
+            <div class="name_view"></div>
+            <div class="name_view"></div>
+            <div class="name_view"></div>
+            
+            <span class="v124_185_view" id = "email">Email: bean.jr@choka.com</span>
+            <div class="v124_180_a_view"></div>
+            <div class="v124_180_b_view"></div>
+            <div class="v124_180_c_view"></div>
+            <div class="v124_180_d_view"></div>
+            <div class="v124_180_e_view"></div>
+            <span class="v124_186_view" id = "contact">Contact: XXXX-XXXXXXXX</span>
+            <span class="v124_187_view" id = "address">Address: DHA, Phase V</span>
+            <span class="v124_205_view" id = "city">City: Lahore</span>
+            <div class="v124_207_view"></div>
+            <span class="v124_208_view">Delete Account</span>
+            <div class="v124_209_view"></div>
+            <span class="v124_210_view">Edit Profile</span>
+            <div class="v13_2"></div>
+            <img class="v13_23" src = "/views/vector_back.png" />
+            <img class = "v119_1814" src="/views/header_image.jpg" />
+            <img class = "choka_register" src="/views/Group 9.png" />
+            <span class="v13_3">Back to Home</span>
+        </div>
+
+        <script>
+            let name = '<%-name%>';
+            let email = '<%-email%>';
+            let city = '<%-city%>';
+            let address = '<%-address%>';
+            let image = '<%-image%>';
+            let contact = '<%-contact%>';
+            let div_name = document.getElementById("name");
+            div_name.innerHTML = name
+            let div_email = document.getElementById("email");
+            div_email.innerHTML = "Email: " + email
+            let div_city = document.getElementById("city");
+            div_city.innerHTML = "City: " + city
+            let div_address = document.getElementById("address");
+            div_address.innerHTML = "Address: " + address
+            let div_contact =   document.getElementById("contact");
+            div_contact.innerHTML = "Contact: " + contact
+
+
+
+
+        </script>
+
+
+    </body>
+    
