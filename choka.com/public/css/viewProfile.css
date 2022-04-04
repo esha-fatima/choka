@@ -215,6 +215,24 @@
     opacity: 1;
     text-align: left;
   }
+
+  .v124_210_view_button {
+    width: 246px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 865px;
+    left: 159px;
+    font-family: Roboto;
+    font-weight: Regular;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+    background-color: transparent;
+    border: none;
+  }
+
+
+
   .v124_194_view {
     width: 100%;
     height: 213px;
