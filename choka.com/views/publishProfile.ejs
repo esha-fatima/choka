@@ -1,0 +1,75 @@
+<%-include("partials/header");-%>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="findTutors_v36_17">
+            <img class="v13_23" src = "/views/vector_back.png" />
+            <img class = "v119_1814" src="/views/header_image.jpg" />
+            <img class = "choka_register" src="/views/Group 9.png" />
+            <span class="v13_3">Back</span>
+        </div>
+        <div class="filter_v36_35">
+
+            <div class="filter_v54_335"></div>
+            <div class="filter_v54_336"></div>
+            <div class="filter_v54_337"></div>
+            <div class="filter_name"></div>
+
+            <span class="filter_v54_339">Populate Profile</span>
+
+
+            <div class="filter_v54_340">
+            
+            
+
+            <form action = "/filterRequest" method = "POST">
+            
+
+            <img src = "/views/filter_1.png" class = "filter_icon_1">
+            <span class = "filter_e1">Pay</span>
+            <input class="filter_v54_343"  name = "Pay"/>
+
+            <img src = "/views/filter_2.png" class = "filter_icon_2">
+            <span class = "filter_e2">Days</span>
+            <input class="filter_v54_344"  name = "Days"/>
+
+            
+            <img src = "/views/filter_icon_4.png" class = "filter_icon_4">
+            <span class = "filter_d1">Location</span>
+            <input class="filter_v54_343_c"  name = "Location"/>
+            
+            <img src = "/views/filter_icon_5.png" class = "filter_icon_5">
+            <span class = "filter_d2">Class</span>
+            <input class="filter_v54_343_d" name = "Class" />
+
+           
+
+
+            <img src = "/views/filter_7.png" class = "filter_icon_7">
+            <span class = "filter_c1">Subject</span>
+            <input class="filter_v54_343_f" name = "Subject" />
+
+            <img src = "/views/filter_8.png" class = "filter_icon_8">
+            <span class = "filter_c2">Mode</span>
+            <input class="filter_v54_343_g" name = "Mode" />
+
+            <img src = "/views/filter_9.png" class = "filter_icon_9">
+            <span class = "filter_c3">Hours</span>
+            <input class="filter_v54_343_h" name = "Hours" />
+                
+            <button class="filter_v54_341" formaction="/publishProfileRequest" type="submit" method = "POST">Submit</button>
+            </form>
+
+
+           
+            
+            
+            
+            
+        </div>
+        </div>
+    </body>
+</html> 
+  
