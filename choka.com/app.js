@@ -157,6 +157,15 @@ app.use('/registrationRequest',(req, res, next)=>{
      res.render("filter")
  })
 
+ app.post('/filterTutor',(req,res)=>{
+
+
+    res.render("filterTutor")
+})
+
+
+
+
 
  app.post('/searchRequest',(req,res)=>{
      //when u get request to search for an object
@@ -180,6 +189,31 @@ app.use('/registrationRequest',(req, res, next)=>{
  })
 
 
+ app.post('/searchRequestFromTutor',(req,res)=>{
+    //when u get request to search for THE STUDENT IN THE STUDENTS' DB
+    console.log("here")
+    //u will have the search parameters stored in the body of the request
+    ////search
+    //3 results
+    //then get all the relevnat details from firebase and get the search results in the form of an array
+    let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
+    let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
+    let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
+    let results_array = [
+       obj1, obj2, obj3
+       ]
+   let ff = JSON.stringify(results_array)
+   console.log(ff)
+   let xx = {"bl":ff};
+   //console.log(res)
+   res.render("SearchResultsTutor",xx)
+
+})
+
+
+
+
+
  app.post('/filterRequest',(req,res)=>{
     let obj1 =  {'Name': 'Rose Dunhill', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
     let obj2 =  {'Name': 'William Jonas', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
@@ -195,6 +229,24 @@ app.use('/registrationRequest',(req, res, next)=>{
      
 
  })
+
+ app.post('/filterFromTutor',(req,res)=>{
+    let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
+    let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
+    let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
+    let results_array = [
+       obj1, obj2, obj3
+       ]
+   let ff = JSON.stringify(results_array)
+   console.log(ff)
+   let xx = {"bl":ff};
+   //console.log(res)
+   res.render("SearchResultsTutor",xx)
+     
+
+ })
+
+
 
 
  
@@ -221,6 +273,25 @@ app.post('/findTutors', (req,res)=>{
 })
 
 
+app.post('/findStudents', (req,res)=>{
+    //do a search from the databse and get the top 2 students liveing in the same city as thus particular tutor
+    //store the name, department and the bidding price of the top 2 students living in the sam area as a json object like below
+    let top_2_students = 
+        {
+            "Name_one": "Bastian",
+            "Department_one": "Computer Science",
+            "Bid_one" : "1000",
+            "Name_two" : "Baqar",
+            "Department_two" : "Islamic Studies",
+            "Bid_two": "5000"
+            
+    
+        }
+        res.render("findStudents", top_2_students)
+
+})
+
+
 app.post('/loginRequest',(req,res)=>{
     
     //when received login request, check their password from firebase/
@@ -231,11 +302,19 @@ app.post('/loginRequest',(req,res)=>{
     let obj_extracted_from_db = {
         "name": "Esha Fatima",
         "image" : "xx",
-        "documentID": "123"
+        "documentID": "123",
+        "type" : "tutor"
     }
     
+    if(obj_extracted_from_db.type == "student"){
+        res.render("dashboard", obj_extracted_from_db)
 
-    res.render("dashboard", obj_extracted_from_db)
+    }
+    else{
+        console.log("tutorrr")
+        res.render("tutorDashboard", obj_extracted_from_db)
+    }
+    
 
     
    

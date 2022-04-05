@@ -225,7 +225,7 @@
     position: absolute;
     top: 729px;
     left: 317px;
-    font-family: Roboto;
+    
     font-weight: Bold;
     font-size: 45px;
     opacity: 1;
@@ -243,6 +243,24 @@
     opacity: 1;
     text-align: left;
   }
+  .findTutors_v44_253_bid_one {
+    width: 324px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 850px;
+    left: 316px;
+    font-family: Roboto;
+    font-weight: Regular;
+    font-size: 30px;
+    opacity: 1;
+    text-align: left;
+  }
+  
+
+
+
+
+
   .findTutors_name {
     color: #fff;
   }
@@ -305,6 +323,22 @@
     opacity: 1;
     text-align: left;
   }
+
+  .findTutors_v44_253_bid_two {
+    width: 324px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 850px;
+    left: 1001px;
+    font-family: Roboto;
+    font-weight: Regular;
+    font-size: 30px;
+    opacity: 1;
+    text-align: left;
+  }
+
+
+
   .findTutors_name {
     color: #fff;
   }
