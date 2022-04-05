@@ -52,7 +52,7 @@ const firebaseConfig = {
     appId: "1:243464704203:web:c1fb5412fa39410e7b0b4e",
     measurementId: "G-RVRV9WH5CZ"
   };
-  
+
 // Initialize Firebase
 initializeApp(firebaseConfig);
 // const analytics = getAnalytics(db);
@@ -65,7 +65,13 @@ const dbRef = firebase.database().ref();
 
 
 db.settings({timestampsInSnapshots:true, merge:true});
-
+// db.settings({timestampsInSnapshots:true, merge:true});
+// db.collection('Students').get().then((snapshot)=>
+// {
+//     snapshot.docs.forEach(doc=>{
+//         console.log(doc.data());
+//     })
+// })
 app.set('view engine','ejs');
 
 //////////Register user//////////
@@ -81,9 +87,9 @@ app.use('/registrationRequest',(req, res, next)=>{
         let str = "RegisterUser"
         res.send("Passwords do not match");
         //res.send("error")
-        
+
     }
-    
+
  });
 
 
@@ -134,17 +140,17 @@ app.use('/registrationRequest',(req, res, next)=>{
             //push to db here
             //set the variable called document id as per what firebase assigns it
         }
-        
 
-        
-       
-        
-       
-        
+
+
+
+
+
+
 
     }
-    
-    
+
+
  });
 
 
@@ -192,12 +198,12 @@ app.use('/registrationRequest',(req, res, next)=>{
    let xx = {"bl":ff};
    //console.log(res)
    res.render("SearchResults",xx)
-     
+
 
  })
 
 
- 
+
 
 
 ////////////////////rendering login
@@ -205,14 +211,14 @@ app.post('/findTutors', (req,res)=>{
     //now u are supposed to get the top 3 tutors from database.
     //store the top 2 in top_2 variable that I am hardcoding for now
 
-    let top_2 = 
+    let top_2 =
         {
             "Name_one": "Esha Fatima",
             "Department_one": "Computer Science",
             "Name_two" : "Baqar",
             "Department_two" : "Islamic Studies",
-            
-    
+
+
         }
 
     res.render("findTutors", top_2)
@@ -222,10 +228,10 @@ app.post('/findTutors', (req,res)=>{
 
 
 app.post('/loginRequest',(req,res)=>{
-    
+
     //when received login request, check their password from firebase/
-    //if the password is good to go 
-    //go to dashboard page 
+    //if the password is good to go
+    //go to dashboard page
     //get all the firebase stuff and store it in a json object..the details
     //console.log(req)
     let obj_extracted_from_db = {
@@ -233,12 +239,12 @@ app.post('/loginRequest',(req,res)=>{
         "image" : "xx",
         "documentID": "123"
     }
-    
+
 
     res.render("dashboard", obj_extracted_from_db)
 
-    
-   
+
+
 });
 
 app.post("/viewprofile",(req,res)=>{
@@ -285,20 +291,22 @@ app.post("/editProfile",(req,res)=>{
 
 
 app.post("/login",(req,res)=>{
-    
+
     res.render("Login");
-   
+
 });
 
- 
+
 ///////Rendering home
 
 
 app.get("/home",(req,res)=>{
-    
+
     res.render("home");
-   
+
 });
+
+
 
 app.post("/register",(req,res)=>{
     res.render("RegisterUser");
@@ -306,9 +314,15 @@ app.post("/register",(req,res)=>{
 
 
 app.get("/",(req,res)=>{
-    
+
     res.render("home");
 })
+
+app.delete('/logout', (req, res) => {
+    req.logOut()
+    res.redirect('/LLogin')
+  })
+
 
 
 app.listen(port, '0.0.0.0', ()=>{ // '0.0.0.0' is for running via docker only
