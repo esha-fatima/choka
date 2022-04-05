@@ -344,6 +344,12 @@ app.post("/populateProfile",(req,res)=>{
 })
 
 
+app.post("/publishTutorProfile",(req,res)=>{
+    res.render("publishProfile")
+})
+
+
+
 app.post("/populateProfileRequest",(req,res)=>{
 
     //in req.body get all details and store those
@@ -361,6 +367,27 @@ app.post("/populateProfileRequest",(req,res)=>{
     //
     
 })
+
+app.post("/publishProfileRequest",(req,res)=>{
+
+    //in req.body get all details and store those
+    //get the name of the banda who is logged in and create its json obj and store it in obj_extracted_from_db
+    //like below
+    //and then pass this and u will be redirected to dashboard
+    let obj_extracted_from_db = {
+        "name": "Esha Fatima",
+        "image" : "xx",
+        "documentID": "123"
+    }
+    
+
+    res.render("tutorDashboard", obj_extracted_from_db)
+    //
+    
+})
+
+
+
 
 
 
