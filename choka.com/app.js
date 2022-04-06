@@ -477,6 +477,10 @@ app.post('/parentregistration',(req, res, next)=>{
     });
 });
 
+// Save encryoted password
+// Sing up
+// Find Tutor
+
 app.listen(port, '0.0.0.0', ()=>{ // '0.0.0.0' is for running via docker only
      console.log("Server has started on port 3000");
 });
