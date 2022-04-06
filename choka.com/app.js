@@ -23,6 +23,8 @@ app.use(cookieParser());
 
 app.set('view engine','ejs');
 
+let global_user = ""
+
 var firebaseConfig = {
     apiKey: "AIzaSyB5L-1mBbAzxi-bJwjvhCl_y4RyZ9LoZMk",
     authDomain: "choka-9acb9.firebaseapp.com",
@@ -130,6 +132,8 @@ app.use(express.static("public"));
 
 
 
+
+
 app.post('/searchRequest',(req,res)=>{
      //when u get request to search for an object
      console.log("here")
@@ -178,6 +182,7 @@ app.post('/searchRequest',(req,res)=>{
 
 
  app.post('/filterRequest',(req,res)=>{
+     console.log(req.body)
     let obj1 =  {'Name': 'Rose Dunhill', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
     let obj2 =  {'Name': 'William Jonas', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
     let obj3 = {'Name': 'Sherry', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
@@ -261,7 +266,7 @@ app.post('/loginRequest',(req,res)=>{
         "name": "Esha Fatima",
         "image" : "xx",
         "documentID": "123",
-        "type" : "tutor"
+        "type" : "student"
     }
     
     if(obj_extracted_from_db.type == "student"){
@@ -282,18 +287,9 @@ app.post("/viewprofile",(req,res)=>{
 
     //get the details of the person who is logged in a json object and then send it to the frontend.
     //hardcodig it for now
-    let obj_to_be_sent = {
-        "name": "Esha Fatima",
-        "image" : "xx",
-        "documentID": "123",
-        "email": "23100201@lums.edu.pk",
-        "address" : "Bayview apartments",
-        "city" : "Mahooz",
-        "contact": "0321-1823051"
+    
 
-    }
-
-    res.render("viewProfile",obj_to_be_sent)
+    res.render("viewProfile",global_user)
 })
 
 
@@ -359,6 +355,42 @@ app.post("/editProfile",(req,res)=>{
     //then MAKE A NEW OBJECT WITH NEW VALUES OR ANY CHANGES AND STORE IT AS A JSON OBJ IN NEW OBJ
     // I am hardcoding new_obj for now
     //and then send new obj to frontend in the same format as i have hardcoded with any new or changed values
+    console.log(req.body)
+    let old_email = global_user['Email'];
+    if(req.body['email'] != global_user['Email']){
+        global_user['Email'] = req.body['email']
+
+    }
+    if(req.body['contact'] != global_user['PhoneNumber']){
+        global_user['PhoneNumber'] = req.body['contact']
+
+    }
+    if(req.body['address'] != global_user['Address']){
+        global_user['Address'] = req.body['address']
+
+    }
+    if(req.body['city'] != global_user['City']){
+        global_user['City'] = req.body['city']
+
+    }
+    
+
+    const docRef = db.collection('Students').doc(old_email);
+
+    docRef.get().then((doc)=>{
+
+        db.collection('Students').doc(old_email).update({
+            jason_obj:global_user
+        }).then(()=>{
+            console.log("firebase updated");
+            res.render("viewProfile", global_user);
+        });
+        //get the doc and then 
+    });
+
+
+
+/*
     let new_obj = {
         "name": "Esha Fatima",
         "image" : "xx",
@@ -370,6 +402,7 @@ app.post("/editProfile",(req,res)=>{
 
     }
     res.render("viewProfile", new_obj)
+    */
 
 });
 
@@ -419,13 +452,18 @@ app.post('/studentregistration',(req, res, next)=>{
 
     let new_user = {
         "Name" : request_object["FirstName"] + " "+ request_object["LastName"],
-        "Email Address":request_object["Email"],
-        "Phone Number": request_object["PhoneNumber"],
+        "EmailAddress":request_object["Email"],
+        "PhoneNumber": request_object["PhoneNumber"],
         "Password":request_object["Password"],
-        "Image":request_object["Image"]
+        "Image":request_object["Image"],
+        "Address": "None Added",
+        "City" : "None Added"
 
 
     }
+
+    global_user = new_user;
+
     const docRef = db.collection('Students').doc(email);
     docRef.get().then((doc)=>{
         if(doc.exists){
