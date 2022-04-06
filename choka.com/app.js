@@ -261,22 +261,92 @@ app.post('/loginRequest',(req,res)=>{
     //if the password is good to go 
     //go to dashboard page 
     //get all the firebase stuff and store it in a json object..the details
-    //console.log(req)
-    let obj_extracted_from_db = {
-        "name": "Esha Fatima",
-        "image" : "xx",
-        "documentID": "123",
-        "type" : "student"
-    }
-    
-    if(obj_extracted_from_db.type == "student"){
-        res.render("dashboard", obj_extracted_from_db)
+    console.log(req.body)
+    let email = req.body["Email"]
+    let password =  req.body["Password"]
+    const docRef = db.collection('Students').doc(email);
 
-    }
-    else{
-        console.log("tutorrr")
-        res.render("tutorDashboard", obj_extracted_from_db)
-    }
+    docRef.get().then((doc)=>{
+        if(doc.exists){
+            //then check the password from database
+            console.log("User found");
+            //console.log(doc.data());
+            let user_deets = doc.data().jason_obj
+            console.log(user_deets)
+            if(user_deets.Password == password){
+                //this means passwords match and
+                console.log("Passwords match")
+                let n_obj = {
+
+                    "Name" :user_deets.Name,
+                    "EmailAddress":user_deets.EmailAddress,
+                    "PhoneNumber": user_deets.PhoneNumber,
+                    "Password":user_deets.Password,
+                    "Image":user_deets.Image,
+                    "Address": user_deets.Address,
+                    "City" : user_deets.City
+
+                }
+                global_user = n_obj;
+                console.log(global_user)
+                res.render("dashboard", global_user)
+
+            }
+            else{
+                res.render("Login")
+                console.log("Passwords do not match")
+            }
+            
+        }
+        else{
+            
+            const docRefTutor = db.collection('Teachers').doc(email);
+            docRefTutor.get().then((doc)=>{
+                if(doc.exists){
+                    let user_deets = doc.data().jason_obj
+                    console.log(user_deets)
+                    //if it is tutor.
+                    console.log("Tutor found")
+                    if(user_deets.Password == password){
+                        let n_obj = {
+                            "Name" : user_deets.Name,
+                            "EmailAddress":user_deets.EmailAddress,
+                            "PhoneNumber": user_deets.PhoneNumber,
+                            "Password":user_deets.Password,
+                            "HighestQualification":user_deets.HighestQualification,
+                            "BirthDay":user_deets.BirthDay,
+                            "PreviousExperience":user_deets.PreviousExperience,
+                            "Transcript":user_deets.Transcript,
+                            "Image" : user_deets.Image,
+                            "Address": user_deets.Address,
+                            "City": user_deets.City
+
+                        }
+                        let global_user = n_obj
+                        res.render("tutorDashboard", global_user)
+                    }
+                    else{
+                        console.log("Passwords do not match")
+                        res.render("Login")
+                    }
+
+                    
+
+
+                }
+                else{
+                    console.log("NOT FOUND")
+                    res.render("Login")
+                }
+            })
+
+
+
+        }
+    });
+
+
+
     
 
     
@@ -383,26 +453,14 @@ app.post("/editProfile",(req,res)=>{
             jason_obj:global_user
         }).then(()=>{
             console.log("firebase updated");
-            res.render("viewProfile", global_user);
+            res.redirect("viewProfile", global_user);
         });
         //get the doc and then 
     });
 
 
 
-/*
-    let new_obj = {
-        "name": "Esha Fatima",
-        "image" : "xx",
-        "documentID": "123",
-        "email": "23100201@lums.edu.pk",
-        "address" : "Bayview apartments",
-        "city" : "Vegas",
-        "contact": "0321-1823051"
 
-    }
-    res.render("viewProfile", new_obj)
-    */
 
 });
 
@@ -489,14 +547,20 @@ app.post('/parentregistration',(req, res, next)=>{
 
     let new_user = {
         "Name" : request_object["FirstName"] + " "+ request_object["LastName"],
-        "Email Address":request_object["Email"],
-        "Phone Number": request_object["PhoneNumber"],
+        "EmailAddress":request_object["Email"],
+        "PhoneNumber": request_object["PhoneNumber"],
         "Password":request_object["Password"],
         "HighestQualification":request_object["HighestQualification"],
         "BirthDay":request_object["BirthdayDay"]+"/"+request_object["BirthdayMonth"]+"/"+request_object["BirthdayYear"],
         "PreviousExperience":request_object["PreviousExperience"],
         "Transcript":request_object["Transcript"],
+        "Image" : request_object["Image"],
+        "Address": "None Added",
+        "City": "None Added"
     }
+
+    global_user = new_user
+
     const docRef = db.collection('Teachers').doc(email);
     docRef.get().then((doc)=>{
         if(doc.exists){
