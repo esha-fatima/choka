@@ -1,49 +1,29 @@
 //jshint esversion:6
-//const express = require("express");
-import express from "express";
-//const bodyParser = require("body-parser");
-import bodyParser from "body-parser";
-//const path = require("path");
-import path from "path";
-//const helmet = require("helmet");
-import helmet from "helmet";
-//const ejs = require("ejs");
-import ejs from "ejs";
-//const _= require("lodash");
-//const firebase = require("firebase");
-import firebase from "firebase"
-// Import the functions you need from the SDKs you need
-//import { initializeApp } from "firebase/app/dist/index.cjs.js";
-import pkg_1 from 'firebase/app/dist/index.cjs.js';
-const { initializeApp } = pkg_1;
+const express = require("express");
+const bodyParser = require("body-parser");
+const path = require("path");
+const helmet = require("helmet");
+const ejs = require("ejs");
+const _= require("lodash");
+const firebase = require("firebase");
+const cookieParser = require('cookie-parser')
+// import { FacebookAuthProvider } from "firebase/auth";
+// require("firebase/firestore");
+// import fire from "./fire";
 
-import pkg from 'firebase/analytics/dist/index.cjs.js'
-const { getAnalytics } = pkg;
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-
-
-
-//npm install firebase
-//const admin = require("firebase-admin");
-var user_details;
-var document_id = "1aed"
-
-
-//con firebase from "firebase"
-//const cookieParser = require('cookie-parser')
-import cookieParser from "cookie-parser";
 const app = express();
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.static("public"));
 
 const port = process.env.PORT || 3000
 
-const firebaseConfig = {
+// allow the app to use cookieparser
+// app.use(helmet());
+
+// allow the app to use cookieparser
+app.use(cookieParser());
+
+app.set('view engine','ejs');
+
+var firebaseConfig = {
     apiKey: "AIzaSyB5L-1mBbAzxi-bJwjvhCl_y4RyZ9LoZMk",
     authDomain: "choka-9acb9.firebaseapp.com",
     projectId: "choka-9acb9",
@@ -51,22 +31,15 @@ const firebaseConfig = {
     messagingSenderId: "243464704203",
     appId: "1:243464704203:web:c1fb5412fa39410e7b0b4e",
     measurementId: "G-RVRV9WH5CZ"
-  };
-  
-// Initialize Firebase
-initializeApp(firebaseConfig);
-// const analytics = getAnalytics(db);
-
+};
+  // Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+// firebase.analytics();
 const db = firebase.firestore();
+db.settings({timestampsInSnapshots:true});
 
-
-const dbRef = firebase.database().ref();
-
-
-
-db.settings({timestampsInSnapshots:true, merge:true});
-
-app.set('view engine','ejs');
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.static("public"));
 
 //////////Register user//////////
 
