@@ -454,22 +454,19 @@ app.post('/parentregistration',(req, res, next)=>{
         "Email Address":request_object["Email"],
         "Phone Number": request_object["PhoneNumber"],
         "Password":request_object["Password"],
-        "Image":request_object["Image"],
-        "Image":request_object["Image"],
-        "Image":request_object["Image"],
-        "Image":request_object["Image"],
-
-
-
+        "HighestQualification":request_object["HighestQualification"],
+        "BirthDay":request_object["BirthdayDay"]+"/"+request_object["BirthdayMonth"]+"/"+request_object["BirthdayYear"],
+        "PreviousExperience":request_object["PreviousExperience"],
+        "Transcript":request_object["Transcript"],
     }
-    const docRef = db.collection('Students').doc(email);
+    const docRef = db.collection('Teachers').doc(email);
     docRef.get().then((doc)=>{
         if(doc.exists){
             console.log("User exists");
             res.redirect("/RegisterUser");
         }
         else{
-            db.collection('Students').doc(email).set({
+            db.collection('Teachers').doc(email).set({
                 jason_obj:new_user
             }).then(()=>{
                 console.log("firebase filled");
