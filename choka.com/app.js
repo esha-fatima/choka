@@ -322,7 +322,7 @@ app.post('/loginRequest',(req,res)=>{
                             "City": user_deets.City
 
                         }
-                        let global_user = n_obj
+                        global_user = n_obj
                         res.render("tutorDashboard", global_user)
                     }
                     else{
@@ -357,8 +357,8 @@ app.post("/viewprofile",(req,res)=>{
 
     //get the details of the person who is logged in a json object and then send it to the frontend.
     //hardcodig it for now
-    
-
+    console.log("in vw")
+    console.log(global_user)
     res.render("viewProfile",global_user)
 })
 
@@ -443,9 +443,18 @@ app.post("/editProfile",(req,res)=>{
         global_user['City'] = req.body['city']
 
     }
-    
 
-    const docRef = db.collection('Students').doc(old_email);
+    let docRef = db.collection('Students').doc(old_email);
+    console.log("global user is", global_user)
+    /*
+    if(Object.keys(global_user).length==11){
+        //this means tutor hai
+        console.log("issss ")
+        docRef = db.collection('Teachers').doc(old_email);
+        
+    }
+    */
+    
 
     docRef.get().then((doc)=>{
 
