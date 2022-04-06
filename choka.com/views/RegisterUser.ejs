@@ -5,10 +5,10 @@
     <span class="v13_75">Register as a:</span>
     <div class="name"></div>
     <form name = "myForm">
-    <input type="radio" name = "type_account" value = "student"  class="v13_90" onclick="checker_two()"  />
-    <label class="v13_90_second"> Student</label>
-    <input type="radio" name = "type_account" value = "tutor"  class="v13_92" onclick="checker_one()"/>
-    <label class="v13_92_second"> Tutor</label>
+        <input type="radio" name = "type_account" value = "student"  class="v13_90" onclick="checker_two()" />
+        <label class="v13_90_second"> Student</label>
+        <input type="radio" name = "type_account" value = "tutor"  class="v13_92" onclick="checker_one()"/>
+        <label class="v13_92_second"> Tutor</label>
     </form>
     
     
@@ -17,148 +17,157 @@
     <div class="v13_2">
         
     <img class="v13_23" src = "/views/vector_back.png" />
-    <img class = "v119_1814" src="/views/header_image.jpg" />
-    <img class = "choka_register" src="/views/Group 9.png" />
+    <img class="v119_1814" src="/views/header_image.jpg" />
+    <img class="choka_register" src="/views/Group 9.png" />
     <span class="v13_3">Back to Home</span>
 </div> 
     <span class="v13_5">Register</span>
         
         <div id = "testing">
         
-        <form action="/register" method="POST">
-        <button class="v13_21" formaction="/login" method = POST>Already have an account? Sign in</button>
-        <span class="v13_42">First Name*</span>
-        
-        
+        <form action="/studentregistration" method="POST">
+            <button class="v13_21" formaction="/login" method = POST>Already have an account? Sign in</button>
+            <!-- <span class="v13_42">First Name*</span> --> 
 
-        <span class="v13_42">First Name*</span>
-        <div class="name"></div>
+            <span class="v13_42">First Name*</span>
+            <div class="name"></div>
+            <input class="v13_44" name="FirstName"  placeholder="Enter first name" required/> 
 
-        <input class="v13_44" name="FirstName"  placeholder="Enter first name"/> 
-        <span class="v13_45">Email*</span>
-        <div class="name"></div>
-        <input  class="v13_47" name="Email"  placeholder="Enter email "/>
+            <span class="v13_45">Email*</span>
+            <div class="name"></div>
+            <input  class="v13_47" name="Email"  placeholder="Enter email " required/>
         
-        <div class="v13_51">
-            <div class="v13_52"></div>
-            <div class="v13_53"></div>
-        </div>
+            <div class="v13_51">
+                <div class="v13_52"></div>
+                <div class="v13_53"></div>
+            </div>
 
-        <span class="v13_55">Last Name*</span>
-        <div class="name"></div>            
-        <input class="v13_57" name="LastName"  placeholder="Enter last name" />
-        <span class="v13_58">Phone Number*</span>
+            <span class="v13_55">Last Name*</span>
+            <div class="name"></div>            
+            <input class="v13_57" name="LastName"  placeholder="Enter last name" required/>
 
-        <div class="name"></div>
-        <input class="v13_60" name="PhoneNumber"  placeholder="Enter phone number" />
-        <span class="v18_9">Password*</span>
-        <div class="name"></div>
-        <input class="v18_11" name="Password"  placeholder="Enter password here" />
-        <div class="v18_12">
-            <div class="v18_13"></div>
-            <div class="v18_14"></div>
-        </div>
-        <span class="v18_24">Confirm Password*</span>
-        <div class="name"></div>
-        <input class="v18_26" name = "ConfirmPassword" placeholder= "Re-enter password here"/>
-        <div class="v18_27">
-            <div class="v18_28"></div>
-            <div class="v18_29"></div>
-        </div>
-        
-        <div class="name"></div>
-        <div class="v18_5">
-            <div class="v18_6"></div>
-        </div>
+            <span class="v13_58">Phone Number*</span>
+            <div class="name"></div>
+            <input class="v13_60" name="PhoneNumber"  placeholder="Enter phone number" required/>
 
-        <div class="v18_7">
-            <div class="v18_8"></div>
-        </div>
-        <div class="name"></div>
-        <div class="v18_17">
-            <div class="v18_18"></div>
-            <div class="v18_19"></div>
-            <div class="v18_20"></div>
-            <div class="v18_21"></div>
-        </div>
-        <div class="v18_22">
-            <div class="v18_23"></div>
-        </div>
-        <div class="v18_30"></div>
+            <span class="v18_9">Password*</span>
+            <div class="name"></div>
+            <input class="v18_11" name="Password"  type="password" placeholder="Enter password here" required/>
+
+            <div class="v18_12">
+                <div class="v18_13"></div>
+                <div class="v18_14"></div>
+            </div>
+
+            <span class="v18_24">Confirm Password*</span>
+            <div class="name"></div>
+            <input class="v18_26" name = "ConfirmPassword" type="password" placeholder= "Re-enter password here" required/>
+
+            <div class="v18_27">
+                <div class="v18_28"></div>
+                <div class="v18_29"></div>
+            </div>
+        
+            <div class="name"></div>
+            <div class="v18_5">
+                <div class="v18_6"></div>
+            </div>
+
+            <div class="v18_7">
+                <div class="v18_8"></div>
+            </div>
+            <div class="name"></div>
+            <div class="v18_17">
+                <div class="v18_18"></div>
+                <div class="v18_19"></div>
+                <div class="v18_20"></div>
+                <div class="v18_21"></div>
+            </div>
+            <div class="v18_22">
+                <div class="v18_23"></div>
+            </div>
+            <div class="v18_30"></div>
+
+            <div class="v58_219">
+                <div class="v58_220"></div>
+                <div class="v58_221"></div>
+            </div>
+            <div class="v59_315">
+                <div class="v59_316"></div>
+            </div>
+            <div class="v119_1813"></div>
         
         
-        <button class="v18_31" formaction="/registrationRequest" type="submit" method = "POST">Register</button>
-        <span class="v58_218">Add Image</span>
-        <div class="v58_219">
-            <div class="v58_220"></div>
-            <div class="v58_221"></div>
-        </div>
-        <div class="v59_315">
-            <div class="v59_316"></div>
-        </div>
-        <div class="v119_1813"></div>
-    
-        
-        </div>
-        
-        
+            <button class="v18_31" type="submit"> Register</button>
+            <!-- <span class="v58_218">Add Image</span> -->
+            <!-- <br> -->
+            <label class="custom-file-upload v58_218">
+                <input type="file" name="Image"/>
+                <i class="fa fa-cloud-upload v58_218"></i> Add Image
+            </label>
+            
+            </div> 
         </form>
         </div>
 <!--/////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
         <div id = "cond">
-            <form action="/register" method="POST">
+            <form action="/parentregistration" method="POST">
                 <button class="v13_21_custom" formaction="/login" method = "POST">Already have an account? Sign in</button>
                 <span class="v59_252_r2">First Name*</span>
                 <div class="name_r2"></div>
-                <input class="v59_254_r2" name="FirstName"  placeholder="Enter first name"/> 
+                <input class="v59_254_r2" name="FirstName"  placeholder="Enter first name" required/> 
                 
                 <span class="v59_255_r2">Email*</span>
                 <div class="name_r2"></div>
-                
-                <input class="v59_257_r2" name="Email"  placeholder="Enter email"/>
+                <input class="v59_257_r2" name="Email"  placeholder="Enter email" required/>
+
                 <div class="v59_258_r2">
                     <div class="v59_259_r2"></div>
                     <div class="v59_260_r2"></div>
                 </div>
                 <span class="v59_261_r2">Last Name*</span>
                 <div class="name_r2"></div>
-                
-                <input class="v59_263_r2" name="LastName"  placeholder="Enter last name"/>
+                <input class="v59_263_r2" name="LastName"  placeholder="Enter last name" required/>
 
                 <span class="v59_264_r2">Phone Number*</span>
-                <input class="v13_60" name="PhoneNumber"  placeholder="Enter phone number" />
+                <input class="v13_60" name="PhoneNumber"  placeholder="Enter phone number" required/>
+
                 <div class="name_r2"></div>
                 <span class="v59_270_r2">Qualification*</span>
                 <div class="name_r2"></div>
-                
-                <input class="v59_272_r2" name="HighestQualification"  placeholder="Your Highest Qualification" />
+                <input class="v59_272_r2" name="HighestQualification"  placeholder="Your Highest Qualification" required/>
+
                 <span class="v59_276_r2">Date of Birth*</span>
                 <div class="name_r2"></div>
-
-                <input class="v59_278_r2" placeholder="Day" name = "BirthdayDay" />
-                <input class="v59_347_r2" placeholder="Month" name = "BirthdayMonth" />
-                <input class="v59_350_r2" placeholder="Year" name = "BirthdayYear" />
+                <input class="v59_278_r2" placeholder="Day" name = "BirthdayDay" required/>
+                <input class="v59_347_r2" placeholder="Month" name = "BirthdayMonth" required/>
+                <input class="v59_350_r2" placeholder="Year" name = "BirthdayYear" required/>
                 
             
-                <span class="v59_319_r2">Previous Experience*</span>
+                
                 <span class="v59_355_r2">Transcript*</span>
-                <span class="v59_361_r2">Image</span>
-                <div class="name_r2"></div>
-                <input class="v59_321_r2" name="PreviousExperience"  placeholder="Write about your previous experiences of teaching..." />
-                <span class="v59_333_r2">Password*</span>
+                <!-- <span class="v59_361_r2">Image</span> -->
+                
+
                 <div class="name_r2"></div>
 
-                
-                <input class="v59_335_r2" name="Password"  placeholder="Password" />
+                <span class="v59_319_r2">Previous Experience*</span>
+                <input class="v59_321_r2" name="PreviousExperience"  placeholder="Write about your previous experiences of teaching..." required/>
+
+                <span class="v59_333_r2">Password*</span>
+                <div class="name_r2"></div>
+                <input class="v59_335_r2" name="Password" type="password"  placeholder="Password" required/>
                 
                 <div class="v59_336_r2">
                     <div class="v59_337_r2"></div>
                     <div class="v59_338_r2"></div>
                 </div>
+
                 <span class="v59_339_r2">Confirm Password*</span>
                 <!--<div class="name_r2"></div><span class="v59_341">Password</span>-->
-                <input class="re_enter" name="ConfirmPassword" value="ConfirmPassword" placeholder="Re-enter password here" />
+                <input class="re_enter" name="ConfirmPassword" value="ConfirmPassword" type="password" placeholder="Re-enter password here" required/>
+
                 <div class="v59_342_r2">
                     <div class="v59_343"></div>
                 <div class="v59_344_r2"></div>
@@ -198,9 +207,17 @@
             -->
             <div class="v59_300_r2"></div>
             
-            <button class="v59_301_r2" formaction="/registrationRequest"  method = "POST" type="submit">Register</button>
+            <button class="v59_301_r2" type="submit">Register</button>
+
             <div class = "v59_302_r2"> </div>
-            <span class="v59_303_r2">Add Image</span>
+            <!-- <span class="v59_303_r2">Add Image</span> -->
+            <label class="custom-file-upload v59_303_r2">
+                <input type="file" name="Image"/>
+                <i class="fa fa-cloud-upload v59_303_r2"></i> Add Image
+            </label>
+
+
+
             <div class="v59_304_r2">
                 <div class="v59_305_r2"></div>
                 <div class="v59_306_r2"></div>
@@ -216,18 +233,16 @@
                 <div class="v59_358_r2"></div>
                 <div class="v59_359_r2"></div>
             </div>
-            <span class="v59_360_r2">Upload Transcript</span>
+            <!-- <span class="v59_360_r2">Upload Transcript</span> -->
+            <label class="custom-file-upload v59_360_r2">
+                <input type="file" name="Transcript"/>
+                <i class="fa fa-cloud-upload v59_360_r2"></i> Upload Transcript
+            </label>
             
             <div class="name_r2"></div>
             </form>
-        
-
-
 
     </div>
-        
-    
-    
         
     </div>
     <script>
@@ -235,7 +250,6 @@
                 let ff = document.forms[0]
                 
                 document.getElementById("testing").style.display = "none";
-                
 
                 if(ff[1].checked){
                 let xx = document.getElementById("cond")
@@ -248,7 +262,6 @@
                 let ff = document.forms[0]
                 
                 document.getElementById("cond").style.display = 'none';
-                
 
                 if(ff[0].checked){
                document.getElementById("testing").style.display = "block";

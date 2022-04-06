@@ -1,50 +1,31 @@
 //jshint esversion:6
-//const express = require("express");
-import express from "express";
-//const bodyParser = require("body-parser");
-import bodyParser from "body-parser";
-//const path = require("path");
-import path from "path";
-//const helmet = require("helmet");
-import helmet from "helmet";
-//const ejs = require("ejs");
-import ejs from "ejs";
-//const _= require("lodash");
-//const firebase = require("firebase");
-import firebase from "firebase"
-// Import the functions you need from the SDKs you need
-//import { initializeApp } from "firebase/app/dist/index.cjs.js";
-import pkg_1 from 'firebase/app/dist/index.cjs.js';
-const { initializeApp } = pkg_1;
+const express = require("express");
+const bodyParser = require("body-parser");
+const path = require("path");
+const helmet = require("helmet");
+const ejs = require("ejs");
+const _= require("lodash");
+const firebase = require("firebase");
+const cookieParser = require('cookie-parser')
+// import { FacebookAuthProvider } from "firebase/auth";
+// require("firebase/firestore");
+// import fire from "./fire";
 
-import pkg from 'firebase/analytics/dist/index.cjs.js'
-const { getAnalytics } = pkg;
-
-import {Socket} from "socket.io";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-
-
-
-//npm install firebase
-//const admin = require("firebase-admin");
-var user_details;
-var document_id = "1aed"
-
-
-//con firebase from "firebase"
-//const cookieParser = require('cookie-parser')
-import cookieParser from "cookie-parser";
 const app = express();
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(express.static("public"));
 
 const port = process.env.PORT || 3000
 
-const firebaseConfig = {
+// allow the app to use cookieparser
+// app.use(helmet());
+
+// allow the app to use cookieparser
+app.use(cookieParser());
+
+app.set('view engine','ejs');
+
+let global_user = ""
+
+var firebaseConfig = {
     apiKey: "AIzaSyB5L-1mBbAzxi-bJwjvhCl_y4RyZ9LoZMk",
     authDomain: "choka-9acb9.firebaseapp.com",
     projectId: "choka-9acb9",
@@ -52,101 +33,84 @@ const firebaseConfig = {
     messagingSenderId: "243464704203",
     appId: "1:243464704203:web:c1fb5412fa39410e7b0b4e",
     measurementId: "G-RVRV9WH5CZ"
-  };
-  
-// Initialize Firebase
-initializeApp(firebaseConfig);
-// const analytics = getAnalytics(db);
-
+};
+  // Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+// firebase.analytics();
 const db = firebase.firestore();
+db.settings({timestampsInSnapshots:true});
 
-
-const dbRef = firebase.database().ref();
-
-
-
-db.settings({timestampsInSnapshots:true, merge:true});
-
-app.set('view engine','ejs');
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.static("public"));
 
 //////////Register user//////////
 
-app.use('/registrationRequest',(req, res, next)=>{
-    console.log("A new request received at " + Date.now());
-    console.log(req.query);
-    console.log(req.query["FirstName"])
-    if(req.query['Password']==req.query['ConfirmPassword']){
-        next();
-    }
-    else{
-        let str = "RegisterUser"
-        res.send("Passwords do not match");
-        //res.send("error")
+// app.use('/registrationRequest',(req, res, next)=>{
+//     console.log("A new request received at " + Date.now());
+//     console.log(req.query);
+//     console.log(req.query["FirstName"])
+//     if(req.query['Password']==req.query['ConfirmPassword']){
+//         next();
+//     }
+//     else{
+//         let str = "RegisterUser"
+//         res.send("Passwords do not match");
+//         //res.send("error")
         
-    }
+//     }
     
- });
+//  });
 
 
- app.post('/registrationRequest',(req, res, next)=>{
-    let request_object = req.body
-    console.log(request_object)
-    if(request_object["Email"] == ''){
-        res.send("Email cannot be empty");
-    }
-    if(request_object["FirstName"] == ''){
-        res.send("First name cannot be empty");
-    }
+//  app.post('/registrationRequest',(req, res, next)=>{
+//     let request_object = req.body
+//     console.log(request_object)
+//     if(request_object["Email"] == ''){
+//         res.send("Email cannot be empty");
+//     }
+//     if(request_object["FirstName"] == ''){
+//         res.send("First name cannot be empty");
+//     }
 
-    if(request_object["LastName"] == ''){
-        res.send("Last name cannot be empty");
-    }
-    if(request_object["PhoneNumber"] == ''){
-        res.send("Phone number cannot be empty");
-    }
-    if(request_object["Password"] == ''){
-        res.send("Password cannot be empty");
-    }
+//     if(request_object["LastName"] == ''){
+//         res.send("Last name cannot be empty");
+//     }
+//     if(request_object["PhoneNumber"] == ''){
+//         res.send("Phone number cannot be empty");
+//     }
+//     if(request_object["Password"] == ''){
+//         res.send("Password cannot be empty");
+//     }
 
-    else{
-        console.log(request_object)
+//     else{
+//         console.log(request_object)
 
-        let new_user = {
-            "Name" : request_object["FirstName"] + " "+ request_object["LastName"],
-            "Email Address":request_object["Email"],
-            "Phone Number": request_object["PhoneNumber"],
-            "Password":request_object["Password"]
+//         let new_user = {
+//             "Name" : request_object["FirstName"] + " "+ request_object["LastName"],
+//             "Email Address":request_object["Email"],
+//             "Phone Number": request_object["PhoneNumber"],
+//             "Password":request_object["Password"]
 
 
-        }
-        //res.send("Account Created")
-        if(request_object["type_account"]== 'student'){
-            let  usersRef = dbRef.child('Students');
-            res.render("home")
-            user_details = request_object
-            //push to db here
-            //set the varibale called document id as per what firebase assigns it
+//         }
+//         //res.send("Account Created")
+//         if(request_object["type_account"]== 'student'){
+//             let  usersRef = dbRef.child('Students');
+//             res.render("home")
+//             user_details = request_object
+//             //push to db here
+//             //set the varibale called document id as per what firebase assigns it
 
-        }
-        else{
-            let usersRef = dbRef.child('Teachers');
-            user_details = request_object
-            res.render("home")
-            //push to db here
-            //set the variable called document id as per what firebase assigns it
-        }
-        
-
-        
-       
-        
-       
-        
-
-    }
-    
-    
- });
+//         }
+//         else{
+//             let usersRef = dbRef.child('Teachers');
+//             user_details = request_object
+//             res.render("home")
+//             //push to db here
+//             //set the variable called document id as per what firebase assigns it
+//         }
+//     }
+//  });
 
 
 
@@ -168,7 +132,9 @@ app.use('/registrationRequest',(req, res, next)=>{
 
 
 
- app.post('/searchRequest',(req,res)=>{
+
+
+app.post('/searchRequest',(req,res)=>{
      //when u get request to search for an object
      console.log("here")
      //u will have the search parameters stored in the body of the request
@@ -216,6 +182,7 @@ app.use('/registrationRequest',(req, res, next)=>{
 
 
  app.post('/filterRequest',(req,res)=>{
+     console.log(req.body)
     let obj1 =  {'Name': 'Rose Dunhill', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
     let obj2 =  {'Name': 'William Jonas', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
     let obj3 = {'Name': 'Sherry', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
@@ -231,7 +198,7 @@ app.use('/registrationRequest',(req, res, next)=>{
 
  })
 
- app.post('/filterFromTutor',(req,res)=>{
+app.post('/filterFromTutor',(req,res)=>{
     let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
     let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
     let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
@@ -245,12 +212,7 @@ app.use('/registrationRequest',(req, res, next)=>{
    res.render("SearchResultsTutor",xx)
      
 
- })
-
-
-
-
- 
+})
 
 
 ////////////////////rendering login
@@ -304,7 +266,7 @@ app.post('/loginRequest',(req,res)=>{
         "name": "Esha Fatima",
         "image" : "xx",
         "documentID": "123",
-        "type" : "tutor"
+        "type" : "student"
     }
     
     if(obj_extracted_from_db.type == "student"){
@@ -325,18 +287,9 @@ app.post("/viewprofile",(req,res)=>{
 
     //get the details of the person who is logged in a json object and then send it to the frontend.
     //hardcodig it for now
-    let obj_to_be_sent = {
-        "name": "Esha Fatima",
-        "image" : "xx",
-        "documentID": "123",
-        "email": "23100201@lums.edu.pk",
-        "address" : "Bayview apartments",
-        "city" : "Mahooz",
-        "contact": "0321-1823051"
+    
 
-    }
-
-    res.render("viewProfile",obj_to_be_sent)
+    res.render("viewProfile",global_user)
 })
 
 
@@ -402,6 +355,42 @@ app.post("/editProfile",(req,res)=>{
     //then MAKE A NEW OBJECT WITH NEW VALUES OR ANY CHANGES AND STORE IT AS A JSON OBJ IN NEW OBJ
     // I am hardcoding new_obj for now
     //and then send new obj to frontend in the same format as i have hardcoded with any new or changed values
+    console.log(req.body)
+    let old_email = global_user['Email'];
+    if(req.body['email'] != global_user['Email']){
+        global_user['Email'] = req.body['email']
+
+    }
+    if(req.body['contact'] != global_user['PhoneNumber']){
+        global_user['PhoneNumber'] = req.body['contact']
+
+    }
+    if(req.body['address'] != global_user['Address']){
+        global_user['Address'] = req.body['address']
+
+    }
+    if(req.body['city'] != global_user['City']){
+        global_user['City'] = req.body['city']
+
+    }
+    
+
+    const docRef = db.collection('Students').doc(old_email);
+
+    docRef.get().then((doc)=>{
+
+        db.collection('Students').doc(old_email).update({
+            jason_obj:global_user
+        }).then(()=>{
+            console.log("firebase updated");
+            res.render("viewProfile", global_user);
+        });
+        //get the doc and then 
+    });
+
+
+
+/*
     let new_obj = {
         "name": "Esha Fatima",
         "image" : "xx",
@@ -413,6 +402,7 @@ app.post("/editProfile",(req,res)=>{
 
     }
     res.render("viewProfile", new_obj)
+    */
 
 });
 
@@ -428,23 +418,106 @@ app.post("/login",(req,res)=>{
  
 ///////Rendering home
 
-
-app.get("/home",(req,res)=>{
-    
-    res.render("home");
-   
-});
-
-app.post("/register",(req,res)=>{
-    res.render("RegisterUser");
-});
-
-
 app.get("/",(req,res)=>{
+    console.log(1)
     
     res.render("home");
 })
 
+app.get("/home",(req,res)=>{
+    console.log(2)
+    res.render("home");
+   
+});
+
+app.post("/home",(req,res)=>{
+
+    console.log(3)
+    if (req.body.home == "signin")
+    {
+        res.render("Login");
+    }
+    else
+    {
+        res.render("RegisterUser");
+    }
+    
+});
+
+
+app.post('/studentregistration',(req, res, next)=>{
+    console.log(4)
+    let request_object = req.body
+    let email = request_object["Email"]
+
+    let new_user = {
+        "Name" : request_object["FirstName"] + " "+ request_object["LastName"],
+        "EmailAddress":request_object["Email"],
+        "PhoneNumber": request_object["PhoneNumber"],
+        "Password":request_object["Password"],
+        "Image":request_object["Image"],
+        "Address": "None Added",
+        "City" : "None Added"
+
+
+    }
+
+    global_user = new_user;
+
+    const docRef = db.collection('Students').doc(email);
+    docRef.get().then((doc)=>{
+        if(doc.exists){
+            console.log("User exists");
+            res.redirect("/RegisterUser");
+        }
+        else{
+            db.collection('Students').doc(email).set({
+                jason_obj:new_user
+            }).then(()=>{
+                console.log("firebase filled");
+                res.redirect("/home");
+            });
+
+        }
+    });
+});
+
+app.post('/parentregistration',(req, res, next)=>{
+    console.log(5)
+    let request_object = req.body
+    let email = request_object["Email"]
+
+    let new_user = {
+        "Name" : request_object["FirstName"] + " "+ request_object["LastName"],
+        "Email Address":request_object["Email"],
+        "Phone Number": request_object["PhoneNumber"],
+        "Password":request_object["Password"],
+        "HighestQualification":request_object["HighestQualification"],
+        "BirthDay":request_object["BirthdayDay"]+"/"+request_object["BirthdayMonth"]+"/"+request_object["BirthdayYear"],
+        "PreviousExperience":request_object["PreviousExperience"],
+        "Transcript":request_object["Transcript"],
+    }
+    const docRef = db.collection('Teachers').doc(email);
+    docRef.get().then((doc)=>{
+        if(doc.exists){
+            console.log("User exists");
+            res.redirect("/RegisterUser");
+        }
+        else{
+            db.collection('Teachers').doc(email).set({
+                jason_obj:new_user
+            }).then(()=>{
+                console.log("firebase filled");
+                res.redirect("/home");
+            });
+
+        }
+    });
+});
+
+// Save encryoted password
+// Sing up
+// Find Tutor
 
 app.listen(port, '0.0.0.0', ()=>{ // '0.0.0.0' is for running via docker only
      console.log("Server has started on port 3000");
