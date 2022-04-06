@@ -10,7 +10,8 @@
     "express": "^4.17.3",
     "firebase": "^8.10.0",
     "helmet": "^5.0.2",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "socket.io": "^4.4.1"
   },
   "devDependencies": {},
   "scripts": {

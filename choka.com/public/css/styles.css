@@ -2,6 +2,9 @@ body {
     background-color:white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
+    overflow: scroll;
+    overflow-x: scroll;
+    
 }
 
 .homepage {

@@ -20,6 +20,7 @@ const { initializeApp } = pkg_1;
 import pkg from 'firebase/analytics/dist/index.cjs.js'
 const { getAnalytics } = pkg;
 
+import {Socket} from "socket.io";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
