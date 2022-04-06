@@ -454,7 +454,11 @@ app.post('/parentregistration',(req, res, next)=>{
         "Email Address":request_object["Email"],
         "Phone Number": request_object["PhoneNumber"],
         "Password":request_object["Password"],
-        "Image":request_object["Image"]
+        "Image":request_object["Image"],
+        "Image":request_object["Image"],
+        "Image":request_object["Image"],
+        "Image":request_object["Image"],
+
 
 
     }

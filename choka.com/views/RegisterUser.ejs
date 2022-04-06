@@ -106,17 +106,13 @@
                 <i class="fa fa-cloud-upload v58_218"></i> Add Image
             </label>
             
-        
-            
-            </div>
-        
-        
+            </div> 
         </form>
         </div>
 <!--/////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
         <div id = "cond">
-            <form action="/register" method="POST">
+            <form action="/parentregistration" method="POST">
                 <button class="v13_21_custom" formaction="/login" method = "POST">Already have an account? Sign in</button>
                 <span class="v59_252_r2">First Name*</span>
                 <div class="name_r2"></div>
@@ -149,15 +145,21 @@
                 <input class="v59_350_r2" placeholder="Year" name = "BirthdayYear" required/>
                 
             
-                <span class="v59_319_r2">Previous Experience*</span>
+                
                 <span class="v59_355_r2">Transcript*</span>
-                <span class="v59_361_r2">Image</span>
+                <!-- <span class="v59_361_r2">Image</span> -->
+                
+
+
+                
+
                 <div class="name_r2"></div>
 
+                <span class="v59_319_r2">Previous Experience*</span>
                 <input class="v59_321_r2" name="PreviousExperience"  placeholder="Write about your previous experiences of teaching..." required/>
+
                 <span class="v59_333_r2">Password*</span>
                 <div class="name_r2"></div>
-                
                 <input class="v59_335_r2" name="Password" type="password"  placeholder="Password" required/>
                 
                 <div class="v59_336_r2">
@@ -211,7 +213,14 @@
             <button class="v59_301_r2" formaction="/parentregistration"  method = "POST" type="submit">Register2</button>
 
             <div class = "v59_302_r2"> </div>
-            <span class="v59_303_r2">Add Image</span>
+            <!-- <span class="v59_303_r2">Add Image</span> -->
+            <label class="custom-file-upload v59_303_r2">
+                <input type="file" name="Image"/>
+                <i class="fa fa-cloud-upload v59_303_r2"></i> Add Image
+            </label>
+
+
+
             <div class="v59_304_r2">
                 <div class="v59_305_r2"></div>
                 <div class="v59_306_r2"></div>
@@ -227,7 +236,11 @@
                 <div class="v59_358_r2"></div>
                 <div class="v59_359_r2"></div>
             </div>
-            <span class="v59_360_r2">Upload Transcript</span>
+            <!-- <span class="v59_360_r2">Upload Transcript</span> -->
+            <label class="custom-file-upload v59_360_r2">
+                <input type="file" name="Image"/>
+                <i class="fa fa-cloud-upload v59_360_r2"></i> Upload Transcript
+            </label>
             
             <div class="name_r2"></div>
             </form>
