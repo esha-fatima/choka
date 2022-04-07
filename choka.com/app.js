@@ -308,7 +308,7 @@ app.post('/loginRequest',(req,res)=>{
                     //if it is tutor.
                     console.log("Tutor found")
                     if(user_deets.Password == password){
-                        let n_obj = {
+                         global_user = {
                             "Name" : user_deets.Name,
                             "EmailAddress":user_deets.EmailAddress,
                             "PhoneNumber": user_deets.PhoneNumber,
@@ -322,7 +322,7 @@ app.post('/loginRequest',(req,res)=>{
                             "City": user_deets.City
 
                         }
-                        global_user = n_obj
+                        
                         res.render("tutorDashboard", global_user)
                     }
                     else{
@@ -426,9 +426,9 @@ app.post("/editProfile",(req,res)=>{
     // I am hardcoding new_obj for now
     //and then send new obj to frontend in the same format as i have hardcoded with any new or changed values
     console.log(req.body)
-    let old_email = global_user['Email'];
+    let old_email = global_user['EmailAddress'];
     if(req.body['email'] != global_user['Email']){
-        global_user['Email'] = req.body['email']
+        global_user['EmailAddress'] = req.body['email']
 
     }
     if(req.body['contact'] != global_user['PhoneNumber']){
@@ -444,10 +444,10 @@ app.post("/editProfile",(req,res)=>{
 
     }
 
-    let docRef = db.collection('Students').doc(old_email);
+    //let docRef = db.col lection('Teachers').doc(old_email);
     console.log("global user is", global_user)
     /*
-    if(Object.keys(global_user).length==11){
+    if(Object.keys(global_user).length==11){  
         //this means tutor hai
         console.log("issss ")
         docRef = db.collection('Teachers').doc(old_email);
@@ -455,17 +455,31 @@ app.post("/editProfile",(req,res)=>{
     }
     */
     
+    console.log("old email is ", old_email)
+    // docRef.get().then((doc)=>{
+        console.log("length is", Object.keys(global_user).length)
+        if(Object.keys(global_user).length==12){
 
-    docRef.get().then((doc)=>{
+            db.collection('Teachers').doc(old_email).update({
+                jason_obj:global_user
+            }).then(()=>{
+                console.log("firebase updated");
+                res.render("viewProfile", global_user);
+            });
 
-        db.collection('Students').doc(old_email).update({
-            jason_obj:global_user
-        }).then(()=>{
-            console.log("firebase updated");
-            res.redirect("viewProfile", global_user);
-        });
+        }
+        else{
+            db.collection('Students').doc(old_email).update({
+                jason_obj:global_user
+            }).then(()=>{
+                console.log("firebase updated");
+                res.render("viewProfile", global_user);
+            });
+
+        }
+        
         //get the doc and then 
-    });
+    // });
 
 
 
