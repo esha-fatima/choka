@@ -1,0 +1,627 @@
+.dashboard_v5_11 {
+    width: 100%;
+    height: 1266px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    overflow: hidden;
+  }
+  .dashboard_v20_155 {
+    width: 100%;
+    height: 213px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 80px;
+    overflow: hidden;
+  }
+  .dashboard_v119_1818 {
+    width: 338px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 73px;
+    left: 541px;
+    font-family: Roboto;
+    font-weight: Bold;
+    opacity: 1;
+    text-align: left;
+  }
+  .dashboard_v119_1817 {
+    width: 95px;
+    height: 95px;
+    background: url("../images/v119_1817.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 71px;
+    left: 427px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    overflow: hidden;
+  }
+  .dashboard_v103_1450 {
+    width: 100px;
+    height: 105px;
+    background: url("../images/v103_1450.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 36px;
+    left: 1268px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    overflow: hidden;
+  }
+  .dashboard_v20_158 {
+    width: 53px;
+    height: 34px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 53px;
+    left: 40px;
+  }
+  .dashboard_v20_157 {
+    width: 364px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 53px;
+    left: 119px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 30px;
+    opacity: 1;
+    text-align: left;
+  }
+  .dashboard_v22_160 {
+    width: fit-content;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 288px;
+    left: 436px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 60px;
+    opacity: 1;
+    text-align: left;
+  }
+  .dashboard_v98_1399 {
+    width: 360px;
+    height: 100%;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 213px;
+    left: 0px;
+    border: 1px solid rgba(3,133,182,1);
+    border-bottom-left-radius: 25px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .dashboard_v124_172 {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 259px;
+    left: 20px;
+    overflow: hidden;
+  }
+  .dashboard_v124_173 {
+    width: 21px;
+    height: 18px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 2px;
+    left: 1px;
+  }
+  .dashboard_v99_1426 {
+    width: 35px;
+    height: 35px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 850px;
+    left: 273px;
+    overflow: hidden;
+  }
+  .dashboard_v99_1427 {
+    width: 20px;
+    height: 11px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 11px;
+    left: 2px;
+  }
+  .dashboard_v99_1428 {
+    width: 18px;
+    height: 26px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 4px;
+    left: 13px;
+  }
+  .dashboard_v99_1420 {
+    width: 35px;
+    height: 35px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 750px;
+    left: 273px;
+    overflow: hidden;
+  }
+  .dashboard_v99_1421 {
+    width: 26px;
+    height: 26px;
+    background: url("../images/v99_1421.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    overflow: hidden;
+  }
+  .dashboard_v99_1422 {
+    width: 26px;
+    height: 20px;
+    background: url("../images/v99_1422.png");
+    opacity: 1;
+    position: absolute;
+    top: 2px;
+    left: 0px;
+    border: 2px solid rgba(3,133,182,1);
+  }
+  .dashboard_v99_1423 {
+    width: 5px;
+    height: 5px;
+    background: url("../images/v99_1423.png");
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 5px;
+    border: 2px solid rgba(3,133,182,1);
+  }
+  .dashboard_v99_1424 {
+    width: 5px;
+    height: 5px;
+    background: url("../images/v99_1424.png");
+    opacity: 1;
+    position: absolute;
+    top: 10px;
+    left: 17px;
+    border: 2px solid rgba(3,133,182,1);
+  }
+  .dashboard_v99_1425 {
+    width: 5px;
+    height: 5px;
+    background: url("../images/v99_1425.png");
+    opacity: 1;
+    position: absolute;
+    top: 20px;
+    left: 2px;
+    border: 2px solid rgba(3,133,182,1);
+  }
+  .dashboard_v99_1416 {
+    width: 35px;
+    height: 35px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 649px;
+    left: 273px;
+    overflow: hidden;
+  }
+  .dashboard_v99_1417 {
+    width: 35px;
+    height: 26px;
+    background: url("../images/v99_1417.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 4px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .dashboard_v99_1418 {
+    width: 26px;
+    height: 26px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+  }
+  .dashboard_v99_1419 {
+    width: 10px;
+    height: 10px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 6px;
+    left: 24px;
+  }
+  .dashboard_v99_1409 {
+    width: 35px;
+    height: 35px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 346px;
+    left: 273px;
+  }
+  .dashboard_v98_1400 {
+    width: 318px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 251px;
+    left: 52px;
+    font-family: Roboto;
+    font-weight: Medium;
+    font-size: 35px;
+    opacity: 1;
+    text-align: left;
+  }
+  .dashboard_v99_1401 {
+    width: 318px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 342px;
+    left: 52px;
+    font-family: Roboto;
+    font-weight: Medium;
+    font-size: 35px;
+    opacity: 1;
+    text-align: left;
+  }
+  .dashboard_v99_1402 {
+    width: 318px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 443px;
+    left: 52px;
+    font-family: Roboto;
+    font-weight: Medium;
+    font-size: 35px;
+    opacity: 1;
+    text-align: left;
+  }
+  .dashboard_v99_1403 {
+    width: 318px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 544px;
+    left: 52px;
+    font-family: Roboto;
+    font-weight: Medium;
+    font-size: 35px;
+    opacity: 1;
+    text-align: left;
+  }
+  .dashboard_v99_1404 {
+    width: 318px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 645px;
+    left: 52px;
+    font-family: Roboto;
+    font-weight: Medium;
+    font-size: 35px;
+    opacity: 1;
+    text-align: left;
+  }
+  .dashboard_v99_1405 {
+    width: 318px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 746px;
+    left: 52px;
+    font-family: Roboto;
+    font-weight: Medium;
+    font-size: 35px;
+    opacity: 1;
+    text-align: left;
+  }
+  .dashboard_v99_1406 {
+    width: 318px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 847px;
+    left: 52px;
+    font-family: Roboto;
+    font-weight: Medium;
+    font-size: 35px;
+    opacity: 1;
+    text-align: left;
+  }
+  .dashboard_v99_1407 {
+    width: 35px;
+    height: 35px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 256px;
+    left: 273px;
+    overflow: hidden;
+  }
+  .dashboard_v99_1408 {
+    width: 32px;
+    height: 29px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 2px;
+    left: 1px;
+  }
+  .dashboard_v99_1410 {
+    width: 35px;
+    height: 35px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 447px;
+    left: 273px;
+    overflow: hidden;
+  }
+  .dashboard_v99_1411 {
+    width: 29px;
+    height: 26px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 3px;
+    left: 2px;
+  }
+  .dashboard_v99_1414 {
+    width: 35px;
+    height: 35px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 548px;
+    left: 273px;
+    overflow: hidden;
+  }
+  .dashboard_v99_1415 {
+    width: 29px;
+    height: 29px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+  }
+  .dashboard_v99_1431 {
+    width: 753px;
+    height: 194px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 420px;
+    left: 464px;
+    border: 1px solid rgba(3,133,182,0.5);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 4px 10px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+
+  
+
+
+  .dashboard_v99_1435 {
+    border: 0;
+    background-color: transparent;
+    width: 461px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 453px;
+    left: 512px;
+    font-family: Roboto;
+    font-weight: SemiBold;
+    font-size: 45px;
+    opacity: 1;
+    text-align: left;
+  }
+  .dashboard_v101_1447 {
+    width: 461px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 526px;
+    left: 512px;
+    font-family: Roboto;
+    font-weight: Regular;
+    font-size: 30px;
+    opacity: 1;
+    text-align: left;
+  }
+  .dashboard_v99_1433 {
+    width: 753px;
+    height: 194px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 679px;
+    left: 464px;
+    border: 1px solid rgba(3,133,182,0.5);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 4px 10px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .dashboard_v99_1434 {
+    width: 753px;
+    height: 194px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 936px;
+    left: 464px;
+    border: 1px solid rgba(3,133,182,0.5);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 4px 10px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .dashboard_v99_1438 {
+    width: 181px;
+    height: 144px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 443px;
+    left: 993px;
+    overflow: hidden;
+  }
+  .dashboard_v99_1439 {
+    width: 181px;
+    height: 144px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 1px;
+  }
+  .dashboard_v99_1440 {
+    width: 461px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 711px;
+    left: 512px;
+    font-family: Roboto;
+    font-weight: SemiBold;
+    font-size: 45px;
+    opacity: 1;
+    text-align: left;
+  }
+  .dashboard_v99_1443 {
+    width: 461px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 970px;
+    left: 512px;
+    font-family: Roboto;
+    font-weight: SemiBold;
+    font-size: 45px;
+    opacity: 1;
+    text-align: left;
+  }
+  .dashboard_v99_1441 {
+    width: 185px;
+    height: 150px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 704px;
+    left: 989px;
+    overflow: hidden;
+  }
+  .dashboard_v99_1442 {
+    width: 138px;
+    height: 112px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 18px;
+    left: 23px;
+  }
+  .dashboard_v99_1444 {
+    width: 141px;
+    height: 155px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 958px;
+    left: 1013px;
+    overflow: hidden;
+  }
+  .dashboard_v99_1445 {
+    width: 141px;
+    height: 155px;
+    background: url("../images/v99_1445.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 140px;
+    overflow: hidden;
+  }
+  .dashboard_v99_1446 {
+    width: 141px;
+    height: 155px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+  }
+  .dashboard_v101_1448 {
+    width: 461px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 786px;
+    left: 512px;
+    font-family: Roboto;
+    font-weight: Regular;
+    font-size: 30px;
+    opacity: 1;
+    text-align: left;
+  }
+  .dashboard_v101_1449 {
+    width: 461px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 1042px;
+    left: 512px;
+    font-family: Roboto;
+    font-weight: Regular;
+    font-size: 30px;
+    opacity: 1;
+    text-align: left;
+  }
+  .dashboard_v103_1543 {
+    width: 144px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 149px;
+    left: 1251px;
+    font-family: Roboto;
+    font-weight: SemiBold;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
