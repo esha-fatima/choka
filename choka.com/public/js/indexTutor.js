@@ -26,7 +26,7 @@ socket.on('someMessage',message=>{
         let rec_id_arr = rec_id.split(" ")
         let intended_recipient = rec_id_arr[0]
         console.log("my email is ", my_email)
-        console.log("intended recipient is", intended_recipient)
+        //console.log("intended recipient is", intended_recipient)
         
             document.getElementById("add").innerHTML   = document.getElementById("add").innerHTML + '<div class="container darker"><p>'+mesg_actual+'</p></div>'
 
