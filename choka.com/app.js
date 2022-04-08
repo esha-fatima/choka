@@ -7,10 +7,12 @@ const ejs = require("ejs");
 const _= require("lodash");
 const firebase = require("firebase");
 const cookieParser = require('cookie-parser')
+// const bcrypt = require('bcrypt')
+// const CryptoJS = require("crypto-js")
 // import { FacebookAuthProvider } from "firebase/auth";
 // require("firebase/firestore");
 // import fire from "./fire";
-
+const key = "choka.com"
 const app = express();
 
 const port = process.env.PORT || 3000
@@ -42,77 +44,6 @@ db.settings({timestampsInSnapshots:true});
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
-
-//////////Register user//////////
-
-// app.use('/registrationRequest',(req, res, next)=>{
-//     console.log("A new request received at " + Date.now());
-//     console.log(req.query);
-//     console.log(req.query["FirstName"])
-//     if(req.query['Password']==req.query['ConfirmPassword']){
-//         next();
-//     }
-//     else{
-//         let str = "RegisterUser"
-//         res.send("Passwords do not match");
-//         //res.send("error")
-        
-//     }
-    
-//  });
-
-
-//  app.post('/registrationRequest',(req, res, next)=>{
-//     let request_object = req.body
-//     console.log(request_object)
-//     if(request_object["Email"] == ''){
-//         res.send("Email cannot be empty");
-//     }
-//     if(request_object["FirstName"] == ''){
-//         res.send("First name cannot be empty");
-//     }
-
-//     if(request_object["LastName"] == ''){
-//         res.send("Last name cannot be empty");
-//     }
-//     if(request_object["PhoneNumber"] == ''){
-//         res.send("Phone number cannot be empty");
-//     }
-//     if(request_object["Password"] == ''){
-//         res.send("Password cannot be empty");
-//     }
-
-//     else{
-//         console.log(request_object)
-
-//         let new_user = {
-//             "Name" : request_object["FirstName"] + " "+ request_object["LastName"],
-//             "Email Address":request_object["Email"],
-//             "Phone Number": request_object["PhoneNumber"],
-//             "Password":request_object["Password"]
-
-
-//         }
-//         //res.send("Account Created")
-//         if(request_object["type_account"]== 'student'){
-//             let  usersRef = dbRef.child('Students');
-//             res.render("home")
-//             user_details = request_object
-//             //push to db here
-//             //set the varibale called document id as per what firebase assigns it
-
-//         }
-//         else{
-//             let usersRef = dbRef.child('Teachers');
-//             user_details = request_object
-//             res.render("home")
-//             //push to db here
-//             //set the variable called document id as per what firebase assigns it
-//         }
-//     }
-//  });
-
-
 
 
 
@@ -182,18 +113,32 @@ app.post('/searchRequest',(req,res)=>{
 
 
  app.post('/filterRequest',(req,res)=>{
-     console.log(req.body)
-    let obj1 =  {'Name': 'Rose Dunhill', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
-    let obj2 =  {'Name': 'William Jonas', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
-    let obj3 = {'Name': 'Sherry', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
-    let results_array = [
-       obj1, obj2, obj3
-       ]
-   let ff = JSON.stringify(results_array)
-   console.log(ff)
-   let xx = {"bl":ff};
-   //console.log(res)
-   res.render("SearchResults",xx)
+    console.log("/filterRequest", global_user)
+
+    db.collection("Teachers").doc(global_user.EmailAddress).update({
+        Pay:req.body.Pay,
+        Days:req.body.Days,
+        Location:req.body.Location,
+        Classes:req.body.Class,
+        Subject:req.body.Subject,
+        Mode:req.body.Mode,
+        Hours:req.body.Hours
+    }).then(()=>{
+        res.render("tutorDashboard", global_user)
+    });
+
+    
+    // let obj1 =  {'Name': 'Rose Dunhill', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
+    // let obj2 =  {'Name': 'William Jonas', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
+    // let obj3 = {'Name': 'Sherry', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
+    // let results_array = [
+    //    obj1, obj2, obj3
+    //    ]
+    // let ff = JSON.stringify(results_array)
+    // console.log(ff)
+    // let xx = {"bl":ff};
+    // //console.log(res)
+    // res.render("SearchResults",xx)
      
 
  })
@@ -220,40 +165,137 @@ app.post('/findTutors', (req,res)=>{
     //now u are supposed to get the top 3 tutors from database.
     //store the top 2 in top_2 variable that I am hardcoding for now
 
-    let top_2 = 
-        {
-            "Name_one": "Esha Fatima",
-            "Department_one": "Computer Science",
-            "Name_two" : "Baqar",
-            "Department_two" : "Islamic Studies",
-            
+    db.collection("Subjects").get().then((snapshot) => {
+        console.log(snapshot)
+        console.log(snapshot.docs)
+        console.log(snapshot.docs.Math)
+        console.log(snapshot.docs.Math.data())
+        let mathTutors = snapshot.docs.Math.data()
+        let englishTutors = snapshot.docs.English.data()
+
+        // let students = snapshot.data().student_request;
+    //     if (ma.length >= 2)
+    //     {
+            let top_2_students = 
+            {
+                "Name_one": 'students[0].name',
+                "Department_one": 'students[0].subject',
+                "Bid_one" : 'students[0].bid',
+                "Name_two" : 'students[1].name',
+                "Department_two" : 'students[1].subject',
+                "Bid_two": 'students[0].bid'
+                
+        
+            }
+            res.render("findTutors", top_2_students)
+
+    //     }
+    //     else if (students.length == 1)
+    //     {
+    //         let top_2_students = 
+    //         {
+    //             "Name_one": students[0].name,
+    //             "Department_one": students[0].subject,
+    //             "Bid_one" : students[0].bid,
+    //             "Name_two" : undefined,
+    //             "Department_two" : undefined,
+    //             "Bid_two": undefined
+                
+        
+    //         }
+    //         res.render("findStudents", top_2_students)
+
+    //     }
+    //     else
+    //     {
+    //         let top_2_students = 
+    //         {
+    //             "Name_one": undefined,
+    //             "Department_one": undefined,
+    //             "Bid_one" : undefined,
+    //             "Name_two" : undefined,
+    //             "Department_two" : undefined,
+    //             "Bid_two": undefined
+                
+        
+    //         }
+    //         res.render("findStudents", top_2_students)
+    //     }
     
-        }
-
-    res.render("findTutors", top_2)
-
-
+    });
+// 
 })
 
 
 app.post('/findStudents', (req,res)=>{
     //do a search from the databse and get the top 2 students liveing in the same city as thus particular tutor
     //store the name, department and the bidding price of the top 2 students living in the sam area as a json object like below
-    let top_2_students = 
-        {
-            "Name_one": "Bastian",
-            "Department_one": "Computer Science",
-            "Bid_one" : "1000",
-            "Name_two" : "Baqar",
-            "Department_two" : "Islamic Studies",
-            "Bid_two": "5000"
-            
-    
-        }
-        res.render("findStudents", top_2_students)
 
+    db.collection("Teacher").doc(global_user.EmailAddress).get().then((snapshot) => {
+        let students = snapshot.data().student_request;
+        if (students.length >= 2)
+        {
+            let top_2_students = 
+            {
+                "Name_one": students[0].name,
+                "Department_one": students[0].subject,
+                "Bid_one" : students[0].bid,
+                "Name_two" : students[1].name,
+                "Department_two" : students[1].subject,
+                "Bid_two": students[0].bid
+                
+        
+            }
+            res.render("findStudents", top_2_students)
+
+        }
+        else if (students.length == 1)
+        {
+            let top_2_students = 
+            {
+                "Name_one": students[0].name,
+                "Department_one": students[0].subject,
+                "Bid_one" : students[0].bid,
+                "Name_two" : undefined,
+                "Department_two" : undefined,
+                "Bid_two": undefined
+                
+        
+            }
+            res.render("findStudents", top_2_students)
+
+        }
+        else
+        {
+            let top_2_students = 
+            {
+                "Name_one": undefined,
+                "Department_one": undefined,
+                "Bid_one" : undefined,
+                "Name_two" : undefined,
+                "Department_two" : undefined,
+                "Bid_two": undefined
+                
+        
+            }
+            res.render("findStudents", top_2_students)
+        }
+    });
 })
 
+// async function comparePassword(p1, p2)
+// {
+//     try
+//     {
+//         const bool = await bcrypt.Encrypt.comparePassword(p1, p2)
+//         return bool
+//     }
+//     catch
+//     {
+//         return null
+//     }
+
+// }
 
 app.post('/loginRequest',(req,res)=>{
     
@@ -273,7 +315,10 @@ app.post('/loginRequest',(req,res)=>{
             //console.log(doc.data());
             let user_deets = doc.data().jason_obj
             console.log(user_deets)
-            if(user_deets.Password == password){
+            // const myBoolean = comparePassword(password, user_deets.Password);
+            // CryptoJS.AES.encrypt(password, key)
+            if((password) == user_deets.Password)
+            {
                 //this means passwords match and
                 console.log("Passwords match")
                 let n_obj = {
@@ -329,9 +374,6 @@ app.post('/loginRequest',(req,res)=>{
                         console.log("Passwords do not match")
                         res.render("Login")
                     }
-
-                    
-
 
                 }
                 else{
@@ -398,6 +440,13 @@ app.post("/publishProfileRequest",(req,res)=>{
     //get the name of the banda who is logged in and create its json obj and store it in obj_extracted_from_db
     //like below
     //and then pass this and u will be redirected to dashboard
+    db.collection('Students').doc(global_user).update({
+        jason_obj:global_user
+    }).then(()=>{
+        console.log("firebase updated");
+        res.render("viewProfile", global_user);
+    });
+
     let obj_extracted_from_db = {
         "name": "Esha Fatima",
         "image" : "xx",
@@ -496,7 +545,6 @@ app.post("/login",(req,res)=>{
    
 });
 
- 
 ///////Rendering home
 
 app.get("/",(req,res)=>{
@@ -505,11 +553,31 @@ app.get("/",(req,res)=>{
     res.render("home");
 })
 
+app.get("/RegisterUser",(req,res)=>{
+    console.log(1)
+    
+    res.render("RegisterUser");
+})
+
 app.get("/home",(req,res)=>{
     console.log(2)
     res.render("home");
    
 });
+
+app.get("/dashboard",(req,res)=>{
+    console.log(2)
+    res.render("dashboard", global_user)
+   
+});
+// publishTutorProfile
+
+app.get("/publishTutorProfile",(req,res)=>{
+    console.log(10)
+    res.render("publishProfile");
+   
+});
+
 
 app.post("/home",(req,res)=>{
 
@@ -525,6 +593,49 @@ app.post("/home",(req,res)=>{
     
 });
 
+app.get("/findTutors",(req,res)=>{
+
+    db.collection("subjects").doc("Math").get().then((snapshot) => {
+        // console.log(1, snapshot)
+        console.log(2, typeof snapshot.data())
+        let x = snapshot.data()
+        let keyx = Object.keys(x)
+        console.log(3, keyx[0])
+        
+
+    //     if (ma.length >= 2)
+    //     {
+            let top_2_students = 
+            {
+                "Name_one": 'students[0].name',
+                "Department_one": 'students[0].subject',
+                "Bid_one" : 'students[0].bid',
+                "Name_two" : 'students[1].name',
+                "Department_two" : 'students[1].subject',
+                "Bid_two": 'students[0].bid'
+                
+        
+            }
+            res.render("findTutors", top_2_students)
+    });
+});
+
+
+// async function cryptPassword(p)
+// {
+//     try
+//     {
+//         // console.log()
+//         const encrpt = await Encrypt.cryptPassword(p)
+//         return encrpt
+//     }
+//     catch
+//     {
+//         return null
+//     }
+        
+// }
+
 
 app.post('/studentregistration',(req, res, next)=>{
     console.log(4)
@@ -535,7 +646,7 @@ app.post('/studentregistration',(req, res, next)=>{
         "Name" : request_object["FirstName"] + " "+ request_object["LastName"],
         "EmailAddress":request_object["Email"],
         "PhoneNumber": request_object["PhoneNumber"],
-        "Password":request_object["Password"],
+        "Password": request_object["Password"],
         "Image":request_object["Image"],
         "Address": "None Added",
         "City" : "None Added"
@@ -553,10 +664,19 @@ app.post('/studentregistration',(req, res, next)=>{
         }
         else{
             db.collection('Students').doc(email).set({
-                jason_obj:new_user
+                jason_obj:new_user,
+                Name: request_object["FirstName"] + " "+ request_object["LastName"],
+                EmailAddress: request_object["Email"],
+                PhoneNumber: request_object["PhoneNumber"],
+                Password: request_object["Password"],
+                Image: request_object["Image"],
+                Address: "None Added",
+                City: "None Added",
+                // student_request:[]
             }).then(()=>{
                 console.log("firebase filled");
-                res.redirect("/home");
+                // res.redirect("/home");
+                res.redirect("dashboard", global_user)
             });
 
         }
@@ -572,9 +692,9 @@ app.post('/parentregistration',(req, res, next)=>{
         "Name" : request_object["FirstName"] + " "+ request_object["LastName"],
         "EmailAddress":request_object["Email"],
         "PhoneNumber": request_object["PhoneNumber"],
-        "Password":request_object["Password"],
+        "Password": request_object["Password"],
         "HighestQualification":request_object["HighestQualification"],
-        "BirthDay":request_object["BirthdayDay"]+"/"+request_object["BirthdayMonth"]+"/"+request_object["BirthdayYear"],
+        "BirthDay":request_object["BirthdayDay"],
         "PreviousExperience":request_object["PreviousExperience"],
         "Transcript":request_object["Transcript"],
         "Image" : request_object["Image"],
@@ -592,10 +712,22 @@ app.post('/parentregistration',(req, res, next)=>{
         }
         else{
             db.collection('Teachers').doc(email).set({
-                jason_obj:new_user
+                jason_obj:new_user,
+                Name: request_object["FirstName"] + " "+ request_object["LastName"],
+                EmailAddress: request_object["Email"],
+                PhoneNumber: request_object["PhoneNumber"],
+                Password: request_object["Password"],
+                HighestQualification: request_object["HighestQualification"],
+                BirthDay: request_object["BirthdayDay"],
+                PreviousExperience: request_object["PreviousExperience"],
+                Transcript: request_object["Transcript"],
+                Image: request_object["Image"],
+                Address: "None Added",
+                City: "None Added",
+                student_request:[]
             }).then(()=>{
                 console.log("firebase filled");
-                res.redirect("/home");
+                res.redirect("/publishTutorProfile");
             });
 
         }

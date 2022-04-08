@@ -9,6 +9,7 @@ body {
 
 .homepage {
     background-image: url("/images/studentteacher.png");
+    background-repeat: no-repeat;
 }
 #testing{
   display: none;

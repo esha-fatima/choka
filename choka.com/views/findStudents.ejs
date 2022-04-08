@@ -54,20 +54,35 @@
             </div>
         </div>
         <script>
+
+            
+
+
             let name_one = '<%-Name_one%>'
             let dept_one = '<%-Department_one%>'
             let bid_one = '<%-Bid_one%>'
-            let top_one = document.getElementById("top_one")
-            let text_one = '<span class="findTutors_v44_252">' + name_one + '</span><span class="findTutors_v44_253">'+dept_one+'</span>' +  '</span><span class="findTutors_v44_253_bid_one">'+bid_one+' PKR'+'</span>'
-            top_one.innerHTML = text_one//'<span class="findTutors_v44_252">arr</span><span class="findTutors_v44_253">Mathematics & Science</span>'
-            
             let name_two = '<%-Name_two%>'
             let dept_two = '<%-Department_two%>'
             let bid_two = '<%-Bid_two%>'
-            let top_two = document.getElementById("top_two")
-            let text_two = '<span class="findTutors_v46_264">' + name_two + '</span><span class="findTutors_v46_265">'+dept_two+'</span>'+'</span><span class="findTutors_v44_253_bid_two">'+bid_two+' PKR'+'</span>'
-            top_two.innerHTML = text_two
-            
+
+            if (typeof name_one != 'undefined' && typeof name_two != 'undefined')
+            {
+                let top_one = document.getElementById("top_one")
+                let text_one = '<span class="findTutors_v44_252">' + name_one + '</span><span class="findTutors_v44_253">'+dept_one+'</span>' +  '</span><span class="findTutors_v44_253_bid_one">'+bid_one+' PKR'+'</span>'
+                top_one.innerHTML = text_one//'<span class="findTutors_v44_252">arr</span><span class="findTutors_v44_253">Mathematics & Science</span>'
+                
+                
+                let top_two = document.getElementById("top_two")
+                let text_two = '<span class="findTutors_v46_264">' + name_two + '</span><span class="findTutors_v46_265">'+dept_two+'</span>'+'</span><span class="findTutors_v44_253_bid_two">'+bid_two+' PKR'+'</span>'
+                top_two.innerHTML = text_two
+            }
+            else if (typeof name_one != 'undefined')
+            {
+                let top_one = document.getElementById("top_one")
+                let text_one = '<span class="findTutors_v44_252">' + name_one + '</span><span class="findTutors_v44_253">'+dept_one+'</span>' +  '</span><span class="findTutors_v44_253_bid_one">'+bid_one+' PKR'+'</span>'
+                top_one.innerHTML = text_one//'<span class="findTutors_v44_252">arr</span><span class="findTutors_v44_253">Mathematics & Science</span>'
+                
+            } 
             
         </script>
     </body>
