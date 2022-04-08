@@ -194,6 +194,10 @@ app.get("/adminDash",(req,res)=>{
     res.render("adminDash");
 });
 
+app.get("/approveProfiles",(req,res)=>{
+    res.render("approveProfiles");
+});
+
 
 app.get("/",(req,res)=>{
     res.render("home");
