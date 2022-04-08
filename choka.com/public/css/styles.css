@@ -4,6 +4,7 @@ body {
     text-align: center;
     overflow: scroll;
     overflow-x: scroll;
+    overflow-y: scroll;
     
 }
 

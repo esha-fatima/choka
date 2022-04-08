@@ -1,19 +1,24 @@
 //jshint esversion:6
 const express = require("express");
 const bodyParser = require("body-parser");
+const http = require("http");
 const path = require("path");
 const helmet = require("helmet");
 const ejs = require("ejs");
 const _= require("lodash");
 const firebase = require("firebase");
 const cookieParser = require('cookie-parser')
-// import { FacebookAuthProvider } from "firebase/auth";
-// require("firebase/firestore");
-// import fire from "./fire";
+const socketio = require('socket.io');
+
+
+ 
 
 const app = express();
+const server = http.createServer(app);
+const io = socketio(server);
 
 const port = process.env.PORT || 3000
+let chat_identifier = "";
 
 // allow the app to use cookieparser
 // app.use(helmet());
@@ -24,6 +29,60 @@ app.use(cookieParser());
 app.set('view engine','ejs');
 
 let global_user = ""
+
+io.on('connection',socket=>{
+    console.log("connected");
+    socket.emit("chatidentifier",chat_identifier) // this will emit to only that user
+    //socket.broadcast.emit("message", "A user has joined the chat");
+    //u can know which user it is from global
+    socket.on('sendMessage',message=>{
+        console.log("i have received a message")
+
+        console.log(message)
+        let message_arr = message.split('_')
+        let rec_id = message_arr.pop()
+        let message_to_be_sent = message_arr[0]
+        const docRef = db.collection('Chats').doc(rec_id);
+        docRef.get().then((doc)=>{
+            if(doc.exists){
+                let message_history_object = doc.data().jason_obj
+                console.log("ff", message_history_object)
+                let keys = Object.keys(message_history_object);
+                let len_keys = keys.length
+                console.log("len keys is ", len_keys)
+                let new_id = len_keys+1
+                let str_key = "sender_" + new_id.toString()
+                message_history_object[str_key] = message_to_be_sent
+                console.log("new obj is ", message_history_object)
+
+                db.collection('Chats').doc(rec_id).update({
+                    jason_obj:message_history_object
+                }).then(()=>{
+                    console.log("firebase updated");
+                    let message_to_be_emitted = message_to_be_sent + "_" + rec_id
+                    //the ur supposed to emit to the user with teh chat id...and see if they can receive and render it
+                    socket.emit("someMessage", message_to_be_emitted)
+                });
+                //now set this in firebase
+
+                
+
+            }
+
+        });
+
+        //now update firebase
+        //nowwww send to firebase
+
+
+        
+        //when u receive a message
+        //u know what is the chat identifier
+        
+    })
+})
+
+
 
 var firebaseConfig = {
     apiKey: "AIzaSyB5L-1mBbAzxi-bJwjvhCl_y4RyZ9LoZMk",
@@ -128,6 +187,73 @@ app.use(express.static("public"));
     res.render("filterTutor")
 })
 
+app.post('/messageRequest',(req,res)=>{
+    
+    //console.log(req.body)
+    
+    let str_obt = req.body.requested
+    let str_array = str_obt.split(" ");
+    console.log(str_array)
+    let recipientEmailAddress = str_array.pop();
+    let exp= str_array.pop();
+    let name_str = str_array.join(' ')
+    //console.log(name_str)
+    //if it is a student, then u need to be redirected to the messaging page with tutor
+    chat_identifier = global_user.EmailAddress + " " + recipientEmailAddress
+    console.log("chat identifier is ", chat_identifier)
+    const docRef = db.collection('Chats').doc(chat_identifier);
+    docRef.get().then((doc)=>{
+        if(doc.exists){
+            console.log("doc is", doc.data());
+            let message_history_object = doc.data().jason_obj
+            console.log(message_history_object)
+            /*
+            message_history_object = {  
+                "recipient_1": "hey",
+                "recipient_2":"bye",
+                "sender_3": "ff",
+                "recipient_4":"yes",
+                "recipient_5":"yay",
+                "recipient_6":"orange",
+                "recipient_7":"atsheen rooh"
+            }
+            */
+            message_history_object = JSON.stringify(message_history_object);
+            //get the name of the tutor...
+            let obj_to_be_sent = {
+                "name" : name_str,
+                "messages" : message_history_object,
+                "chatidentifier": chat_identifier,
+                "my_email": global_user.EmailAddress,
+                "recipient_email": recipientEmailAddress
+            }
+            //let stringified = JSON.stringify(obj_to_be_sent)
+            console.log(obj_to_be_sent)
+            res.render("chat", obj_to_be_sent)
+            //if chat exists then get the chat from json object and render the messages on frontend
+
+
+            
+        }
+        else{
+            db.collection('Chats').doc(chat_identifier).set({
+                jason_obj:{}
+            }).then(()=>{
+                console.log("firebase filled");
+                //res.redirect("/home");
+            });
+
+        }
+    });
+
+
+   
+    // if it is a tutor, then u need to redirect to the messaging page with student
+})
+
+
+
+
 
 
 
@@ -141,9 +267,9 @@ app.post('/searchRequest',(req,res)=>{
      ////search
      //3 results
      //then get all the relevnat details from firebase and get the search results in the form of an array
-     let obj1 =  {'Name': 'Rose Dunhill', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
-     let obj2 =  {'Name': 'William Jonas', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
-     let obj3 = {'Name': 'Sherry', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
+     let obj1 =  {'Name': 'Rose Dunhill', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'rose@icloud'}
+     let obj2 =  {'Name': 'William Jonas', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx','EmailAddress':'rose@icloud'}
+     let obj3 = {'Name': 'Sherry', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'rose@icloud'}
      let results_array = [
         obj1, obj2, obj3
         ]
@@ -183,9 +309,9 @@ app.post('/searchRequest',(req,res)=>{
 
  app.post('/filterRequest',(req,res)=>{
      console.log(req.body)
-    let obj1 =  {'Name': 'Rose Dunhill', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
-    let obj2 =  {'Name': 'William Jonas', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
-    let obj3 = {'Name': 'Sherry', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
+    let obj1 =  {'Name': 'Rose Dunhill', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx', 'EmailAddress':'rose@icloud'}
+    let obj2 =  {'Name': 'William Jonas', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx','EmailAddress':'rose@icloud'}
+    let obj3 = {'Name': 'Sherry', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'rose@icloud'}
     let results_array = [
        obj1, obj2, obj3
        ]
@@ -606,6 +732,6 @@ app.post('/parentregistration',(req, res, next)=>{
 // Sing up
 // Find Tutor
 
-app.listen(port, '0.0.0.0', ()=>{ // '0.0.0.0' is for running via docker only
+server.listen(port, '0.0.0.0', ()=>{ // '0.0.0.0' is for running via docker only
      console.log("Server has started on port 3000");
 });

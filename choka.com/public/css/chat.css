@@ -1,0 +1,315 @@
+
+  .v36_38_chat {
+    width: 100%;
+    
+    height: 1000px;
+    
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    
+  }
+  .body_chat{
+      
+      background: rgba(238,238,238,1);
+  }
+  .v44_223_chat {
+    width: 100%;
+    height: 124px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 213px;
+    left: 0px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
+  }
+  .v44_225_chat {
+    width: 102px;
+    height: 106px;
+    background: url("../images/v44_225.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 221px;
+    left: 88px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    overflow: hidden;
+  }
+  .v44_226_chat {
+    width: 432px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 259px;
+    left: 251px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 40px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v44_227_chat {
+    width: 900px;
+    height: 81px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    
+    
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow-y: scroll;
+  }
+  .v44_229_chat {
+    width: 447px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 930px;
+    left: 173px;
+    font-family: Roboto;
+    font-weight: Italic;
+    font-size: 35px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v44_230_chat {
+    width: 80px;
+    height: 80px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 911px;
+    left: 1242px;
+    border-radius: 50%;
+  }
+  .v44_245_chat {
+    width: 80px;
+    height: 80px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 911px;
+    left: 1132px;
+    border-radius: 50%;
+  }
+  .v44_231_chat {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 931px;
+    left: 1261px;
+    overflow: hidden;
+  }
+  .v44_232_chat {
+    width: 29px;
+    height: 30px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 4px;
+    left: 6px;
+  }
+  .v44_233_chat {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 255px;
+    left: 1313px;
+    overflow: hidden;
+  }
+  .v44_234_chat {
+    width: 38px;
+    height: 9px;
+    background: rgba(0,0,0,1);
+    opacity: 1;
+    position: absolute;
+    top: 15px;
+    left: 1px;
+  }
+  .v44_238_chat {
+    width: 440px;
+    height: 300px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 359px;
+    left: 913px;
+    overflow: hidden;
+  }
+  .v44_239_chat {
+    width: 366px;
+    height: 275px;
+    background: rgba(88,181,232,1);
+    opacity: 1;
+    position: absolute;
+    top: 25px;
+    left: 37px;
+  }
+  .v44_242_chat {
+    width: 346px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 57px;
+    left: 62px;
+    font-family: Roboto;
+    font-weight: Regular;
+    font-size: 35px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v73_944_chat {
+    width: 121px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 200px;
+    left: 69px;
+    font-family: Roboto;
+    font-weight: Medium Italic;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v44_240_chat {
+    width: 400px;
+    height: 300px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 583px;
+    left: 88px;
+    overflow: hidden;
+  }
+  .v44_241_chat {
+    width: 333px;
+    height: 250px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 25px;
+    left: 34px;
+  }
+  .v44_237_chat {
+    width: 368px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 77px;
+    left: 52px;
+    font-family: Roboto;
+    font-weight: Italic;
+    font-size: 35px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v73_943_chat {
+    width: 121px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 175px;
+    left: 257px;
+    font-family: Roboto;
+    font-weight: Italic;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v44_243_chat {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 931px;
+    left: 1152px;
+    overflow: hidden;
+  }
+  .v44_244_chat {
+    width: 30px;
+    height: 31px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 3px;
+    left: 5px;
+  }
+  .v119_1867_chat {
+    width: 100%;
+    height: 213px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    overflow: hidden;
+  }
+  .v119_1868_chat {
+    width: 338px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 73px;
+    left: 541px;
+    font-family: Roboto;
+    font-weight: Bold;
+    opacity: 1;
+    text-align: left;
+  }
+  .v119_1869_chat {
+    width: 95px;
+    height: 95px;
+    background: url("../images/v119_1869.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 71px;
+    left: 427px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    overflow: hidden;
+  }
+  .v119_1870_chat {
+    width: 53px;
+    height: 28px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 45px;
+    left: 40px;
+  }
+  .v119_1871_chat {
+    width: 364px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 42px;
+    left: 118px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 30px;
+    opacity: 1;
+    text-align: left;
+  }
+  .name_chat {
+    color: #fff;
+  }
+  
