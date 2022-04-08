@@ -1,4 +1,3 @@
-//jshint esversion:6
 const express = require("express");
 const bodyParser = require("body-parser");
 const http = require("http");
@@ -46,22 +45,22 @@ io.on('connection',socket=>{
         docRef.get().then((doc)=>{
             if(doc.exists){
                 let message_history_object = doc.data().jason_obj
-                console.log("ff", message_history_object)
+                //console.log("ff", message_history_object)
                 let keys = Object.keys(message_history_object);
                 let len_keys = keys.length
-                console.log("len keys is ", len_keys)
+                //console.log("len keys is ", len_keys)
                 let new_id = len_keys+1
-                let str_key = "sender_" + new_id.toString()
+                let str_key = global_user.EmailAddress+"_"+ new_id.toString()
                 message_history_object[str_key] = message_to_be_sent
-                console.log("new obj is ", message_history_object)
+                //console.log("new obj is ", message_history_object)
 
                 db.collection('Chats').doc(rec_id).update({
                     jason_obj:message_history_object
                 }).then(()=>{
-                    console.log("firebase updated");
+                    //console.log("firebase updated");
                     let message_to_be_emitted = message_to_be_sent + "_" + rec_id
                     //the ur supposed to emit to the user with teh chat id...and see if they can receive and render it
-                    socket.emit("someMessage", message_to_be_emitted)
+                    io.emit("someMessage", message_to_be_emitted)
                 });
                 //now set this in firebase
 
@@ -187,6 +186,49 @@ app.use(express.static("public"));
     res.render("filterTutor")
 })
 
+app.post('/messageRequestTutor',(req,res)=>{
+    console.log("here")
+    let str_obt = req.body.requested
+    let str_array = str_obt.split(" ");
+    console.log(str_array)
+    let recipientEmailAddress = str_array.pop();
+    let exp= str_array.pop();
+    let name_str = str_array.join(' ')
+    //console.log(name_str)
+    //if it is a student, then u need to be redirected to the messaging page with tutor
+    chat_identifier =  recipientEmailAddress + " " + global_user.EmailAddress
+    console.log("chat identifier is ", chat_identifier)
+    const docRef = db.collection('Chats').doc(chat_identifier);
+    docRef.get().then((doc)=>{
+        if(doc.exists){
+            console.log("doc is", doc.data());
+            let message_history_object = doc.data().jason_obj
+            console.log(message_history_object)
+           
+            message_history_object = JSON.stringify(message_history_object);
+            //get the name of the tutor...
+            let obj_to_be_sent = {
+                "name" : name_str,
+                "messages" : message_history_object,
+                "chatidentifier": chat_identifier,
+                "my_email": global_user.EmailAddress,
+                "recipient_email": recipientEmailAddress
+            }
+            //let stringified = JSON.stringify(obj_to_be_sent)
+            console.log(obj_to_be_sent)
+            res.render("chatTutor", obj_to_be_sent)
+            //if chat exists then get the chat from json object and render the messages on frontend
+
+
+            
+        }
+    })
+
+
+
+})
+
+
 app.post('/messageRequest',(req,res)=>{
     
     //console.log(req.body)
@@ -207,17 +249,7 @@ app.post('/messageRequest',(req,res)=>{
             console.log("doc is", doc.data());
             let message_history_object = doc.data().jason_obj
             console.log(message_history_object)
-            /*
-            message_history_object = {  
-                "recipient_1": "hey",
-                "recipient_2":"bye",
-                "sender_3": "ff",
-                "recipient_4":"yes",
-                "recipient_5":"yay",
-                "recipient_6":"orange",
-                "recipient_7":"atsheen rooh"
-            }
-            */
+           
             message_history_object = JSON.stringify(message_history_object);
             //get the name of the tutor...
             let obj_to_be_sent = {
@@ -289,9 +321,9 @@ app.post('/searchRequest',(req,res)=>{
     ////search
     //3 results
     //then get all the relevnat details from firebase and get the search results in the form of an array
-    let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
-    let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
-    let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
+    let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
+    let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
+    let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
     let results_array = [
        obj1, obj2, obj3
        ]
@@ -325,9 +357,9 @@ app.post('/searchRequest',(req,res)=>{
  })
 
 app.post('/filterFromTutor',(req,res)=>{
-    let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
-    let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
-    let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
+    let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
+    let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
+    let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
     let results_array = [
        obj1, obj2, obj3
        ]

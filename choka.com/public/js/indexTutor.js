@@ -16,6 +16,7 @@ socket.on('chatidentifier',message=>{
 
 socket.on('someMessage',message=>{
     console.log("message_rec", message)
+    
     let msg_split = message.split('_')
     let rec_id = msg_split.pop()
     let mesg_actual = msg_split[0]
@@ -23,7 +24,7 @@ socket.on('someMessage',message=>{
         //check if the receiving email address is mine
         //to get the receiving email address..split on space and get the zeroth index waala element
         let rec_id_arr = rec_id.split(" ")
-        let intended_recipient = rec_id_arr[1]
+        let intended_recipient = rec_id_arr[0]
         console.log("my email is ", my_email)
         console.log("intended recipient is", intended_recipient)
         
@@ -33,6 +34,7 @@ socket.on('someMessage',message=>{
         
         
     }
+    
 
     
     
@@ -42,6 +44,7 @@ socket.on('someMessage',message=>{
 
 
 function sender(){
+    
     let val = message_typed.value;
     console.log("message typed is", val);
     document.getElementById("add").innerHTML   = document.getElementById("add").innerHTML + '<div class="container"><p>'+val+'</p></div>'
