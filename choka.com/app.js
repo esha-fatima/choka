@@ -11,7 +11,7 @@ const socketio = require('socket.io');
 
 
  
-
+let n_assessments = 0
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
@@ -783,6 +783,43 @@ app.post('/createAssessmentRequest',(req, res, next)=>{
     console.log("in create assessments request")
     console.log(req.body)
     //get the intended recipients of the assessments
+    //generate a random assessmentid
+    let recipients_list = []
+    let assessmentid = n_assessments + 1;
+    n_assessments = n_assessments + 1;
+    let assessment_obj = {  "id" : assessmentid.toString(),
+                            "Subject":"",
+                            "Syllabus":"",
+                            "TotalPoints": "",
+                            "PublishDate":"",
+                            "PublishTime":"",
+                            "Minutes":"",
+                            "QuestionPoints":"",
+                            "QuestionMinutes":"",
+                            "QuestionText":"",
+                            "IntendedRecipients": JSON.stringify(recipients_list)
+                        }
+
+    //now store this in firebase
+    //create a firebase record
+    const docRef = db.collection('Quiz').doc(assessmentid.toString());
+    docRef.get().then((doc)=>{
+        if(doc.exists){
+            console.log("Assessment exists");
+            //res.redirect("/RegisterUser");
+        }
+        else{
+            db.collection('Quiz').doc(assessmentid.toString()).set({
+                jason_obj:assessment_obj
+            }).then(()=>{
+                console.log("assessment added");
+                //res.redirect("/home");
+            });
+
+        }
+    });
+
+
 
 })
 
