@@ -525,6 +525,8 @@
     font-size: 45px;
     opacity: 1;
     text-align: left;
+    background-color: transparent;
+    border: none;
   }
   .dashboard_v99_1443 {
     border: 0;

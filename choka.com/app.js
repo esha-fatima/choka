@@ -760,6 +760,29 @@ app.post('/parentregistration',(req, res, next)=>{
     });
 });
 
+
+
+//ASSESSMENTS MODUule
+app.post('/studentsAssessments',(req, res, next)=>{
+    console.log("in students assessments")
+    res.render("studentAssessments")
+
+})
+app.post('/tutorAssessments',(req, res, next)=>{
+    console.log("in tutors assessments")
+    res.render("tutorAssessments")
+
+})
+app.post('/create',(req, res, next)=>{
+    console.log("in create assessments")
+    res.render("createAssessments")
+
+})
+
+
+
+
+
 // Save encryoted password
 // Sing up
 // Find Tutor
