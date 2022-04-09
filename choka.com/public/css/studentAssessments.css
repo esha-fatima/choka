@@ -70,6 +70,8 @@
     width: 354px;
     color: rgba(255,255,255,1);
     position: absolute;
+    background-color: transparent;
+    border: none;
     top: 442px;
     left: 157px;
     font-family: Roboto;

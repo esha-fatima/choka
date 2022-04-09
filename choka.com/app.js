@@ -783,6 +783,52 @@ app.post('/create',(req, res, next)=>{
 
 })
 
+app.post('/todoAssessments',(req, res, next)=>{
+    console.log("in to do assessments")
+    //now at backend we need to see which are the assessments for this particular student who sent us the request
+    //we are going to iterate over all possible emails
+    //now at backend iterate through to do assessments to do and get docs via ur emaillll 
+    //then 
+    let assessment_headers = []
+    const docRef = db.collection('TodoAssessments');
+    console.log("email is ", global_user.EmailAddress)
+    docRef.where('id', '==', global_user.EmailAddress).get().then((value)=>{
+        
+        console.log("retreived isss")
+        value.forEach(doc=>{
+            console.log(doc.id, '=>', doc.data());
+            //let stringified_version = JSON.stringify(doc.data().assessment_details)
+            //console.log("stringified version is ", stringified_version)
+            assessment_headers.push(doc.data().assessment_details)
+
+
+        })
+        let str_array = JSON.stringify(assessment_headers);
+        let obj_to_be_sent = {"headers":str_array}
+        res.render("todoAssessments", obj_to_be_sent)
+
+
+
+    });
+    
+    //return;
+  
+
+})
+
+app.post('/startAssessment',(req, res, next)=>{
+    console.log("in start assessments")
+    let assessment_header = JSON.parse(req.body.assessment_details);
+    console.log("assessment to start is ", assessment_header)
+    
+
+
+})
+
+
+
+
+
 app.post('/createAssessmentRequest',(req, res, next)=>{
     console.log("in create assessments request")
     console.log(req.body)
@@ -820,14 +866,40 @@ app.post('/createAssessmentRequest',(req, res, next)=>{
     docRef.get(assessmentid.toString()).then((doc)=>{
         if(doc.exists){
             console.log("Assessment exists");
-            //res.redirect("/RegisterUser");
+
+            res.render("tutorAssessments");
+
         }
         else{
             db.collection('Quiz').doc(assessmentid.toString()).set({
                 jason_obj:assessment_obj
             }).then(()=>{
                 console.log("assessment added");
-                //res.redirect("/home");
+                //u have the list of recipients and the assessment object
+                //for every recipient add an entry into the To do waala table 
+                let promise_list = []
+                for(let j = 0; j<recipients_list.length; j = j+1){
+                    let key = recipients_list[j] + assessmentid.toString();
+                    //let obj = {"assessment_details" : assessment_obj, "id": recipients_list[j]}
+                    promise_list.push(db.collection('TodoAssessments').doc(key).set({
+
+                        assessment_details:assessment_obj,
+                        id:recipients_list[j]
+                    }))
+                   
+
+                }
+                console.log("promise list",promise_list);
+                //now when ur doneee only then redirect
+                Promise.all(promise_list).then((values) => {
+                    res.render("tutorAssessments");
+
+                });
+                
+
+
+
+                
             });
 
         }
