@@ -779,6 +779,15 @@ app.post('/create',(req, res, next)=>{
 
 })
 
+app.post('/createAssessmentRequest',(req, res, next)=>{
+    console.log("in create assessments request")
+    console.log(req.body)
+    //get the intended recipients of the assessments
+
+})
+
+
+
 
 
 

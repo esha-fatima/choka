@@ -1,18 +1,20 @@
 
- 
+ #xxx{
+     background: rgba(238,238,238,1);
+ }
   .v66_529_createAssessments {
     width: 100%;
-    height: 1275px;
+    height:100%;
     background: rgba(238,238,238,1);
     opacity: 1;
-    position: absolute;
+    
     top: 0px;
     left: 0px;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
-    overflow: hidden;
+    
   }
   .v79_1045_createAssessments {
     width: 579px;
@@ -27,11 +29,11 @@
     text-align: left;
   }
   .v79_1046_createAssessments {
-    width: 1250px;
+    width: 1350px;
     height: 150px;
     background: rgba(255,255,255,1);
     opacity: 1;
-    position: absolute;
+    position: relative;
     top: 385px;
     left: 87px;
     border-top-left-radius: 10px;
@@ -41,20 +43,30 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     overflow: hidden;
   }
+
+  .add_question{
+      top:500px;
+      left:87px;
+      position: relative;
+      
+
+  }
+
   .v79_1097_createAssessments {
-    width: 100%;
-    height: 402px;
+    width: 1350px;
+    height: 500px;
+    padding-top: 50px;
+    
     background: rgba(255,255,255,1);
     opacity: 1;
-    position: absolute;
-    top: 578px;
-    left: 87px;
+    position: relative;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    overflow: hidden;
+    
+    
   }
   .v79_1114_createAssessments {
     width: 109px;
@@ -102,6 +114,19 @@
     border: 1px solid rgba(3,133,182,0.5);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
+
+  .v79_1048_createAssessments_c {
+    width: 176px;
+    height: 28px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 90px;
+    left: 680px;
+    border: 1px solid rgba(3,133,182,0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
 
   .v79_1048_createAssessments_a{
     width: 158px;
@@ -172,6 +197,33 @@
     border: 1px solid rgba(3,133,182,0.5);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
+
+  .v79_1050_createAssessments_aa {
+    width: 176px;
+    height: 28px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 90px;
+    left: 1100px;
+    border: 1px solid rgba(3,133,182,0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .v79_1050_createAssessments_bb {
+    width: 176px;
+    height: 28px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 30px;
+    left: 1100px;
+    border: 1px solid rgba(3,133,182,0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+
+
   .v79_1051_createAssessments {
     width: 176px;
     height: 28px;
@@ -285,6 +337,20 @@
     opacity: 1;
     text-align: left;
   }
+
+  .v79_1056_createAssessments_d {
+    width: 158px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 90px;
+    left:950px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
+
   .v79_1057_createAssessments {
     width: 158px;
     color: rgba(3,133,182,1);
@@ -301,14 +367,118 @@
     width: 160px;
     color: rgba(3,133,182,1);
     position: absolute;
-    top: 417px;
-    left: 1012px;
+    top: 30px;
+    left: 950px;
     font-family: Roboto;
     font-weight: Bold;
     font-size: 25px;
     opacity: 1;
     text-align: left;
   }
+  .item_1 {
+    display: inline;
+    color: rgba(3,133,182,1);
+    
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 25px;
+    opacity: 1;
+    height: 30px;
+    padding-right: 20px;
+    padding-left: 20px;
+    
+    
+  }
+  .item_0 {
+    display: inline;
+    color: black;
+    
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 25px;
+    opacity: 1;
+    height: 30px;
+    position: inherit;
+    
+    
+  }
+
+  .item_2 {
+    
+    border: 1px solid rgba(3,133,182,0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: inline;
+    color: rgba(3,133,182,1);
+    padding-top: 00px;
+    font-family: Roboto;
+    
+    font-size: 20px;
+    opacity: 1;
+    height: 30px;
+    width: 100px;
+    
+  }
+
+  .item_3 {
+    
+    
+    display: inline;
+    color: rgba(3,133,182,1);
+    
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 25px;
+    opacity: 1;
+    height: 30px;
+    padding-right: 20px;
+    padding-left: 680px;
+    
+    
+  }
+
+  .item_4 {
+    padding-top: 0px;
+    border: 1px solid rgba(3,133,182,0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: inline;
+    color: rgba(3,133,182,1);
+    font-family: Roboto;
+    width: 100px;
+    font-size: 20px;
+    opacity: 1;
+    height: 30px;
+    
+    
+    
+  }
+  .item_5 {
+    
+    border: 1px solid rgba(3,133,182,0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: inline;
+    color: rgba(3,133,182,1);
+    font-family: Roboto;
+    width :1200px;
+    font-size: 20px;
+    opacity: 1;
+    height: 200px;
+    
+    
+    
+  }
+  .v79_1115_createAssessments {
+    width: 102px;
+    color: rgba(3,133,182,1);
+    position: relative;
+    display: inline;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+    padding-left: 0px;
+  }
+
   .v79_1059_createAssessments {
     width: 20px;
     height: 20px;
@@ -419,7 +589,7 @@
     width: 120px;
     color: rgba(0,0,0,1);
     position: absolute;
-    top: 84px;
+    top: 90px;
     left: 1100px;
     font-family: Roboto;
     font-weight: Medium;
@@ -865,18 +1035,7 @@
     opacity: 1;
     text-align: left;
   }
-  .v79_1115_createAssessments {
-    width: 102px;
-    color: rgba(255,255,255,1);
-    position: absolute;
-    top: 927px;
-    left: 171px;
-    font-family: Roboto;
-    font-weight: Medium;
-    font-size: 15px;
-    opacity: 1;
-    text-align: left;
-  }
+  
   .v79_1110_createAssessments {
     width: 176px;
     color: rgba(0,0,0,1);
@@ -920,9 +1079,8 @@
     height: 48px;
     background: rgba(3,133,182,1);
     opacity: 1;
-    position: absolute;
-    top: 1035px;
-    left: 87px;
+    position: relative;
+   
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-left-radius: 25px;
@@ -930,17 +1088,43 @@
     overflow: hidden;
   }
   .v79_1119_createAssessments {
-    width: 137px;
+    width: 143px;
+    background: rgba(3,133,182,1);
+    position: relative;
     color: rgba(255,255,255,1);
-    position: absolute;
-    top: 1048px;
-    left: 103px;
+    display: inline;
     font-family: Roboto;
     font-weight: Medium;
+    box-shadow: none;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
     font-size: 20px;
     opacity: 1;
     text-align: left;
+    height: 55px;
   }
+  .v79_1119_createAssessments_b {
+    width: 143px;
+    background: rgba(3,133,182,1);
+    position:relative;
+    color: rgba(255,255,255,1);
+    display: inline;
+    font-family: Roboto;
+    font-weight: Medium;
+    box-shadow: none;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    font-size: 20px;
+    opacity: 1;
+    left: 2px;
+    text-align: center;
+    height: 55px;
+  }
+
   .v88_1208_createAssessments {
     width: 24px;
     height: 24px;
