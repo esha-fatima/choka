@@ -35,6 +35,40 @@
                 <span class="v79_1056_createAssessments_d">Minutes:</span>
                 <input name = "minutes" class="v79_1050_createAssessments_aa"/>    
             </div>
+
+
+            <div class = "publish">
+                <h2 class = "publish_for">Choose the group targetted for assessment:</h2>
+                <div class = "hey" id = "target" >
+                    <!--
+                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                <label for="vehicle1"> I have a bike</label><br>
+                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                <label for="vehicle2"> I have a car</label><br>
+                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                <label for="vehicle3"> I have a boat</label><br>
+
+                <input type="checkbox" id="vehicle4" name="vehicle4" value="aeroplane">
+                <label for="vehicle4"> I have an aeroplane</label><br>
+
+                <input type="checkbox" id="vehicle5" name="vehicle5" value="cycle">
+                <label for="vehicle5"> cycle</label><br>
+
+                <input type="checkbox" id="vehicle6" name="vehicle6" value="laptop">
+                <label for="vehicle6"> laptop</label><br>
+
+                <input type="checkbox" id="vehicle7" name="vehicle7" value="ipad">
+                <label for="vehicle7"> ipad</label><br>
+                        -->
+
+
+
+                </div>
+
+
+
+
+            </div>
         
             <div id = "add" class = "add_question">
             <div  id = "question_container">
@@ -90,7 +124,11 @@
 </br>
         <button formaction="/createAssessmentRequest" method = "POST" id = "publish" class="v79_1119_createAssessments_b">Publish</button>
     </form>
-        <button id = "plus1"  class="v79_1119_createAssessments">Add Question</button>  
+        <button id = "plus1"  class="v79_1119_createAssessments">Add Question</button> 
+        
+        
+
+
         
         
     
@@ -104,8 +142,19 @@
            
         
         <script>
+            let bachey = '<%-bachey%>';
+            let bachey_arr = JSON.parse(bachey)
             let question_count = 1
             let add_button = document.getElementById("plus1")
+            let target = document.getElementById("target")
+            console.log(bachey_arr)
+            target.innerHTML = ""
+            for(let i = 0; i <bachey_arr.length; i = i +1){
+                target.innerHTML = target.innerHTML + '<input type="checkbox" id = '+bachey_arr[i]+'  name=' + bachey_arr[i]+' value="yes"><label for='+bachey_arr[i]+'>'+ bachey_arr[i]+'</label><br>'
+                
+            }
+
+
             add_button.addEventListener("click", plus_one)
             function plus_one(){
                 let add = document.getElementById("add");

@@ -52,6 +52,8 @@
 
   }
 
+ 
+
   .v79_1097_createAssessments {
     width: 1350px;
     height: 500px;
@@ -142,6 +144,51 @@
     
 
   }
+  .hey{
+      overflow-y: scroll;
+      height: 140px;
+
+
+  }
+
+  .publish_for{
+    width: 600px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 30px;
+    left: 25px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+   
+    
+
+  }
+
+  .publish{
+    
+   
+        width: 1350px;
+        height: 150px;
+        background: rgba(255,255,255,1);
+        opacity: 1;
+        position: relative;
+        top: 450px;
+        left: 87px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+      }
+    
+      
+    
+
+  
 
   .v79_1049_createAssessments {
     width: 176px;

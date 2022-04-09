@@ -775,18 +775,32 @@ app.post('/tutorAssessments',(req, res, next)=>{
 })
 app.post('/create',(req, res, next)=>{
     console.log("in create assessments")
-    res.render("createAssessments")
+    
+    let recipient_ids = ['eshafatima2001@gmail.com', '123@gmail.com']
+    let rec_str = JSON.stringify(recipient_ids)
+    res.render("createAssessments",{"bachey":rec_str})
+
 
 })
 
 app.post('/createAssessmentRequest',(req, res, next)=>{
     console.log("in create assessments request")
     console.log(req.body)
+    let n_req_params = Object.keys(req.body).length
+    let recipients_list = []
+    console.log("nparams is", n_req_params)
+
+    for(let x = 6; x<n_req_params-3; x=x+1){
+        recipients_list.push(Object.keys(req.body)[x])
+        console.log("added")
+    }
     //get the intended recipients of the assessments
     //generate a random assessmentid
-    let recipients_list = []
+    console.log(recipients_list)
+    /////CHANGE THIS AND USE FIREBASE TOO GENERATE THE ASSESSMENT ID COZ SERVER MAY START AGAINNNN
     let assessmentid = n_assessments + 1;
     n_assessments = n_assessments + 1;
+    console.log("generated id is ", assessmentid)
     let assessment_obj = {  "id" : assessmentid.toString(),
                             "Subject":"",
                             "Syllabus":"",
@@ -797,13 +811,13 @@ app.post('/createAssessmentRequest',(req, res, next)=>{
                             "QuestionPoints":"",
                             "QuestionMinutes":"",
                             "QuestionText":"",
-                            "IntendedRecipients": JSON.stringify(recipients_list)
+                            "IntendedRecipients": recipients_list
                         }
 
     //now store this in firebase
     //create a firebase record
     const docRef = db.collection('Quiz').doc(assessmentid.toString());
-    docRef.get().then((doc)=>{
+    docRef.get(assessmentid.toString()).then((doc)=>{
         if(doc.exists){
             console.log("Assessment exists");
             //res.redirect("/RegisterUser");
