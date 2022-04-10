@@ -854,7 +854,7 @@ app.post('/pastAssessments',(req,res,next)=>{
                     "grade_status": doc.data().grade_status,
                     "score": doc.data().score,
                     "student_id": doc.data().student_id,
-                    "submission_time": doc.data.submission_time
+                    "submission_time": doc.data().submission_time
                 }
                 //let stringified_obj = JSON.stringify(doc_obj);
                 assessment_headers.push(doc_obj);
