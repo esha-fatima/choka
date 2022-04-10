@@ -820,7 +820,7 @@ app.post('/startAssessment',(req, res, next)=>{
     console.log("in start assessments")
     let assessment_header = JSON.parse(req.body.assessment_details);
     console.log("assessment to start is ", assessment_header)
-    
+    res.render("startAssessment")
 
 
 })
@@ -848,15 +848,15 @@ app.post('/createAssessmentRequest',(req, res, next)=>{
     n_assessments = n_assessments + 1;
     console.log("generated id is ", assessmentid)
     let assessment_obj = {  "id" : assessmentid.toString(),
-                            "Subject":"",
-                            "Syllabus":"",
-                            "TotalPoints": "",
-                            "PublishDate":"",
-                            "PublishTime":"",
-                            "Minutes":"",
-                            "QuestionPoints":"",
-                            "QuestionMinutes":"",
-                            "QuestionText":"",
+                            "Subject":req.body.Subject,
+                            "Syllabus":req.body.Syllabus,
+                            "TotalPoints": req.body.total_points,
+                            "PublishDate":req.body.publishDate,
+                            "PublishTime":req.body.publishTime,
+                            "Minutes":req.body.minutes,
+                            "QuestionPoints":req.body.question_points,
+                            "QuestionMinutes":req.body.question_minutes,
+                            "QuestionText":req.body.question_text,
                             "IntendedRecipients": recipients_list
                         }
 
