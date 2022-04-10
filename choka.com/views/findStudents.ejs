@@ -55,9 +55,6 @@
         </div>
         <script>
 
-            
-
-
             let name_one = '<%-Name_one%>'
             let dept_one = '<%-Department_one%>'
             let bid_one = '<%-Bid_one%>'
@@ -82,7 +79,14 @@
                 let text_one = '<span class="findTutors_v44_252">' + name_one + '</span><span class="findTutors_v44_253">'+dept_one+'</span>' +  '</span><span class="findTutors_v44_253_bid_one">'+bid_one+' PKR'+'</span>'
                 top_one.innerHTML = text_one//'<span class="findTutors_v44_252">arr</span><span class="findTutors_v44_253">Mathematics & Science</span>'
                 
-            } 
+            }
+            else
+            {
+                let top_one = document.getElementById("top_one")
+                let text_one = '<span class="findTutors_v44_252"> No Student to Display</span>'
+                top_one.innerHTML = text_one//'<span class="findTutors_v44_252">arr</span><span class="findTutors_v44_253">Mathematics & Science</span>'
+                
+            }
             
         </script>
     </body>

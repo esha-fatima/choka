@@ -6,7 +6,9 @@ const helmet = require("helmet");
 const ejs = require("ejs");
 const _= require("lodash");
 const firebase = require("firebase");
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
+const { exec } = require("child_process");
+const { execPath } = require("process");
 // const bcrypt = require('bcrypt')
 // const CryptoJS = require("crypto-js")
 // import { FacebookAuthProvider } from "firebase/auth";
@@ -41,49 +43,39 @@ firebase.initializeApp(firebaseConfig);
 // firebase.analytics();
 const db = firebase.firestore();
 db.settings({timestampsInSnapshots:true});
+// const { getDatabase } = require('firebase-admin/database');
 
+// const db1 = firebase.database();
+// const ref = db1.ref('server/saving-data/fireblog');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
 
 
- app.post('/filter',(req,res)=>{
-
+app.post('/filter',(req,res)=>{
 
      res.render("filter")
- })
+})
 
- app.post('/filterTutor',(req,res)=>{
+app.get('/searchRequest',(req,res)=>{
 
-
-    res.render("filterTutor")
+    res.render('/searchRequest')
 })
 
 
-
-
-
-
-
 app.post('/searchRequest',(req,res)=>{
-     //when u get request to search for an object
-     console.log("here")
-     //u will have the search parameters stored in the body of the request
-     ////search
-     //3 results
-     //then get all the relevnat details from firebase and get the search results in the form of an array
-     let obj1 =  {'Name': 'Rose Dunhill', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
-     let obj2 =  {'Name': 'William Jonas', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
-     let obj3 = {'Name': 'Sherry', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
-     let results_array = [
-        obj1, obj2, obj3
-        ]
-    let ff = JSON.stringify(results_array)
-    console.log(ff)
-    let xx = {"bl":ff};
-    //console.log(res)
-    res.render("SearchResults",xx)
-
+    db.collection("subjects").get().then((snapshot) => {
+        snapshot.docs.map(doc => {
+            let data = doc.data()
+            if(doc.id == req.body.Subject)
+            {
+                console.log(data.tutors)
+                let arr_str = JSON.stringify(data.tutors)
+                let xx = {"bl":arr_str};
+                res.render("SearchResults",xx)
+            }              
+        })
+    });
  })
 
 
@@ -104,7 +96,7 @@ app.post('/searchRequest',(req,res)=>{
    console.log(ff)
    let xx = {"bl":ff};
    //console.log(res)
-   res.render("SearchResultsTutor",xx)
+   res.render("searchResultsTutor",xx)
 
 })
 
@@ -112,36 +104,128 @@ app.post('/searchRequest',(req,res)=>{
 
 
 
- app.post('/filterRequest',(req,res)=>{
-    console.log("/filterRequest", global_user)
-
+app.post('/filterRequestT',(req,res)=>{
+    console.log("/filterRequestT", global_user)
+    global_user["Rate"]=req.body.Rate,
+    global_user["Days"]=req.body.Days,
+    global_user["Location"]=req.body.Location,
+    global_user["Classes"]=req.body.Class,
+    global_user["Subject"]=req.body.Subject,
+    global_user["Mode"]=req.body.Mode,
+    global_user["Hours"]=req.body.Hours,
+    global_user["Experience"]=req.body.Experience
+    
     db.collection("Teachers").doc(global_user.EmailAddress).update({
+        Rate:req.body.Rate,
+        Days:req.body.Days,
+        Location:req.body.Location,
+        Classes:req.body.Class,
+        Subject:req.body.Subject,
+        Mode:req.body.Mode,
+        Hours:req.body.Hours,
+        Experience:req.body.Experience
+    }).then(()=>{
+            db.collection('subjects').doc(req.body.Subject).update({
+                tutors: firebase.firestore.FieldValue.arrayUnion(global_user)
+            }).then(()=>{
+                        res.render("tutorDashboard", global_user)
+            }).catch(()=>{
+                db.collection('subjects').doc(req.body.Subject).set({
+                    tutors: [global_user]
+                }).then(()=>{
+                            res.render("tutorDashboard", global_user)
+                });
+            })
+ 
+    });
+
+    // db.collection("subjects").doc(req.body.Subject).update({
+        
+    //     email:(global_user.EmailAddress)
+    // }).then(()=>{
+    //     res.render("tutorDashboard", global_user)
+    // });
+
+})
+
+app.post('/filterRequest',(req,res)=>{
+    console.log("/filterRequest", global_user)
+    global_user["Pay"]=req.body.Pay,
+    global_user["Days"]=req.body.Days,
+    global_user["Location"]=req.body.Location,
+    global_user["Classes"]=req.body.Class,
+    global_user["Subject"]=req.body.Subject,
+    global_user["Mode"]=req.body.Mode,
+    global_user["Hours"]=req.body.Hours,
+
+    db.collection("Students").doc(global_user.EmailAddress).update({
         Pay:req.body.Pay,
         Days:req.body.Days,
         Location:req.body.Location,
         Classes:req.body.Class,
         Subject:req.body.Subject,
         Mode:req.body.Mode,
-        Hours:req.body.Hours
+        Hours:req.body.Hours,
+        // Experience:req.body.Experience
     }).then(()=>{
-        res.render("tutorDashboard", global_user)
+        res.render("dashboard", global_user)
     });
+})
 
-    
-    // let obj1 =  {'Name': 'Rose Dunhill', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
-    // let obj2 =  {'Name': 'William Jonas', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
-    // let obj3 = {'Name': 'Sherry', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
-    // let results_array = [
-    //    obj1, obj2, obj3
-    //    ]
-    // let ff = JSON.stringify(results_array)
-    // console.log(ff)
-    // let xx = {"bl":ff};
-    // //console.log(res)
-    // res.render("SearchResults",xx)
-     
+app.post('/filterTutor',(req,res)=>{
+    console.log("/filterTutor", global_user)
 
- })
+    db.collection("subjects").get().then((snapshot) => {
+        snapshot.docs.map(doc => {
+            let data = doc.data()
+            if(doc.id == req.body.Subject)
+            {
+                let obj = data.tutors
+                let tutor_list = []
+                for(let i=0;i<obj.length; i++)
+                {
+                    tutor = data.tutors[i]
+                    if(tutor.Mode == req.body.Mode && tutor.Location == req.body.Location && tutor.Rating >= req.body.Rating && tutor.Rate <= req.body.Rate && tutor.Experience >= req.body.Experience && tutor.Class >= req.body.Class && tutor.Days >= req.body.Days && tutor.Hours >= req.body.Hours)
+                    {
+                        tutor_list.push(data.tutors[i])
+                    }
+                }
+                let arr_str = JSON.stringify(tutor_list)
+                let xx = {"bl":arr_str};
+                res.render("SearchResults",xx)
+            }              
+        })
+    });
+})
+
+app.post('/filterStudent',(req,res)=>{
+    console.log("/filterStudent", global_user)
+
+    const docRefTutor = db.collection('Teachers').doc(global_user.EmailAddress);
+    docRefTutor.get().then((doc)=>{
+        if(doc.exists)
+        {
+            let obj = doc.data().student_request
+            let tutor_list = []
+                for(let i=0;i<obj.length; i++)
+                {
+                    tutor = data.tutors[i]
+                    if(tutor.Mode == req.body.Mode && tutor.Location == req.body.Location && tutor.Rating >= req.body.Rating && tutor.Rate <= req.body.Rate && tutor.Experience >= req.body.Experience && tutor.Class >= req.body.Class && tutor.Days >= req.body.Days && tutor.Hours >= req.body.Hours)
+                    {
+                        tutor_list.push(data.tutors[i])
+                    }
+                }
+                let arr_str = JSON.stringify(tutor_list)
+                let xx = {"bl":arr_str};
+                res.render("searchResultsTutor",xx)
+        }
+        else{
+            console.log("NOT FOUND")
+            res.render("Login")
+        }
+    })
+})
+
 
 app.post('/filterFromTutor',(req,res)=>{
     let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
@@ -154,40 +238,206 @@ app.post('/filterFromTutor',(req,res)=>{
    console.log(ff)
    let xx = {"bl":ff};
    //console.log(res)
-   res.render("SearchResultsTutor",xx)
+   res.render("searchResultsTutor",xx)
      
 
 })
+
+
+app.post("/tuitionRequest",(req,res)=>{
+    // console.log(12, req.body.tutor)
+    console.log("/tuitionRequest", global_user)
+
+    tutor = req.body.tutor
+
+    db.collection("Teachers").doc(tutor).update({
+        student_request: firebase.firestore.FieldValue.arrayUnion(global_user)
+
+    }).then(()=>{
+        db.collection('Students').doc(global_user.EmailAddress).update({
+            tutor_request: firebase.firestore.FieldValue.arrayUnion(tutor)
+        }).then(()=>{
+                    res.render("dashboard", global_user)
+        }).catch(()=>{
+            db.collection('Students').doc(global_user.EmailAddress).set({
+                tutors: [tutor]
+            }).then(()=>{
+                        res.render("dashboard", global_user)
+            });
+        })
+    });
+})
+
+// app.get("/tuitionRequest",(req,res)=>{
+//     console.log(12, req.body.tutor)
+//     res.render("dashboard",global_user)
+// })
+
+app.post("/tuitionAccept",(req,res)=>{
+    // console.log(12, req.body.tutor)
+    console.log("/tuitionAccept", global_user)
+
+    tutor = req.body.tutor
+
+    db.collection("Teachers").doc(tutor).update({
+        student_request: firebase.firestore.FieldValue.arrayUnion(global_user)
+
+    }).then(()=>{
+        db.collection('Students').doc(global_user.EmailAddress).update({
+            tutor_request: firebase.firestore.FieldValue.arrayUnion(tutor)
+        }).then(()=>{
+                    res.render("tutorDashboard", global_user)
+        }).catch(()=>{
+            db.collection('Students').doc(global_user.EmailAddress).set({
+                tutors: [tutor]
+            }).then(()=>{
+                        res.render("tutorDashboard", global_user)
+            });
+        })
+    });
+})
+
+// app.get("/tuitionAccept",(req,res)=>{
+//     console.log(12, req.body.tutor)
+//     res.render("tutorDashboard",global_user)
+// })
+
 
 
 ////////////////////rendering login
 app.post('/findTutors', (req,res)=>{
     //now u are supposed to get the top 3 tutors from database.
     //store the top 2 in top_2 variable that I am hardcoding for now
-
-    db.collection("Subjects").get().then((snapshot) => {
-        console.log(snapshot)
-        console.log(snapshot.docs)
-        console.log(snapshot.docs.Math)
-        console.log(snapshot.docs.Math.data())
-        let mathTutors = snapshot.docs.Math.data()
-        let englishTutors = snapshot.docs.English.data()
-
-        // let students = snapshot.data().student_request;
-    //     if (ma.length >= 2)
-    //     {
-            let top_2_students = 
+    
+    db.collection("subjects").get().then((snapshot) => {
+        let tutor_list = []
+        let count = 0
+        snapshot.docs.map(doc => {
+            let data = doc.data()
+            
+            if(doc.id == "Mathematics D")
             {
-                "Name_one": 'students[0].name',
-                "Department_one": 'students[0].subject',
-                "Bid_one" : 'students[0].bid',
-                "Name_two" : 'students[1].name',
-                "Department_two" : 'students[1].subject',
-                "Bid_two": 'students[0].bid'
+                count +=1
+                tutor_list.push(data.tutors[0])
+            }    
+            else if(doc.id == "English Language")
+            {
+                count +=1
+                tutor_list.push(data.tutors[0])
+            }      
+            
+            if (count==2)
+            {
+                let arr_str = JSON.stringify(tutor_list)
+                let xx = {"bl":arr_str};
+                res.render("SearchResults",xx)
+            }
+        })
+    });
+    
+    // db.collection("subjects").get().then((snapshot) => {
+    //     let Name_one = ""
+    //     let Department_one = ""
+    //     let Email_one = ""
+    //     let Img_one = ""
+    //     let Name_two = ""
+    //     let Department_two = ""
+    //     let Email_two = ""
+    //     let Img_two = ""
+    //     let count  = 0
+    //     snapshot.docs.map(doc => {
+    //         let data = doc.data()
+    //         // console.log(doc.id, Object.keys(data))
+    //         // console.log(doc.id, typeof doc.id)
+    //         if(doc.id == "Mathematics D")
+    //         {
+    //             // console.log(doc.id, typeof doc.id)
+    //             count +=1
+    //             // console.log(123, data.tutors[0].Name)
+    //             Name_one = data.tutors[0].Name
+    //             Department_one = data.tutors[0].Subject
+    //             Email_one = data.tutors[0].EmailAddress
+            //     Img_one = data.tutors[0].Image
+            // }
+            // if(doc.id == "English Language")
+            // {
+            //     console.log(doc.id, typeof doc.id)
+            //     count +=1
+            //     // console.log(11, data[ 'tutors' ])
+            //     Name_two = data.tutors[0].Name
+            //     Department_two = data.tutors[0].Subject
+            //     Email_two = data.tutors[0].EmailAddress
+            //     Img_two = data.tutors[0].Image
+            // }
+
+
+
+            // if (count==2)
+            // {
+            //     console.log(22, Name_one)
+            //     let top_2_students = 
+            //     {
+            //         "Name_one": Name_one,
+            //         "Department_one": Department_one,
+            //         "Email_one" : Email_one,
+    //                 "Img_one": Img_one,
+    //                 "Name_two" : Name_two,
+    //                 "Department_two" :  Department_two,
+    //                 "Email_two": Email_two,
+    //                 "Img_two": Img_two,
+
+    //             }
+    //             res.render("findTutors", top_2_students)
+    //         }            
+    //     })
+    
+    // });
+// 
+})
+
+
+app.post('/findStudents', (req,res)=>{
+    //do a search from the databse and get the top 2 students liveing in the same city as thus particular tutor
+    //store the name, department and the bidding price of the top 2 students living in the sam area as a json object like below
+    console.log(45, global_user.EmailAddress)
+
+    const docRefTutor = db.collection('Teachers').doc(global_user.EmailAddress);
+    docRefTutor.get().then((doc)=>{
+        if(doc.exists)
+        {
+            let user_deets = doc.data().student_request
+            console.log(user_deets)
+
+            let arr_str = JSON.stringify(user_deets)
+            let xx = {"bl":arr_str};
+            res.render("searchResultsTutor",xx)
+        }
+        else{
+            console.log("NOT FOUND")
+            res.render("Login")
+        }
+    })
+
+
+
+
+    // db.collection("Teacher").doc(global_user.EmailAddress).get().then((snapshot) => {
+    //     console.log(45, Object.keys(snapshot.data()))
+    //     let students = snapshot.data().student_request;
+    //     if (students.length >= 2)
+    //     {
+    //         let top_2_students = 
+    //         {
+    //             "Name_one": students[0].name,
+    //             "Department_one": students[0].subject,
+    //             "Bid_one" : students[0].bid,
+    //             "Name_two" : students[1].name,
+    //             "Department_two" : students[1].subject,
+    //             "Bid_two": students[1].bid
                 
         
-            }
-            res.render("findTutors", top_2_students)
+    //         }
+    //         res.render("findStudents", top_2_students)
 
     //     }
     //     else if (students.length == 1)
@@ -196,91 +446,32 @@ app.post('/findTutors', (req,res)=>{
     //         {
     //             "Name_one": students[0].name,
     //             "Department_one": students[0].subject,
-    //             "Bid_one" : students[0].bid,
-    //             "Name_two" : undefined,
-    //             "Department_two" : undefined,
-    //             "Bid_two": undefined
+        //         "Bid_one" : students[0].bid,
+        //         "Name_two" : undefined,
+        //         "Department_two" : undefined,
+        //         "Bid_two": undefined
                 
         
-    //         }
-    //         res.render("findStudents", top_2_students)
+        //     }
+        //     res.render("findStudents", top_2_students)
 
-    //     }
-    //     else
-    //     {
-    //         let top_2_students = 
-    //         {
-    //             "Name_one": undefined,
-    //             "Department_one": undefined,
-    //             "Bid_one" : undefined,
-    //             "Name_two" : undefined,
-    //             "Department_two" : undefined,
-    //             "Bid_two": undefined
+        // }
+        // else
+        // {
+        //     let top_2_students = 
+        //     {
+        //         "Name_one": undefined,
+        //         "Department_one": undefined,
+        //         "Bid_one" : undefined,
+        //         "Name_two" : undefined,
+        //         "Department_two" : undefined,
+//                 "Bid_two": undefined
                 
         
-    //         }
-    //         res.render("findStudents", top_2_students)
-    //     }
-    
-    });
-// 
-})
-
-
-app.post('/findStudents', (req,res)=>{
-    //do a search from the databse and get the top 2 students liveing in the same city as thus particular tutor
-    //store the name, department and the bidding price of the top 2 students living in the sam area as a json object like below
-
-    db.collection("Teacher").doc(global_user.EmailAddress).get().then((snapshot) => {
-        let students = snapshot.data().student_request;
-        if (students.length >= 2)
-        {
-            let top_2_students = 
-            {
-                "Name_one": students[0].name,
-                "Department_one": students[0].subject,
-                "Bid_one" : students[0].bid,
-                "Name_two" : students[1].name,
-                "Department_two" : students[1].subject,
-                "Bid_two": students[0].bid
-                
-        
-            }
-            res.render("findStudents", top_2_students)
-
-        }
-        else if (students.length == 1)
-        {
-            let top_2_students = 
-            {
-                "Name_one": students[0].name,
-                "Department_one": students[0].subject,
-                "Bid_one" : students[0].bid,
-                "Name_two" : undefined,
-                "Department_two" : undefined,
-                "Bid_two": undefined
-                
-        
-            }
-            res.render("findStudents", top_2_students)
-
-        }
-        else
-        {
-            let top_2_students = 
-            {
-                "Name_one": undefined,
-                "Department_one": undefined,
-                "Bid_one" : undefined,
-                "Name_two" : undefined,
-                "Department_two" : undefined,
-                "Bid_two": undefined
-                
-        
-            }
-            res.render("findStudents", top_2_students)
-        }
-    });
+//             }
+//             res.render("findStudents", top_2_students)
+//         }
+//     });
 })
 
 // async function comparePassword(p1, p2)
@@ -329,7 +520,7 @@ app.post('/loginRequest',(req,res)=>{
                     "Password":user_deets.Password,
                     "Image":user_deets.Image,
                     "Address": user_deets.Address,
-                    "City" : user_deets.City
+                    "City" : user_deets.City,
 
                 }
                 global_user = n_obj;
@@ -410,7 +601,7 @@ app.post("/populateProfile",(req,res)=>{
 })
 
 
-app.post("/publishTutorProfile",(req,res)=>{
+app.post("/publishProfile",(req,res)=>{
     res.render("publishProfile")
 })
 
@@ -559,9 +750,39 @@ app.get("/RegisterUser",(req,res)=>{
     res.render("RegisterUser");
 })
 
+app.get("/findTutors",(req,res)=>{
+    console.log(1)
+    
+    res.render("findTutors");
+})
+
+app.get("/findStudents",(req,res)=>{
+    console.log("findStudents")
+    
+    res.render("findStudents");
+})
+
+app.get("/filterTutor",(req,res)=>{
+    console.log("/filterTutor")
+    
+    res.render("filterTutor");
+})
+
+app.get("/filter",(req,res)=>{
+    console.log("filter")
+    
+    res.render("filter");
+})
+
 app.get("/home",(req,res)=>{
     console.log(2)
     res.render("home");
+   
+});
+
+app.get("/filterStudent",(req,res)=>{
+    console.log(2)
+    res.render("filterStudent", global_user)
    
 });
 
@@ -570,11 +791,23 @@ app.get("/dashboard",(req,res)=>{
     res.render("dashboard", global_user)
    
 });
+
+app.get("/publishProfile",(req,res)=>{
+    console.log("publishProfile")
+    res.render("publishProfile", global_user)
+   
+});
 // publishTutorProfile
 
 app.get("/publishTutorProfile",(req,res)=>{
-    console.log(10)
+    console.log("/publishTutorProfile")
     res.render("publishProfile");
+   
+});
+
+app.get("/populateProfile",(req,res)=>{
+    console.log("/populateProfile")
+    res.render("populateProfile");
    
 });
 
@@ -593,32 +826,32 @@ app.post("/home",(req,res)=>{
     
 });
 
-app.get("/findTutors",(req,res)=>{
-
-    db.collection("subjects").doc("Math").get().then((snapshot) => {
-        // console.log(1, snapshot)
-        console.log(2, typeof snapshot.data())
-        let x = snapshot.data()
-        let keyx = Object.keys(x)
-        console.log(3, keyx[0])
+// app.get("/findTutors",(req,res)=>{
+//     console.log(34358)
+//     db.collection("subjects").doc("Math").get().then((snapshot) => {
+//         // console.log(1, snapshot)
+//         console.log(2, typeof snapshot.data())
+//         let x = snapshot.data()
+//         let keyx = Object.keys(x)
+//         console.log(3, keyx[0])
         
 
-    //     if (ma.length >= 2)
-    //     {
-            let top_2_students = 
-            {
-                "Name_one": 'students[0].name',
-                "Department_one": 'students[0].subject',
-                "Bid_one" : 'students[0].bid',
-                "Name_two" : 'students[1].name',
-                "Department_two" : 'students[1].subject',
-                "Bid_two": 'students[0].bid'
+//     //     if (ma.length >= 2)
+//     //     {
+//             let top_2_students = 
+//             {
+//                 "Name_one": 'students[0].name',
+//                 "Department_one": 'students[0].subject',
+//                 "Bid_one" : 'students[0].bid',
+//                 "Name_two" : 'students[1].name',
+//                 "Department_two" : 'students[1].subject',
+//                 "Bid_two": 'students[0].bid'
                 
         
-            }
-            res.render("findTutors", top_2_students)
-    });
-});
+//             }
+//             res.render("findTutors", top_2_students)
+//     });
+// });
 
 
 // async function cryptPassword(p)
@@ -676,7 +909,7 @@ app.post('/studentregistration',(req, res, next)=>{
             }).then(()=>{
                 console.log("firebase filled");
                 // res.redirect("/home");
-                res.redirect("dashboard", global_user)
+                res.render("dashboard", global_user)
             });
 
         }
@@ -699,7 +932,8 @@ app.post('/parentregistration',(req, res, next)=>{
         "Transcript":request_object["Transcript"],
         "Image" : request_object["Image"],
         "Address": "None Added",
-        "City": "None Added"
+        "City": "None Added",
+        "Rating": 0
     }
 
     global_user = new_user
@@ -724,10 +958,11 @@ app.post('/parentregistration',(req, res, next)=>{
                 Image: request_object["Image"],
                 Address: "None Added",
                 City: "None Added",
-                student_request:[]
+                student_request:[],
+                Rating:0
             }).then(()=>{
                 console.log("firebase filled");
-                res.redirect("/publishTutorProfile");
+                res.redirect("/populateProfile");
             });
 
         }
