@@ -248,9 +248,9 @@ app.post("/tuitionRequest",(req,res)=>{
     // console.log(12, req.body.tutor)
     console.log("/tuitionRequest", global_user)
 
-    tutor = req.body.tutor
+    let tutor = req.body.tutor
 
-    db.collection("Teachers").doc(tutor).update({
+    db.collection("Teachers").doc(tutor.EmailAddress).update({
         student_request: firebase.firestore.FieldValue.arrayUnion(global_user)
 
     }).then(()=>{
@@ -277,30 +277,41 @@ app.post("/tuitionAccept",(req,res)=>{
     // console.log(12, req.body.tutor)
     console.log("/tuitionAccept", global_user)
 
-    tutor = req.body.tutor
+    let student = req.body.student
 
-    db.collection("Teachers").doc(tutor).update({
-        student_accepted: firebase.firestore.FieldValue.arrayUnion(global_user)
+    db.collection("Teachers").doc(global_user.EmailAddress).update({
+        student_request: firebase.firestore.FieldValue.arrayRemove(student),
+        student_accepted: firebase.firestore.FieldValue.arrayUnion(student)
 
     }).then(()=>{
-        db.collection('Students').doc(global_user.EmailAddress).update({
-            tutor_accepted: firebase.firestore.FieldValue.arrayUnion(tutor)
+        db.collection('Students').doc(student.EmailAddress).update({
+            tutor_request: firebase.firestore.FieldValue.arrayRemove(global_user),
+            tutor_accepted: firebase.firestore.FieldValue.arrayUnion(global_user)
+
         }).then(()=>{
+
+
                 res.render("tutorDashboard", global_user)
         }).catch(()=>{
-            db.collection('Students').doc(global_user.EmailAddress).set({
-                tutor_accepted: [tutor]
+            db.collection('Students').doc(student.EmailAddress).set({
+                tutor_accepted: [global_user]
+                
             }).then(()=>{
                         res.render("tutorDashboard", global_user)
             });
         })
-    });
-})
+    }).catch(()=>{
+        db.collection("Teachers").doc(global_user.EmailAddress).set({
+            student_accepted: [student]
+        }).then(()=>{
+                    res.render("tutorDashboard", global_user)
+        });
+    })
 
 // app.get("/tuitionAccept",(req,res)=>{
 //     console.log(12, req.body.tutor)
 //     res.render("tutorDashboard",global_user)
-// })
+})
 
 
 
@@ -333,7 +344,7 @@ app.post('/findTutors', (req,res)=>{
                 res.render("SearchResults",xx)
             }
         })
-    });
+ });
     
     // db.collection("subjects").get().then((snapshot) => {
     //     let Name_one = ""
@@ -855,6 +866,8 @@ app.post('/studentregistration',(req, res, next)=>{
                 Image: request_object["Image"],
                 Address: "None Added",
                 City: "None Added",
+                tutor_accepted:[],
+                tutor_request: []
 
                 // student_request:[]
             }).then(()=>{
