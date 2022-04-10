@@ -838,6 +838,15 @@ app.post('/startAssessment',(req, res, next)=>{
 
 })
 
+app.post('/submitAssessmentRequest',(req, res, next)=>{
+    console.log("in submit assessments")
+    console.log(req.body)
+
+
+})
+
+
+
 
 
 

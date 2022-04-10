@@ -4,6 +4,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
     </head>
     <body>
+        <form id = "main_form" method = "POST">
         <div id = "mega" class="v55_251">
             <div class="search_v119_1837">
                 <img class="v13_23" src = "/views/vector_back.png" />
@@ -107,7 +108,8 @@
         
     </div>
 </br></br></br></br></br></br> </br></br></br></br></br></br>  
-<button class = "ss"> Submit </button> 
+<button id = "final_button" name = "submit_button" type = "submit" formaction="/submitAssessmentRequest" method = "POST" class = "ss"> Submit </button> 
+</form>
 </br> 
     <script>
         let assignment_content = '<%-assessment_content%>';
@@ -124,13 +126,20 @@
         //let header_syllabus = document.getElementById("header_syllabus")
         let header_points = document.getElementById("header_points")
         let header_time = document.getElementById("total_time")
+        let final_button = document.getElementById("final_button")
+        final_button.value = assignment_content
         header_subject.innerHTML ="Subject:" +  subject
         header_points.innerHTML = "Total Points:" + total_points
         header_time.innerHTML = "Time allotted:" +  total_minutes + " minutes"
 
-        
-        //now displ
+        /*
+        let form = document.getElementById("main_form")
+        form.addEventListener("submit", function(e){
+            //console.log(form.elements)
+            //e.preventDefault();
+        })
 
+*/
 
 
 
