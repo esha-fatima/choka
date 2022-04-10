@@ -799,7 +799,19 @@ app.post('/todoAssessments',(req, res, next)=>{
             console.log(doc.id, '=>', doc.data());
             //let stringified_version = JSON.stringify(doc.data().assessment_details)
             //console.log("stringified version is ", stringified_version)
-            assessment_headers.push(doc.data().assessment_details)
+            let proposed_start_date = doc.data().assessment_details.PublishDate
+            let proposed_start_time = doc.data().assessment_details.PublishTime
+            console.log(proposed_start_date)
+            console.log(proposed_start_time)
+            let merge = proposed_start_date.toString() + "T" + proposed_start_time.toString()
+            console.log(merge)
+            let that_date = new Date(merge);
+            let now = new Date()
+            if(now>=that_date){
+                assessment_headers.push(doc.data().assessment_details)
+
+            }
+            
 
 
         })
@@ -820,7 +832,8 @@ app.post('/startAssessment',(req, res, next)=>{
     console.log("in start assessments")
     let assessment_header = JSON.parse(req.body.assessment_details);
     console.log("assessment to start is ", assessment_header)
-    res.render("startAssessment")
+    let stringified = JSON.stringify(assessment_header)
+    res.render("startAssessment",{"assessment_content":stringified})
 
 
 })
