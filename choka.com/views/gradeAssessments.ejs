@@ -75,9 +75,11 @@
                 else{
 
 
-              
+                    score_assigned = score_assigned.split('-')
+                    score_assigned = parseInt(score_assigned.pop())
+                    percentage = (score_assigned/parseInt(headers_array[i].assessment_details.TotalPoints))*100;
                     console.log(Object.keys(headers_array[i]))
-                    let text  = '<div  id = "question_container"><div class="v79_1097_createAssessments"><img src= "filter_1.png" class = "image_settings"/><h1 class = "ins_name">'+headers_array[i].assessment_details.Subject+' </h1></br></br></br></br></br></br></br><h1 class = "ins_name_ff"> Student ID: </h1> <h1 class = "ins_subject">'+ headers_array[i].student_id +'</h1> <h1 class = "ins_name_a"> Your Score: </h1> <h1 class = "ins_subject_a">'+ score_assigned +'</h1> </br></br></br></br></br></br><h1 class = "ins_name_ff"> Syllabus: </h1> <h1 class = "ins_subject">'+ headers_array[i].assessment_details.Syllabus +'</h1> <h1 class = "ins_name_a"> Percentage: </h1> <h1 class = "ins_subject_a">'+'Pending'+'  </h1>  </br></br></br></br></br></br><h1 class = "ins_name_ff"> Submitted: </h1> <h1 class = "ins_subject">'+ submission_time+' </h1> <h1 class = "ins_name_a"> Total Score: </h1> <h1 class = "ins_subject_a">'+ TotalPoints+' </h1></br></br>  </br></br></div></br></div>'
+                    let text  = '<div  id = "question_container"><div class="v79_1097_createAssessments"><img src= "filter_1.png" class = "image_settings"/><h1 class = "ins_name">'+headers_array[i].assessment_details.Subject+' </h1></br></br></br></br></br></br></br><h1 class = "ins_name_ff"> Student ID: </h1> <h1 class = "ins_subject">'+ headers_array[i].student_id +'</h1> <h1 class = "ins_name_a"> Your Score: </h1> <h1 class = "ins_subject_a">'+ score_assigned +'</h1> </br></br></br></br></br></br><h1 class = "ins_name_ff"> Syllabus: </h1> <h1 class = "ins_subject">'+ headers_array[i].assessment_details.Syllabus +'</h1> <h1 class = "ins_name_a"> Percentage: </h1> <h1 class = "ins_subject_a">'+percentage+' % </h1>  </br></br></br></br></br></br><h1 class = "ins_name_ff"> Submitted: </h1> <h1 class = "ins_subject">'+ submission_time+' </h1> <h1 class = "ins_name_a"> Total Score: </h1> <h1 class = "ins_subject_a">'+ TotalPoints+' </h1>  </br><button  class = "grade_button"  disabled> Returned </button></div></br></div>'
                     container.innerHTML = container.innerHTML + text
                 
                

@@ -762,7 +762,7 @@ app.post('/parentregistration',(req, res, next)=>{
 
 
 
-//ASSESSMENTS MODUule
+//ASSESSMENTS MODULE
 app.post('/studentsAssessments',(req, res, next)=>{
     console.log("in students assessments")
     res.render("studentAssessments")
@@ -850,7 +850,37 @@ app.post('/gradeRequest',(req,res,next)=>{
 app.post('/gradingDone',(req,res,next)=>{
     console.log("in grading done")
     console.log(req.body)
-    //
+    let points_arr = req.body.student_points
+    let total_points = 0
+    let points_string = ""
+    for(let i = 0; i<points_arr.length; i = i+1){
+        points_string = points_string +"-"+points_arr[i].toString()
+        total_points = total_points + parseInt(points_arr[i])
+
+    }
+    points_string = points_string + "-" + total_points
+    console.log("points string is ", points_string)
+    points_string = points_string.substring(1)
+    console.log(points_string)
+
+    let parsed = JSON.parse(req.body.submit_button)
+    console.log("parsed is", parsed)
+    let student_id = parsed.student_id;
+    let key = student_id + " " + global_user.EmailAddress
+    //now find the one with this key and change the score and grade status only
+    const docRef = db.collection('PastAssessments');
+    db.collection('PastAssessments').doc(key).update({
+        score:points_string,
+        grade_status:"Graded"
+
+    }).then(()=>{
+        
+        console.log("changes madeeee")
+        res.render("tutorAssessments")
+    })
+
+    
+    
     
 })
 
