@@ -838,6 +838,24 @@ app.post('/startAssessment',(req, res, next)=>{
 
 
 })
+app.post('/gradeRequest',(req,res,next)=>{
+    console.log("in grade request")
+    console.log(req.body)
+    let assessment_content = JSON.parse(req.body.assessment_details)
+    console.log("assessment content after parsing is ", assessment_content)
+    //now that u have all this data render it to the screen
+    res.render("grader", {"assessment_content":req.body.assessment_details})
+})
+
+app.post('/gradingDone',(req,res,next)=>{
+    console.log("in grading done")
+    console.log(req.body)
+    //
+    
+})
+
+
+
 
 
 app.post('/pastAssessments',(req,res,next)=>{
@@ -970,6 +988,7 @@ app.post('/grade',(req, res, next)=>{
     })
 
 })
+
 
 
 

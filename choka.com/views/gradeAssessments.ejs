@@ -48,6 +48,10 @@
             container.innerHTML = ""
             for(let i= 0; i<headers_array.length; i = i+1){
                 //get the grade status
+                let date_arr = headers_array[i].submission_time.split(' ')
+                let date_dashed = date_arr.join('-')
+                console.log(date_dashed)
+                headers_array[i].submission_time = date_dashed
                 let grade_status = headers_array[i].grade_status;
                 let on_start = JSON.stringify(headers_array[i])
                 let creator_name_arr = headers_array[i].assessment_details.creator_name.split('-')
@@ -56,10 +60,11 @@
                 let submission_time = headers_array[i].submission_time;
                 let TotalPoints = headers_array[i].assessment_details.TotalPoints
                 let creator_name = creator_name_arr.join(' ')
+                console.log("on start ki va, is", on_start)
 
                 if(grade_status == "Pending"){
 
-                    let text  = '<div  id = "question_container"><div class="v79_1097_createAssessments"><img src= "filter_1.png" class = "image_settings"/><h1 class = "ins_name">'+headers_array[i].assessment_details.Subject+' </h1></br></br></br></br></br></br></br><h1 class = "ins_name_ff"> Student ID: </h1> <h1 class = "ins_subject">'+ headers_array[i].student_id +'</h1> <h1 class = "ins_name_a"> Your Score: </h1> <h1 class = "ins_subject_a">'+ score_assigned +'</h1> </br></br></br></br></br></br><h1 class = "ins_name_ff"> Syllabus: </h1> <h1 class = "ins_subject">'+ headers_array[i].assessment_details.Syllabus +'</h1> <h1 class = "ins_name_a"> Percentage: </h1> <h1 class = "ins_subject_a">'+'Pending'+'  </h1>  </br></br></br></br></br></br><h1 class = "ins_name_ff"> Submitted: </h1> <h1 class = "ins_subject">'+ submission_time+' </h1> <h1 class = "ins_name_a"> Total Score: </h1> <h1 class = "ins_subject_a">'+ TotalPoints+' </h1></br><form method = "POST"><button type = "submit" class = "grade_button" formaction = "/startAssessment" name = "assessment_details" value = '+ on_start+'> Grade </button></form></div></br></div>'
+                    let text  = '<div  id = "question_container"><div class="v79_1097_createAssessments"><img src= "filter_1.png" class = "image_settings"/><h1 class = "ins_name">'+headers_array[i].assessment_details.Subject+' </h1></br></br></br></br></br></br></br><h1 class = "ins_name_ff"> Student ID: </h1> <h1 class = "ins_subject">'+ headers_array[i].student_id +'</h1> <h1 class = "ins_name_a"> Your Score: </h1> <h1 class = "ins_subject_a">'+ score_assigned +'</h1> </br></br></br></br></br></br><h1 class = "ins_name_ff"> Syllabus: </h1> <h1 class = "ins_subject">'+ headers_array[i].assessment_details.Syllabus +'</h1> <h1 class = "ins_name_a"> Percentage: </h1> <h1 class = "ins_subject_a">'+'Pending'+'  </h1>  </br></br></br></br></br></br><h1 class = "ins_name_ff"> Submitted: </h1> <h1 class = "ins_subject">'+ submission_time+' </h1> <h1 class = "ins_name_a"> Total Score: </h1> <h1 class = "ins_subject_a">'+ TotalPoints+' </h1></br><form method = "POST"><button type = "submit" class = "grade_button" formaction = "/gradeRequest" name = "assessment_details" value = '+ on_start+'> Grade </button></form></div></br></div>'
                     container.innerHTML = container.innerHTML + text
 
                     
@@ -70,10 +75,10 @@
                 else{
 
 
-                //console.log(submission_time.toString())
-                console.log(Object.keys(headers_array[i]))
-                let text  = '<div  id = "question_container"><div class="v79_1097_createAssessments"><img src= "filter_1.png" class = "image_settings"/><h1 class = "ins_name">'+headers_array[i].assessment_details.Subject+' </h1></br></br></br></br></br></br></br><h1 class = "ins_name_ff"> Student ID: </h1> <h1 class = "ins_subject">'+ headers_array[i].student_id +'</h1> <h1 class = "ins_name_a"> Your Score: </h1> <h1 class = "ins_subject_a">'+ score_assigned +'</h1> </br></br></br></br></br></br><h1 class = "ins_name_ff"> Syllabus: </h1> <h1 class = "ins_subject">'+ headers_array[i].assessment_details.Syllabus +'</h1> <h1 class = "ins_name_a"> Percentage: </h1> <h1 class = "ins_subject_a">'+'Pending'+'  </h1>  </br></br></br></br></br></br><h1 class = "ins_name_ff"> Submitted: </h1> <h1 class = "ins_subject">'+ submission_time+' </h1> <h1 class = "ins_name_a"> Total Score: </h1> <h1 class = "ins_subject_a">'+ TotalPoints+' </h1></br></br>  </br></br></div></br></div>'
-                container.innerHTML = container.innerHTML + text
+              
+                    console.log(Object.keys(headers_array[i]))
+                    let text  = '<div  id = "question_container"><div class="v79_1097_createAssessments"><img src= "filter_1.png" class = "image_settings"/><h1 class = "ins_name">'+headers_array[i].assessment_details.Subject+' </h1></br></br></br></br></br></br></br><h1 class = "ins_name_ff"> Student ID: </h1> <h1 class = "ins_subject">'+ headers_array[i].student_id +'</h1> <h1 class = "ins_name_a"> Your Score: </h1> <h1 class = "ins_subject_a">'+ score_assigned +'</h1> </br></br></br></br></br></br><h1 class = "ins_name_ff"> Syllabus: </h1> <h1 class = "ins_subject">'+ headers_array[i].assessment_details.Syllabus +'</h1> <h1 class = "ins_name_a"> Percentage: </h1> <h1 class = "ins_subject_a">'+'Pending'+'  </h1>  </br></br></br></br></br></br><h1 class = "ins_name_ff"> Submitted: </h1> <h1 class = "ins_subject">'+ submission_time+' </h1> <h1 class = "ins_name_a"> Total Score: </h1> <h1 class = "ins_subject_a">'+ TotalPoints+' </h1></br></br>  </br></br></div></br></div>'
+                    container.innerHTML = container.innerHTML + text
                 
                
                 }
