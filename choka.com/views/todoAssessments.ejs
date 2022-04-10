@@ -50,7 +50,9 @@
             container.innerHTML = ""
             for(let i= 0; i<headers_array.length; i = i+1){
                 let on_start = JSON.stringify(headers_array[i])
-                let text  = '<div  id = "question_container"><div class="v79_1097_createAssessments"><img src= "filter_1.png" class = "image_settings"/><h1 class = "ins_name"> Name </h1></br></br></br></br></br></br></br><h1 class = "ins_name_ff"> Subject: </h1> <h1 class = "ins_subject">'+ headers_array[i].Subject +'</h1> <h1 class = "ins_name_a"> Max Score: </h1> <h1 class = "ins_subject_a">'+ headers_array[i].TotalPoints +'</h1> </br></br></br></br></br></br><h1 class = "ins_name_ff"> Syllabus: </h1> <h1 class = "ins_subject">'+ headers_array[i].Syllabus +'</h1> <h1 class = "ins_name_a"> Subject: </h1> <h1 class = "ins_subject_a"> Mathematics </h1></br></br><form method = "POST"><button type = "submit" formaction = "/startAssessment" name = "assessment_details" value = '+ on_start+'> Start Assessments </button></form></div></br></div>'
+                let creator_name_arr = headers_array[i].creator_name.split('-')
+                let creator_name = creator_name_arr.join(' ')
+                let text  = '<div  id = "question_container"><div class="v79_1097_createAssessments"><img src= "filter_1.png" class = "image_settings"/><h1 class = "ins_name">'+creator_name+' </h1></br></br></br></br></br></br></br><h1 class = "ins_name_ff"> Subject: </h1> <h1 class = "ins_subject">'+ headers_array[i].Subject +'</h1> <h1 class = "ins_name_a"> Max Score: </h1> <h1 class = "ins_subject_a">'+ headers_array[i].TotalPoints +'</h1> </br></br></br></br></br></br><h1 class = "ins_name_ff"> Syllabus: </h1> <h1 class = "ins_subject">'+ headers_array[i].Syllabus +'</h1> <h1 class = "ins_name_a"> Subject: </h1> <h1 class = "ins_subject_a"> Mathematics </h1></br></br><form method = "POST"><button type = "submit" formaction = "/startAssessment" name = "assessment_details" value = '+ on_start+'> Start Assessments </button></form></div></br></div>'
 
                 container.innerHTML = container.innerHTML + text
 

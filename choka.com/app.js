@@ -830,6 +830,7 @@ app.post('/todoAssessments',(req, res, next)=>{
 
 app.post('/startAssessment',(req, res, next)=>{
     console.log("in start assessments")
+    console.log(req.body.assessment_details)
     let assessment_header = JSON.parse(req.body.assessment_details);
     console.log("assessment to start is ", assessment_header)
     let stringified = JSON.stringify(assessment_header)
@@ -876,9 +877,15 @@ app.post('/createAssessmentRequest',(req, res, next)=>{
         txt = txt.join('-')
         arr_qt.push(txt)
     }
+
+    //we need to convert the creator name to dash separated form also
+    let creator_name_arr = global_user.Name.split(" ")
+    let creator_name = creator_name_arr.join('-')
     console.log("arrqt is", arr_qt)
     console.log("generated id is ", assessmentid)
     let assessment_obj = {  "id" : assessmentid.toString(),
+                            "creator_email": global_user.EmailAddress,
+                            "creator_name" : creator_name,
                             "Subject":req.body.Subject,
                             "Syllabus":req.body.Syllabus,
                             "TotalPoints": req.body.total_points,
@@ -910,8 +917,8 @@ app.post('/createAssessmentRequest',(req, res, next)=>{
                 //for every recipient add an entry into the To do waala table 
                 let promise_list = []
                 for(let j = 0; j<recipients_list.length; j = j+1){
-                    let key = recipients_list[j] + assessmentid.toString();
-                    //let obj = {"assessment_details" : assessment_obj, "id": recipients_list[j]}
+                    let key = recipients_list[j] +" "+global_user.EmailAddress;
+                    
                     promise_list.push(db.collection('TodoAssessments').doc(key).set({
 
                         assessment_details:assessment_obj,
