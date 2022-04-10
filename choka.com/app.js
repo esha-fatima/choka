@@ -839,6 +839,44 @@ app.post('/startAssessment',(req, res, next)=>{
 
 })
 
+
+app.post('/pastAssessments',(req,res,next)=>{
+    console.log("in past assessments")
+    let assessment_headers = []
+    const docRef = db.collection('PastAssessments');
+    console.log("email is ", global_user.EmailAddress)
+    docRef.where('student_id', '==', global_user.EmailAddress).get().then((value)=>{
+
+            value.forEach(doc=>{
+                console.log(doc.id, '=>', doc.data());
+                let doc_obj = {
+                    "assessment_details" : doc.data().assessment_details,
+                    "grade_status": doc.data().grade_status,
+                    "score": doc.data().score,
+                    "student_id": doc.data().student_id,
+                    "submission_time": doc.data.submission_time
+                }
+                //let stringified_obj = JSON.stringify(doc_obj);
+                assessment_headers.push(doc_obj);
+
+           
+            
+
+
+        })
+        //now stringify the assessment headers array
+        let stringified_arr = JSON.stringify(assessment_headers)
+        console.log(stringified_arr)
+        res.render("pastAssessments", {"headers":stringified_arr})
+
+
+    })
+    //make a call to database where the student id is mineeee
+    //get all of those docsss
+
+    //now in past assessments we need to 
+})
+
 app.post('/submitAssessmentRequest',(req, res, next)=>{
     console.log("in submit assessments")
     let submission_time = new Date().toDateString()
