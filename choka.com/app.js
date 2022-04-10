@@ -260,7 +260,7 @@ app.post("/tuitionRequest",(req,res)=>{
                     res.render("dashboard", global_user)
         }).catch(()=>{
             db.collection('Students').doc(global_user.EmailAddress).set({
-                tutors: [tutor]
+            tutor_request: [tutor]
             }).then(()=>{
                         res.render("dashboard", global_user)
             });
@@ -280,16 +280,16 @@ app.post("/tuitionAccept",(req,res)=>{
     tutor = req.body.tutor
 
     db.collection("Teachers").doc(tutor).update({
-        student_request: firebase.firestore.FieldValue.arrayUnion(global_user)
+        student_accepted: firebase.firestore.FieldValue.arrayUnion(global_user)
 
     }).then(()=>{
         db.collection('Students').doc(global_user.EmailAddress).update({
-            tutor_request: firebase.firestore.FieldValue.arrayUnion(tutor)
+            tutor_accepted: firebase.firestore.FieldValue.arrayUnion(tutor)
         }).then(()=>{
-                    res.render("tutorDashboard", global_user)
+                res.render("tutorDashboard", global_user)
         }).catch(()=>{
             db.collection('Students').doc(global_user.EmailAddress).set({
-                tutors: [tutor]
+                tutor_accepted: [tutor]
             }).then(()=>{
                         res.render("tutorDashboard", global_user)
             });
@@ -719,10 +719,6 @@ app.post("/editProfile",(req,res)=>{
         }
         
         //get the doc and then 
-    // });
-
-
-
 
 
 });
@@ -735,8 +731,6 @@ app.post("/login",(req,res)=>{
     res.render("Login");
    
 });
-
-///////Rendering home
 
 app.get("/",(req,res)=>{
     console.log(1)
@@ -797,7 +791,6 @@ app.get("/publishProfile",(req,res)=>{
     res.render("publishProfile", global_user)
    
 });
-// publishTutorProfile
 
 app.get("/publishTutorProfile",(req,res)=>{
     console.log("/publishTutorProfile")
@@ -825,49 +818,6 @@ app.post("/home",(req,res)=>{
     }
     
 });
-
-// app.get("/findTutors",(req,res)=>{
-//     console.log(34358)
-//     db.collection("subjects").doc("Math").get().then((snapshot) => {
-//         // console.log(1, snapshot)
-//         console.log(2, typeof snapshot.data())
-//         let x = snapshot.data()
-//         let keyx = Object.keys(x)
-//         console.log(3, keyx[0])
-        
-
-//     //     if (ma.length >= 2)
-//     //     {
-//             let top_2_students = 
-//             {
-//                 "Name_one": 'students[0].name',
-//                 "Department_one": 'students[0].subject',
-//                 "Bid_one" : 'students[0].bid',
-//                 "Name_two" : 'students[1].name',
-//                 "Department_two" : 'students[1].subject',
-//                 "Bid_two": 'students[0].bid'
-                
-        
-//             }
-//             res.render("findTutors", top_2_students)
-//     });
-// });
-
-
-// async function cryptPassword(p)
-// {
-//     try
-//     {
-//         // console.log()
-//         const encrpt = await Encrypt.cryptPassword(p)
-//         return encrpt
-//     }
-//     catch
-//     {
-//         return null
-//     }
-        
-// }
 
 
 app.post('/studentregistration',(req, res, next)=>{
@@ -905,6 +855,7 @@ app.post('/studentregistration',(req, res, next)=>{
                 Image: request_object["Image"],
                 Address: "None Added",
                 City: "None Added",
+
                 // student_request:[]
             }).then(()=>{
                 console.log("firebase filled");
@@ -959,6 +910,7 @@ app.post('/parentregistration',(req, res, next)=>{
                 Address: "None Added",
                 City: "None Added",
                 student_request:[],
+                student_accepted:[],
                 Rating:0
             }).then(()=>{
                 console.log("firebase filled");
