@@ -841,7 +841,60 @@ app.post('/startAssessment',(req, res, next)=>{
 
 app.post('/submitAssessmentRequest',(req, res, next)=>{
     console.log("in submit assessments")
+    let submission_time = new Date().toDateString()
+    console.log("submission time is ", submission_time)
     console.log(req.body)
+    
+    let assessment_header = JSON.parse(req.body.submit_button)
+    console.log(assessment_header)
+    //first we need to push them into past assessments pending vs graded
+    //delete from to do where id is of this bacha who just submitted
+    // in past assessments, primary key will be student email plus space plus creator email.
+    let p_key = global_user.EmailAddress + " " + assessment_header.creator_email
+    console.log("pkey is", p_key)
+    //save in past_assessments
+    const docRef = db.collection('PastAssessments').doc(p_key);
+    docRef.get(p_key).then((doc)=>{
+        if(doc.exists){
+            console.log("already doneee exists");
+
+            res.render("studentAssessments");
+
+        }
+        else{
+            //process the answers to the questionsssss
+            let answers_arr = []
+            console.log("reqq body text is ",req.body.question_text)
+            for(let x = 0; x< req.body.question_text.length; x = x+1){
+                let ans = req.body.question_text[x];
+                let ans_arr = ans.split(' ')
+                let dashed_ans = ans_arr.join('-')
+                answers_arr.push(dashed_ans)
+            }
+            console.log("answers array is ", answers_arr)
+            db.collection('PastAssessments').doc(p_key).set({
+                assessment_details:assessment_header,
+                student_id :global_user.EmailAddress,
+                submission_time: submission_time, 
+                answers: answers_arr,
+                grade_status: "Pending",
+                score : "Pending",  
+            }).then(()=>{
+                console.log("added to past assessments")
+                //now redirect the user to the pageeee
+                res.render("studentAssessments")
+
+            })
+
+
+        }
+    })
+    //there will be creator email
+    //there will be bacha's email
+    //there will be answers to the questions.
+    //there will be full assignment content
+    //there will be submission date also
+    //make sure it is visible in past assessments, pending status and redirect to students assessment
 
 
 })
