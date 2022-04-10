@@ -11,36 +11,22 @@
         <label class="v13_92_second"> Tutor</label>
     </form>
     
-    <!-- <form method="POST" > -->
-        <!-- <div class="login_1"> </div> -->
-            
-            <div class="login_2"></div>
-            <div class="login_3"></div>
-            
-            <img class="v13_23" src = "/images/Vectorbackarrow.png"   />
-            <img class = "v119_1814" src="/images/e-learning-isometric-composition-1284-21095-1@2x.png"  />
-            <img class = "choka_register" src="/images/Group 9.png" />
-            <!-- <span class = "choka_register"></span>  -->
-            <span class="v13_3">Back to Home</span>
-            <!-- </div> -->
-
-    <!-- <span class="v13_3">Back to Home</span>
-    <div class="v13_2"></div>
-    <div class="login_3"></div>
-        
-    <img class="v13_23" src = "/images/vector_back.png" />
-    <img class = "v119_1814" src="images/e-learning-isometric-composition-1284-21095-1@2x.png " />
-    <img class = "choka_register" src="/images/Group 9.png" /> -->
     
-        
-    <span class="v13_5"><b>Register</b></span>
 
-        </div>
+    
+    <div class="v13_2">
+        
+    <img class="v13_23" src = "/views/vector_back.png" />
+    <img class="v119_1814" src="/views/header_image.jpg" />
+    <img class="choka_register" src="/views/Group 9.png" />
+    <span class="v13_3">Back to Home</span>
+</div> 
+    <span class="v13_5">Register</span>
         
         <div id = "testing">
         
         <form action="/studentregistration" method="POST">
-            <button class="v13_21" formaction="/login" method = POST><i>Already have an account? <u><b>Sign in</b></u></i></button>
+            <button class="v13_21" formaction="/login" method = POST>Already have an account? Sign in</button>
             <!-- <span class="v13_42">First Name*</span> --> 
 
             <span class="v13_42">First Name*</span>
@@ -53,7 +39,7 @@
         
             <div class="v13_51">
                 <div class="v13_52"></div>
-                <img class="v13_53" src = "/images/Vectormessege.png">
+                <div class="v13_53"></div>
             </div>
 
             <span class="v13_55">Last Name*</span>
@@ -70,7 +56,7 @@
 
             <div class="v18_12">
                 <div class="v18_13"></div>
-                <img class="v18_14" src = "/images/Vectorlock.png">
+                <div class="v18_14"></div>
             </div>
 
             <span class="v18_24">Confirm Password*</span>
@@ -79,18 +65,18 @@
 
             <div class="v18_27">
                 <div class="v18_28"></div>
-                <img class="v18_29" src = "/images/Vectorlock.png">
+                <div class="v18_29"></div>
             </div>
         
             <div class="name"></div>
             <div class="v18_5">
-                <img class="v18_6" src = "/images/Vectorname.png">
+                <div class="v18_6"></div>
             </div>
 
             <div class="v18_7">
-                <img class="v18_8" src = "/images/Vectorname.png">
+                <div class="v18_8"></div>
             </div>
-            <!-- <div class="name"></div>
+            <div class="name"></div>
             <div class="v18_17">
                 <div class="v18_18"></div>
                 <div class="v18_19"></div>
@@ -99,15 +85,15 @@
             </div>
             <div class="v18_22">
                 <div class="v18_23"></div>
-            </div> -->
+            </div>
             <div class="v18_30"></div>
 
             <div class="v58_219">
-                <img class="v58_220" src = "/images/Vectorplus.png">
-                <img class="v58_221" src = "/images/Vectorimage.png">
+                <div class="v58_220"></div>
+                <div class="v58_221"></div>
             </div>
             <div class="v59_315">
-                <img class="v18_6" src = "/images/Vectorphone.png">
+                <div class="v59_316"></div>
             </div>
             <div class="v119_1813"></div>
         
@@ -115,7 +101,6 @@
             <button class="v18_31" type="submit"> Register</button>
             <!-- <span class="v58_218">Add Image</span> -->
             <!-- <br> -->
-            <div class = "v59_302_r2"> </div>
             <label class="custom-file-upload v58_218">
                 <input type="file" name="Image"/>
                 <i class="fa fa-cloud-upload v58_218"></i> Add Image
@@ -128,7 +113,7 @@
 
         <div id = "cond">
             <form action="/parentregistration" method="POST">
-                <button class="v13_21_custom" formaction="/login" method = "POST"><i>Already have an account? <u><b>Sign in</b></u></i></button>
+                <button class="v13_21_custom" formaction="/login" method = "POST">Already have an account? Sign in</button>
                 <span class="v59_252_r2">First Name*</span>
                 <div class="name_r2"></div>
                 <input class="v59_254_r2" name="FirstName"  placeholder="Enter first name" required/> 
@@ -139,7 +124,7 @@
 
                 <div class="v59_258_r2">
                     <div class="v59_259_r2"></div>
-                    <img class="v59_260_r2" src = "/images/Vectormessege.png">
+                    <div class="v59_260_r2"></div>
                 </div>
                 <span class="v59_261_r2">Last Name*</span>
                 <div class="name_r2"></div>
@@ -155,13 +140,13 @@
 
                 <span class="v59_276_r2">Date of Birth*</span>
                 <div class="name_r2"></div>
-                <input class="v59_278_r2" type = "Date" placeholder="BirthDay" name = "BirthDate" required/>
-                <!-- <input class="v59_347_r2" placeholder="Month" name = "BirthdayMonth" required/> -->
-                <!-- <input class="v59_350_r2" placeholder="Year" name = "BirthdayYear" required/> -->
+                <input class="v59_278_r2" placeholder="Day" type="date" name = "BirthdayDay" required/>
+                <!-- <input class="v59_347_r2" placeholder="Month" type="month" name = "BirthdayMonth" required/>
+                <input class="v59_350_r2" placeholder="Year" type="number" name = "BirthdayYear" required/> -->
                 
             
                 
-                <span class="v59_355_r2">Transcript*</span>
+                
                 <!-- <span class="v59_361_r2">Image</span> -->
                 
 
@@ -176,25 +161,25 @@
                 
                 <div class="v59_336_r2">
                     <div class="v59_337_r2"></div>
-                    <img class="v59_338_r2" src = "/images/Vectorlock.png">
+                    <div class="v59_338_r2"></div>
                 </div>
 
                 <span class="v59_339_r2">Confirm Password*</span>
                 <!--<div class="name_r2"></div><span class="v59_341">Password</span>-->
-                <input class="re_enter" name="ConfirmPassword" type="password" placeholder="Re-enter password here" required/>
+                <input class="re_enter" name="ConfirmPassword" value="ConfirmPassword" type="password" placeholder="Re-enter password here" required/>
 
                 <div class="v59_342_r2">
                     <div class="v59_343"></div>
-                    <img class="v59_338_r2" src = "/images/Vectorlock.png">
+                <div class="v59_344_r2"></div>
             </div>
             
             <div class="v59_288_r2">
-                <img class="v59_289_r2" src = "/images/Vectorname.png">
+                <div class="v59_289_r2"></div>
             </div>
             <div class="v59_290_r2">
-                <img class="v59_291_r2" src = "/images/Vectorname.png">
+                <div class="v59_291_r2"></div>
             </div>
-            <!-- <div class="name_r2"></div>
+            <div class="name_r2"></div>
             <div class="v59_293_r2">
                 <div class="v59_294_r2"></div>
                 <div class="v59_295_r2"></div>
@@ -205,9 +190,9 @@
                 <div class="v59_299_r2">
 
                 </div>
-            </div> -->
+            </div>
             <div class="v59_331_r2">
-                <img class="v59_332_r2" src = "/images/Vectorqualification.png">
+                <div class="v59_332_r2"></div>
             </div>
             <!--
             <div class="v59_345_r2">
@@ -233,22 +218,23 @@
 
 
 
-            <div class="v58_219">
-                <img class="v58_220" src = "/images/Vectorplus.png">
-                <img class="v58_221" src = "/images/Vectorimage.png">
+            <div class="v59_304_r2">
+                <div class="v59_305_r2"></div>
+                <div class="v59_306_r2"></div>
             </div><div class="name_r2"></div>
             <div class="v59_317_r2">
-                <img class="v59_291_r2" src = "/images/Vectorphone.png">
+                <div class="v59_318_r2"></div>
             </div>
             <div class="v59_353_r2">
-                <img class="v59_291_r2" src = "/images/Vectorbirth.png">
+                <div class="v59_354_r2"></div>
             </div>
             <div class="v59_356_r2"></div>
             <div class="v59_357_r2">
-                <img class="v59_358_r2" src = "/images/Vectorplus.png">
-                <img class="v59_359_r2" src = "/images/Vectortranscript.png">
+                <div class="v59_358_r2"></div>
+                <div class="v59_359_r2"></div>
             </div>
             <!-- <span class="v59_360_r2">Upload Transcript</span> -->
+            <span class="v59_355_r2">Transcript*</span>
             <label class="custom-file-upload v59_360_r2">
                 <input type="file" name="Transcript"/>
                 <i class="fa fa-cloud-upload v59_360_r2"></i> Upload Transcript

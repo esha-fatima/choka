@@ -809,6 +809,12 @@ app.get("/publishTutorProfile",(req,res)=>{
    
 });
 
+app.post("/publishTutorProfile",(req,res)=>{
+    console.log("/publishTutorProfile")
+    res.render("publishProfile");
+   
+});
+
 app.get("/populateProfile",(req,res)=>{
     console.log("/populateProfile")
     res.render("populateProfile");

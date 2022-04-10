@@ -129,7 +129,7 @@
   .dashboard_v124_173 {
     width: 21px;
     height: 18px;
-    background: rgba(3,133,182,1);
+    background: transparent;
     opacity: 1;
     position: absolute;
     top: 2px;
@@ -148,7 +148,7 @@
   .dashboard_v99_1427 {
     width: 20px;
     height: 11px;
-    background: rgba(3,133,182,1);
+    background:transparent;
     opacity: 1;
     position: absolute;
     top: 11px;
@@ -157,7 +157,7 @@
   .dashboard_v99_1428 {
     width: 18px;
     height: 26px;
-    background: rgba(3,133,182,1);
+    background: transparent;
     opacity: 1;
     position: absolute;
     top: 4px;
@@ -194,37 +194,37 @@
     position: absolute;
     top: 2px;
     left: 0px;
-    border: 2px solid rgba(3,133,182,1);
+    /* border: 2px solid rgba(3,133,182,1); */
   }
   .dashboard_v99_1423 {
-    width: 5px;
-    height: 5px;
+    width: 7px;
+    height: 7px;
     background: url("../images/v99_1423.png");
     opacity: 1;
     position: absolute;
     top: 0px;
     left: 5px;
-    border: 2px solid rgba(3,133,182,1);
+    /* border: 2px solid rgba(3,133,182,1); */
   }
   .dashboard_v99_1424 {
-    width: 5px;
-    height: 5px;
+    width: 7px;
+    height: 7px;
     background: url("../images/v99_1424.png");
     opacity: 1;
     position: absolute;
-    top: 10px;
-    left: 17px;
-    border: 2px solid rgba(3,133,182,1);
+    top: 9px;
+    left: 16px;
+    /* border: 2px solid rgba(3,133,182,1); */
   }
   .dashboard_v99_1425 {
-    width: 5px;
-    height: 5px;
+    width: 7px;
+    height: 7px;
     background: url("../images/v99_1425.png");
     opacity: 1;
     position: absolute;
-    top: 20px;
+    top: 18px;
     left: 2px;
-    border: 2px solid rgba(3,133,182,1);
+    /* border: 2px solid rgba(3,133,182,1); */
   }
   .dashboard_v99_1416 {
     width: 35px;
@@ -252,7 +252,7 @@
   .dashboard_v99_1418 {
     width: 26px;
     height: 26px;
-    background: rgba(3,133,182,1);
+    background: transparent;
     opacity: 1;
     position: relative;
     top: 0px;
@@ -261,7 +261,7 @@
   .dashboard_v99_1419 {
     width: 10px;
     height: 10px;
-    background: rgba(3,133,182,1);
+    background: transparent;
     opacity: 1;
     position: absolute;
     top: 6px;
@@ -270,7 +270,7 @@
   .dashboard_v99_1409 {
     width: 35px;
     height: 35px;
-    background: rgba(3,133,182,1);
+    background: transparent;
     opacity: 1;
     position: absolute;
     top: 346px;
@@ -373,7 +373,7 @@
   .dashboard_v99_1408 {
     width: 32px;
     height: 29px;
-    background: rgba(3,133,182,1);
+    background: transparent;
     opacity: 1;
     position: absolute;
     top: 2px;
@@ -392,7 +392,7 @@
   .dashboard_v99_1411 {
     width: 29px;
     height: 26px;
-    background: rgba(3,133,182,1);
+    background: transparent;
     opacity: 1;
     position: absolute;
     top: 3px;
@@ -411,7 +411,7 @@
   .dashboard_v99_1415 {
     width: 29px;
     height: 29px;
-    background: rgba(3,133,182,1);
+    background: transparent ;
     opacity: 1;
     position: absolute;
     top: 2px;
@@ -508,7 +508,7 @@
   .dashboard_v99_1439 {
     width: 181px;
     height: 144px;
-    background: rgba(3,133,182,1);
+    background: transparent;
     opacity: 1;
     position: absolute;
     top: 0px;
@@ -553,7 +553,7 @@
   .dashboard_v99_1442 {
     width: 138px;
     height: 112px;
-    background: rgba(3,133,182,1);
+    background: transparent;
     opacity: 1;
     position: absolute;
     top: 18px;
@@ -585,9 +585,9 @@
   .dashboard_v99_1446 {
     width: 141px;
     height: 155px;
-    background: rgba(3,133,182,1);
+    background: transparent;
     opacity: 1;
-    position: relative;
+    position: absolute;
     top: 0px;
     left: 0px;
   }

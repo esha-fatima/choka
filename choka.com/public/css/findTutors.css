@@ -144,7 +144,7 @@
   .findTutors_v36_31 {
     width: 75px;
     height: 40px;
-    background: rgba(255,255,255,1);
+    background: transparent;
     opacity: 1;
     position: absolute;
     top: 446px;
@@ -154,9 +154,9 @@
   .findTutors_v36_32 {
     width: 26px;
     height: 26px;
-    background: rgba(3,133,182,1);
-    
-    opacity: 1;
+    background: transparent;
+    /*  */
+    /* opacity: 1; */
     position: absolute;
     top: 6px;
     left: 40px;
@@ -164,12 +164,24 @@
   .findTutors_v36_32_b {
     width: 26px;
     height: 26px;
-    background: rgba(3,133,182,1);
-    opacity: 1;
+    background:transparent;
+    /* opacity: 1; */
     position: absolute;
     top: 6px;
     left:0px
     
+  }
+
+  .pimage{
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 443px;
+    left: 121px;
+    overflow: hidden;
+
   }
 
   .findTutors_name {
@@ -277,12 +289,12 @@
   .findTutors_v44_261 {
     width: 16px;
     height: 16px;
-    background: url("../images/v44_261.png");
+    background: transparent;
     opacity: 1;
     position: absolute;
     top: 4px;
     left: 4px;
-    border: 2px solid rgba(0,0,0,1);
+    /* border: 2px solid rgba(0,0,0,1); */
   }
   .findTutors_v46_262 {
     width: 647px;
