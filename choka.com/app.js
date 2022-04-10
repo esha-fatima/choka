@@ -938,6 +938,39 @@ app.post('/submitAssessmentRequest',(req, res, next)=>{
 })
 
 
+app.post('/grade',(req, res, next)=>{
+    console.log("in grade assessments")
+    // u can pull the email of the person who sent this request
+    let email_tutor = global_user.EmailAddress
+    // now make a caa
+    const docRef = db.collection('PastAssessments');
+    let assessment_headers = []
+    docRef.get().then((val)=>{
+        console.log("found all docs")
+        val.forEach((doc)=>{
+           // console.log(doc.data())
+            let email_extracted = doc.data().assessment_details.creator_email
+            if(email_extracted == email_tutor){
+                //this means it is my assessment so push it into assessment headers array
+                assessment_headers.push(doc.data())
+                
+
+            }
+        })
+        console.log("assessment headers array is ")
+        //now u have the assessment headers which will store all assessments that are created by the oerson submitting request for grading
+        console.log(assessment_headers)
+        //now u have to stringify this array and send it as an object
+        let stringified_arr = JSON.stringify(assessment_headers)
+        res.render("gradeAssessments", {"headers":stringified_arr})
+        
+
+        
+
+    })
+
+})
+
 
 
 
