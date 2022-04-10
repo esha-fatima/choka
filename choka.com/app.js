@@ -859,6 +859,15 @@ app.post('/createAssessmentRequest',(req, res, next)=>{
     /////CHANGE THIS AND USE FIREBASE TOO GENERATE THE ASSESSMENT ID COZ SERVER MAY START AGAINNNN
     let assessmentid = n_assessments + 1;
     n_assessments = n_assessments + 1;
+    //add dashes to each question text entry
+    let arr_qt = []
+    for(let ff = 0;  ff<req.body.question_text.length; ff = ff+1){
+        let txt = req.body.question_text[ff];
+        txt = txt.split(" ");
+        txt = txt.join('-')
+        arr_qt.push(txt)
+    }
+    console.log("arrqt is", arr_qt)
     console.log("generated id is ", assessmentid)
     let assessment_obj = {  "id" : assessmentid.toString(),
                             "Subject":req.body.Subject,
@@ -869,7 +878,7 @@ app.post('/createAssessmentRequest',(req, res, next)=>{
                             "Minutes":req.body.minutes,
                             "QuestionPoints":req.body.question_points,
                             "QuestionMinutes":req.body.question_minutes,
-                            "QuestionText":req.body.question_text,
+                            "QuestionText":arr_qt,
                             "IntendedRecipients": recipients_list
                         }
 

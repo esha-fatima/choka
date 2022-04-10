@@ -135,7 +135,9 @@
   }
 
   .sawaal {
-    
+    position: absolute;
+    left: 90px;
+    text-align: left;
     background-color: transparent;
     border: none;
     display: inline;
@@ -147,7 +149,9 @@
     height: 150px;
     overflow-y: scroll;
     overflow-x: scroll;
+    overflow: auto;
     scrollbar-color:inherit
+    
     
     
     
