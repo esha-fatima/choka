@@ -21,7 +21,7 @@
             
                 <div class = "timer">
                     <p class = "start_time">Starting time: 50</p>
-                    <p class = "time_remaining">Time remaining: 50</p>
+                    <p id = "time_remaining"class = "time_remaining">Time remaining: 50</p>
                     <p id = "total_time" class = "time_allotted"> </p>
 
 
@@ -128,6 +128,13 @@
         header_points.innerHTML = "Total Points:" + total_points
         header_time.innerHTML = "Time allotted:" +  total_minutes + " minutes"
 
+        
+        //now displ
+
+
+
+
+
         let n_questions = content_object.QuestionText.length
         //for every questionnn
         let mega = document.getElementById("mega")
@@ -154,6 +161,32 @@
             mega.insertAdjacentHTML('beforeend', stuff)
         
         }
+
+        let date_started = new Date();
+        let date_end = new Date(date_started.getTime() + 50*60000).getTime();
+        console.log("data started is", date_started)
+        console.log("date ended", date_end)
+        var x = setInterval(function() {
+
+               
+                var now = new Date().getTime();
+                var distance = date_end - now;
+
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                
+                document.getElementById("time_remaining").innerHTML ="Time Remaining: "  + hours + "h "
+                + minutes + "m " + seconds + "s ";
+
+               
+                if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("time_remaining").innerHTML = "EXPIRED";
+                }
+                }, 1000);
 
 
 
