@@ -142,12 +142,6 @@ app.use('/registrationRequest',(req, res, next)=>{
         }
 
 
-
-
-
-
-
-
     }
 
 
@@ -289,8 +283,6 @@ app.post("/editProfile",(req,res)=>{
 });
 
 
-
-
 app.post("/login",(req,res)=>{
 
     res.render("Login");
@@ -324,31 +316,31 @@ app.get("/",(req,res)=>{
 //     res.redirect('/LLogin')
 //   })
 //studnet
-app.post("/register", (req,res)=>
-{
-    let get_email = req.body.email;
-    let get_password = req.body.password;
-    let name = req.body.name;
-    let number = req.body.contact;
+// app.post("/register", (req,res)=>
+// {
+//     let get_email = req.body.email;
+//     let get_password = req.body.password;
+//     let name = req.body.name;
+//     let number = req.body.contact;
 
-    getAuth()
-      .createUser({
-          email: get_email,
-          contact: number,
-          password: get_password,
-          displayName: name,
-          // photoURL: 'http://www.example.com/12345678/photo.png',
-          // disabled: false,
-      })
-      .then((userRecord) => {
-          // See the UserRecord reference doc for the contents of userRecord.
-          console.log('Successfully created new user:', userRecord.uid);
-      })
-      .catch((error) => {
-          console.log('Error creating new user:', error);
-      });
+//     getAuth()
+//       .createUser({
+//           email: get_email,
+//           contact: number,
+//           password: get_password,
+//           displayName: name,
+//           // photoURL: 'http://www.example.com/12345678/photo.png',
+//           // disabled: false,
+//       })
+//       .then((userRecord) => {
+//           // See the UserRecord reference doc for the contents of userRecord.
+//           console.log('Successfully created new user:', userRecord.uid);
+//       })
+//       .catch((error) => {
+//           console.log('Error creating new user:', error);
+//       });
 
-})
+// })
 
 
 app.listen(port, '0.0.0.0', ()=>{ // '0.0.0.0' is for running via docker only
