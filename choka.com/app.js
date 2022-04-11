@@ -325,26 +325,32 @@ app.post('/findTutors', (req,res)=>{
         snapshot.docs.map(doc => {
             let data = doc.data()
             
-            if(doc.id == "Mathematics D")
-            {
-                count +=1
-                tutor_list.push(data.tutors[0])
-            }    
-            else if(doc.id == "English Language")
-            {
-                count +=1
-                tutor_list.push(data.tutors[0])
-            }      
+            // if(doc.id == "Mathematics D")
+            // {
+                // count +=1
+                // tutor_list.push(data.tutors[0])
+            // }    
+            // else if(doc.id == "English Language")
+            // {
+            //     count +=1
+            //     tutor_list.push(data.tutors[0])
+            // }      
             
-            if (count==2)
-            {
-                let arr_str = JSON.stringify(tutor_list)
+            // if (count==2)
+            // {
+                try{
+                    let arr_str = JSON.stringify([data.tutors[0]])
                 let xx = {"bl":arr_str};
                 res.render("SearchResults",xx)
-            }
+                }
+                catch{
+                    
+                }
+                
+            // }
         })
- });
-    
+        })
+        
     // db.collection("subjects").get().then((snapshot) => {
     //     let Name_one = ""
     //     let Department_one = ""
@@ -805,6 +811,12 @@ app.get("/publishProfile",(req,res)=>{
 app.get("/publishTutorProfile",(req,res)=>{
     console.log("/publishTutorProfile")
     res.render("publishProfile");
+   
+});
+
+app.get("/reviews",(req,res)=>{
+    console.log("/reviews")
+    res.render("reviews");
    
 });
 
