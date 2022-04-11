@@ -50,9 +50,15 @@
                 let on_start = JSON.stringify(headers_array[i])
                 let creator_name_arr = headers_array[i].assessment_details.creator_name.split('-')
                 let score_assigned = headers_array[i].score;
+                //let score_assigned = (headers_array[i].score.split('-')).pop().parseInt()
                 let percentage = (score_assigned/headers_array[i].assessment_details.TotalPoints)*100;
                 if(score_assigned == "Pending"){
                     percentage = "Pending"
+                }
+                else{
+                    score_assigned = parseInt((headers_array[i].score.split('-')).pop())
+                    percentage = (score_assigned/headers_array[i].assessment_details.TotalPoints)*100
+
                 }
                 let submission_time = headers_array[i].submission_time;
                 //console.log(submission_time.toString())
