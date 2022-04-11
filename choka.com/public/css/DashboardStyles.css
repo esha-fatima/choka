@@ -301,8 +301,10 @@
     text-align: left;
   }
   .dashboard_v99_1402 {
-    width: 318px;
+    width: 200px;
     color: rgba(3,133,182,1);
+    background-color: transparent;
+    border: none;
     position: absolute;
     top: 443px;
     left: 52px;

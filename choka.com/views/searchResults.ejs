@@ -132,7 +132,7 @@
             let email = obj.EmailAddress
             
             //let results = document.getElementById("results");
-            let results_content = '<form action="/tuitionRequest" method="POST"><div class="search_v39_146"></div><button class="search_v39_171" name="tutor" value='+'\"'+email+'\"'+'>Send Request</button> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><img class = "search_v39_147" src="/images/header_image.jpg" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Message</span></form>';
+            let results_content = '<form action="/tuitionRequest" method="POST"><div class="search_v39_146"></div><button class="search_v39_171" name="tutor" value='+'\"'+email+'\"'+'>Send Request</button></form> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><img class = "search_v39_147" src="/images/header_image.jpg" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><form method = "POST"><button class="search_v39_172" type = "submit" name = "requested" value ="'+name+" "+experience+" "+email+'" method = "POST" formaction = "/messageRequest">Message</button></form>';
             console.log(results_content)
             results.innerHTML =results_content 
             
@@ -152,7 +152,7 @@
                 rating = obj.Rating
                 email = obj.EmailAddress
                 results = document.getElementById("results");
-                results_content = '<form action="/tuitionRequest" method="POST"><div class="search_v39_146"></div><button class="search_v39_171"  name="tutor" value='+'\"'+email+'\"'+'>Send Request</button> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><img class = "search_v39_147" src="/images/header_image.jpg" /></div><span class="search_v39_148">'+name+4+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Message</span></form>';
+                results_content = '<form action="/tuitionRequest" method="POST"><div class="search_v39_146"></div><button class="search_v39_171"  name="tutor" value='+'\"'+email+'\"'+'>Send Request</button></form> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><img class = "search_v39_147" src="/images/header_image.jpg" /></div><span class="search_v39_148">'+name+4+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><form method = "POST"><button type = "submit" name = "requested" value ="'+name+" "+experience+" "+email+'" method = "POST" formaction = "/messageRequest">Message</button></form></span>';
                 results.innerHTML = results_content
                 
                                  
