@@ -112,7 +112,7 @@
 }
 .filter_icon_1{
     top:41px;
-    left:940px;
+    left:935px;
     position: absolute;
 
 }
@@ -148,7 +148,7 @@
 }
 .filter_icon_2{
     top:113px;
-    left:940px;
+    left:935px;
     position: absolute;
 
 }
@@ -181,7 +181,7 @@
 }
 .filter_icon_3{
     top:185px;
-    left:940px;
+    left:935px;
     position: absolute;
 
 }
@@ -213,7 +213,7 @@
 
 .filter_icon_4{
     top:41px;
-    left:495px;
+    left:490px;
     position: absolute;
 
 }
@@ -244,7 +244,7 @@
 }
 .filter_icon_5{
     top:113px;
-    left:495px;
+    left:490px;
     position: absolute;
 
 }
@@ -276,7 +276,7 @@
 
 .filter_icon_6{
     top:185px;
-    left:495px;
+    left:490px;
     position: absolute;
 
 }
@@ -306,7 +306,7 @@
 }
 .filter_icon_7{
     top:41px;
-    left:60px;
+    left:55px;
     position: absolute;
 }
 
@@ -337,8 +337,46 @@
 }
 .filter_icon_8{
     top:113px;
-    left:60px;
+    left:55px;
+    size: 16px;
     position: absolute;
+    background-color: transparent;
+}
+.location{
+  top:5px;
+  left:347px;
+  position: absolute;
+
+}
+.location_1{
+  top:41px;
+  left:150px;
+  position: absolute;
+
+}
+.location_2{
+  top:45px;
+  left:155px;
+  position: absolute;
+  
+}
+.rating{
+  top:70px;
+    left:0px;
+  position: absolute;
+
+}
+.rating_1{
+  top:44px;
+  left:56px;
+  position: absolute;
+
+}
+.rating_2{
+  top:48px;
+  left:60px;
+  position: absolute;
+  
 }
 
 
@@ -370,7 +408,7 @@
 }
 .filter_icon_9{
     top:185px;
-    left:60px;
+    left:55px;
     position: absolute;
 }
 

@@ -32,11 +32,15 @@
       top: 760px;
       left: 1400px;
       position: absolute;
+      image-resolution: 1000px;
+      border:none;
   }
   #previous{
     top: 760px;
     left: 50px;
     position: absolute;
+    image-resolution: 1000px;
+    border:none;
 
   }
 
@@ -60,6 +64,12 @@
     width: 152px;
     height: 48px;
     background: rgba(3,133,182,1);
+    color: white;
+    border: none;
+    /* fontsize:50px; */
+    font-weight: SemiBold;
+    font-family: Roboto;
+    font-size:18px;
     opacity: 1;
     position: absolute;
     top: 845px;
@@ -71,16 +81,21 @@
     overflow: hidden;
   }
   .search_v39_173 {
-    width: 131px;
+    background: transparent;
+    border: none;
+    width: 500px;
+    /* width: 131px; */
     color: rgba(255,255,255,1);
     position: absolute;
     top: 858px;
-    left: 1017px;
+    left: 1008px;
     font-family: Roboto;
     font-weight: Regular;
-    font-size: 20px;
+    font-size: 18px;
     opacity: 1;
     text-align: left;
+    padding-bottom: 10px;
+    margin-right: 110px;
   }
   .search_name {
     color: #fff;
@@ -98,18 +113,19 @@
   .search_v39_147 {
     width: 218px;
     height: 231px;
-    background: url("../images/v39_147.png");
+    /* background: url("../images/v39_147.png"); */
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
+    background: transparent;
     opacity: 1;
     position: absolute;
-    top: 646px;
+    top: 660px;
     left: 124px;
-    border-top-left-radius: 100px;
+    /* border-top-left-radius: 100px;
     border-top-right-radius: 100px;
     border-bottom-left-radius: 100px;
-    border-bottom-right-radius: 100px;
+    border-bottom-right-radius: 100px; */
     overflow: hidden;
   }
   .search_v39_148 {
@@ -300,6 +316,9 @@
     border-bottom-left-radius: 100px;
     border-bottom-right-radius: 100px;
     overflow: hidden;
+  }
+  .findTutors_v36_321 {
+    border: none !important;
   }
   .search_v119_1840 {
     width: 53px;

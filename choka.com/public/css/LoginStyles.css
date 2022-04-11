@@ -21,8 +21,12 @@ body {
   .login_20_1{
     color: rgba(3,133,182,1);
     position: absolute;
-    top:825px;
-    left:90px;
+    top:838px;
+    left:20px;
+    width: 420px;
+    height: 70px;
+    font-weight: 490;
+    font-size: 20px !important;
     border:none;
     background-color: transparent;
   }
@@ -30,9 +34,13 @@ body {
     color: rgba(3,133,182,1);
     position: absolute;
     border:none;
+    font-size: 20px !important;
     background-color: transparent;
-    top:800px;
-    left:98px
+    top:893px;
+    font-weight: 490;
+    left:10px;
+    width: 370px;
+    height: 70px
   }
   
 
@@ -46,6 +54,7 @@ body {
     position: relative;
     top: 0px;
     left: 0px;
+    border-bottom-right-radius: 100px;
   }
   .login_3 {
     width: 95px;
@@ -102,8 +111,8 @@ body {
     width: 292px;
     color: rgba(3,133,182,1);
     position: absolute;
-    top: 288px;
-    left: 87px;
+    top: 282px;
+    left: 80px;
     font-family: Roboto;
     font-weight: ExtraBold;
     font-size: 60px;
@@ -226,9 +235,9 @@ body {
     left: 0px;
   }
   .login_16 {
-    width: 18px;
-    height: 21px;
-    background: rgba(3,133,182,1);
+    width: 19px;
+    height: 23px;
+    background:transparent;
     opacity: 1;
     position: absolute;
     top: 1px;
@@ -254,9 +263,9 @@ body {
     left: 0px;
   }
   .login_19 {
-    width: 22px;
-    height: 16px;
-    background: rgba(3,133,182,1);
+    width: 23px;
+    height: 19px;
+    background: transparent;
     opacity: 1;
     position: absolute;
     top: 4px;
