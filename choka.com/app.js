@@ -128,6 +128,8 @@ app.post('/messageRequestTutor',(req,res)=>{
         if(doc.exists){
             console.log("doc is", doc.data());
             let message_history_object = doc.data().jason_obj
+            let tutor_in_chat = doc.data().tutor_email
+            let student_in_chat = doc.data().student_email
             console.log(message_history_object)
            
             message_history_object = JSON.stringify(message_history_object);
@@ -146,6 +148,20 @@ app.post('/messageRequestTutor',(req,res)=>{
 
 
             
+        }
+
+
+        else{
+            db.collection('Chats').doc(chat_identifier).set({
+                jason_obj:{},
+                tutor_email : tutor_in_chat,
+                student_email: student_in_chat
+            }).then(()=>{
+                console.log("firebase filled");
+                //res.redirect("/home");
+                res.render("chatTutor", dummy)
+            });
+
         }
     })
 
@@ -278,7 +294,7 @@ app.post('/displayChats', (req,res)=>{
                 let stringified_chat_headers = JSON.stringify(chat_headers)
                 console.log("i am here and teh stringified chat headers are", stringified_chat_headers)
                 res.render("displayChats", {"chat_headers": stringified_chat_headers})
-                
+
                 
 
             });

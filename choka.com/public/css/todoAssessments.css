@@ -321,6 +321,20 @@
 
   }
 
+  .ins_name_two{
+      
+    position: inherit;
+    display: inline;
+    padding-top: 0px;
+    position: absolute;
+    text-align: start;
+    vertical-align:middle;
+    left: 160px;
+    
+
+}
+
+
 
   .ins_name_ff{
       
