@@ -338,14 +338,14 @@ app.post('/findTutors', (req,res)=>{
             
             // if (count==2)
             // {
-                try{
-                    let arr_str = JSON.stringify([data.tutors[0]])
-                let xx = {"bl":arr_str};
-                res.render("SearchResults",xx)
-                }
-                catch{
-                    
-                }
+            try{
+                let arr_str = JSON.stringify([data.tutors[0]])
+            let xx = {"bl":arr_str};
+            res.render("SearchResults",xx)
+            }
+            catch{
+                
+            }
                 
             // }
         })
@@ -611,6 +611,44 @@ app.post("/viewprofile",(req,res)=>{
     res.render("viewProfile",global_user)
 })
 
+// app.post("/delProfile",(req,res)=>{
+
+//     //get the details of the person who is logged in a json object and then send it to the frontend.
+//     //hardcodig it for now
+
+//     const docRef = db.collection('Students').doc(global_user.EmailAddress);
+//     docRef.delete().then((doc)=>{
+//         res.render("home")
+//     });
+
+//     console.log("in vw")
+//     console.log(global_user)
+//     res.render("home")
+// })
+
+app.post('/delProfile',(req,res)=>{
+    
+    //when received login request, check their password from firebase/
+    //if the password is good to go 
+    //go to dashboard page 
+    //get all the firebase stuff and store it in a json object..the details
+    // console.log(req.body)
+    // let email = req.body["Email"]
+    // let password =  req.body["Password"]
+    const docRef = db.collection('Students').doc(global_user.EmailAddress);
+
+    docRef.delete().then((doc)=>{
+        res.render("home")
+            
+        }).catch((doc)=>{
+            
+            const docRefTutor = db.collection('Teachers').doc(global_user.EmailAddress);
+            docRefTutor.delete().then((doc)=>{
+
+                res.render("home")
+            })
+        })
+});
 
 app.post("/populateProfile",(req,res)=>{
     res.render("populateProfile")

@@ -32,15 +32,11 @@
       top: 760px;
       left: 1400px;
       position: absolute;
-      image-resolution: 1000px;
-      border:none;
   }
   #previous{
     top: 760px;
     left: 50px;
     position: absolute;
-    image-resolution: 1000px;
-    border:none;
 
   }
 
@@ -64,12 +60,6 @@
     width: 152px;
     height: 48px;
     background: rgba(3,133,182,1);
-    color: white;
-    border: none;
-    /* fontsize:50px; */
-    font-weight: SemiBold;
-    font-family: Roboto;
-    font-size:18px;
     opacity: 1;
     position: absolute;
     top: 845px;
@@ -108,19 +98,18 @@
   .search_v39_147 {
     width: 218px;
     height: 231px;
-    /* background: url("../images/v39_147.png"); */
+    background: url("../images/v39_147.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    background: transparent;
     opacity: 1;
     position: absolute;
-    top: 660px;
+    top: 646px;
     left: 124px;
-    /* border-top-left-radius: 100px;
+    border-top-left-radius: 100px;
     border-top-right-radius: 100px;
     border-bottom-left-radius: 100px;
-    border-bottom-right-radius: 100px; */
+    border-bottom-right-radius: 100px;
     overflow: hidden;
   }
   .search_v39_148 {
