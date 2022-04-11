@@ -1,23 +1,23 @@
-//jshint esversion:6
 const express = require("express");
 const bodyParser = require("body-parser");
+const http = require("http");
 const path = require("path");
 const helmet = require("helmet");
 const ejs = require("ejs");
 const _= require("lodash");
 const firebase = require("firebase");
-const cookieParser = require('cookie-parser');
-const { exec } = require("child_process");
-const { execPath } = require("process");
-// const bcrypt = require('bcrypt')
-// const CryptoJS = require("crypto-js")
-// import { FacebookAuthProvider } from "firebase/auth";
-// require("firebase/firestore");
-// import fire from "./fire";
-const key = "choka.com"
+const cookieParser = require('cookie-parser')
+const socketio = require('socket.io');
+
+
+ 
+let n_assessments = 0
 const app = express();
+const server = http.createServer(app);
+const io = socketio(server);
 
 const port = process.env.PORT || 3000
+let chat_identifier = "";
 
 // allow the app to use cookieparser
 // app.use(helmet());
@@ -28,6 +28,60 @@ app.use(cookieParser());
 app.set('view engine','ejs');
 
 let global_user = ""
+
+io.on('connection',socket=>{
+    console.log("connected");
+    socket.emit("chatidentifier",chat_identifier) // this will emit to only that user
+    //socket.broadcast.emit("message", "A user has joined the chat");
+    //u can know which user it is from global
+    socket.on('sendMessage',message=>{
+        console.log("i have received a message")
+
+        console.log(message)
+        let message_arr = message.split('_')
+        let rec_id = message_arr.pop()
+        let message_to_be_sent = message_arr[0]
+        const docRef = db.collection('Chats').doc(rec_id);
+        docRef.get().then((doc)=>{
+            if(doc.exists){
+                let message_history_object = doc.data().jason_obj
+                //console.log("ff", message_history_object)
+                let keys = Object.keys(message_history_object);
+                let len_keys = keys.length
+                //console.log("len keys is ", len_keys)
+                let new_id = len_keys+1
+                let str_key = global_user.EmailAddress+"_"+ new_id.toString()
+                message_history_object[str_key] = message_to_be_sent
+                //console.log("new obj is ", message_history_object)
+
+                db.collection('Chats').doc(rec_id).update({
+                    jason_obj:message_history_object
+                }).then(()=>{
+                    //console.log("firebase updated");
+                    let message_to_be_emitted = message_to_be_sent + "_" + rec_id
+                    //the ur supposed to emit to the user with teh chat id...and see if they can receive and render it
+                    io.emit("someMessage", message_to_be_emitted)
+                });
+                //now set this in firebase
+
+                
+
+            }
+
+        });
+
+        //now update firebase
+        //nowwww send to firebase
+
+
+        
+        //when u receive a message
+        //u know what is the chat identifier
+        
+    })
+})
+
+
 
 var firebaseConfig = {
     apiKey: "AIzaSyB5L-1mBbAzxi-bJwjvhCl_y4RyZ9LoZMk",
@@ -56,6 +110,106 @@ app.post('/filter',(req,res)=>{
 
      res.render("filter")
 })
+
+app.post('/messageRequestTutor',(req,res)=>{
+    console.log("here")
+    let str_obt = req.body.requested
+    let str_array = str_obt.split(" ");
+    console.log(str_array)
+    let recipientEmailAddress = str_array.pop();
+    let exp= str_array.pop();
+    let name_str = str_array.join(' ')
+    //console.log(name_str)
+    //if it is a student, then u need to be redirected to the messaging page with tutor
+    chat_identifier =  recipientEmailAddress + " " + global_user.EmailAddress
+    console.log("chat identifier is ", chat_identifier)
+    const docRef = db.collection('Chats').doc(chat_identifier);
+    docRef.get().then((doc)=>{
+        if(doc.exists){
+            console.log("doc is", doc.data());
+            let message_history_object = doc.data().jason_obj
+            console.log(message_history_object)
+           
+            message_history_object = JSON.stringify(message_history_object);
+            //get the name of the tutor...
+            let obj_to_be_sent = {
+                "name" : name_str,
+                "messages" : message_history_object,
+                "chatidentifier": chat_identifier,
+                "my_email": global_user.EmailAddress,
+                "recipient_email": recipientEmailAddress
+            }
+            //let stringified = JSON.stringify(obj_to_be_sent)
+            console.log(obj_to_be_sent)
+            res.render("chatTutor", obj_to_be_sent)
+            //if chat exists then get the chat from json object and render the messages on frontend
+
+
+            
+        }
+    })
+
+
+
+})
+
+
+app.post('/messageRequest',(req,res)=>{
+    
+    //console.log(req.body)
+    
+    let str_obt = req.body.requested
+    let str_array = str_obt.split(" ");
+    console.log(str_array)
+    let recipientEmailAddress = str_array.pop();
+    let exp= str_array.pop();
+    let name_str = str_array.join(' ')
+    //console.log(name_str)
+    //if it is a student, then u need to be redirected to the messaging page with tutor
+    chat_identifier = global_user.EmailAddress + " " + recipientEmailAddress
+    console.log("chat identifier is ", chat_identifier)
+    const docRef = db.collection('Chats').doc(chat_identifier);
+    docRef.get().then((doc)=>{
+        if(doc.exists){
+            console.log("doc is", doc.data());
+            let message_history_object = doc.data().jason_obj
+            console.log(message_history_object)
+           
+            message_history_object = JSON.stringify(message_history_object);
+            //get the name of the tutor...
+            let obj_to_be_sent = {
+                "name" : name_str,
+                "messages" : message_history_object,
+                "chatidentifier": chat_identifier,
+                "my_email": global_user.EmailAddress,
+                "recipient_email": recipientEmailAddress
+            }
+            //let stringified = JSON.stringify(obj_to_be_sent)
+            console.log(obj_to_be_sent)
+            res.render("chat", obj_to_be_sent)
+            //if chat exists then get the chat from json object and render the messages on frontend
+
+
+            
+        }
+        else{
+            db.collection('Chats').doc(chat_identifier).set({
+                jason_obj:{}
+            }).then(()=>{
+                console.log("firebase filled");
+                //res.redirect("/home");
+            });
+
+        }
+    });
+
+
+   
+    // if it is a tutor, then u need to redirect to the messaging page with student
+})
+
+
+
 
 app.get('/searchRequest',(req,res)=>{
 
@@ -86,9 +240,9 @@ app.post('/searchRequest',(req,res)=>{
     ////search
     //3 results
     //then get all the relevnat details from firebase and get the search results in the form of an array
-    let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
-    let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
-    let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
+    let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
+    let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
+    let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
     let results_array = [
        obj1, obj2, obj3
        ]
@@ -230,9 +384,9 @@ app.post('/filterStudent',(req,res)=>{
 
 
 app.post('/filterFromTutor',(req,res)=>{
-    let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
-    let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
-    let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
+    let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
+    let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
+    let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
     let results_array = [
        obj1, obj2, obj3
        ]
@@ -991,10 +1145,376 @@ app.post('/parentregistration',(req, res, next)=>{
     });
 });
 
+
+
+//ASSESSMENTS MODULE
+app.post('/studentsAssessments',(req, res, next)=>{
+    console.log("in students assessments")
+    res.render("studentAssessments")
+
+})
+app.post('/tutorAssessments',(req, res, next)=>{
+    console.log("in tutors assessments")
+    res.render("tutorAssessments")
+
+})
+app.post('/create',(req, res, next)=>{
+    console.log("in create assessments")
+    
+    let recipient_ids = ['eshafatima2001@gmail.com', '123@gmail.com']
+    let rec_str = JSON.stringify(recipient_ids)
+    res.render("createAssessments",{"bachey":rec_str})
+
+
+})
+
+app.post('/todoAssessments',(req, res, next)=>{
+    console.log("in to do assessments")
+    //now at backend we need to see which are the assessments for this particular student who sent us the request
+    //we are going to iterate over all possible emails
+    //now at backend iterate through to do assessments to do and get docs via ur emaillll 
+    //then 
+    let assessment_headers = []
+    const docRef = db.collection('TodoAssessments');
+    console.log("email is ", global_user.EmailAddress)
+    docRef.where('id', '==', global_user.EmailAddress).get().then((value)=>{
+        
+        console.log("retreived isss")
+        value.forEach(doc=>{
+            console.log(doc.id, '=>', doc.data());
+            //let stringified_version = JSON.stringify(doc.data().assessment_details)
+            //console.log("stringified version is ", stringified_version)
+            let proposed_start_date = doc.data().assessment_details.PublishDate
+            let proposed_start_time = doc.data().assessment_details.PublishTime
+            console.log(proposed_start_date)
+            console.log(proposed_start_time)
+            let merge = proposed_start_date.toString() + "T" + proposed_start_time.toString()
+            console.log(merge)
+            let that_date = new Date(merge);
+            let now = new Date()
+            if(now>=that_date){
+                assessment_headers.push(doc.data().assessment_details)
+
+            }
+            
+
+
+        })
+        let str_array = JSON.stringify(assessment_headers);
+        let obj_to_be_sent = {"headers":str_array}
+        res.render("todoAssessments", obj_to_be_sent)
+
+
+
+    });
+    
+    //return;
+  
+
+})
+
+app.post('/startAssessment',(req, res, next)=>{
+    console.log("in start assessments")
+    console.log(req.body.assessment_details)
+    let assessment_header = JSON.parse(req.body.assessment_details);
+    console.log("assessment to start is ", assessment_header)
+    let stringified = JSON.stringify(assessment_header)
+    res.render("startAssessment",{"assessment_content":stringified})
+
+
+})
+app.post('/gradeRequest',(req,res,next)=>{
+    console.log("in grade request")
+    console.log(req.body)
+    let assessment_content = JSON.parse(req.body.assessment_details)
+    console.log("assessment content after parsing is ", assessment_content)
+    //now that u have all this data render it to the screen
+    res.render("grader", {"assessment_content":req.body.assessment_details})
+})
+
+app.post('/gradingDone',(req,res,next)=>{
+    console.log("in grading done")
+    console.log(req.body)
+    let points_arr = req.body.student_points
+    let total_points = 0
+    let points_string = ""
+    for(let i = 0; i<points_arr.length; i = i+1){
+        points_string = points_string +"-"+points_arr[i].toString()
+        total_points = total_points + parseInt(points_arr[i])
+
+    }
+    points_string = points_string + "-" + total_points
+    console.log("points string is ", points_string)
+    points_string = points_string.substring(1)
+    console.log(points_string)
+
+    let parsed = JSON.parse(req.body.submit_button)
+    console.log("parsed is", parsed)
+    let student_id = parsed.student_id;
+    let key = student_id + " " + global_user.EmailAddress
+    //now find the one with this key and change the score and grade status only
+    const docRef = db.collection('PastAssessments');
+    db.collection('PastAssessments').doc(key).update({
+        score:points_string,
+        grade_status:"Graded"
+
+    }).then(()=>{
+        
+        console.log("changes madeeee")
+        res.render("tutorAssessments")
+    })
+
+    
+    
+    
+})
+
+
+
+
+
+app.post('/pastAssessments',(req,res,next)=>{
+    console.log("in past assessments")
+    let assessment_headers = []
+    const docRef = db.collection('PastAssessments');
+    console.log("email is ", global_user.EmailAddress)
+    docRef.where('student_id', '==', global_user.EmailAddress).get().then((value)=>{
+
+            value.forEach(doc=>{
+                console.log(doc.id, '=>', doc.data());
+                let doc_obj = {
+                    "assessment_details" : doc.data().assessment_details,
+                    "grade_status": doc.data().grade_status,
+                    "score": doc.data().score,
+                    "student_id": doc.data().student_id,
+                    "submission_time": doc.data().submission_time
+                }
+                //let stringified_obj = JSON.stringify(doc_obj);
+                assessment_headers.push(doc_obj);
+
+           
+            
+
+
+        })
+        //now stringify the assessment headers array
+        let stringified_arr = JSON.stringify(assessment_headers)
+        console.log(stringified_arr)
+        res.render("pastAssessments", {"headers":stringified_arr})
+
+
+    })
+    //make a call to database where the student id is mineeee
+    //get all of those docsss
+
+    //now in past assessments we need to 
+})
+
+app.post('/submitAssessmentRequest',(req, res, next)=>{
+    console.log("in submit assessments")
+    let submission_time = new Date().toDateString()
+    console.log("submission time is ", submission_time)
+    console.log(req.body)
+    
+    let assessment_header = JSON.parse(req.body.submit_button)
+    console.log(assessment_header)
+    //first we need to push them into past assessments pending vs graded
+    //delete from to do where id is of this bacha who just submitted
+    // in past assessments, primary key will be student email plus space plus creator email.
+    let p_key = global_user.EmailAddress + " " + assessment_header.creator_email
+    console.log("pkey is", p_key)
+    //save in past_assessments
+    const docRef = db.collection('PastAssessments').doc(p_key);
+    docRef.get(p_key).then((doc)=>{
+        if(doc.exists){
+            console.log("already doneee exists");
+
+            res.render("studentAssessments");
+
+        }
+        else{
+            //process the answers to the questionsssss
+            let answers_arr = []
+            console.log("reqq body text is ",req.body.question_text)
+            for(let x = 0; x< req.body.question_text.length; x = x+1){
+                let ans = req.body.question_text[x];
+                let ans_arr = ans.split(' ')
+                let dashed_ans = ans_arr.join('-')
+                answers_arr.push(dashed_ans)
+            }
+            console.log("answers array is ", answers_arr)
+            db.collection('PastAssessments').doc(p_key).set({
+                assessment_details:assessment_header,
+                student_id :global_user.EmailAddress,
+                submission_time: submission_time, 
+                answers: answers_arr,
+                grade_status: "Pending",
+                score : "Pending",  
+            }).then(()=>{
+                console.log("added to past assessments")
+                //now redirect the user to the pageeee
+                res.render("studentAssessments")
+
+            })
+
+
+        }
+    })
+    //there will be creator email
+    //there will be bacha's email
+    //there will be answers to the questions.
+    //there will be full assignment content
+    //there will be submission date also
+    //make sure it is visible in past assessments, pending status and redirect to students assessment
+
+
+})
+
+
+app.post('/grade',(req, res, next)=>{
+    console.log("in grade assessments")
+    // u can pull the email of the person who sent this request
+    let email_tutor = global_user.EmailAddress
+    // now make a caa
+    const docRef = db.collection('PastAssessments');
+    let assessment_headers = []
+    docRef.get().then((val)=>{
+        console.log("found all docs")
+        val.forEach((doc)=>{
+           // console.log(doc.data())
+            let email_extracted = doc.data().assessment_details.creator_email
+            if(email_extracted == email_tutor){
+                //this means it is my assessment so push it into assessment headers array
+                assessment_headers.push(doc.data())
+                
+
+            }
+        })
+        console.log("assessment headers array is ")
+        //now u have the assessment headers which will store all assessments that are created by the oerson submitting request for grading
+        console.log(assessment_headers)
+        //now u have to stringify this array and send it as an object
+        let stringified_arr = JSON.stringify(assessment_headers)
+        res.render("gradeAssessments", {"headers":stringified_arr})
+        
+
+        
+
+    })
+
+})
+
+
+
+
+
+
+
+app.post('/createAssessmentRequest',(req, res, next)=>{
+    console.log("in create assessments request")
+    console.log(req.body)
+    let n_req_params = Object.keys(req.body).length
+    let recipients_list = []
+    console.log("nparams is", n_req_params)
+
+    for(let x = 6; x<n_req_params-3; x=x+1){
+        recipients_list.push(Object.keys(req.body)[x])
+        console.log("added")
+    }
+    //get the intended recipients of the assessments
+    //generate a random assessmentid
+    console.log(recipients_list)
+    /////CHANGE THIS AND USE FIREBASE TOO GENERATE THE ASSESSMENT ID COZ SERVER MAY START AGAINNNN
+    let assessmentid = n_assessments + 1;
+    n_assessments = n_assessments + 1;
+    //add dashes to each question text entry
+    let arr_qt = []
+    for(let ff = 0;  ff<req.body.question_text.length; ff = ff+1){
+        let txt = req.body.question_text[ff];
+        txt = txt.split(" ");
+        txt = txt.join('-')
+        arr_qt.push(txt)
+    }
+
+    //we need to convert the creator name to dash separated form also
+    let creator_name_arr = global_user.Name.split(" ")
+    let creator_name = creator_name_arr.join('-')
+    console.log("arrqt is", arr_qt)
+    console.log("generated id is ", assessmentid)
+    let assessment_obj = {  "id" : assessmentid.toString(),
+                            "creator_email": global_user.EmailAddress,
+                            "creator_name" : creator_name,
+                            "Subject":req.body.Subject,
+                            "Syllabus":req.body.Syllabus,
+                            "TotalPoints": req.body.total_points,
+                            "PublishDate":req.body.publishDate,
+                            "PublishTime":req.body.publishTime,
+                            "Minutes":req.body.minutes,
+                            "QuestionPoints":req.body.question_points,
+                            "QuestionMinutes":req.body.question_minutes,
+                            "QuestionText":arr_qt,
+                            "IntendedRecipients": recipients_list
+                        }
+
+    //now store this in firebase
+    //create a firebase record
+    const docRef = db.collection('Quiz').doc(assessmentid.toString());
+    docRef.get(assessmentid.toString()).then((doc)=>{
+        if(doc.exists){
+            console.log("Assessment exists");
+
+            res.render("tutorAssessments");
+
+        }
+        else{
+            db.collection('Quiz').doc(assessmentid.toString()).set({
+                jason_obj:assessment_obj
+            }).then(()=>{
+                console.log("assessment added");
+                //u have the list of recipients and the assessment object
+                //for every recipient add an entry into the To do waala table 
+                let promise_list = []
+                for(let j = 0; j<recipients_list.length; j = j+1){
+                    let key = recipients_list[j] +" "+global_user.EmailAddress;
+                    
+                    promise_list.push(db.collection('TodoAssessments').doc(key).set({
+
+                        assessment_details:assessment_obj,
+                        id:recipients_list[j]
+                    }))
+                   
+
+                }
+                console.log("promise list",promise_list);
+                //now when ur doneee only then redirect
+                Promise.all(promise_list).then((values) => {
+                    res.render("tutorAssessments");
+
+                });
+                
+
+
+
+                
+            });
+
+        }
+    });
+
+
+
+})
+
+
+
+
+
+
+
 // Save encryoted password
 // Sing up
 // Find Tutor
 
-app.listen(port, '0.0.0.0', ()=>{ // '0.0.0.0' is for running via docker only
+server.listen(port, '0.0.0.0', ()=>{ // '0.0.0.0' is for running via docker only
      console.log("Server has started on port 3000");
 });

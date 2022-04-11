@@ -1,0 +1,117 @@
+<%-include("partials/header");-%>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+        <style>
+                .container {
+                border: 2px solid #dedede;
+                background-color: #f1f1f1;
+                border-radius: 5px;
+                padding: 10px;
+                margin: 10px 0;
+                }
+                .darker {
+                border-color: #ccc;
+                background-color: #ddd;
+                }
+                .container::after {
+                content: "";
+                clear: both;
+                display: table;
+                }
+                .container img {
+                float: left;
+                max-width: 60px;
+                width: 100%;
+                margin-right: 20px;
+                border-radius: 50%;
+                }
+                .container img.right {
+                float: right;
+                margin-left: 20px;
+                margin-right:0;
+                }
+                .time-right {
+                float: right;
+                color: #aaa;
+                }
+                .time-left {
+                float: left;
+                color: #999;
+                }
+                #adj{
+                    height: max-content;
+                    width: 100%;
+                    top: 400px;
+                    position:absolute;
+                    left: 120px;
+                    overflow-y: scroll;
+                }
+</style>
+
+        
+    </head>
+    <body class = "body_chat">
+        <div class="v36_38_chat">
+            <div class="search_v119_1837">
+                <img class="v13_23" src = "/views/vector_back.png" />
+                <img class = "v119_1814" src="/views/header_image.jpg" />
+                <img class = "choka_register" src="/views/Group 9.png" />
+                <span class="v13_3">Back</span>
+            </div>
+            <div class="v44_223_chat"></div>
+            <div class="v44_225_chat"></div>
+            <span id = "title" class="v44_226_chat">Mr. Bean</span>
+            <div id = "adj">
+                <div id = add>
+                </div>
+                
+            
+         </div> 
+         
+        </div>
+
+        
+        
+        <script>
+            let name = '<%-name%>'
+            let message_log = '<%-messages%>'
+            let my_email = '<%-my_email%>'
+            let recipient_email = '<%-recipient_email%>'
+            
+            let title_span = document.getElementById("title")
+            console.log("first")
+            //parse the message log
+            let message_obj = JSON.parse(message_log)
+            //title_span.innerHTML = message_obj["recipient_1"]
+            // now run a loop and render all the messages
+            let adj = document.getElementById("adj")
+            let n_keys = Object.keys(message_obj).length;
+            let keys = Object.keys(message_obj);
+            title_span.innerHTML = name
+            console.log(message_obj)
+            let i = 0
+            
+            console.log((keys[0].split("_"))[0])
+            for( i = 0; i<n_keys; i = i +1){
+                if((keys[i].split("_"))[0]==recipient_email){
+                    document.getElementById("add").innerHTML  = document.getElementById("add").innerHTML + '<div class="container darker"><p>'+message_obj[keys[i]]+'</p></div>'
+                   // adj.innerHTML = ff+ '<input class="v44_227_chat" placeholder="Type message"/>'
+                
+                }
+                else{
+                    document.getElementById("add").innerHTML   = document.getElementById("add").innerHTML + '<div class="container"><p>'+message_obj[keys[i]]+'</p></div>'
+                    //adj.innerHTML = ff + '<input class="v44_227_chat" placeholder="Type message"/>'
+                } 
+                
+            }
+            adj.innerHTML = adj.innerHTML + '<input id = "text" name = "typed_text" class="v44_227_chat" placeholder="Type message"/> <button id = "send">Send</button>'
+            
+        </script>
+        <script src = "../socket.io/socket.io.js"> </script>
+        <script src = "/js/indexTutor.js"> </script>
+        
+
+    </body>
+    </html> 

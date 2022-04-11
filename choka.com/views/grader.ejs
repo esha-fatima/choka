@@ -1,0 +1,234 @@
+<%-include("partials/header");-%>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    </head>
+    <body>
+        <form id = "main_form" method = "POST">
+        <div id = "mega" class="v55_251">
+            <div class="search_v119_1837">
+                <img class="v13_23" src = "/views/vector_back.png" />
+                <img class = "v119_1814" src="/views/header_image.jpg" />
+                <img class = "choka_register" src="/views/Group 9.png" />
+                <span class="v13_3">Back</span>
+            </div>
+            <span class="v55_259_todo">Grade Assessment</span>
+        </br></br></br></br></br></br></br></br></br></br></br></br></br>
+        <div class = "start_header">
+        </br>
+            <h2 id = "header_subject" class = "start_subject"></h2>
+            <h2 id = "header_creator" class = "start_creator"></h2>
+            <h2 id = "header_points"class = "start_score"></h2>
+            
+                <div class = "timer">
+                    <p id = "student_score" class = "start_time">Student's Score</p>
+                    
+                    <p id = "total_time" class = "time_allotted"> </p>
+
+
+
+
+                
+                </div>
+            </br></br></br></br></br></br>
+
+
+
+
+        </div>
+
+
+        <!--
+    <div id = "add" class = "q">
+        <div  id = "question_container">
+            <div class="displayer">
+                
+                </br>
+                <p class="item_1">Points:</p>
+                <input disabled value = "50" name = "question_points" class = "item_2" />
+                <p class="item_3">Minutes required:</p>
+                <input disabled name = "question_minutes" class = "item_4" />
+                </br>
+                <span class="v79_1115_createAssessments">Question Text</span>
+                </br>
+                </br>
+                <input disabled value = "Write the name of the tallest building of the world and the city where it is located" name = "question_text" class = "sawaal" />
+            
+                <input placeholder="Type your answer here" name = "question_text" class = "jawaab" />
+
+
+                </br>
+                </br>
+                
+                </br>
+                </br>
+                
+
+            </div>
+            </br>
+
+        </div>
+    </div>
+
+
+    <div id = "add" class = "q">
+        <div  id = "question_container">
+            <div class="displayer">
+                
+                </br>
+                <p class="item_1">Points:</p>
+                <input disabled value = "50" name = "question_points" class = "item_2" />
+                <p class="item_3">Minutes required:</p>
+                <input disabled name = "question_minutes" class = "item_4" />
+                </br>
+                <span class="v79_1115_createAssessments">Question Text</span>
+                </br>
+                </br>
+                <input disabled value = "Write the name of the tallest building of the world and the city where it is located" name = "question_text" class = "sawaal" />
+            
+                <input placeholder="Type your answer here" name = "question_text" class = "jawaab" />
+
+
+                </br>
+                </br>
+                
+                </br>
+                </br>
+                
+
+            </div>
+            </br>
+
+        </div>
+    </div>
+
+     -->       
+            
+            
+        
+    </div>
+</br></br></br></br></br></br> </br></br></br></br></br></br>  
+<button id = "final_button" name = "submit_button" type = "submit" formaction="/gradingDone" method = "POST" class = "ss"> Submit </button> 
+</form>
+</br> 
+    <script>
+        let assignment_content = '<%-assessment_content%>';
+        //now parse it here
+        let content_object = JSON.parse(assignment_content);
+        console.log(content_object)
+        
+        
+
+        let total_minutes = content_object.assessment_details.Minutes
+        let subject = content_object.assessment_details.Subject
+        let syllabus = content_object.assessment_details.Syllabus
+        let total_points = content_object.assessment_details.TotalPoints
+        let student_id = content_object.student_id 
+        console.log("total points are", total_points)
+        ///nowwww parse these details in the header
+        
+        let header_subject = document.getElementById("header_subject")
+        let header_points = document.getElementById("header_points")
+        let header_time = document.getElementById("total_time")
+        let final_button = document.getElementById("final_button")
+        let header_creator = document.getElementById("header_creator")
+        header_subject.innerHTML = "Student ID: " + student_id
+        final_button.value = assignment_content
+        //header_subject.innerHTML ="Subject:" +  subject
+        header_points.innerHTML = "Total Points:" + total_points
+        header_time.innerHTML = "Time allotted:" +  total_minutes + " minutes"
+
+
+        
+        
+        let n_questions = content_object.assessment_details.QuestionText.length
+        //for every questionnn
+        let mega = document.getElementById("mega")
+        let question_text_arr = content_object.assessment_details.QuestionText
+        let question_minutes_arr = content_object.assessment_details.QuestionMinutes 
+        let question_points_arr = content_object.assessment_details.QuestionPoints
+        let answers = content_object.answers
+
+        //now append to mega always
+        for(let i = 0; i <n_questions; i= i+1){
+            let question_minutes = question_minutes_arr[i]
+            let question_points = question_points_arr[i]
+            let unparsed = question_text_arr[i]
+            let parsed = ""
+            let unparsed_answer = answers[i]
+            let parsed_answer = ""
+            for(let j = 0; j<unparsed_answer.length; j= j+1){
+                if(unparsed_answer[j]=='-'){
+                    parsed_answer = parsed_answer + ' '
+                }
+                else{
+                    parsed_answer = parsed_answer + unparsed_answer[j]
+                }
+            }
+            console.log("parsed answer is", parsed_answer)
+
+            for(let j = 0; j<unparsed.length; j= j+1){
+                if(unparsed[j]=='-'){
+                    parsed = parsed + ' '
+                }
+                else{
+                    parsed = parsed + unparsed[j]
+                }
+            }
+            
+
+            let stuff = '<div id = "add" class = "q"><div  id = "question_container"><div class="displayer"></br><p class="item_1">Total Points:</p><input disabled value = '+question_points+' name = "question_points" class = "item_2" /><p class="item_3">Student Points:</p><input id = "question_student_points" name = "student_points" class = "item_4" /></br><span class="v79_1115_createAssessments">Question Text</span></br></br><span name = "question_text" class = "sawaal" >'+parsed+'</span></br></br></br></br></br></br><span   name = "question_text" class = "jawaab" >'+parsed_answer+'</span></br></br></br></br></div></br></div></div>'
+            mega.insertAdjacentHTML('beforeend', stuff)
+        
+        }
+
+        
+        let date_started = new Date();
+        let date_end = new Date(date_started.getTime() + 50*60000).getTime();
+        
+        var x = setInterval(function() {
+
+               
+                let student_score = document.getElementById("student_score")
+                let arr = document.getElementById("main_form")
+                
+                let val_holders = arr.elements.namedItem("student_points")
+                let len = arr.elements.namedItem("student_points").length
+                let sum = 0 
+                //console.log("length is", len)
+                for(let it = 0; it <len; it = it+1){
+                    if(val_holders[it].value!= ""){
+                        sum = sum + parseInt( val_holders[it].value);
+
+                    }
+                    
+
+                }
+                student_score.innerHTML = "Student's Score: "+ sum
+
+                
+                
+
+               
+                
+                
+                }, 100);
+
+
+
+
+
+        
+
+
+         
+
+    </script>
+       
+</body>
+</html> 
+        
+   
+  
+  
+  
