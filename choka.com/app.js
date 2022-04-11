@@ -249,10 +249,9 @@ app.post("/tuitionRequest",(req,res)=>{
     console.log("/tuitionRequest", global_user)
 
     let tutor = req.body.tutor
-
-    db.collection("Teachers").doc(tutor.EmailAddress).update({
+    // console.log(typeof tutor, Object.keys(tutor), tutor['4'])
+    db.collection("Teachers").doc(tutor).update({
         student_request: firebase.firestore.FieldValue.arrayUnion(global_user)
-
     }).then(()=>{
         db.collection('Students').doc(global_user.EmailAddress).update({
             tutor_request: firebase.firestore.FieldValue.arrayUnion(tutor)
@@ -280,12 +279,12 @@ app.post("/tuitionAccept",(req,res)=>{
     let student = req.body.student
 
     db.collection("Teachers").doc(global_user.EmailAddress).update({
-        student_request: firebase.firestore.FieldValue.arrayRemove(student),
+        // student_request: firebase.firestore.FieldValue.arrayRemove(student),
         student_accepted: firebase.firestore.FieldValue.arrayUnion(student)
 
     }).then(()=>{
-        db.collection('Students').doc(student.EmailAddress).update({
-            tutor_request: firebase.firestore.FieldValue.arrayRemove(global_user),
+        db.collection('Students').doc(student).update({
+            tutor_request: firebase.firestore.FieldValue.arrayRemove(global_user.EmailAddress),
             tutor_accepted: firebase.firestore.FieldValue.arrayUnion(global_user)
 
         }).then(()=>{
@@ -293,7 +292,7 @@ app.post("/tuitionAccept",(req,res)=>{
 
                 res.render("tutorDashboard", global_user)
         }).catch(()=>{
-            db.collection('Students').doc(student.EmailAddress).set({
+            db.collection('Students').doc(student).set({
                 tutor_accepted: [global_user]
                 
             }).then(()=>{
@@ -897,7 +896,7 @@ app.post('/parentregistration',(req, res, next)=>{
         "PhoneNumber": request_object["PhoneNumber"],
         "Password": request_object["Password"],
         "HighestQualification":request_object["HighestQualification"],
-        "BirthDay":request_object["BirthdayDay"],
+        "BirthDay":request_object["BirthDay"],
         "PreviousExperience":request_object["PreviousExperience"],
         "Transcript":request_object["Transcript"],
         "Image" : request_object["Image"],
@@ -922,7 +921,7 @@ app.post('/parentregistration',(req, res, next)=>{
                 PhoneNumber: request_object["PhoneNumber"],
                 Password: request_object["Password"],
                 HighestQualification: request_object["HighestQualification"],
-                BirthDay: request_object["BirthdayDay"],
+                BirthDay: request_object["BirthDay"],
                 PreviousExperience: request_object["PreviousExperience"],
                 Transcript: request_object["Transcript"],
                 Image: request_object["Image"],
