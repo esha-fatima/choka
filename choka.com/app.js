@@ -198,6 +198,8 @@ app.post('/filterTutor',(req,res)=>{
     });
 })
 
+
+
 app.post('/filterStudent',(req,res)=>{
     console.log("/filterStudent", global_user)
 
@@ -209,7 +211,7 @@ app.post('/filterStudent',(req,res)=>{
             let tutor_list = []
                 for(let i=0;i<obj.length; i++)
                 {
-                    tutor = data.tutors[i]
+                    tutor = obj.tutors[i]
                     if(tutor.Mode == req.body.Mode && tutor.Location == req.body.Location && tutor.Rating >= req.body.Rating && tutor.Rate <= req.body.Rate && tutor.Experience >= req.body.Experience && tutor.Class >= req.body.Class && tutor.Days >= req.body.Days && tutor.Hours >= req.body.Hours)
                     {
                         tutor_list.push(data.tutors[i])

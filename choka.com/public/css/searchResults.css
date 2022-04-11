@@ -81,16 +81,21 @@
     overflow: hidden;
   }
   .search_v39_173 {
-    width: 131px;
+    background: transparent;
+    border: none;
+    width: 500px;
+    /* width: 131px; */
     color: rgba(255,255,255,1);
     position: absolute;
     top: 858px;
-    left: 1017px;
+    left: 1008px;
     font-family: Roboto;
     font-weight: Regular;
-    font-size: 20px;
+    font-size: 18px;
     opacity: 1;
     text-align: left;
+    padding-bottom: 10px;
+    margin-right: 110px;
   }
   .search_name {
     color: #fff;
@@ -311,6 +316,9 @@
     border-bottom-left-radius: 100px;
     border-bottom-right-radius: 100px;
     overflow: hidden;
+  }
+  .findTutors_v36_321 {
+    border: none !important;
   }
   .search_v119_1840 {
     width: 53px;
