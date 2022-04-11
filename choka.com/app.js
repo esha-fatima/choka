@@ -215,6 +215,88 @@ app.post('/messageRequest',(req,res)=>{
     // if it is a tutor, then u need to redirect to the messaging page with student
 })
 
+app.post('/displayChats', (req,res)=>{
+    //when u get this get the global user
+    let student_name = global_user.Name
+    let student_email = global_user.EmailAddress
+    //make a call to databse and get all the chat headers where this is the student name
+    const docRef = db.collection('Students').doc(student_email);
+    docRef.get().then((doc)=>{
+        console.log(doc.data())
+
+        let arr_tutors = doc.data().tutor_accepted
+        //get the emails of all the tutors.
+        tutor_emails = []
+        for(let i = 0; i<arr_tutors.length; i= i +1){
+            tutor_emails.push(arr_tutors[i].EmailAddress)
+
+        }
+        console.log("array of all emails is", tutor_emails)
+        let chat_headers = []
+        //now u need to get all the chat headers of the students.
+        const docRef_two = db.collection('Chats');
+        docRef_two.where('student_email', '==', student_email).get().then((docs)=>{
+            docs.forEach((doc)=>{
+                var index = tutor_emails.indexOf(doc.data().tutor_email)
+                tutor_emails.splice(index,1)
+                chat_headers.push(doc.data())
+
+            })
+            
+           
+            //now for every chat store the chat header
+            
+                //get the tutor email for that particular 
+                
+                
+            
+            console.log("chat headers are", chat_headers)
+            console.log("the tutor emails are", tutor_emails)
+
+            //now u have the chat headers...
+            let stringified_chat_headers = JSON.stringify(chat_headers)
+            // for all the t=other tutos in the tutir_emails array, create chat header
+            let promise_array = []
+            for(t = 0; t < tutor_emails.length; t = t+1){
+                let chat_identifier = student_email + " " + tutor_emails[t]
+                promise_array.push(db.collection('Chats').doc(chat_identifier).set({
+                    jason_obj:{},
+                    tutor_email : tutor_emails[t],
+                    student_email: student_email
+                }))
+                chat_headers.push({
+                    jason_obj:{},
+                    tutor_email : tutor_emails[t],
+                    student_email: student_email
+                })
+
+            }
+
+            Promise.all(promise_array).then((values) => {
+                //resolve all the promises and then 
+                //res.render("tutorAssessments");
+                let stringified_chat_headers = JSON.stringify(chat_headers)
+                console.log("i am here and teh stringified chat headers are", stringified_chat_headers)
+                res.render("displayChats", {"chat_headers": stringified_chat_headers})
+                
+                
+
+            });
+            //now u have all the promises
+
+           
+           
+
+
+        })
+
+
+        
+    })
+   
+
+})
+
 
 
 
