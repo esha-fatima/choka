@@ -87,13 +87,14 @@
             //title_span.innerHTML = message_obj["recipient_1"]
             // now run a loop and render all the messages
             let adj = document.getElementById("adj")
+            console.log("adj is", adj)
             let n_keys = Object.keys(message_obj).length;
             let keys = Object.keys(message_obj);
             title_span.innerHTML = name
             console.log(message_obj)
             let i = 0
             
-            console.log((keys[0].split("_"))[0])
+            //console.log((keys[0].split("_"))[0])
             for( i = 0; i<n_keys; i = i +1){
                 if((keys[i].split("_"))[0]==recipient_email){
                     document.getElementById("add").innerHTML  = document.getElementById("add").innerHTML + '<div class="container darker"><p>'+message_obj[keys[i]]+'</p></div>'
@@ -106,7 +107,8 @@
                 } 
                 
             }
-            adj.innerHTML = adj.innerHTML + '<input id = "text" name = "typed_text" class="v44_227_chat" placeholder="Type message"/> <button id = "send">Send</button>'
+            console.log("idhar")
+            adj.insertAdjacentHTML('beforeend',`<input id = "text" name = "typed_text" class="v44_227_chat" placeholder="Type message"/> <button id = "send">Send</button>`) 
             
         </script>
         <script src = "../socket.io/socket.io.js"> </script>

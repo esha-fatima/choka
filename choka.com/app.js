@@ -11,7 +11,7 @@ const socketio = require('socket.io');
 
 
  
-let n_assessments = 0
+let n_assessments = 300
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
@@ -169,10 +169,13 @@ app.post('/messageRequest',(req,res)=>{
     chat_identifier = global_user.EmailAddress + " " + recipientEmailAddress
     console.log("chat identifier is ", chat_identifier)
     const docRef = db.collection('Chats').doc(chat_identifier);
+    let dummy = {}
     docRef.get().then((doc)=>{
         if(doc.exists){
             console.log("doc is", doc.data());
             let message_history_object = doc.data().jason_obj
+            let tutor_in_chat = doc.data().tutor_email
+            let student_in_chat = doc.data().student_email
             console.log(message_history_object)
            
             message_history_object = JSON.stringify(message_history_object);
@@ -184,6 +187,7 @@ app.post('/messageRequest',(req,res)=>{
                 "my_email": global_user.EmailAddress,
                 "recipient_email": recipientEmailAddress
             }
+            dummy = obj_to_be_sent;
             //let stringified = JSON.stringify(obj_to_be_sent)
             console.log(obj_to_be_sent)
             res.render("chat", obj_to_be_sent)
@@ -194,10 +198,13 @@ app.post('/messageRequest',(req,res)=>{
         }
         else{
             db.collection('Chats').doc(chat_identifier).set({
-                jason_obj:{}
+                jason_obj:{},
+                tutor_email : tutor_in_chat,
+                student_email: student_in_chat
             }).then(()=>{
                 console.log("firebase filled");
                 //res.redirect("/home");
+                res.render("chat", dummy)
             });
 
         }
@@ -1082,6 +1089,7 @@ app.post('/studentregistration',(req, res, next)=>{
 
                 // student_request:[]
             }).then(()=>{
+                
                 console.log("firebase filled");
                 // res.redirect("/home");
                 res.render("dashboard", global_user)
@@ -1428,9 +1436,12 @@ app.post('/createAssessmentRequest',(req, res, next)=>{
     let assessmentid = n_assessments + 1;
     n_assessments = n_assessments + 1;
     //add dashes to each question text entry
+    let len = req.body.question_text.length
+    console.log("len is ", len)
     let arr_qt = []
     for(let ff = 0;  ff<req.body.question_text.length; ff = ff+1){
         let txt = req.body.question_text[ff];
+        console.log("txt is ", txt)
         txt = txt.split(" ");
         txt = txt.join('-')
         arr_qt.push(txt)
