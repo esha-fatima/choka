@@ -110,12 +110,15 @@
                 } 
                 
             }
+
             console.log("idhar")
-            adj.insertAdjacentHTML('beforeend',`<input id = "text" name = "typed_text" class="v44_227_chat" placeholder="Type message"/> <button id = "send">Send</button>`) 
+            let chat_id = object_header.student_email +"/"+object_header.tutor_email
+            console.log("chatidddd is", chat_id)
+            adj.insertAdjacentHTML('beforeend',`<input id = "text" name = "typed_text" class="v44_227_chat" placeholder="Type message"/> <button name = "chat_identifier" value = `+chat_id+` id = "send">Send</button>`)
             
         </script>
         <script src = "../socket.io/socket.io.js"> </script>
-        <script src = "/js/index.js"> </script>
+        <script src = "/js/indexTutor.js"> </script>
         
 
     </body>

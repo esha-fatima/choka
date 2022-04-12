@@ -39,7 +39,8 @@ io.on('connection',socket=>{
 
         console.log(message)
         let message_arr = message.split('_')
-        let rec_id = message_arr.pop()
+        let sender_email = message_arr[2]
+        let rec_id = message_arr[1]
         let message_to_be_sent = message_arr[0]
         const docRef = db.collection('Chats').doc(rec_id);
         docRef.get().then((doc)=>{
@@ -50,7 +51,7 @@ io.on('connection',socket=>{
                 let len_keys = keys.length
                 //console.log("len keys is ", len_keys)
                 let new_id = len_keys+1
-                let str_key = global_user.EmailAddress+"_"+ new_id.toString()
+                let str_key = sender_email+"_"+ new_id.toString()
                 message_history_object[str_key] = message_to_be_sent
                 //console.log("new obj is ", message_history_object)
 

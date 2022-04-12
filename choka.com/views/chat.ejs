@@ -54,6 +54,7 @@
     </head>
     <body class = "body_chat">
         <div class="v36_38_chat">
+
             <div class="search_v119_1837">
                 <img class="v13_23" src = "/views/vector_back.png" />
                 <img class = "v119_1814" src="/views/header_image.jpg" />
@@ -111,7 +112,9 @@
                 
             }
             console.log("idhar")
-            adj.insertAdjacentHTML('beforeend',`<input id = "text" name = "typed_text" class="v44_227_chat" placeholder="Type message"/> <button id = "send">Send</button>`) 
+            let chat_id = object_header.student_email +"/"+object_header.tutor_email
+            console.log("chatidddd is", chat_id)
+            adj.insertAdjacentHTML('beforeend',`<input id = "text" name = "typed_text" class="v44_227_chat" placeholder="Type message"/> <button name = "chat_identifier" value = `+chat_id+` id = "send">Send</button>`) 
             
         </script>
         <script src = "../socket.io/socket.io.js"> </script>
