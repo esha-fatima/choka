@@ -516,7 +516,7 @@ app.post('/filterRequestT',(req,res)=>{
     global_user["Rate"]=req.body.Rate,
     global_user["Days"]=req.body.Days,
     global_user["Location"]=req.body.Location,
-    global_user["Classes"]=req.body.Class,
+    global_user["Class"]=req.body.Class,
     global_user["Subject"]=req.body.Subject,
     global_user["Mode"]=req.body.Mode,
     global_user["Hours"]=req.body.Hours,
@@ -526,7 +526,7 @@ app.post('/filterRequestT',(req,res)=>{
         Rate:req.body.Rate,
         Days:req.body.Days,
         Location:req.body.Location,
-        Classes:req.body.Class,
+        Class:req.body.Class,
         Subject:req.body.Subject,
         Mode:req.body.Mode,
         Hours:req.body.Hours,
@@ -560,7 +560,7 @@ app.post('/filterRequest',(req,res)=>{
     global_user["Rate"]=req.body.Rate,
     global_user["Days"]=req.body.Days,
     global_user["Location"]=req.body.Location,
-    global_user["Classes"]=req.body.Class,
+    global_user["Class"]=req.body.Class,
     global_user["Subject"]=req.body.Subject,
     global_user["Mode"]=req.body.Mode,
     global_user["Hours"]=req.body.Hours,
@@ -569,7 +569,7 @@ app.post('/filterRequest',(req,res)=>{
         Rate:req.body.Rate,
         Days:req.body.Days,
         Location:req.body.Location,
-        Classes:req.body.Class,
+        Class:req.body.Class,
         Subject:req.body.Subject,
         Mode:req.body.Mode,
         Hours:req.body.Hours,
@@ -676,9 +676,42 @@ app.post("/tuitionRequest",(req,res)=>{
     });
 })
 
-// app.get("/tuitionRequest",(req,res)=>{
-//     console.log(12, req.body.tutor)
-//     res.render("dashboard",global_user)
+// app.get("/tuitionAccept",(req,res)=>{
+//     console.log("/tuitionAccept", global_user)
+
+//     let student = req.body.student
+//     console.log(11111,student)
+//     console.log(3333333,global_user.EmailAddress)
+
+//     db.collection("Teachers").doc(global_user.EmailAddress).update({
+//         // student_request: firebase.firestore.FieldValue.arrayRemove(student),
+//         student_accepted: firebase.firestore.FieldValue.arrayUnion(student)
+
+//     }).then(()=>{
+//         db.collection('Students').doc(student).update({
+//             tutor_request: firebase.firestore.FieldValue.arrayRemove(global_user.EmailAddress),
+//             tutor_accepted: firebase.firestore.FieldValue.arrayUnion(global_user)
+
+//         }).then(()=>{
+
+
+//                 res.render("tutorDashboard", global_user)
+//         }).catch(()=>{
+//             db.collection('Students').doc(student).set({
+//                 tutor_accepted: [global_user]
+                
+//             }).then(()=>{
+//                         res.render("tutorDashboard", global_user)
+//             });
+//         })
+//     }).catch(()=>{
+//         db.collection("Teachers").doc(global_user.EmailAddress).set({
+//             student_accepted: [student]
+//         }).then(()=>{
+//                     res.render("tutorDashboard", global_user)
+//         });
+//     })
+
 // })
 
 app.post("/tuitionAccept",(req,res)=>{
@@ -686,6 +719,8 @@ app.post("/tuitionAccept",(req,res)=>{
     console.log("/tuitionAccept", global_user)
 
     let student = req.body.student
+    console.log(11111,student)
+    console.log(3333333,global_user.EmailAddress)
 
     db.collection("Teachers").doc(global_user.EmailAddress).update({
         // student_request: firebase.firestore.FieldValue.arrayRemove(student),
@@ -791,6 +826,7 @@ app.post('/findStudents', (req,res)=>{
             }
             else
             {
+                console.log(user_deets)
                 let arr_str = JSON.stringify(user_deets)
                 let xx = {"bl":arr_str};
                 res.render("searchResultsTutor",xx)
@@ -1305,7 +1341,7 @@ app.post('/studentregistration',(req, res, next)=>{
                 
                 console.log("firebase filled");
                 // res.redirect("/home");
-                res.render("dashboard", global_user)
+                res.render("publishProfile")
             });
 
         }

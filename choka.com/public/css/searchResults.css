@@ -158,6 +158,57 @@
   .search_name {
     color: #fff;
   }
+  .msg_button{
+
+    /* background: transparent;
+    border: none;
+    top: 845px;
+    margin-right: 25px!important;
+    margin-bottom: 20px; */
+
+    width: 152px;
+    height: 48px;
+    background: rgba(3,133,182,1);
+    color: rgb(149, 16, 16);
+    border: none;
+    /* fontsize:50px; */
+    font-weight: SemiBold;
+    font-family: Roboto;
+    font-size:18px;
+    opacity: 1;
+    position: absolute;
+    top: 845px;
+    left: 10px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    overflow: hidden;
+
+  }
+  .search_v39_1691 {
+    width: 153px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    /* top: 711px; */
+    /* top: 800px; */
+    top: 761px;
+    left: 972px;
+    font-family: Roboto;
+    font-weight: Regular;
+    font-size: 30px;
+    opacity: 1;
+    text-align: left;
+
+    /* width: 324px; */
+    /* color: rgba(0,0,0,1); */
+    /* position: absolute; */
+    
+    /* left: 396px; */
+    /* font-size: 30px; */
+    /* opacity: 1; */
+    /* text-align: left; */
+  }
   .search_v39_169 {
     width: 153px;
     color: rgba(0,0,0,1);
@@ -185,16 +236,38 @@
     overflow: hidden;
   }
   .search_v39_172 {
+    /* background: transparent;
+    border: none;
     width: 98px;
     color: rgba(255,255,255,1);
-    position: absolute;
-    top: 858px;
-    left: 824px;
-    font-family: Roboto;
+    position: absolute; */
+    /* top: 858px; */
+    
+    /* font-family: Roboto;
     font-weight: Regular;
     font-size: 20px;
     opacity: 1;
-    text-align: left;
+    text-align: left; */
+
+    /* width: 152px; */
+    height: 48px;
+    background: rgba(3,133,182,1);
+    color: rgb(255, 255, 255);
+    border: none;
+    /* fontsize:50px; */
+    font-weight: SemiBold;
+    font-family: Roboto;
+    font-size:18px;
+    opacity: 1;
+    position: absolute;
+    top: 845px;
+    left: 824px;
+    /* left: 1000px; */
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    overflow: hidden;
   }
   .search_v39_174 {
     width: 1050px;
