@@ -486,26 +486,26 @@ app.post('/searchRequest',(req,res)=>{
  })
 
 
- app.post('/searchRequestFromTutor',(req,res)=>{
-    //when u get request to search for THE STUDENT IN THE STUDENTS' DB
-    console.log("here")
-    //u will have the search parameters stored in the body of the request
-    ////search
-    //3 results
-    //then get all the relevnat details from firebase and get the search results in the form of an array
-    let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
-    let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
-    let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
-    let results_array = [
-       obj1, obj2, obj3
-       ]
-   let ff = JSON.stringify(results_array)
-   console.log(ff)
-   let xx = {"bl":ff};
-   //console.log(res)
-   res.render("searchResultsTutor",xx)
+//  app.post('/searchRequestFromTutor',(req,res)=>{
+//     //when u get request to search for THE STUDENT IN THE STUDENTS' DB
+//     console.log("here")
+//     //u will have the search parameters stored in the body of the request
+//     ////search
+//     //3 results
+//     //then get all the relevnat details from firebase and get the search results in the form of an array
+//     let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
+//     let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
+//     let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
+//     let results_array = [
+//        obj1, obj2, obj3
+//        ]
+//    let ff = JSON.stringify(results_array)
+//    console.log(ff)
+//    let xx = {"bl":ff};
+//    //console.log(res)
+//    res.render("searchResultsTutor",xx)
 
-})
+// })
 
 
 
@@ -636,21 +636,21 @@ app.post('/filterStudent',(req,res)=>{
 })
 
 
-app.post('/filterFromTutor',(req,res)=>{
-    let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
-    let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
-    let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
-    let results_array = [
-       obj1, obj2, obj3
-       ]
-   let ff = JSON.stringify(results_array)
-   console.log(ff)
-   let xx = {"bl":ff};
-   //console.log(res)
-   res.render("searchResultsTutor",xx)
+// app.post('/filterFromTutor',(req,res)=>{
+//     let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
+//     let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
+//     let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
+//     let results_array = [
+//        obj1, obj2, obj3
+//        ]
+//    let ff = JSON.stringify(results_array)
+//    console.log(ff)
+//    let xx = {"bl":ff};
+//    //console.log(res)
+//    res.render("searchResultsTutor",xx)
      
 
-})
+// })
 
 
 app.post("/tuitionRequest",(req,res)=>{
@@ -747,77 +747,18 @@ app.post('/findTutors', (req,res)=>{
             
             // if (count==2)
             // {
-            try{
+            try
+            {
                 let arr_str = JSON.stringify([data.tutors[0]])
-            let xx = {"bl":arr_str};
-            res.render("SearchResults",xx)
+                let xx = {"bl":arr_str};
+                res.render("SearchResults",xx)
             }
-            catch{
-                
-            }
-                
-            // }
+            catch{}
         })
-        })
-        
-    // db.collection("subjects").get().then((snapshot) => {
-    //     let Name_one = ""
-    //     let Department_one = ""
-    //     let Email_one = ""
-    //     let Img_one = ""
-    //     let Name_two = ""
-    //     let Department_two = ""
-    //     let Email_two = ""
-    //     let Img_two = ""
-    //     let count  = 0
-    //     snapshot.docs.map(doc => {
-    //         let data = doc.data()
-    //         // console.log(doc.id, Object.keys(data))
-    //         // console.log(doc.id, typeof doc.id)
-    //         if(doc.id == "Mathematics D")
-    //         {
-    //             // console.log(doc.id, typeof doc.id)
-    //             count +=1
-    //             // console.log(123, data.tutors[0].Name)
-    //             Name_one = data.tutors[0].Name
-    //             Department_one = data.tutors[0].Subject
-    //             Email_one = data.tutors[0].EmailAddress
-            //     Img_one = data.tutors[0].Image
-            // }
-            // if(doc.id == "English Language")
-            // {
-            //     console.log(doc.id, typeof doc.id)
-            //     count +=1
-            //     // console.log(11, data[ 'tutors' ])
-            //     Name_two = data.tutors[0].Name
-            //     Department_two = data.tutors[0].Subject
-            //     Email_two = data.tutors[0].EmailAddress
-            //     Img_two = data.tutors[0].Image
-            // }
+    }).catch((doc)=>{ 
+        res.render("dashboard", global_user)
+    })
 
-
-
-            // if (count==2)
-            // {
-            //     console.log(22, Name_one)
-            //     let top_2_students = 
-            //     {
-            //         "Name_one": Name_one,
-            //         "Department_one": Department_one,
-            //         "Email_one" : Email_one,
-    //                 "Img_one": Img_one,
-    //                 "Name_two" : Name_two,
-    //                 "Department_two" :  Department_two,
-    //                 "Email_two": Email_two,
-    //                 "Img_two": Img_two,
-
-    //             }
-    //             res.render("findTutors", top_2_students)
-    //         }            
-    //     })
-    
-    // });
-// 
 })
 
 
