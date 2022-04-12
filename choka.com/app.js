@@ -170,6 +170,32 @@ app.post('/messageRequestTutor',(req,res)=>{
 })
 
 
+app.post('/messageMyStudent',(req,res)=>{
+    console.log("wish to send msg to my bacha")
+    //now go to chat.ejs
+    console.log(req.body.requested)
+    //now get the relevant chat
+    let obj = JSON.parse(req.body.requested)
+    let identifier = obj.student_email + " " + obj.tutor_email
+    console.log(identifier)
+    db.collection('Chats').doc(identifier).get().then((doc)=>{
+        let deets = doc.data()
+        console.log("deets are")
+        console.log(deets)
+        //now send these deets
+        deets = JSON.stringify(deets)
+        console.log("after ", deets)
+        let obj = {"chat_header": deets}
+        //let to_send = JSON.stringify(obj)
+        res.render("chatTutor", obj)
+
+    })
+
+
+
+})
+
+
 app.post('/messageMyTutor',(req,res)=>{
     console.log("wish to post")
     //now go to chat.ejs
