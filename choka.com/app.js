@@ -128,6 +128,8 @@ app.post('/messageRequestTutor',(req,res)=>{
         if(doc.exists){
             console.log("doc is", doc.data());
             let message_history_object = doc.data().jason_obj
+            let tutor_in_chat = doc.data().tutor_email
+            let student_in_chat = doc.data().student_email
             console.log(message_history_object)
            
             message_history_object = JSON.stringify(message_history_object);
@@ -147,6 +149,72 @@ app.post('/messageRequestTutor',(req,res)=>{
 
             
         }
+
+
+        else{
+            db.collection('Chats').doc(chat_identifier).set({
+                jason_obj:{},
+                tutor_email : tutor_in_chat,
+                student_email: student_in_chat
+            }).then(()=>{
+                console.log("firebase filled");
+                //res.redirect("/home");
+                res.render("chatTutor", dummy)
+            });
+
+        }
+    })
+
+
+
+})
+
+
+app.post('/messageMyStudent',(req,res)=>{
+    console.log("wish to send msg to my bacha")
+    //now go to chat.ejs
+    console.log(req.body.requested)
+    //now get the relevant chat
+    let obj = JSON.parse(req.body.requested)
+    let identifier = obj.student_email + " " + obj.tutor_email
+    console.log(identifier)
+    db.collection('Chats').doc(identifier).get().then((doc)=>{
+        let deets = doc.data()
+        console.log("deets are")
+        console.log(deets)
+        //now send these deets
+        deets = JSON.stringify(deets)
+        console.log("after ", deets)
+        let obj = {"chat_header": deets}
+        //let to_send = JSON.stringify(obj)
+        res.render("chatTutor", obj)
+
+    })
+
+
+
+})
+
+
+app.post('/messageMyTutor',(req,res)=>{
+    console.log("wish to post")
+    //now go to chat.ejs
+    console.log(req.body.requested)
+    //now get the relevant chat
+    let obj = JSON.parse(req.body.requested)
+    let identifier = obj.student_email + " " + obj.tutor_email
+    console.log(identifier)
+    db.collection('Chats').doc(identifier).get().then((doc)=>{
+        let deets = doc.data()
+        console.log("deets are")
+        console.log(deets)
+        //now send these deets
+        deets = JSON.stringify(deets)
+        console.log("after ", deets)
+        let obj = {"chat_header": deets}
+        //let to_send = JSON.stringify(obj)
+        res.render("chat", obj)
+
     })
 
 
@@ -215,6 +283,13 @@ app.post('/messageRequest',(req,res)=>{
     // if it is a tutor, then u need to redirect to the messaging page with student
 })
 
+
+
+
+
+
+
+
 app.post('/displayChats', (req,res)=>{
     //when u get this get the global user
     let student_name = global_user.Name
@@ -278,7 +353,7 @@ app.post('/displayChats', (req,res)=>{
                 let stringified_chat_headers = JSON.stringify(chat_headers)
                 console.log("i am here and teh stringified chat headers are", stringified_chat_headers)
                 res.render("displayChats", {"chat_headers": stringified_chat_headers})
-                
+
                 
 
             });
@@ -296,6 +371,94 @@ app.post('/displayChats', (req,res)=>{
    
 
 })
+
+
+app.post('/displayChatsTutor', (req,res)=>{
+    //when u get this get the global user
+    let tutor_name = global_user.Name
+    let tutor_email = global_user.EmailAddress
+    //make a call to databse and get all the chat headers where this is the student name
+    const docRef = db.collection('Teachers').doc(tutor_email);
+    docRef.get().then((doc)=>{
+        console.log(doc.data())
+
+        let arr_students = doc.data().student_accepted
+        //get the emails of all the tutors.
+        student_emails = []
+        for(let i = 0; i<arr_students.length; i= i +1){
+            student_emails.push(arr_students[i])
+
+        }
+        console.log("array of all student emails is", student_emails)
+        
+        let chat_headers = []
+        //now u need to get all the chat headers of the tutors.
+        const docRef_two = db.collection('Chats');
+        docRef_two.where('tutor_email', '==', tutor_email).get().then((docs)=>{
+            docs.forEach((doc)=>{
+                var index = student_emails.indexOf(doc.data().student_email)
+                student_emails.splice(index,1)
+                chat_headers.push(doc.data())
+
+            })
+            
+           
+            //now for every chat store the chat header
+            
+                //get the tutor email for that particular 
+                
+                
+            
+            console.log("chat headers are", chat_headers)
+            console.log("the student emails are", student_emails)
+            
+            //now u have the chat headers...
+            let stringified_chat_headers = JSON.stringify(chat_headers)
+            // for all the t=other tutos in the tutir_emails array, create chat header
+            let promise_array = []
+            for(t = 0; t < student_emails.length; t = t+1){
+                let chat_identifier = student_emails[t] + " " + tutor_email
+                promise_array.push(db.collection('Chats').doc(chat_identifier).set({
+                    jason_obj:{},
+                    tutor_email : tutor_email,
+                    student_email: student_emails[t]
+                }))
+                chat_headers.push({
+                    jason_obj:{},
+                    tutor_email : tutor_email,
+                    student_email: student_emails[t]
+                })
+
+            }
+
+            Promise.all(promise_array).then((values) => {
+                //resolve all the promises and then 
+                //res.render("tutorAssessments");
+                let stringified_chat_headers = JSON.stringify(chat_headers)
+                console.log("i am here and teh stringified chat headers are", stringified_chat_headers)
+                res.render("displayChatsTutor", {"chat_headers": stringified_chat_headers})
+
+                
+
+            });
+            //now u have all the promises
+
+           
+           
+
+
+        })
+        
+
+
+        
+    })
+    
+    
+   
+
+})
+
 
 
 
