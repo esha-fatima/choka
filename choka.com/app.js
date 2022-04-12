@@ -520,7 +520,7 @@ app.post('/filterRequestT',(req,res)=>{
     global_user["Subject"]=req.body.Subject,
     global_user["Mode"]=req.body.Mode,
     global_user["Hours"]=req.body.Hours,
-    global_user["Experience"]=req.body.Experience
+    // global_user["Experience"]=req.body.Experience
     
     db.collection("Teachers").doc(global_user.EmailAddress).update({
         Rate:req.body.Rate,
@@ -530,7 +530,7 @@ app.post('/filterRequestT',(req,res)=>{
         Subject:req.body.Subject,
         Mode:req.body.Mode,
         Hours:req.body.Hours,
-        Experience:req.body.Experience
+        // Experience:req.body.Experience
     }).then(()=>{
             db.collection('subjects').doc(req.body.Subject).update({
                 tutors: firebase.firestore.FieldValue.arrayUnion(global_user)
@@ -540,7 +540,7 @@ app.post('/filterRequestT',(req,res)=>{
                 db.collection('subjects').doc(req.body.Subject).set({
                     tutors: [global_user]
                 }).then(()=>{
-                            res.render("tutorDashboard", global_user)
+                    res.render("tutorDashboard", global_user)
                 });
             })
  
@@ -557,7 +557,7 @@ app.post('/filterRequestT',(req,res)=>{
 
 app.post('/filterRequest',(req,res)=>{
     console.log("/filterRequest", global_user)
-    global_user["Pay"]=req.body.Pay,
+    global_user["Rate"]=req.body.Rate,
     global_user["Days"]=req.body.Days,
     global_user["Location"]=req.body.Location,
     global_user["Classes"]=req.body.Class,
@@ -566,7 +566,7 @@ app.post('/filterRequest',(req,res)=>{
     global_user["Hours"]=req.body.Hours,
 
     db.collection("Students").doc(global_user.EmailAddress).update({
-        Pay:req.body.Pay,
+        Rate:req.body.Rate,
         Days:req.body.Days,
         Location:req.body.Location,
         Classes:req.body.Class,
@@ -832,14 +832,32 @@ app.post('/findStudents', (req,res)=>{
         {
             let user_deets = doc.data().student_request
             console.log(user_deets)
+            if(user_deets.length == 0)
+            {
+                // let n_obj = {
 
-            let arr_str = JSON.stringify(user_deets)
-            let xx = {"bl":arr_str};
-            res.render("searchResultsTutor",xx)
+                //     "Name" :"No student has sent a request yet!",
+                //     "EmailAddress":"user_deets.EmailAddress",
+                //     "PhoneNumber": user_deets.PhoneNumber,
+                //     "Password":user_deets.Password,
+                //     "Image":user_deets.Image,
+                //     "Address": user_deets.Address,
+                //     "City" : user_deets.City,
+
+                // }
+                // alert("No student has sent a request yet!");
+                res.render("tutorDashboard", global_user)
+            }
+            else
+            {
+                let arr_str = JSON.stringify(user_deets)
+                let xx = {"bl":arr_str};
+                res.render("searchResultsTutor",xx)
+            }
         }
         else{
             console.log("NOT FOUND")
-            res.render("Login")
+            res.render("tutorDashboard", global_user)
         }
     })
 
@@ -919,12 +937,20 @@ app.post('/loginRequest',(req,res)=>{
     //if the password is good to go 
     //go to dashboard page 
     //get all the firebase stuff and store it in a json object..the details
+
+    
     console.log(req.body)
     let email = req.body["Email"]
     let password =  req.body["Password"]
-    const docRef = db.collection('Students').doc(email);
+    if (req.body["Email"] == '')
+    {
+        res.render("Login");
+    }
+    else
+    {
+        const docRef = db.collection('Students').doc(email);
 
-    docRef.get().then((doc)=>{
+        docRef.get().then((doc)=>{
         if(doc.exists){
             //then check the password from database
             console.log("User found");
@@ -1002,6 +1028,8 @@ app.post('/loginRequest',(req,res)=>{
 
         }
     });
+    }
+    
 
 
 
@@ -1256,9 +1284,7 @@ app.get("/publishProfile",(req,res)=>{
 });
 
 app.get("/publishTutorProfile",(req,res)=>{
-    console.log("/publishTutorProfile")
-    res.render("publishProfile");
-   
+    res.render("populateProfile");
 });
 
 app.get("/reviews",(req,res)=>{
@@ -1268,8 +1294,8 @@ app.get("/reviews",(req,res)=>{
 });
 
 app.post("/publishTutorProfile",(req,res)=>{
-    console.log("/publishTutorProfile")
-    res.render("publishProfile");
+    // console.log("/publishTutorProfile")
+    res.render("populateProfile");
    
 });
 
