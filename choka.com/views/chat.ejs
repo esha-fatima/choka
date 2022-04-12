@@ -75,15 +75,18 @@
         
         
         <script>
-            let name = '<%-name%>'
-            let message_log = '<%-messages%>'
-            let my_email = '<%-my_email%>'
-            let recipient_email = '<%-recipient_email%>'
+            let chat_header = '<%-chat_header%>'
+            let object_header = JSON.parse(chat_header)
+
+            let name = object_header.tutor_email
+            let message_log = object_header.jason_obj
+            let my_email = object_header.student_email
+            let recipient_email =  object_header.tutor_email
             
             let title_span = document.getElementById("title")
             console.log("first")
             //parse the message log
-            let message_obj = JSON.parse(message_log)
+            let message_obj = message_log
             //title_span.innerHTML = message_obj["recipient_1"]
             // now run a loop and render all the messages
             let adj = document.getElementById("adj")
