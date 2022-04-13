@@ -1,0 +1,15 @@
+<%-include("partials/header");-%>
+<body >
+    <span class="material-icons md-48 md-16" onclick="location.replace('home')">arrow_back</span>
+    <br><br><br><br><br><br><br><br><br>
+    <p class="obj name col-lg-9 col-md-9 col-xs-9 col-sm-9 center-block"> <%=question%> </p>
+    <br><br><br><br>
+    <form action="/questions" method="POST">
+        <input class="box answer name col-lg-9 col-md-9 col-xs-9 col-sm-9 center-block" type="text" name="answer" placeholder="Answer here in your own words...">
+        <br><br><br><br>
+        <button class="button next name col-lg-3 col-md-3 col-xs-4 col-sm-4 center-block" type="submit" > Next </button>
+    </form>
+    <br><br><br>
+    <script src="/js/index.js"></script>
+</body>
+</html>

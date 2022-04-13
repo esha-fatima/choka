@@ -1,0 +1,125 @@
+<%-include("partials/header");-%>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="v13_2">
+        <img class="v13_23" src = "/views/vector_back.png" />
+            <img class = "v119_1814" src="/views/header_image.jpg" />
+            <img class = "choka_register" src="/views/Group 9.png" />
+            <span class="v13_3">Back to Home</span>
+        </div>
+        <div class="v124_174_view" id = "view">
+            <span class="v124_175_view" id = "name">Mr. Bean Jr.</span>
+            <div class="v124_176_view"></div>
+            <div class="name_view"></div>
+            <div class="name_view"></div>
+            <div class="v124_180_view"></div>
+            <div class="name_view"></div>
+            <div class="name_view"></div>
+            <div class="name_view"></div>
+            
+            <span class="v124_185_view" id = "email">Email: bean.jr@choka.com</span>
+            <div class="v124_180_a_view"></div>
+            <div class="v124_180_b_view"></div>
+            <div class="v124_180_c_view"></div>
+            <div class="v124_180_d_view"></div>
+            <div class="v124_180_e_view"></div>
+            <span class="v124_186_view" id = "contact">Contact: XXXX-XXXXXXXX</span>
+            <span class="v124_187_view" id = "address">Address: DHA, Phase V</span>
+            <span class="v124_205_view" id = "city">City: Lahore</span>
+            <div class="v124_207_view"></div>
+            <span class="v124_208_view">Delete Account</span>
+            <div class="v124_209_view"></div>
+            <button class="v124_210_view_button" id = "change">Edit Profile</button>
+            
+            
+        </div>
+
+            
+
+
+        <div class="v124_174_view" id = "edit">
+
+            <span class="v124_175_view_b" id = "name2"> </span>
+            <div class="v124_176_view"></div>
+            <div class="name_view"></div>
+            <div class="name_view"></div>
+            <div class="v124_180_view"></div>
+            <div class="name_view"></div>
+            <div class="name_view"></div>
+            <div class="name_view"></div>
+
+            <form method="POST">
+            <span class = "placeholder_entity_one" >Email:</span><input name= "email"class="v124_185_view_input" id = "email2" >
+            <div class="v124_180_a_view"></div>
+            <div class="v124_180_b_view"></div>
+            <div class="v124_180_c_view"></div>
+            <div class="v124_180_d_view"></div>
+            <div class="v124_180_e_view"></div>
+            <span class = "placeholder_entity_two" >Contact:</span><input name = "contact" class="v124_186_view_input" id = "contact2">
+            <span class = "placeholder_entity_three" >Address:</span><input name = "address"class="v124_187_view_input" id = "address2">
+            <span class = "placeholder_entity_four" >City:</span><input name = "city"class="v124_205_view_input" id = "city2">
+            
+            
+            <div class="v124_209_view"></div>
+            <button class="v124_210_view_button" type = "submit" formaction="/editProfile" id = "save"> Save</button>
+            </form>
+
+
+        </div>
+
+        <script>
+            document.getElementById("edit").style.display = "none";
+            let name = '<%-Name%>';
+            let email = '<%-EmailAddress%>';
+            let city = '<%-City%>';
+            let address = '<%-Address%>';
+            let image = '<%-Image%>';
+            let contact = '<%-PhoneNumber%>';
+            let div_name = document.getElementById("name");
+            div_name.innerHTML = name
+            let div_name_2 = document.getElementById("name2");
+            div_name_2.innerHTML = name
+            let div_email = document.getElementById("email");
+            let div_email2 = document.getElementById("email2");
+            div_email2.value = email
+            div_email.innerHTML = 'Email: ' + email
+            let div_city = document.getElementById("city");
+            let div_city2 = document.getElementById("city2");
+            div_city.innerHTML = "City: " + city
+            div_city2.value =  city
+            let div_address = document.getElementById("address");
+            let div_address2 = document.getElementById("address2");
+            div_address2.value =  address
+            div_address.innerHTML = "Address: " + address
+            let div_contact =   document.getElementById("contact");
+            let div_contact2 =   document.getElementById("contact2");
+            div_contact.innerHTML = "Contact: " + contact
+            div_contact2.value = contact
+            document.getElementById("change").addEventListener("click", switch_edit);
+            document.getElementById("save").addEventListener("click", switch_view);
+
+    
+            function switch_edit(){
+                document.getElementById("view").style.display = "none";
+                document.getElementById("edit").style.display = "block";
+
+            }
+
+            function switch_view(){
+                document.getElementById("view").style.display = "block";
+                document.getElementById("edit").style.display = "none";
+
+            }
+
+
+
+
+
+
+        </script>
+
+
+    </body>
+    

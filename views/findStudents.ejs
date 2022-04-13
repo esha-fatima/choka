@@ -1,0 +1,98 @@
+<%-include("partials/header");-%>
+
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="findTutors_v36_16">
+            <div class="findTutors_v36_17">
+                <img class="v13_23" src = "/views/vector_back.png" />
+                <img class = "v119_1814" src="/views/header_image.jpg" />
+                <img class = "choka_register" src="/views/Group 9.png" />
+                <span class="v13_3">Back</span>
+            </div>
+            
+            <div class="findTutors_v119_1819"></div>
+            <div class="findTutors_v36_18"></div>
+            
+            <div class="findTutors_name"></div>
+            <span class="findTutors_v36_26">Find Students</span>
+
+            <!-- testingggggggggggggggggggggggggggggggggggggggggggggg-->
+            <div id = "case_search">
+                <form method="POST">
+                <input class="findTutors_v36_27" placeholder="Search" name="searchParameters">
+                <div class="findTutors_v36_29"> </div>
+                <div class="findTutors_v36_31">
+                    <button formaction="/searchRequestFromTutor"> <img class = "findTutors_v36_32" src="public\images\bx_search.png" /> </button>
+                    <button formaction = "/filterTutor"> <img class = "findTutors_v36_32_b" src="/views/filter.png" /> </button>
+
+                </div>
+                </form>
+
+                <div class="findTutors_name"></div>
+                <span class="findTutors_v36_34">Recommended for you</span>
+                <div class="findTutors_v44_246"></div>
+                <div class="findTutors_"></div>
+                <div id = "top_one">
+                    
+                </div>
+                <div class="findTutors_name"></div>
+                <div class="findTutors_v44_260">
+                    <div class="findTutors_v44_261"></div>
+                </div>
+                <div class="findTutors_v46_262"></div>
+                <div id = "top_two">
+                
+                </div>
+                <div class="findTutors_name"></div>
+                <div class="findTutors_v46_267">
+                    <div class="findTutors_v46_268"></div>
+                </div>
+                <div class="findTutors_v46_269"></div>
+            </div>
+        </div>
+        <script>
+
+            let name_one = '<%-Name_one%>'
+            let dept_one = '<%-Department_one%>'
+            let bid_one = '<%-Bid_one%>'
+            let name_two = '<%-Name_two%>'
+            let dept_two = '<%-Department_two%>'
+            let bid_two = '<%-Bid_two%>'
+
+            if (typeof name_one != 'undefined' && typeof name_two != 'undefined')
+            {
+                let top_one = document.getElementById("top_one")
+                let text_one = '<span class="findTutors_v44_252">' + name_one + '</span><span class="findTutors_v44_253">'+dept_one+'</span>' +  '</span><span class="findTutors_v44_253_bid_one">'+bid_one+' PKR'+'</span>'
+                top_one.innerHTML = text_one//'<span class="findTutors_v44_252">arr</span><span class="findTutors_v44_253">Mathematics & Science</span>'
+                
+                
+                let top_two = document.getElementById("top_two")
+                let text_two = '<span class="findTutors_v46_264">' + name_two + '</span><span class="findTutors_v46_265">'+dept_two+'</span>'+'</span><span class="findTutors_v44_253_bid_two">'+bid_two+' PKR'+'</span>'
+                top_two.innerHTML = text_two
+            }
+            else if (typeof name_one != 'undefined')
+            {
+                let top_one = document.getElementById("top_one")
+                let text_one = '<span class="findTutors_v44_252">' + name_one + '</span><span class="findTutors_v44_253">'+dept_one+'</span>' +  '</span><span class="findTutors_v44_253_bid_one">'+bid_one+' PKR'+'</span>'
+                top_one.innerHTML = text_one//'<span class="findTutors_v44_252">arr</span><span class="findTutors_v44_253">Mathematics & Science</span>'
+                
+            }
+            else
+            {
+                let top_one = document.getElementById("top_one")
+                let text_one = '<span class="findTutors_v44_252"> No Student to Display</span>'
+                top_one.innerHTML = text_one//'<span class="findTutors_v44_252">arr</span><span class="findTutors_v44_253">Mathematics & Science</span>'
+                
+            }
+            
+        </script>
+    </body>
+    </html> 
+    <br/>
+    <br/> 
+   
+  
+ 

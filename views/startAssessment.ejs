@@ -1,0 +1,207 @@
+<%-include("partials/header");-%>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    </head>
+    <body>
+        <form id = "main_form" method = "POST">
+        <div id = "mega" class="v55_251">
+            <div class="search_v119_1837">
+                <img class="v13_23" src = "/views/vector_back.png" />
+                <img class = "v119_1814" src="/views/header_image.jpg" />
+                <img class = "choka_register" src="/views/Group 9.png" />
+                <span class="v13_3">Back</span>
+            </div>
+            <span class="v55_259_todo">Assessment</span>
+        </br></br></br></br></br></br></br></br></br></br></br></br></br>
+        <div class = "start_header">
+        </br>
+            <h2 id = "header_subject" class = "start_subject"></h2>
+            <h2 class = "start_creator">Created by: Rose Dunhill</h2>
+            <h2 id = "header_points"class = "start_score"></h2>
+            
+                <div class = "timer">
+                    <p class = "start_time">Starting time: 50</p>
+                    <p id = "time_remaining"class = "time_remaining">Time remaining: 50</p>
+                    <p id = "total_time" class = "time_allotted"> </p>
+
+
+
+
+                
+                </div>
+            </br></br></br></br></br></br>
+
+
+
+
+        </div>
+
+
+        <!--
+    <div id = "add" class = "q">
+        <div  id = "question_container">
+            <div class="displayer">
+                
+                </br>
+                <p class="item_1">Points:</p>
+                <input disabled value = "50" name = "question_points" class = "item_2" />
+                <p class="item_3">Minutes required:</p>
+                <input disabled name = "question_minutes" class = "item_4" />
+                </br>
+                <span class="v79_1115_createAssessments">Question Text</span>
+                </br>
+                </br>
+                <input disabled value = "Write the name of the tallest building of the world and the city where it is located" name = "question_text" class = "sawaal" />
+            
+                <input placeholder="Type your answer here" name = "question_text" class = "jawaab" />
+
+
+                </br>
+                </br>
+                
+                </br>
+                </br>
+                
+
+            </div>
+            </br>
+
+        </div>
+    </div>
+
+
+    <div id = "add" class = "q">
+        <div  id = "question_container">
+            <div class="displayer">
+                
+                </br>
+                <p class="item_1">Points:</p>
+                <input disabled value = "50" name = "question_points" class = "item_2" />
+                <p class="item_3">Minutes required:</p>
+                <input disabled name = "question_minutes" class = "item_4" />
+                </br>
+                <span class="v79_1115_createAssessments">Question Text</span>
+                </br>
+                </br>
+                <input disabled value = "Write the name of the tallest building of the world and the city where it is located" name = "question_text" class = "sawaal" />
+            
+                <input placeholder="Type your answer here" name = "question_text" class = "jawaab" />
+
+
+                </br>
+                </br>
+                
+                </br>
+                </br>
+                
+
+            </div>
+            </br>
+
+        </div>
+    </div>
+
+     -->       
+            
+            
+        
+    </div>
+</br></br></br></br></br></br> </br></br></br></br></br></br>  
+<button id = "final_button" name = "submit_button" type = "submit" formaction="/submitAssessmentRequest" method = "POST" class = "ss"> Submit </button> 
+</form>
+</br> 
+    <script>
+        let assignment_content = '<%-assessment_content%>';
+        //now parse it here
+        let content_object = JSON.parse(assignment_content);
+        console.log(content_object)
+        let total_minutes = content_object.Minutes
+        let subject = content_object.Subject
+        let syllabus = content_object.Syllabus
+        let total_points = content_object.TotalPoints
+        console.log("total points are", total_points)
+        ///nowwww parse these details in the header
+        let header_subject = document.getElementById("header_subject")
+        //let header_syllabus = document.getElementById("header_syllabus")
+        let header_points = document.getElementById("header_points")
+        let header_time = document.getElementById("total_time")
+        let final_button = document.getElementById("final_button")
+        final_button.value = assignment_content
+        header_subject.innerHTML ="Subject:" +  subject
+        header_points.innerHTML = "Total Points:" + total_points
+        header_time.innerHTML = "Time allotted:" +  total_minutes + " minutes"
+
+        
+
+        let n_questions = content_object.QuestionText.length
+        //for every questionnn
+        let mega = document.getElementById("mega")
+        let question_text_arr = content_object.QuestionText
+        let question_minutes_arr = content_object.QuestionMinutes 
+        let question_points_arr = content_object.QuestionPoints
+        //now append to mega always
+        for(let i = 0; i <n_questions; i= i+1){
+            let question_minutes = question_minutes_arr[i]
+            let question_points = question_points_arr[i]
+            let unparsed = question_text_arr[i]
+            let parsed = ""
+            for(let j = 0; j<unparsed.length; j= j+1){
+                if(unparsed[j]=='-'){
+                    parsed = parsed + ' '
+                }
+                else{
+                    parsed = parsed + unparsed[j]
+                }
+            }
+            console.log("parsed  is ", parsed)
+
+            let stuff = '<div id = "add" class = "q"><div  id = "question_container"><div class="displayer"></br><p class="item_1">Points:</p><input disabled value = '+question_points+' name = "question_points" class = "item_2" /><p class="item_3">Minutes required:</p><input disabled value = '+question_minutes+' name = "question_minutes" class = "item_4" /></br><span class="v79_1115_createAssessments">Question Text</span></br></br><span name = "question_text" class = "sawaal" >'+parsed+'</span></br></br></br></br></br></br><input placeholder="Type your answer here" name = "question_text" class = "jawaab" /></br></br></br></br></div></br></div></div>'
+            mega.insertAdjacentHTML('beforeend', stuff)
+        
+        }
+
+        let date_started = new Date();
+        let date_end = new Date(date_started.getTime() + 50*60000).getTime();
+        console.log("data started is", date_started)
+        console.log("date ended", date_end)
+        var x = setInterval(function() {
+
+               
+                var now = new Date().getTime();
+                var distance = date_end - now;
+
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                
+                document.getElementById("time_remaining").innerHTML ="Time Remaining: "  + hours + "h "
+                + minutes + "m " + seconds + "s ";
+
+               
+                if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("time_remaining").innerHTML = "EXPIRED";
+                }
+                }, 1000);
+
+
+
+
+
+        
+
+
+         
+
+    </script>
+       
+</body>
+</html> 
+        
+   
+  
+  
+  

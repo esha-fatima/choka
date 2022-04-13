@@ -1,0 +1,77 @@
+<%-include("partials/header");-%>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="v55_251">
+            <div class="search_v119_1837">
+                <img class="v13_23" src = "/views/vector_back.png" />
+                <img class = "v119_1814" src="/views/header_image.jpg" />
+                <img class = "choka_register" src="/views/Group 9.png" />
+                <span class="v13_3">Back</span>
+            </div>
+            <span class="v55_259_todo">Chats</span>
+        </br></br></br></br></br></br></br></br></br>
+            <div id = "add" class = "add_to_do">
+                <div  id = "question_container">
+                    <div class="v79_1097_bb_createAssessments">
+                        <img src= "filter_1.png" class = "image_dp"/>
+                        <h1 id = "chatter" class = "ins_name_two"> Name </h1>
+                        <br>
+                        <button id = "wish" class = "comm"> Message</button>
+                    
+        
+                    </div>
+                    </br>
+    
+                </div>
+            </div>
+
+            
+            
+            
+            
+            
+        </div>
+        <script>
+            
+            let headers_array = '<%-chat_headers%>';
+            //console.log(headers_array)
+           
+            let chat_headers = JSON.parse(headers_array);
+
+            
+
+            console.log(chat_headers);
+            let container = document.getElementById("add");
+            container.innerHTML = ""
+            for(let j = 0; j<chat_headers.length; j = j+1){
+                //nowwww go through each
+                //take the chat header[j] and stringify it
+
+                let tutor_email = chat_headers[j].tutor_email;
+                let new_obj = {
+                    "tutor_email" : tutor_email,
+                    "student_email":chat_headers[j].student_email
+                }
+                
+                let button_value = JSON.stringify(new_obj)
+                let text = `<div  id = "question_container"><div class="v79_1097_bb_createAssessments"><img src= "filter_1.png" class = "image_dp"/><h1 id = "chatter" class = "ins_name_two">`+ tutor_email +`</h1><br><form method = "POST" ><button method = "POST" formaction = "/messageMyTutor" type = "submit" name = "requested" value = `+button_value+`  class = "comm"> Message</button></form></div></br></div>`
+                container.innerHTML = container.innerHTML + text
+                
+
+            }
+
+
+           
+
+
+        </script>
+    </body>
+</html> 
+        
+   
+  
+  
+  

@@ -1,0 +1,1310 @@
+
+ #xxx{
+     background: rgba(238,238,238,1);
+ }
+  .v66_529_createAssessments {
+    width: 100%;
+    height:100%;
+    background: rgba(238,238,238,1);
+    opacity: 1;
+    
+    top: 0px;
+    left: 0px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    
+  }
+  .v79_1045_createAssessments {
+    width: 579px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 288px;
+    left: 87px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 60px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v79_1046_createAssessments {
+    width: 1350px;
+    height: 150px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: relative;
+    top: 385px;
+    left: 87px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+
+  .add_question{
+      top:500px;
+      left:87px;
+      position: relative;
+      
+
+  }
+
+  .v79_1097_bb_createAssessments {
+    width: 1350px;
+    height: 170px;
+    padding-top: 50px;
+    
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: relative;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
+    
+  }
+
+  .comm{
+    width: 105px;
+    background: rgba(3,133,182,1);
+    position: relative;
+    color: rgba(255,255,255,1);
+    display: inline;
+    font-family: Roboto;
+    font-weight: Medium;
+    box-shadow: none;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    font-size: 20px;
+    opacity: 1;
+    text-align: center;
+    height: 55px;
+    left: 600px;
+    
+
+  }
+
+ 
+
+  .v79_1097_createAssessments {
+    width: 1350px;
+    height: 600px;
+    padding-top: 50px;
+    
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: relative;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
+    
+  }
+  .v79_1114_createAssessments {
+    width: 109px;
+    height: 32px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 921px;
+    left: 153px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    overflow: hidden;
+  }
+  
+  .v79_1047_createAssessments {
+    width: 24px;
+    height: 29px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 463px;
+    left: 139px;
+  }
+  .v79_1048_createAssessments {
+    width: 176px;
+    height: 28px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 30px;
+    left: 200px;
+    border: 1px solid rgba(3,133,182,0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .v79_1048_createAssessments_b {
+    width: 176px;
+    height: 28px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 90px;
+    left: 200px;
+    border: 1px solid rgba(3,133,182,0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .v79_1048_createAssessments_c {
+    width: 176px;
+    height: 28px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 90px;
+    left: 680px;
+    border: 1px solid rgba(3,133,182,0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+
+  .v79_1048_createAssessments_a{
+    width: 158px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 30px;
+    left: 25px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+    
+
+  }
+  .hey{
+      overflow-y: scroll;
+      height: 140px;
+
+
+  }
+
+  .publish_for{
+    width: 600px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 30px;
+    left: 25px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+   
+    
+
+  }
+
+
+
+  .image_dp{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    height: 60px;
+    width: 60px;
+    display: block;
+    padding-left: 30px;
+    padding-top: 15px;
+    position: absolute;
+  }
+
+  .publish{
+    
+   
+        width: 1350px;
+        height: 150px;
+        background: rgba(255,255,255,1);
+        opacity: 1;
+        position: relative;
+        top: 450px;
+        left: 87px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+      }
+    
+      
+    
+
+  
+
+  .v79_1049_createAssessments {
+    width: 176px;
+    height: 28px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 463px;
+    left: 339px;
+    border: 1px solid rgba(3,133,182,0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .v88_1210_createAssessments {
+    width: 176px;
+    height: 28px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 606px;
+    left: 339px;
+    border: 1px solid rgba(3,133,182,0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .v88_1220_createAssessments {
+    width: 176px;
+    height: 28px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 606px;
+    left: 1098px;
+    border: 1px solid rgba(3,133,182,0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .v79_1103_createAssessments {
+    width: 176px;
+    height: 28px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 816px;
+    left: 327px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .v79_1050_createAssessments {
+    width: 176px;
+    height: 28px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 30px;
+    left: 680px;
+    border: 1px solid rgba(3,133,182,0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .v79_1050_createAssessments_aa {
+    width: 176px;
+    height: 28px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 90px;
+    left: 1100px;
+    border: 1px solid rgba(3,133,182,0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .v79_1050_createAssessments_bb {
+    width: 176px;
+    height: 28px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 30px;
+    left: 1100px;
+    border: 1px solid rgba(3,133,182,0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+
+
+  .v79_1051_createAssessments {
+    width: 176px;
+    height: 28px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 463px;
+    left: 769px;
+    border: 1px solid rgba(3,133,182,0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .v79_1052_createAssessments {
+    width: 88px;
+    height: 24px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 417px;
+    left: 175px;
+  }
+  .v79_1053_createAssessments {
+    width: 23px;
+    height: 29px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 413px;
+    left: 139px;
+  }
+  .v79_1054_createAssessments {
+    width: 120px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 30px;
+    left: 500px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v79_1098_createAssessments {
+    width: 154px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 667px;
+    left: 139px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v79_1055_createAssessments {
+    width: 158px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 84px;
+    left: 25px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v88_1207_createAssessments {
+    width: 158px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 609px;
+    left: 175px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v88_1217_createAssessments {
+    width: 158px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 609px;
+    left: 1012px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v79_1102_createAssessments {
+    width: 179px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 820px;
+    left: 145px;
+    font-family: Roboto;
+    font-weight: Medium;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v79_1056_createAssessments {
+    width: 158px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 84px;
+    left: 500px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
+
+  .v79_1056_createAssessments_d {
+    width: 158px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 90px;
+    left:950px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
+
+  .v79_1057_createAssessments {
+    width: 158px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 467px;
+    left: 1012px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v79_1058_createAssessments {
+    width: 160px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 30px;
+    left: 950px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
+  .item_1 {
+    display: inline;
+    color: rgba(3,133,182,1);
+    
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 25px;
+    opacity: 1;
+    height: 30px;
+    padding-right: 20px;
+    padding-left: 20px;
+    
+    
+  }
+  .item_0 {
+    display: inline;
+    color: black;
+    
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 25px;
+    opacity: 1;
+    height: 30px;
+    position: inherit;
+    
+    
+  }
+
+  .item_2 {
+    
+    border: 1px solid rgba(3,133,182,0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: inline;
+    color: rgba(3,133,182,1);
+    padding-top: 00px;
+    font-family: Roboto;
+    
+    font-size: 20px;
+    opacity: 1;
+    height: 30px;
+    width: 100px;
+    
+  }
+
+  .item_3 {
+    
+    
+    display: inline;
+    color: rgba(3,133,182,1);
+    
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 25px;
+    opacity: 1;
+    height: 30px;
+    padding-right: 20px;
+    padding-left: 680px;
+    
+    
+  }
+
+  .item_4 {
+    padding-top: 0px;
+    border: 1px solid rgba(3,133,182,0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: inline;
+    color: rgba(3,133,182,1);
+    font-family: Roboto;
+    width: 100px;
+    font-size: 20px;
+    opacity: 1;
+    height: 30px;
+    
+    
+    
+  }
+  .item_5 {
+    
+    border: 1px solid rgba(3,133,182,0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: inline;
+    color: rgba(3,133,182,1);
+    font-family: Roboto;
+    width :1200px;
+    font-size: 20px;
+    opacity: 1;
+    height: 200px;
+    
+    
+    
+  }
+  .v79_1115_createAssessments {
+    width: 102px;
+    color: rgba(3,133,182,1);
+    position: relative;
+    display: inline;
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+    padding-left: 0px;
+  }
+
+  .v79_1059_createAssessments {
+    width: 20px;
+    height: 20px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 471px;
+    left: 566px;
+    overflow: hidden;
+  }
+  .v79_1060_createAssessments {
+    width: 20px;
+    height: 20px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+  .v79_1061_createAssessments {
+    width: 20px;
+    height: 20px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 421px;
+    left: 566px;
+    overflow: hidden;
+  }
+  .v79_1062_createAssessments {
+    width: 16px;
+    height: 13px;
+    background: url("../images/v79_1062.png");
+    opacity: 1;
+    position: absolute;
+    top: 3px;
+    left: 1px;
+    border: 2px solid rgba(3,133,182,1);
+  }
+  .v79_1063_createAssessments {
+    width: 20px;
+    height: 20px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 421px;
+    left: 987px;
+    overflow: hidden;
+  }
+  .v79_1064_createAssessments {
+    width: 18px;
+    height: 15px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 2px;
+    left: 0px;
+  }
+  .v79_1065_createAssessments {
+    width: 20px;
+    height: 20px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 471px;
+    left: 986px;
+    overflow: hidden;
+  }
+  .v79_1066_createAssessments {
+    width: 15px;
+    height: 17px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 2px;
+  }
+  .v88_1218_createAssessments {
+    width: 20px;
+    height: 20px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 613px;
+    left: 986px;
+    overflow: hidden;
+  }
+  .v88_1219_createAssessments {
+    width: 15px;
+    height: 17px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 2px;
+  }
+  .v79_1067_createAssessments {
+    width: 120px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 30px;
+    left: 1100px;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v79_1068_createAssessments {
+    width: 120px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 90px;
+    left: 1100px;
+    font-family: Roboto;
+    font-weight: Medium;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v79_1069_createAssessments {
+    width: 15px;
+    height: 18px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 420px;
+    left: 495px;
+    overflow: hidden;
+  }
+  .v79_1070_createAssessments {
+    width: 7px;
+    height: 8px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+  .v79_1071_createAssessments {
+    width: 15px;
+    height: 18px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v79_1072_createAssessments {
+    width: 7px;
+    height: 8px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+  .v79_1073_createAssessments {
+    width: 15px;
+    height: 18px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 87px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v79_1074_createAssessments {
+    width: 7px;
+    height: 8px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+  .v79_1075_createAssessments {
+    width: 15px;
+    height: 18px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 420px;
+    left: 923px;
+    overflow: hidden;
+  }
+  .v79_1076_createAssessments {
+    width: 7px;
+    height: 8px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+  .v79_1077_createAssessments {
+    width: 15px;
+    height: 18px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v79_1078_createAssessments {
+    width: 7px;
+    height: 8px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+  .v79_1079_createAssessments {
+    width: 15px;
+    height: 18px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 87px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v79_1080_createAssessments {
+    width: 7px;
+    height: 8px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+  .v79_1081_createAssessments {
+    width: 15px;
+    height: 18px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 472px;
+    left: 923px;
+    overflow: hidden;
+  }
+  .v79_1082_createAssessments{
+    width: 7px;
+    height: 8px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+  .v79_1083_createAssessments {
+    width: 15px;
+    height: 18px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v79_1084_createAssessments {
+    width: 7px;
+    height: 8px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+  .v79_1085_createAssessments {
+    width: 15px;
+    height: 18px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 87px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v79_1086_createAssessments {
+    width: 7px;
+    height: 8px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+  .v79_1087_createAssessments {
+    width: 15px;
+    height: 18px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 465px;
+    left: 495px;
+    overflow: hidden;
+  }
+  .v79_1088_createAssessments {
+    width: 7px;
+    height: 8px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+  .v79_1089_createAssessments {
+    width: 15px;
+    height: 18px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v79_1090_createAssessments {
+    width: 7px;
+    height: 8px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+  .v79_1091_createAssessments {
+    width: 15px;
+    height: 18px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 87px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v79_1092_createAssessments {
+    width: 7px;
+    height: 8px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+  .v88_1211_createAssessments {
+    width: 15px;
+    height: 18px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 608px;
+    left: 495px;
+    overflow: hidden;
+  }
+  .v88_1212_createAssessments {
+    width: 7px;
+    height: 8px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+  .v88_1213_createAssessments {
+    width: 15px;
+    height: 18px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v88_1214_createAssessments {
+    width: 7px;
+    height: 8px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+  .v88_1215_createAssessments {
+    width: 15px;
+    height: 18px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 87px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v88_1216_createAssessments {
+    width: 7px;
+    height: 8px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+  .v88_1221_createAssessments {
+    width: 15px;
+    height: 18px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 608px;
+    left: 1239px;
+    overflow: hidden;
+  }
+  .v88_1222_createAssessments {
+    width: 7px;
+    height: 8px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+  .v88_1223_createAssessments {
+    width: 15px;
+    height: 18px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v88_1224_createAssessments{
+    width: 7px;
+    height: 8px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+  .v88_1225_createAssessments {
+    width: 15px;
+    height: 18px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 87px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v88_1226_createAssessments {
+    width: 7px;
+    height: 8px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+  .v79_1104_createAssessments {
+    width: 15px;
+    height: 18px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 824px;
+    left: 485px;
+    overflow: hidden;
+  }
+  .v79_1105_createAssessments {
+    width: 7px;
+    height: 8px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+  .v79_1106_createAssessments {
+    width: 15px;
+    height: 18px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v79_1107_createAssessments {
+    width: 7px;
+    height: 8px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+  .v79_1108_createAssessments {
+    width: 15px;
+    height: 18px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 87px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .v79_1109_createAssessments {
+    width: 7px;
+    height: 8px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+  }
+  .v79_1100_createAssessments {
+    width: 100%;
+    height: 76px;
+    background: rgba(238,238,238,0.38999998569488525);
+    opacity: 1;
+    position: absolute;
+    top: 724px;
+    left: 145px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .v79_1101_createAssessments {
+    width: 673px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 742px;
+    left: 191px;
+    font-family: Roboto;
+    font-weight: Italic;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v79_1113_createAssessments {
+    width: 673px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 872px;
+    left: 191px;
+    font-family: Roboto;
+    font-weight: Italic;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
+  
+  .v79_1110_createAssessments {
+    width: 176px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 822px;
+    left: 392px;
+    font-family: Roboto;
+    font-weight: Italic;
+    font-size: 15px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v79_1116_createAssessments {
+    width: 171px;
+    height: 55px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 1113px;
+    left: 1171px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    overflow: hidden;
+  }
+  .v79_1117_createAssessments {
+    width: 117px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 1126px;
+    left: 1213px;
+    font-family: Roboto;
+    font-weight: Medium;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v79_1118_createAssessments {
+    width: 152px;
+    height: 48px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: relative;
+   
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    overflow: hidden;
+  }
+  .v79_1119_createAssessments {
+    width: 143px;
+    background: rgba(3,133,182,1);
+    position: relative;
+    color: rgba(255,255,255,1);
+    display: inline;
+    font-family: Roboto;
+    font-weight: Medium;
+    box-shadow: none;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+    height: 55px;
+  }
+  .v79_1119_createAssessments_b {
+    width: 143px;
+    background: rgba(3,133,182,1);
+    position:relative;
+    color: rgba(255,255,255,1);
+    display: inline;
+    font-family: Roboto;
+    font-weight: Medium;
+    box-shadow: none;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    font-size: 20px;
+    opacity: 1;
+    left: 2px;
+    text-align: center;
+    height: 55px;
+  }
+
+  .v88_1208_createAssessments {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 612px;
+    left: 139px;
+    overflow: hidden;
+  }
+  .v88_1209_createAssessments {
+    width: 22px;
+    height: 18px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 3px;
+    left: 1px;
+  }
+  .v119_2041_createAssessments {
+    width: 100%;
+    height: 213px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 80px;
+    overflow: hidden;
+  }
+  .v119_2042_createAssessments {
+    width: 338px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 73px;
+    left: 541px;
+    font-family: Roboto;
+    font-weight: Bold;
+    opacity: 1;
+    text-align: left;
+  }
+  .v119_2043_createAssessments {
+    width: 95px;
+    height: 95px;
+    background: url("../images/v119_2043.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 71px;
+    left: 427px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    overflow: hidden;
+  }
+  .v119_2044_createAssessments {
+    width: 53px;
+    height: 28px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 45px;
+    left: 40px;
+  }
+  .v119_2045_createAssessments {
+    width: 67px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 42px;
+    left: 118px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 30px;
+    opacity: 1;
+    text-align: left;
+  }
+  

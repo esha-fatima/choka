@@ -1,0 +1,177 @@
+<%-include("partials/header");-%>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    </head>
+    <body id = "xxx">
+        
+            <div class="dashboard_v20_155">
+                <img class="v13_23" src = "/views/vector_back.png"   />
+                <img class = "v119_1814" src="/views/header_image.jpg"  />
+                <img class = "choka_register" src="/views/Group 9.png" />
+                <span class="v13_3">Back to Home</span>
+            </div>
+        
+
+        
+            <span class="v79_1045_createAssessments">Create Assessment</span>
+            <form name = "assessment" method = "POST" >
+            <div id = "mega"class="v79_1046_createAssessments">
+                <span class="v79_1048_createAssessments_a" >Subject:</span>
+                <input name = "Subject" class="v79_1048_createAssessments"/>
+                <span class="v79_1054_createAssessments">Syllabus:</span>
+                <input name = "Syllabus" class="v79_1050_createAssessments"></input>
+                
+                <span class="v79_1058_createAssessments">Max Points:</span>
+                <input name = "total_points" class="v79_1050_createAssessments_bb"/>
+
+
+                <span class="v79_1055_createAssessments">Publish Date:</span>
+                <input type = "date"name = "publishDate" class="v79_1048_createAssessments_b"/>
+
+                <span class="v79_1056_createAssessments">Publish Time:</span>
+                <input type = "time"name = "publishTime" class="v79_1048_createAssessments_c"/>
+
+                <span class="v79_1056_createAssessments_d">Minutes:</span>
+                <input name = "minutes" class="v79_1050_createAssessments_aa"/>    
+            </div>
+
+
+            <div class = "publish">
+                <h2 class = "publish_for">Choose the group targetted for assessment:</h2>
+                <div class = "hey" id = "target" >
+                    <!--
+                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                <label for="vehicle1"> I have a bike</label><br>
+                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                <label for="vehicle2"> I have a car</label><br>
+                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                <label for="vehicle3"> I have a boat</label><br>
+
+                <input type="checkbox" id="vehicle4" name="vehicle4" value="aeroplane">
+                <label for="vehicle4"> I have an aeroplane</label><br>
+
+                <input type="checkbox" id="vehicle5" name="vehicle5" value="cycle">
+                <label for="vehicle5"> cycle</label><br>
+
+                <input type="checkbox" id="vehicle6" name="vehicle6" value="laptop">
+                <label for="vehicle6"> laptop</label><br>
+
+                <input type="checkbox" id="vehicle7" name="vehicle7" value="ipad">
+                <label for="vehicle7"> ipad</label><br>
+                        -->
+
+
+
+                </div>
+
+
+
+
+            </div>
+        
+            <div id = "add" class = "add_question">
+            <div  id = "question_container">
+                <div class="v79_1097_createAssessments">
+                    <p class="item_0">Question</p>
+                    </br>
+                    <p class="item_1">Points:</p>
+                    <input name = "question_points" class = "item_2" />
+                    <p class="item_3">Minutes required:</p>
+                    <input name = "question_minutes" class = "item_4" />
+                    </br>
+                    <span class="v79_1115_createAssessments">Question Text</span>
+                    </br>
+                    </br>
+                    <input name = "question_text" class = "item_5" />
+                    </br>
+                    </br>
+                    
+                    </br>
+                    </br>
+                    
+    
+                </div>
+                </br>
+
+            </div>
+        </div>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+        <button formaction="/createAssessmentRequest" method = "POST" id = "publish" class="v79_1119_createAssessments_b">Publish</button>
+    </form>
+        <button id = "plus1"  class="v79_1119_createAssessments">Add Question</button> 
+        
+        
+
+
+        
+        
+    
+
+            
+            
+        
+        
+            
+            
+           
+        
+        <script>
+            let bachey = '<%-bachey%>';
+            let bachey_arr = JSON.parse(bachey)
+            let question_count = 1
+            let add_button = document.getElementById("plus1")
+            let target = document.getElementById("target")
+            console.log(bachey_arr)
+            target.innerHTML = ""
+            for(let i = 0; i <bachey_arr.length; i = i +1){
+                target.innerHTML = target.innerHTML + '<input type="checkbox" id = '+bachey_arr[i]+'  name=' + bachey_arr[i]+' value="yes"><label for='+bachey_arr[i]+'>'+ bachey_arr[i]+'</label><br>'
+                
+            }
+
+
+            add_button.addEventListener("click", plus_one)
+            function plus_one(){
+                let add = document.getElementById("add");
+                event.preventDefault();
+                console.log("here")
+                
+                let question_container = document.getElementById("question_container")
+                add.insertAdjacentHTML('beforeend', question_container.innerHTML) 
+                question_count = question_count + 1;
+            }
+            let publish_button = document.getElementById("publish")
+
+
+
+
+
+
+
+
+        </script>
+    </body>
+    </html> 

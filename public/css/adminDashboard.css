@@ -1,0 +1,634 @@
+.dashboard_1 {
+    width: 100%;
+    height: 1266px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    overflow: hidden;
+  }
+  .blue_tab {
+    width: 100%;
+    height: 213px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 80px;
+    overflow: hidden;
+  }
+  .tab_text {
+    width: 338px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 73px;
+    left: 541px;
+    font-family: Roboto;
+    font-weight: Bold;
+    opacity: 1;
+    text-align: left;
+  }
+  .tab_pic {
+    width: 95px;
+    height: 95px;
+    background: url("../images/v119_1817.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 71px;
+    left: 427px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    overflow: hidden;
+  }
+  .dashboard_2 {
+    width: 100px;
+    height: 105px;
+    background: url("../images/v103_1450.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 36px;
+    left: 1268px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    overflow: hidden;
+  }
+  .fa {
+    background-color: transparent;
+    width: 53px;
+    height: 28px;
+  /*   background: rgba(255,255,255,1); */
+    opacity: 1;
+    color: white;
+    position: absolute;
+    border: 0;
+    top: 45px;
+    left: 40px;
+  }
+  .back_text {
+    width: 364px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 42px;
+    left: 118px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 30px;
+    opacity: 1;
+    text-align: left;
+  }
+  .welcome_text {
+    width: fit-content;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 288px;
+    left: 436px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 60px;
+    opacity: 1;
+    text-align: left;
+  }
+  .left_tab {
+    width: 360px;
+    height: 100%;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 213px;
+    left: 0px;
+    border: 1px solid rgba(3,133,182,1);
+    border-bottom-left-radius: 25px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .indicator {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 259px;
+    left: 20px;
+    overflow: hidden;
+  }
+  .indicator2 {
+    width: 21px;
+    height: 18px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 2px;
+    left: 1px;
+  }
+  .logout_icon {
+    width: 35px;
+    height: 35px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 850px;
+    left: 273px;
+    overflow: hidden;
+  }
+  .logout_icon2 {
+    width: 20px;
+    height: 11px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 11px;
+    left: 2px;
+  }
+  .logout_icon3 {
+    width: 18px;
+    height: 26px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 4px;
+    left: 13px;
+  }
+  .settings_icon {
+    width: 35px;
+    height: 35px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 750px;
+    left: 273px;
+    overflow: hidden;
+  }
+  .settings_icon2 {
+    width: 26px;
+    height: 26px;
+    background: url("../images/v99_1421.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    overflow: hidden;
+  }
+  .settings_icon3 {
+    width: 26px;
+    height: 20px;
+    background: url("../images/v99_1422.png");
+    opacity: 1;
+    position: absolute;
+    top: 2px;
+    left: 0px;
+    border: 2px solid rgba(3,133,182,1);
+  }
+  .settings_icon4 {
+    width: 5px;
+    height: 5px;
+    background: url("../images/v99_1423.png");
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 5px;
+    border: 2px solid rgba(3,133,182,1);
+  }
+  .settings_icon5 {
+    width: 5px;
+    height: 5px;
+    background: url("../images/v99_1424.png");
+    opacity: 1;
+    position: absolute;
+    top: 10px;
+    left: 17px;
+    border: 2px solid rgba(3,133,182,1);
+  }
+  .settings_icon6 {
+    width: 5px;
+    height: 5px;
+    background: url("../images/v99_1425.png");
+    opacity: 1;
+    position: absolute;
+    top: 20px;
+    left: 2px;
+    border: 2px solid rgba(3,133,182,1);
+  }
+  .notifications_icon {
+    width: 35px;
+    height: 35px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 649px;
+    left: 273px;
+    overflow: hidden;
+  }
+  .notifications_icon2 {
+    width: 35px;
+    height: 26px;
+    background: url("../images/v99_1417.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 4px;
+    left: 0px;
+    overflow: hidden;
+  }
+  .notifications_icon3 {
+    width: 26px;
+    height: 26px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+  }
+  .notifications_icon4 {
+    width: 10px;
+    height: 10px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 6px;
+    left: 24px;
+  }
+  .tutors_icon {
+    width: 35px;
+    height: 35px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 346px;
+    left: 273px;
+  }
+  .dashboard_text {
+    width: 318px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 251px;
+    left: 52px;
+    font-family: Roboto;
+    font-weight: Medium;
+    font-size: 35px;
+    opacity: 1;
+    text-align: left;
+  }
+  .del_account_text {
+    width: 200px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 320px;
+    left: 52px;
+    font-family: Roboto;
+    font-weight: Medium;
+    font-size: 35px;
+    opacity: 1;
+    text-align: left;
+  }
+  .blocked_text {
+    width: 200px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 435px;
+    left: 52px;
+    font-family: Roboto;
+    font-weight: Medium;
+    font-size: 35px;
+    opacity: 1;
+    text-align: left;
+  }
+  .reports_text {
+    width: 318px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 544px;
+    left: 52px;
+    font-family: Roboto;
+    font-weight: Medium;
+    font-size: 35px;
+    opacity: 1;
+    text-align: left;
+  }
+  .notifications_text {
+    width: 318px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 645px;
+    left: 52px;
+    font-family: Roboto;
+    font-weight: Medium;
+    font-size: 35px;
+    opacity: 1;
+    text-align: left;
+  }
+  .settings_text {
+    width: 318px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 746px;
+    left: 52px;
+    font-family: Roboto;
+    font-weight: Medium;
+    font-size: 35px;
+    opacity: 1;
+    text-align: left;
+  }
+  .logout_text {
+    width: 318px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 847px;
+    left: 52px;
+    font-family: Roboto;
+    font-weight: Medium;
+    font-size: 35px;
+    opacity: 1;
+    text-align: left;
+  }
+  .dashboard_icon {
+    width: 35px;
+    height: 35px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 256px;
+    left: 273px;
+    overflow: hidden;
+  }
+  /* .dashboard_v99_1408 {
+    width: 32px;
+    height: 29px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 2px;
+    left: 1px;
+  } */
+  .blocked_icon {
+    width: 35px;
+    height: 35px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 447px;
+    left: 273px;
+    overflow: hidden;
+  }
+  .blocked_icon2 {
+    width: 29px;
+    height: 26px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 3px;
+    left: 2px;
+  }
+  .reports_icon {
+    width: 35px;
+    height: 35px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 548px;
+    left: 273px;
+    overflow: hidden;
+  }
+  .reports_icon2 {
+    width: 29px;
+    height: 29px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+  }
+  .search_box {
+    width: 753px;
+    height: 194px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 420px;
+    left: 464px;
+    border: 1px solid rgba(3,133,182,0.5);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 4px 10px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  
+  
+  
+  
+  .search_profile_text {
+    border: 0;
+    background-color: transparent;
+    width: 461px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 445px;
+    left: 512px;
+    font-family: Roboto;
+    font-weight: SemiBold;
+    font-size: 45px;
+    opacity: 1;
+    text-align: left;
+  }
+  .search_profile_text2 {
+    width: 461px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 515px;
+    left: 512px;
+    font-family: Roboto;
+    font-weight: Regular;
+    font-size: 30px;
+    opacity: 1;
+    text-align: left;
+  }
+  .approve_profile_box {
+    width: 753px;
+    height: 194px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 679px;
+    left: 464px;
+    border: 1px solid rgba(3,133,182,0.5);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 4px 10px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .delete_profile_box {
+    width: 753px;
+    height: 194px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 936px;
+    left: 464px;
+    border: 1px solid rgba(3,133,182,0.5);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 4px 10px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .search_profile_icon {
+    width: 181px;
+    height: 144px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 443px;
+    left: 993px;
+    overflow: hidden;
+  }
+  /* .dashboard_v99_1439 {
+    width: 181px;
+    height: 144px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 1px;
+  } */
+  .Registeration_text {
+    border: 0;
+    background-color: transparent;
+    width: 500px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 705px;
+    left: 512px;
+    font-family: Roboto;
+    font-weight: SemiBold;
+    font-size: 45px;
+    opacity: 1;
+    text-align: left;
+  }
+  .del_profile_button {
+    border: 0;
+    background-color: transparent;
+    width: 461px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 970px;
+    left: 512px;
+    font-family: Roboto;
+    font-weight: SemiBold;
+    font-size: 45px;
+    opacity: 1;
+    text-align: left;
+  }
+  .register_icon {
+    width: 185px;
+    height: 150px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 704px;
+    left: 989px;
+    overflow: hidden;
+  }
+  /* .dashboard_v99_1442 {
+    width: 138px;
+    height: 112px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 18px;
+    left: 23px;
+  } */
+  .del_profile_icon {
+    width: 141px;
+    height: 155px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 958px;
+    left: 1013px;
+    overflow: hidden;
+  }
+  /* .dashboard_v99_1445 {
+    width: 141px;
+    height: 155px;
+    background: url("../images/v99_1445.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 0px;
+    left: 140px;
+    overflow: hidden;
+  } */
+  /* .dashboard_v99_1446 {
+    width: 141px;
+    height: 155px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+  } */
+  .registeration_text2 {
+    width: 480px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 778px;
+    left: 512px;
+    font-family: Roboto;
+    font-weight: Regular;
+    font-size: 30px;
+    opacity: 1;
+    text-align: left;
+  }
+  .delete_profile_text2 {
+    width: 461px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 1042px;
+    left: 512px;
+    font-family: Roboto;
+    font-weight: Regular;
+    font-size: 30px;
+    opacity: 1;
+    text-align: left;
+  }
+  .view_profile {
+    width: 144px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 149px;
+    left: 1251px;
+    font-family: Roboto;
+    font-weight: SemiBold;
+    font-size: 25px;
+    opacity: 1;
+    text-align: left;
+  }
