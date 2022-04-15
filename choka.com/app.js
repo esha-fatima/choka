@@ -755,9 +755,69 @@ app.post("/tuitionAccept",(req,res)=>{
 //     console.log(12, req.body.tutor)
 //     res.render("tutorDashboard",global_user)
 })
+app.get("/adminDash",(req,res)=>{
+    res.render("adminDash");
+});
+
+app.get('/adminSearchProfile',(req,res)=>{
 
 
+    // res.render("adminSearchProfile")
+    let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
+    let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
+    let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
+    let results_array = [
+       obj1, obj2, obj3
+       ]
+   let ff = JSON.stringify(results_array)
+   console.log(ff)
+   let xx = {"bl":ff};
+   //console.log(res)
+   res.render("adminSearchProfile",xx)
+})
 
+
+app.post('/adminSearchProfile', (req,res)=>{
+    //do a search from the databse and get the top 2 students liveing in the same city as thus particular tutor
+    //store the name, department and the bidding price of the top 2 students living in the sam area as a json object like below
+    console.log(45, global_user.EmailAddress)
+
+    const docRefTutor = db.collection('Teachers').doc(global_user.EmailAddress);
+    docRefTutor.get().then((doc)=>{
+        if(doc.exists)
+        {
+            let user_deets = doc.data().student_request
+            console.log(user_deets)
+            if(user_deets.length == 0)
+            {
+                // let n_obj = {
+
+                //     "Name" :"No student has sent a request yet!",
+                //     "EmailAddress":"user_deets.EmailAddress",
+                //     "PhoneNumber": user_deets.PhoneNumber,
+                //     "Password":user_deets.Password,
+                //     "Image":user_deets.Image,
+                //     "Address": user_deets.Address,
+                //     "City" : user_deets.City,
+
+                // }
+                // alert("No student has sent a request yet!");
+                res.render("adminDash", global_user)
+            }
+            else
+            {
+                console.log(user_deets)
+                let arr_str = JSON.stringify(user_deets)
+                let xx = {"bl":arr_str};
+                res.render("searchResultsTutor",xx)
+            }
+        }
+        else{
+            console.log("NOT FOUND")
+            res.render("adminDash", global_user)
+        }
+    })
+})
 ////////////////////rendering login
 app.post('/findTutors', (req,res)=>{
     //now u are supposed to get the top 3 tutors from database.
@@ -1191,60 +1251,6 @@ app.post("/editProfile",(req,res)=>{
 
 });
 
-app.get('/adminSearchProfile',(req,res)=>{
-
-
-    // res.render("adminSearchProfile")
-    let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
-    let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
-    let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
-    let results_array = [
-       obj1, obj2, obj3
-       ]
-   let ff = JSON.stringify(results_array)
-   console.log(ff)
-   let xx = {"bl":ff};
-   //console.log(res)
-   res.render("adminSearchProfile",xx)
-})
-
-app.get('/adminApproveProfile',(req,res)=>{
-
-
-    // res.render("adminSearchProfile")
-    let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
-    let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
-    let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
-    let results_array = [
-       obj1, obj2, obj3
-       ]
-   let ff = JSON.stringify(results_array)
-   console.log(ff)
-   let xx = {"bl":ff};
-   //console.log(res)
-   res.render("adminApproveProfile",xx)
-})
-
-app.get('/adminDeleteProfile',(req,res)=>{
-
-
-    // res.render("adminSearchProfile")
-    let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
-    let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
-    let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
-    let results_array = [
-       obj1, obj2, obj3
-       ]
-   let ff = JSON.stringify(results_array)
-   console.log(ff)
-   let xx = {"bl":ff};
-   //console.log(res)
-   res.render("adminDeleteProfile",xx)
-})
-
-app.get("/adminDash",(req,res)=>{
-    res.render("adminDash");
-});
 
 
 
