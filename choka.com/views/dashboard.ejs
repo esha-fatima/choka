@@ -47,7 +47,7 @@
             <img class = "dashboard_v99_1409" src="/images/Vectormystudents.png" />
             <span class="dashboard_v98_1400"><b>Dashboard</b></span>
             <span class="dashboard_v99_1401"><b>My Tutors</b></span>
-            <form action = "/displayChats" method = "POST"><button formaction="/displayChats" method = "POST" type = "submit" class = "dashboard_v99_1402"><b>Messages</b></button></form>
+            <form  action = "/displayChats" method = "POST"><button formaction="/displayChats" method = "POST" type = "submit" class = "dashboard_v99_1402"><b>Messages</b></button></form>
             <span class="dashboard_v99_1403"><b>Notifications</b></span>
             <span class="dashboard_v99_1404"><b>Requests</b></span>
             <span class="dashboard_v99_1405"><b>Settings</b></span>
@@ -72,8 +72,8 @@
             
 
             <div class="dashboard_v99_1434"></div>
-            <form method="POST">
-            <button class="dashboard_v99_1443" formaction="/publishProfile" method = "POST"  ><b>Populate Profile</b></button>
+            <form method="POST" type = "submit">
+            <button class="dashboard_v99_1443" type="submit"  formaction="/publishProfile" method = "POST"  ><b>Populate Profile</b></button>
             </form>
             <span class="dashboard_v101_1449">Let tutor find you by adding your requirements</span>
 
@@ -100,12 +100,30 @@
         <script>
            
 
-
-            let name ='<%-Name%>'
-            name = "Welcome " + name + " !";
+           let header = '<%-header%>'
+           console.log(header)
+           let header_stringified = JSON.parse(header)
+           let name = header_stringified.Name
+           name = "Welcome " + name + " !";
             let tt = document.getElementById("n");
             tt.innerText = name;
 
+
+            var forms = document.getElementsByTagName("form");
+            for(var i = 0; i < forms.length; i++){
+                forms[i].id = "custom";
+                
+
+                input = document.createElement('input');
+                input.setAttribute('name', "headers");
+                input.setAttribute('value', header);
+                input.setAttribute('type', 'hidden');
+
+                forms[i].appendChild(input);
+                console.log(forms[i])
+            }
+
+            
             
             
 

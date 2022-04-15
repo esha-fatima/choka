@@ -98,10 +98,28 @@
             <span class="dashboard_v103_1543"><form method = "POST" ><button type = "submit" method = "POST" formaction= "/viewprofile"class="dashboard_new" >View Profile</button></span>
         </div>
         <script>
-            let name = '<%-Name%>'
-            name = "Welcome " + name + " !";
+           let header = '<%-header%>'
+           console.log(header)
+           let header_stringified = JSON.parse(header)
+           let name = header_stringified.Name
+           name = "Welcome " + name + " !";
             let tt = document.getElementById("n");
             tt.innerText = name;
+
+
+            var forms = document.getElementsByTagName("form");
+            for(var i = 0; i < forms.length; i++){
+                forms[i].id = "custom";
+                
+
+                input = document.createElement('input');
+                input.setAttribute('name', "headers");
+                input.setAttribute('value', header);
+                input.setAttribute('type', 'hidden');
+
+                forms[i].appendChild(input);
+                console.log(forms[i])
+            }
 
             
             

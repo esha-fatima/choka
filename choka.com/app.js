@@ -512,17 +512,26 @@ app.post('/searchRequest',(req,res)=>{
 
 
 app.post('/filterRequestT',(req,res)=>{
-    console.log("/filterRequestT", global_user)
-    global_user["Rate"]=req.body.Rate,
-    global_user["Days"]=req.body.Days,
-    global_user["Location"]=req.body.Location,
-    global_user["Classes"]=req.body.Class,
-    global_user["Subject"]=req.body.Subject,
-    global_user["Mode"]=req.body.Mode,
-    global_user["Hours"]=req.body.Hours,
-    global_user["Experience"]=req.body.Experience
+
+   
+    let local_user = JSON.parse(req.body.headers)
+
+    local_user["Rate"]=req.body.Rate,
+    local_user["Days"]=req.body.Days,
+    local_user["Location"]=req.body.Location,
+    local_user["Classes"]=req.body.Class,
+    local_user["Subject"]=req.body.Subject,
+    local_user["Mode"]=req.body.Mode,
+    local_user["Hours"]=req.body.Hours,
+    local_user["Experience"]=req.body.Experience
+    console.log("/filterRequestT", local_user)
+    new_user = JSON.stringify(local_user)
+    let header = {
+        "header":new_user
+    }
+
     
-    db.collection("Teachers").doc(global_user.EmailAddress).update({
+    db.collection("Teachers").doc(local_user.EmailAddress).update({
         Rate:req.body.Rate,
         Days:req.body.Days,
         Location:req.body.Location,
@@ -533,14 +542,14 @@ app.post('/filterRequestT',(req,res)=>{
         Experience:req.body.Experience
     }).then(()=>{
             db.collection('subjects').doc(req.body.Subject).update({
-                tutors: firebase.firestore.FieldValue.arrayUnion(global_user)
+                tutors: firebase.firestore.FieldValue.arrayUnion(local_user)
             }).then(()=>{
-                        res.render("tutorDashboard", global_user)
+                        res.render("tutorDashboard", header)
             }).catch(()=>{
                 db.collection('subjects').doc(req.body.Subject).set({
-                    tutors: [global_user]
+                    tutors: [local_user]
                 }).then(()=>{
-                            res.render("tutorDashboard", global_user)
+                            res.render("tutorDashboard", header)
                 });
             })
  
@@ -556,16 +565,18 @@ app.post('/filterRequestT',(req,res)=>{
 })
 
 app.post('/filterRequest',(req,res)=>{
-    console.log("/filterRequest", global_user)
-    global_user["Pay"]=req.body.Pay,
-    global_user["Days"]=req.body.Days,
-    global_user["Location"]=req.body.Location,
-    global_user["Classes"]=req.body.Class,
-    global_user["Subject"]=req.body.Subject,
-    global_user["Mode"]=req.body.Mode,
-    global_user["Hours"]=req.body.Hours,
-
-    db.collection("Students").doc(global_user.EmailAddress).update({
+    console.log("/filterRequest")
+    let local_user = req.body.headers
+    local_user = JSON.parse(local_user);
+    local_user["Pay"]=req.body.Pay,
+    local_user["Days"]=req.body.Days,
+    local_user["Location"]=req.body.Location,
+    local_user["Classes"]=req.body.Class,
+    local_user["Subject"]=req.body.Subject,
+    local_user["Mode"]=req.body.Mode,
+    local_user["Hours"]=req.body.Hours,
+    console.log("local user is", local_user)
+    db.collection("Students").doc(local_user.EmailAddress).update({
         Pay:req.body.Pay,
         Days:req.body.Days,
         Location:req.body.Location,
@@ -575,7 +586,9 @@ app.post('/filterRequest',(req,res)=>{
         Hours:req.body.Hours,
         // Experience:req.body.Experience
     }).then(()=>{
-        res.render("dashboard", global_user)
+        let new_user = JSON.stringify(local_user);
+        let header = {"header": new_user}
+        res.render("dashboard", header)
     });
 })
 
@@ -950,7 +963,12 @@ app.post('/loginRequest',(req,res)=>{
                 }
                 global_user = n_obj;
                 console.log(global_user)
-                res.render("dashboard", global_user)
+                let new_user = JSON.stringify(n_obj)
+                let header = {
+                    "header":new_user
+                }
+
+                res.render("dashboard", header)
 
             }
             else{
@@ -969,7 +987,7 @@ app.post('/loginRequest',(req,res)=>{
                     //if it is tutor.
                     console.log("Tutor found")
                     if(user_deets.Password == password){
-                         global_user = {
+                        let  n_obj = {
                             "Name" : user_deets.Name,
                             "EmailAddress":user_deets.EmailAddress,
                             "PhoneNumber": user_deets.PhoneNumber,
@@ -983,8 +1001,13 @@ app.post('/loginRequest',(req,res)=>{
                             "City": user_deets.City
 
                         }
+                        global_user = n_obj
+                        let new_user = JSON.stringify(n_obj)
+                        let header = {
+                            "header":new_user
+                        }
                         
-                        res.render("tutorDashboard", global_user)
+                        res.render("tutorDashboard", header)
                     }
                     else{
                         console.log("Passwords do not match")
@@ -1065,7 +1088,15 @@ app.post("/populateProfile",(req,res)=>{
 
 
 app.post("/publishProfile",(req,res)=>{
-    res.render("publishProfile")
+    let local_user = req.body.headers;
+    local_user = JSON.parse(local_user)
+    let new_user = JSON.stringify(local_user)
+                let header = {
+                    "header":new_user
+                }
+
+    console.log(local_user)
+    res.render("publishProfile",header)
 })
 
 
@@ -1269,7 +1300,14 @@ app.get("/reviews",(req,res)=>{
 
 app.post("/publishTutorProfile",(req,res)=>{
     console.log("/publishTutorProfile")
-    res.render("publishProfile");
+    let local_user = req.body.headers;
+    local_user = JSON.parse(local_user)
+    console.log(local_user)
+    let new_user = JSON.stringify(local_user)
+    let header = {
+        "header":new_user
+    }
+    res.render("populateProfile",header);
    
 });
 
@@ -1337,8 +1375,14 @@ app.post('/studentregistration',(req, res, next)=>{
             }).then(()=>{
                 
                 console.log("firebase filled");
+                new_user = JSON.stringify(new_user)
+                let header = {
+                    "header":new_user
+                }
                 // res.redirect("/home");
-                res.render("dashboard", global_user)
+                //now the student has registered...
+                //make a global user and 
+                res.render("dashboard", header)
             });
 
         }
@@ -1391,8 +1435,12 @@ app.post('/parentregistration',(req, res, next)=>{
                 student_accepted:[],
                 Rating:0
             }).then(()=>{
+                new_user = JSON.stringify(new_user)
+                let header = {
+                    "header":new_user
+                }
                 console.log("firebase filled");
-                res.redirect("/populateProfile");
+                res.render("populateProfile",header);
             });
 
         }
