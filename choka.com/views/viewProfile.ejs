@@ -75,12 +75,15 @@
 
         <script>
             document.getElementById("edit").style.display = "none";
-            let name = '<%-Name%>';
-            let email = '<%-EmailAddress%>';
-            let city = '<%-City%>';
-            let address = '<%-Address%>';
-            let image = '<%-Image%>';
-            let contact = '<%-PhoneNumber%>';
+            let header = '<%-header%>'
+            header = JSON.parse(header);
+            console.log("header is ", header);
+            let name = header.Name;
+            let email = header.EmailAddress;
+            let city = header.City;
+            let address = header.Address;
+            let image = header.Image;
+            let contact = header.PhoneNumber;
             let div_name = document.getElementById("name");
             div_name.innerHTML = name
             let div_name_2 = document.getElementById("name2");
@@ -103,8 +106,21 @@
             div_contact2.value = contact
             document.getElementById("change").addEventListener("click", switch_edit);
             document.getElementById("save").addEventListener("click", switch_view);
+            header = JSON.stringify(header)
+            var forms = document.getElementsByTagName("form");
+            for(var i = 0; i < forms.length; i++){
+                forms[i].id = "custom";
+                
 
-    
+                input = document.createElement('input');
+                input.setAttribute('name', "headers");
+                input.setAttribute('value', header);
+                input.setAttribute('type', 'hidden');
+
+                forms[i].appendChild(input);
+                console.log(forms[i])
+            }
+
             function switch_edit(){
                 document.getElementById("view").style.display = "none";
                 document.getElementById("edit").style.display = "block";

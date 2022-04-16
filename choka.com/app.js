@@ -951,9 +951,15 @@ app.post("/viewprofile",(req,res)=>{
 
     //get the details of the person who is logged in a json object and then send it to the frontend.
     //hardcodig it for now
+    let local_user = req.body.headers;
+    local_user = JSON.parse(local_user);
+    console.log("after parsing in view ", local_user)
+    local_user = JSON.stringify(local_user)
+
+    let xx = {"header": local_user}
     console.log("in vw")
-    console.log(global_user)
-    res.render("viewProfile",global_user)
+    console.log(local_user)
+    res.render("viewProfile",xx)
 })
 
 // app.post("/delProfile",(req,res)=>{
@@ -1072,27 +1078,33 @@ app.post("/editProfile",(req,res)=>{
     //then MAKE A NEW OBJECT WITH NEW VALUES OR ANY CHANGES AND STORE IT AS A JSON OBJ IN NEW OBJ
     // I am hardcoding new_obj for now
     //and then send new obj to frontend in the same format as i have hardcoded with any new or changed values
+    console.log("i m busy editing")
     console.log(req.body)
-    let old_email = global_user['EmailAddress'];
-    if(req.body['email'] != global_user['Email']){
-        global_user['EmailAddress'] = req.body['email']
+    let local_user = req.body.headers;
+    console.log("local user before parsing is ", local_user)
+    local_user = JSON.parse(local_user)
+    console.log(local_user)
+    
+    let old_email = local_user['EmailAddress'];
+    if(req.body['email'] != local_user['Email']){
+        local_user['EmailAddress'] = req.body['email']
 
     }
-    if(req.body['contact'] != global_user['PhoneNumber']){
-        global_user['PhoneNumber'] = req.body['contact']
+    if(req.body['contact'] != local_user['PhoneNumber']){
+        local_user['PhoneNumber'] = req.body['contact']
 
     }
-    if(req.body['address'] != global_user['Address']){
-        global_user['Address'] = req.body['address']
+    if(req.body['address'] != local_user['Address']){
+        local_user['Address'] = req.body['address']
 
     }
-    if(req.body['city'] != global_user['City']){
-        global_user['City'] = req.body['city']
+    if(req.body['city'] != local_user['City']){
+        local_user['City'] = req.body['city']
 
     }
 
     //let docRef = db.col lection('Teachers').doc(old_email);
-    console.log("global user is", global_user)
+    console.log("local user nowwww is", local_user)
     /*
     if(Object.keys(global_user).length==11){  
         //this means tutor hai
@@ -1101,26 +1113,27 @@ app.post("/editProfile",(req,res)=>{
         
     }
     */
-    
+    let stringg = JSON.stringify(local_user)
+    let xx = {"header": stringg}
     console.log("old email is ", old_email)
     // docRef.get().then((doc)=>{
-        console.log("length is", Object.keys(global_user).length)
-        if(Object.keys(global_user).length==12){
+        console.log("length is", Object.keys(local_user).length)
+        if(Object.keys(local_user).length==11){
 
             db.collection('Teachers').doc(old_email).update({
-                jason_obj:global_user
+                jason_obj:local_user
             }).then(()=>{
                 console.log("firebase updated");
-                res.render("viewProfile", global_user);
+                res.render("viewProfile", xx);
             });
 
         }
         else{
             db.collection('Students').doc(old_email).update({
-                jason_obj:global_user
+                jason_obj:local_user
             }).then(()=>{
                 console.log("firebase updated");
-                res.render("viewProfile", global_user);
+                res.render("viewProfile", xx);
             });
 
         }
