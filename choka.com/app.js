@@ -1396,6 +1396,8 @@ app.get("/populateProfile",(req,res)=>{
 });
 
 
+
+
 app.post("/home",(req,res)=>{
 
     console.log(3)
@@ -1409,6 +1411,115 @@ app.post("/home",(req,res)=>{
     }
     
 });
+
+app.post("/submitReview",(req,res)=>{
+
+    console.log("request for sumitting a review")
+    console.log(req.body)
+    let review_to_be_added = req.body.review;
+    let rating_to_be_added = req.body.rating;
+    let my_email = req.body.requested.split(":")[1];
+    let tutor_email = req.body.requested.split(":")[0];
+    console.log(review_to_be_added)
+    console.log(rating_to_be_added)
+    console.log(my_email)
+    console.log(tutor_email)
+    let local_user = {}
+    const docRef = db.collection('Students').doc(my_email);
+    docRef.get().then((doc)=>{
+        //console.log("doc data is")
+        //console.log(doc.data())
+
+        //go and set this review in the student's and the teacher's database
+        
+        const docref2 = db.collection('Teachers').doc(tutor_email)
+        docref2.get().then((doc)=>{
+            let old_rating = parseInt(doc.data().Rating);
+            let old_reviews = doc.data().Reviews;
+            console.log("old rating is ", old_rating);
+            console.log("old review is ", old_reviews)
+            old_rating = parseInt(old_rating);
+            
+            let new_rating = (old_rating*(old_reviews.length));
+            console.log("rating to be added is",  rating_to_be_added)
+            rating_to_be_added = parseInt(rating_to_be_added);
+            new_rating = new_rating + rating_to_be_added;
+            new_rating = new_rating/(old_reviews.length+1)
+            
+            old_reviews.push(review_to_be_added);
+            let new_reviews = old_reviews;
+            //////nwowwwwww update this doc
+
+            db.collection('Teachers').doc(tutor_email).update({
+                Reviews:new_reviews,
+                Rating:new_rating
+        
+            }).then(()=>{
+
+                //nowwwww u ave to update the student's records
+
+                db.collection('Students').doc(my_email).get().then((doc)=>{
+
+                    let tutors_accepted = doc.data().tutor_accepted; 
+                    console.log("showing u the tutors accepted", tutors_accepted)
+                    //go thru the length of this array
+                    for(let i = 0; i < tutors_accepted.length; i = i+1){
+                        if(tutors_accepted[i].EmailAddress == tutor_email){
+                            tutors_accepted[i].Rating =  rating_to_be_added;
+                            tutors_accepted[i].Reviews = review_to_be_added;
+                            break;
+                        }
+                    }
+                    console.log("tutor accepted after updating is", tutors_accepted)
+
+                    db.collection('Students').doc(my_email).update({
+                        tutor_accepted:tutors_accepted,
+
+                        
+                
+                    }).then(()=>{
+
+                        local_user = doc.data().jason_obj
+                        console.log("local user is ", local_user)
+                        let new_user = JSON.stringify(local_user)
+                        let header = {
+                            "header":new_user
+                        }
+                    
+                        res.render("dashboard", header)
+
+                    })
+
+
+
+
+
+
+                   
+
+                })
+
+                
+
+            })
+
+
+
+            
+                //get the doc and the
+        })
+
+        
+        
+
+});
+    //get the 
+    
+});
+
+
+
+
 
 
 app.post('/studentregistration',(req, res, next)=>{
