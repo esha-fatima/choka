@@ -108,8 +108,14 @@ app.use(express.static("public"));
 
 
 app.post('/filter',(req,res)=>{
+    console.log("posting filter")
+    //let local_user = JSON.parse(req.body.headers)
+    console.log("local user after parsing is", req.body)
+    //local_user = JSON.stringify(local_user)
+    //console.log(local_user)
 
-     res.render("filter")
+
+    res.render("filter")
 })
 
 app.post('/messageRequestTutor',(req,res)=>{
@@ -320,9 +326,6 @@ app.post('/displayChats', (req,res)=>{
             })
             
            
-            //now for every chat store the chat header
-            
-                //get the tutor email for that particular 
                 
                 
             
@@ -349,8 +352,7 @@ app.post('/displayChats', (req,res)=>{
             }
 
             Promise.all(promise_array).then((values) => {
-                //resolve all the promises and then 
-                //res.render("tutorAssessments");
+               
                 let stringified_chat_headers = JSON.stringify(chat_headers)
                 console.log("i am here and teh stringified chat headers are", stringified_chat_headers)
                 res.render("displayChats", {"chat_headers": stringified_chat_headers})
@@ -471,6 +473,12 @@ app.get('/searchRequest',(req,res)=>{
 
 
 app.post('/searchRequest',(req,res)=>{
+    console.log("in search request")
+    let local_user = req.body.headers;
+    local_user = JSON.parse(local_user)
+    console.log("local user after parsing,", local_user)
+    local_user = JSON.stringify(local_user)
+    console.log("local user after stringifying,", local_user)
     db.collection("subjects").get().then((snapshot) => {
         snapshot.docs.map(doc => {
             let data = doc.data()
@@ -478,7 +486,7 @@ app.post('/searchRequest',(req,res)=>{
             {
                 console.log(data.tutors)
                 let arr_str = JSON.stringify(data.tutors)
-                let xx = {"bl":arr_str};
+                let xx = {"bl":arr_str, "header":local_user};
                 res.render("SearchResults",xx)
             }              
         })
@@ -621,9 +629,13 @@ app.post('/filterTutor',(req,res)=>{
 
 
 app.post('/filterStudent',(req,res)=>{
-    console.log("/filterStudent", global_user)
+    let local_user = req.body.headers;
+    console.log("inside filter student")
+    console.log("local user after parsing is ", JSON.parse(local_user))
+    
+    
 
-    const docRefTutor = db.collection('Teachers').doc(global_user.EmailAddress);
+    const docRefTutor = db.collection('Teachers').doc(local_user.EmailAddress);
     docRefTutor.get().then((doc)=>{
         if(doc.exists)
         {
@@ -638,7 +650,9 @@ app.post('/filterStudent',(req,res)=>{
                     }
                 }
                 let arr_str = JSON.stringify(tutor_list)
-                let xx = {"bl":arr_str};
+                local_user = JSON.stringify(local_user)
+                console.log("local user after stringifying is ", local_user)
+                let xx = {"bl":arr_str, "header":local_user};
                 res.render("searchResultsTutor",xx)
         }
         else{
@@ -667,71 +681,78 @@ app.post('/filterFromTutor',(req,res)=>{
 
 
 app.post("/tuitionRequest",(req,res)=>{
+    let local_user = req.body.headers;
+    local_user = JSON.parse(local_user)
+    console.log("local user after parsing is ", local_user)
+    let s = JSON.stringify(local_user)
     // console.log(12, req.body.tutor)
-    console.log("/tuitionRequest", global_user)
+    let xx = {"header":s}
 
     let tutor = req.body.tutor
     // console.log(typeof tutor, Object.keys(tutor), tutor['4'])
     db.collection("Teachers").doc(tutor).update({
-        student_request: firebase.firestore.FieldValue.arrayUnion(global_user)
+        student_request: firebase.firestore.FieldValue.arrayUnion(local_user)
     }).then(()=>{
-        db.collection('Students').doc(global_user.EmailAddress).update({
+        db.collection('Students').doc(local_user.EmailAddress).update({
             tutor_request: firebase.firestore.FieldValue.arrayUnion(tutor)
         }).then(()=>{
-                    res.render("dashboard", global_user)
+                    res.render("dashboard", xx)
         }).catch(()=>{
-            db.collection('Students').doc(global_user.EmailAddress).set({
+            db.collection('Students').doc(local_user.EmailAddress).set({
             tutor_request: [tutor]
             }).then(()=>{
-                        res.render("dashboard", global_user)
+                        res.render("dashboard", xx)
             });
         })
     });
 })
 
-// app.get("/tuitionRequest",(req,res)=>{
-//     console.log(12, req.body.tutor)
-//     res.render("dashboard",global_user)
-// })
+
 
 app.post("/tuitionAccept",(req,res)=>{
     // console.log(12, req.body.tutor)
-    console.log("/tuitionAccept", global_user)
+    let local_user = req.body.headers
+    local_user = JSON.parse(local_user)
+
+   
 
     let student = req.body.student
 
-    db.collection("Teachers").doc(global_user.EmailAddress).update({
+    db.collection("Teachers").doc(local_user.EmailAddress).update({
         // student_request: firebase.firestore.FieldValue.arrayRemove(student),
         student_accepted: firebase.firestore.FieldValue.arrayUnion(student)
 
     }).then(()=>{
         db.collection('Students').doc(student).update({
-            tutor_request: firebase.firestore.FieldValue.arrayRemove(global_user.EmailAddress),
-            tutor_accepted: firebase.firestore.FieldValue.arrayUnion(global_user)
+            tutor_request: firebase.firestore.FieldValue.arrayRemove(local_user.EmailAddress),
+            tutor_accepted: firebase.firestore.FieldValue.arrayUnion(local_user)
 
         }).then(()=>{
 
-
-                res.render("tutorDashboard", global_user)
+                let sent = JSON.stringify(local_user)
+                let xx = {"header":sent}
+                res.render("tutorDashboard", xx)
         }).catch(()=>{
             db.collection('Students').doc(student).set({
-                tutor_accepted: [global_user]
+                tutor_accepted: [local_user]
                 
             }).then(()=>{
-                        res.render("tutorDashboard", global_user)
+                        let sent = JSON.stringify(local_user)
+                        let xx = {"header":sent}
+                        res.render("tutorDashboard", xx)
             });
         })
     }).catch(()=>{
-        db.collection("Teachers").doc(global_user.EmailAddress).set({
+        db.collection("Teachers").doc(local_user.EmailAddress).set({
             student_accepted: [student]
         }).then(()=>{
-                    res.render("tutorDashboard", global_user)
+                    let sent = JSON.stringify(local_user)
+                    let xx = {"header":sent}
+                    res.render("tutorDashboard", xx)
         });
     })
 
-// app.get("/tuitionAccept",(req,res)=>{
-//     console.log(12, req.body.tutor)
-//     res.render("tutorDashboard",global_user)
+
 })
 
 
@@ -740,29 +761,26 @@ app.post("/tuitionAccept",(req,res)=>{
 app.post('/findTutors', (req,res)=>{
     //now u are supposed to get the top 3 tutors from database.
     //store the top 2 in top_2 variable that I am hardcoding for now
-    
+    console.log("inside find tutors")
+    let local_user = req.body.headers;
+    local_user = JSON.parse(local_user);
+    console.log("local user is",local_user)
+    local_user = JSON.stringify(local_user)
     db.collection("subjects").get().then((snapshot) => {
         let tutor_list = []
         let count = 0
         snapshot.docs.map(doc => {
             let data = doc.data()
             
-            // if(doc.id == "Mathematics D")
-            // {
-                // count +=1
-                // tutor_list.push(data.tutors[0])
-            // }    
-            // else if(doc.id == "English Language")
-            // {
-            //     count +=1
-            //     tutor_list.push(data.tutors[0])
-            // }      
             
-            // if (count==2)
-            // {
             try{
                 let arr_str = JSON.stringify([data.tutors[0]])
-            let xx = {"bl":arr_str};
+            let xx = {
+                        "bl":arr_str,
+                        "header":local_user
+
+        
+                    };
             res.render("SearchResults",xx)
             }
             catch{
@@ -773,63 +791,7 @@ app.post('/findTutors', (req,res)=>{
         })
         })
         
-    // db.collection("subjects").get().then((snapshot) => {
-    //     let Name_one = ""
-    //     let Department_one = ""
-    //     let Email_one = ""
-    //     let Img_one = ""
-    //     let Name_two = ""
-    //     let Department_two = ""
-    //     let Email_two = ""
-    //     let Img_two = ""
-    //     let count  = 0
-    //     snapshot.docs.map(doc => {
-    //         let data = doc.data()
-    //         // console.log(doc.id, Object.keys(data))
-    //         // console.log(doc.id, typeof doc.id)
-    //         if(doc.id == "Mathematics D")
-    //         {
-    //             // console.log(doc.id, typeof doc.id)
-    //             count +=1
-    //             // console.log(123, data.tutors[0].Name)
-    //             Name_one = data.tutors[0].Name
-    //             Department_one = data.tutors[0].Subject
-    //             Email_one = data.tutors[0].EmailAddress
-            //     Img_one = data.tutors[0].Image
-            // }
-            // if(doc.id == "English Language")
-            // {
-            //     console.log(doc.id, typeof doc.id)
-            //     count +=1
-            //     // console.log(11, data[ 'tutors' ])
-            //     Name_two = data.tutors[0].Name
-            //     Department_two = data.tutors[0].Subject
-            //     Email_two = data.tutors[0].EmailAddress
-            //     Img_two = data.tutors[0].Image
-            // }
-
-
-
-            // if (count==2)
-            // {
-            //     console.log(22, Name_one)
-            //     let top_2_students = 
-            //     {
-            //         "Name_one": Name_one,
-            //         "Department_one": Department_one,
-            //         "Email_one" : Email_one,
-    //                 "Img_one": Img_one,
-    //                 "Name_two" : Name_two,
-    //                 "Department_two" :  Department_two,
-    //                 "Email_two": Email_two,
-    //                 "Img_two": Img_two,
-
-    //             }
-    //             res.render("findTutors", top_2_students)
-    //         }            
-    //     })
     
-    // });
 // 
 })
 
@@ -837,9 +799,14 @@ app.post('/findTutors', (req,res)=>{
 app.post('/findStudents', (req,res)=>{
     //do a search from the databse and get the top 2 students liveing in the same city as thus particular tutor
     //store the name, department and the bidding price of the top 2 students living in the sam area as a json object like below
-    console.log(45, global_user.EmailAddress)
+    console.log("inside find students")
+    let local_user = req.body.headers
+    local_user = JSON.parse(local_user)
+    //console.log(local_user)
 
-    const docRefTutor = db.collection('Teachers').doc(global_user.EmailAddress);
+    //console.log(45, global_user.EmailAddress)
+
+    const docRefTutor = db.collection('Teachers').doc(local_user.EmailAddress);
     docRefTutor.get().then((doc)=>{
         if(doc.exists)
         {
@@ -847,7 +814,9 @@ app.post('/findStudents', (req,res)=>{
             console.log(user_deets)
 
             let arr_str = JSON.stringify(user_deets)
-            let xx = {"bl":arr_str};
+            local_user = JSON.stringify(local_user)
+            console.log("header after stringifying is", local_user)
+            let xx = {"bl":arr_str,"header":local_user};
             res.render("searchResultsTutor",xx)
         }
         else{
@@ -859,79 +828,14 @@ app.post('/findStudents', (req,res)=>{
 
 
 
-    // db.collection("Teacher").doc(global_user.EmailAddress).get().then((snapshot) => {
-    //     console.log(45, Object.keys(snapshot.data()))
-    //     let students = snapshot.data().student_request;
-    //     if (students.length >= 2)
-    //     {
-    //         let top_2_students = 
-    //         {
-    //             "Name_one": students[0].name,
-    //             "Department_one": students[0].subject,
-    //             "Bid_one" : students[0].bid,
-    //             "Name_two" : students[1].name,
-    //             "Department_two" : students[1].subject,
-    //             "Bid_two": students[1].bid
-                
-        
-    //         }
-    //         res.render("findStudents", top_2_students)
-
-    //     }
-    //     else if (students.length == 1)
-    //     {
-    //         let top_2_students = 
-    //         {
-    //             "Name_one": students[0].name,
-    //             "Department_one": students[0].subject,
-        //         "Bid_one" : students[0].bid,
-        //         "Name_two" : undefined,
-        //         "Department_two" : undefined,
-        //         "Bid_two": undefined
-                
-        
-        //     }
-        //     res.render("findStudents", top_2_students)
-
-        // }
-        // else
-        // {
-        //     let top_2_students = 
-        //     {
-        //         "Name_one": undefined,
-        //         "Department_one": undefined,
-        //         "Bid_one" : undefined,
-        //         "Name_two" : undefined,
-        //         "Department_two" : undefined,
-//                 "Bid_two": undefined
-                
-        
-//             }
-//             res.render("findStudents", top_2_students)
-//         }
-//     });
+    
 })
 
-// async function comparePassword(p1, p2)
-// {
-//     try
-//     {
-//         const bool = await bcrypt.Encrypt.comparePassword(p1, p2)
-//         return bool
-//     }
-//     catch
-//     {
-//         return null
-//     }
 
-// }
 
 app.post('/loginRequest',(req,res)=>{
     
-    //when received login request, check their password from firebase/
-    //if the password is good to go 
-    //go to dashboard page 
-    //get all the firebase stuff and store it in a json object..the details
+    
     console.log(req.body)
     let email = req.body["Email"]
     let password =  req.body["Password"]
@@ -1816,9 +1720,7 @@ app.post('/createAssessmentRequest',(req, res, next)=>{
 
 
 
-// Save encryoted password
-// Sing up
-// Find Tutor
+
 
 server.listen(port, '0.0.0.0', ()=>{ // '0.0.0.0' is for running via docker only
      console.log("Server has started on port 3000");
