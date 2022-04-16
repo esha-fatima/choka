@@ -810,38 +810,74 @@ app.post('/adminSearchProfile', (req,res)=>{
     })
 
 })
-app.post('/adminApproveProfile',(req,res)=>{
+// app.post('/adminApproveProfile',(req,res)=>{
 
 
-    // res.render("adminSearchProfile")
-    let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
-    let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
-    let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
-    let results_array = [
-       obj1, obj2, obj3
-       ]
-   let ff = JSON.stringify(results_array)
-   console.log(ff)
-   let xx = {"bl":ff};
-   //console.log(res)
-   res.render("adminApproveProfile",xx)
-})
+//     // res.render("adminSearchProfile")
+//     let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
+//     let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
+//     let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
+//     let results_array = [
+//        obj1, obj2, obj3
+//        ]
+//    let ff = JSON.stringify(results_array)
+//    console.log(ff)
+//    let xx = {"bl":ff};
+//    //console.log(res)
+//    res.render("adminApproveProfile",xx)
+// })
+app.post('/adminApproveProfile', (req,res)=>{
+    
+    console.log(45, global_user.EmailAddress)
+    let tutor_list = []
+    db.collection("Teachers").get().then((snapshot) => {
+        
+        let count = 0
+        snapshot.docs.map(doc => {
+            let data = doc.data()
+            tutor_list.push(data)
+            // let arr_str = JSON.stringify([data.tutors[0]])
+            // let xx = {"bl":arr_str};
+            // res.render("adminSearchProfile",xx)
 
-app.post('/adminDeleteProfile',(req,res)=>{
+        })
+    }).then(()=>{ 
+            // console.log(tutor_list.length, tutor_list)
+            let arr_str = JSON.stringify(tutor_list)
+            let xx = {"bl":arr_str};
+            res.render("adminApproveProfile",xx)
+        })
+    })
 
 
-    // res.render("adminSearchProfile")
-    let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
-    let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
-    let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
-    let results_array = [
-       obj1, obj2, obj3
-       ]
-   let ff = JSON.stringify(results_array)
-   console.log(ff)
-   let xx = {"bl":ff};
-   //console.log(res)
-   res.render("adminDeleteProfile",xx)
+
+
+app.post('/adminDeleteProfile', (req,res)=>{
+    
+    console.log(45, global_user.EmailAddress)
+    let user_list = []
+    db.collection("Teachers").get().then((snapshot) => {
+        
+        snapshot.docs.map(doc => {
+            let data = doc.data()
+            user_list.push(data)
+
+        })
+    }).then(()=>{ 
+         db.collection("Students").get().then((snapshot) => {
+            snapshot.docs.map(doc => {
+                let data = doc.data()
+                user_list.push(data)
+
+            })
+        }).then(()=>{ 
+            // console.log(tutor_list.length, tutor_list)
+            let arr_str = JSON.stringify(user_list)
+            let xx = {"bl":arr_str};
+            res.render("adminDeleteProfile",xx)
+        })
+    })
+
 })
 
 ////////////////////rendering login
