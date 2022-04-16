@@ -52,10 +52,19 @@
 
   }
 
+  .reviews_container{
+    top:800px;
+    left:87px;
+    position: relative;
+    overflow-y: scroll;
+    
+
+}
+
 
   .v79_1097_bb_reviewAssessments {
     width: 1350px;
-    height: 420px;
+    height: 440px;
     padding-top: 50px;
     
     background: rgba(255,255,255,1);
@@ -170,8 +179,30 @@
     border-bottom-right-radius: 25px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-color:aliceblue;
+    left: 70px;
     
   }
+
+  .v79_1097_revAssessments_input {
+    width: 1150px;
+    height: 100px;
+    padding-top: 50px;
+    text-align: center;
+    vertical-align: middle;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: relative;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-color:aliceblue;
+    left: 20px;
+    
+  }
+
+
 
   .v79_1097_createAssessments {
     width: 1350px;
@@ -189,6 +220,43 @@
     
     
   }
+
+  .rev_con{
+    width: 1350px;
+    height: 600px;
+    padding-top: 50px;
+    
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: relative;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
+  }
+
+
+
+  .v79_1097_rev {
+    width: 1350px;
+    height: 600px;
+    padding-top: 50px;
+    
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: relative;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
+    
+  }
+
+
   .v79_1114_createAssessments {
     width: 109px;
     height: 32px;
@@ -661,6 +729,24 @@
     
     
   }
+
+  .item_rev {
+    
+    border: 1px solid rgba(3,133,182,0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: inline;
+    color: rgba(3,133,182,1);
+    font-family: Roboto;
+    width :1200px;
+    font-size: 20px;
+    opacity: 1;
+    height: 200px;
+    
+    
+    
+  }
+
+
   .v79_1115_createAssessments {
     width: 102px;
     color: rgba(3,133,182,1);

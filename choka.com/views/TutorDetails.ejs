@@ -1,0 +1,140 @@
+<%-include("partials/header");-%>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="v13_2">
+            <img class="v13_23" src = "/images/Vectorbackarrow.png"   />
+            <img class = "v119_1814" src="/images/e-learning-isometric-composition_1284-21095 4logo.png"  />
+            <img class = "choka_register" src="/images/Group 9.png" />
+            <span class="v13_3">Back to Home</span>
+        </div>
+        <div class="v124_174_view" id = "view">
+            <span class="v124_175_view" id = "name">Mr. Bean Jr.</span>
+            <img class = "v124_176_view" src="/images/header_image.jpg" />
+            <!-- <div class="v124_176_view"></div> -->
+            <div class="name_view"></div>
+            <div class="name_view"></div>
+            <div class="v124_180_view"></div>
+            <div class="name_view"></div>
+            <div class="name_view"></div>
+            <div class="name_view"></div>
+            
+            <span class="v124_185_view" id = "email">Email: bean.jr@choka.com</span>
+            <div class="v124_180_a_view"></div>
+            <div class="v124_180_b_view"></div>
+            <div class="v124_180_c_view"></div>
+            <div class="v124_180_d_view"></div>
+            <div class="v124_180_e_view"></div>
+            <span class="v124_186_view" id = "contact">Contact: XXXX-XXXXXXXX</span>
+            <span class="v124_187_view" id = "rating">Address: DHA, Phase V</span>
+            <span class="v124_205_view" id = "city">City: Lahore</span>
+            <br><br>
+            <span class="v124_205_view_b" id = "city">Reviews</span>
+            <br><br><br><br>
+            <div id = "add" class = "reviews_container">
+                <div  id = "question_container">
+                    <div class="rev_con">
+                        
+                        </br>
+                    
+                        </br>
+                        <span class="v79_1115_createAssessments">Question Text</span>
+                        </br>
+                        </br>
+                        <span id = "review_text" class = "item_rev">yeahh<span>
+                        </br>
+                        </br>
+                        
+                        </br>
+                        </br>
+                        
+        
+                    </div>
+                    </br>
+    
+                </div>
+
+
+                
+            </div>
+            
+            
+            
+            
+        </div>
+
+            
+        <script>
+            
+            let tutor_name = '<%-Name%>';
+            let tutor_email = '<%-Email%>';
+            let tutor_reviews = JSON.parse('<%-Reviews%>');
+            let tutor_rating = '<%-Rating%>';
+            let tutor_previous_experience = '<%-PreviousExperience%>';
+            let tutor_location = '<%-Location%>';
+            let tutor_phone_number = '<%-PhoneNumber%>';
+
+            let my_email = '<%-localEmailAddress%>';
+            let my_name = '<%-localName%>';
+            let my_password = '<%-localPassword%>';
+            let my_image= '<%-localImage%>';
+            let my_phone_number = '<%-localPhoneNumber%>';
+            let my_city = '<%-localCity%>';
+            let my_address = '<%-localAddress%>';
+
+
+
+
+           
+            
+            
+            console.log("tutor name is", tutor_name)
+            console.log("tutor email is", tutor_email)
+            console.log("tutor reviews are ", tutor_reviews)
+            console.log("tutor ratin are ", tutor_rating)
+            console.log("tutor prev are ", tutor_previous_experience)
+            console.log("my email i s",my_email )
+            console.log("my name i s",my_name )
+            console.log("my phone numbe ris ",my_phone_number )
+            console.log("my password  ris ", my_password)
+            console.log("my image ris ",my_image )
+            console.log("my address ris ", my_address)
+            console.log("my city  ris ",my_city )
+
+            let name_tag = document.getElementById("name");
+            name_tag.innerHTML = tutor_name;
+
+            let email_tag = document.getElementById("email");
+            email_tag.innerHTML = "Email: " + tutor_email
+
+            let rating_tag = document.getElementById("rating")
+            rating_tag.innerHTML = "Rating: " + tutor_rating
+
+            let contact_tag = document.getElementById("contact");
+            contact_tag.innerHTML = "Contact: " + tutor_phone_number
+
+            let city_tag = document.getElementById("city");
+            city_tag.innerHTML = "Location: " + tutor_location
+
+
+
+
+            
+
+
+
+
+
+            
+
+
+
+
+
+
+        </script>
+
+
+    </body>
+    

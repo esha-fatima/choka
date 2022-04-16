@@ -4,14 +4,17 @@
     background: rgba(255,255,255,1);
     opacity: 1;
     position: relative;
+    overflow-y: scroll;
     top: 0px;
     left: 0px;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
-    overflow: hidden;
+    overflow: scroll;
   }
+
+ 
   .v124_175_view {
     width: 509px;
     color: rgba(0,0,0,1);
@@ -242,6 +245,20 @@
     text-align: left;
     
   }
+
+  .v124_205_view_b {
+    width: 696px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 850px;
+    left: 125px;
+    font-size: 60px;
+    opacity: 1;
+    text-align: left;
+    
+  }
+
+  
 
   .placeholder_entity_one{
    

@@ -1105,14 +1105,8 @@ app.post("/editProfile",(req,res)=>{
 
     //let docRef = db.col lection('Teachers').doc(old_email);
     console.log("local user nowwww is", local_user)
-    /*
-    if(Object.keys(global_user).length==11){  
-        //this means tutor hai
-        console.log("issss ")
-        docRef = db.collection('Teachers').doc(old_email);
-        
-    }
-    */
+   
+    
     let stringg = JSON.stringify(local_user)
     let xx = {"header": stringg}
     console.log("old email is ", old_email)
@@ -1229,11 +1223,63 @@ app.get("/reviews",(req,res)=>{
 
 app.post("/viewReq",(req,res)=>{
     console.log("in view requests")
-    let parsed = JSON.parse(req.body.requested);
-    //let my_email = parsed.
-    console.log(parsed)
-    //now i have parsed...
+    console.log("req is", req.body)
+    let parsed =req.body.requested;
     
+    console.log(parsed)
+    let requested_email = parsed.split(":")[0];
+    let my_email = parsed.split(":")[1]
+    console.log("my email is ", my_email)
+    console.log("requested email is", requested_email)
+    let local_user = {}
+    const docRef = db.collection('Students').doc(my_email);
+    docRef.get().then((doc)=>{
+        //console.log("doc data is")
+        //console.log(doc.data())
+        local_user = doc.data().jason_obj
+        console.log("local user is ", local_user)
+        const docref2 =  db.collection('Teachers').doc(requested_email);
+        docref2.get().then((doc)=>{
+            console.log("tutor's data is ",doc.data())
+            let reviews_parsed = JSON.stringify(doc.data().Reviews)
+            let tutor_data = {
+                "Name" : doc.data().jason_obj.Name,
+                "Email" : doc.data().jason_obj.EmailAddress,
+                "Reviews":reviews_parsed,
+                "Rating" : doc.data().Rating,
+                "PreviousExperience":doc.data().PreviousExperience,
+                "Location":doc.data().Location,
+                "PhoneNumber":doc.data().PhoneNumber,
+                "localCity":local_user.City,
+                "localEmailAddress":local_user.EmailAddress,
+                "localAddress" : local_user.Address,
+                "localName":local_user.Name,
+                "localPassword":local_user.Password,
+                "localImage":local_user.Image,
+                "localPhoneNumber":local_user.PhoneNumber
+
+            }
+            
+            
+            res.render("TutorDetails",tutor_data);
+
+
+
+
+        })
+        
+        //nowwwwwwwww get the tutor header and display everything to the student
+
+
+
+    });
+
+    //set the local user by fetching from backend
+
+
+
+    //now i have parsed...
+
     
     //res.render("reviews");
 
@@ -1254,17 +1300,31 @@ app.post("/myTutors", (req,res)=>{
     //get the array of documents which contain the tutors of this bacha
     const docRef = db.collection('Students').doc(local_user.EmailAddress);
     docRef.get().then((doc)=>{
-
+            console.log("doc data is")
             console.log(doc.data())
 
             let arr_tutors = doc.data().tutor_accepted
             //get the emails of all the tutors.
             tutor_emails = []
+            already_reviewd = []
             for(let i = 0; i<arr_tutors.length; i= i +1){
-                tutor_emails.push(arr_tutors[i].EmailAddress)
+                if(arr_tutors[i].Rating == -1){
+                    tutor_emails.push(arr_tutors[i].EmailAddress)
+                }
+                else{
+                    let obj = {
+                        "tutorEmail": arr_tutors[i].EmailAddress,
+                        "review":arr_tutors[i].Reviews,
+                        "rating":arr_tutors[i].Rating
+                    }
+                    already_reviewd.push(obj)
+                    tutor_emails.push(arr_tutors[i].EmailAddress)
+                }
+                
 
             }
-            console.log("array of all emails is", tutor_emails)
+            console.log("array of all emails  is", tutor_emails)
+            console.log("array of all reviews done", already_reviewd)
             //now get the headers of all the tutors
             let tutor_headers = [];
 
@@ -1288,9 +1348,15 @@ app.post("/myTutors", (req,res)=>{
                 console.log(tutor_headers)
                 let string_tutor_headers = JSON.stringify(tutor_headers);
                 console.log("string is", string_tutor_headers)
+                
+
+                let already_string = JSON.stringify(already_reviewd);
+                console.log("already string", already_string)
+                console.log("all tutor headers", string_tutor_headers)
                 let xx = {
                     "tutorHeaders":string_tutor_headers,
-                    "header": stringy 
+                    "header": stringy,
+                    "existingHeaders":already_string
                 }
             
             
