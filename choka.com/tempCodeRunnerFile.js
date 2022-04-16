@@ -1,1 +1,1 @@
-post('/adminSearch
+adminSearchProfile

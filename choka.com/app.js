@@ -755,70 +755,62 @@ app.post("/tuitionAccept",(req,res)=>{
 //     console.log(12, req.body.tutor)
 //     res.render("tutorDashboard",global_user)
 })
-app.get("/adminDash",(req,res)=>{
-    res.render("adminDash");
-});
+// app.get("/adminDash",(req,res)=>{
+//     res.render("adminDash");
+// });
 
-app.get('/adminSearchProfile',(req,res)=>{
-
-
-    // res.render("adminSearchProfile")
-    let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
-    let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
-    let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
-    let results_array = [
-       obj1, obj2, obj3
-       ]
-   let ff = JSON.stringify(results_array)
-   console.log(ff)
-   let xx = {"bl":ff};
-   //console.log(res)
-   res.render("adminSearchProfile",xx)
-})
+// app.get('/adminSearchProfile',(req,res)=>{
 
 
+//     // res.render("adminSearchProfile")
+//     let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx'}
+//     let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx'}
+//     let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx'}
+//     let results_array = [
+//        obj1, obj2, obj3
+//        ]
+//    let ff = JSON.stringify(results_array)
+//    console.log(ff)
+//    let xx = {"bl":ff};
+//    //console.log(res)
+//    res.render("adminSearchProfile",xx)
+// })
+
+// app.get("/adminSearchProfile",(req,res)=>{
+//     res.render("adminSearchProfile");
+// });
 app.post('/adminSearchProfile', (req,res)=>{
-    //do a search from the databse and get the top 2 students liveing in the same city as thus particular tutor
-    //store the name, department and the bidding price of the top 2 students living in the sam area as a json object like below
+    
     console.log(45, global_user.EmailAddress)
+    let tutor_list = []
+    db.collection("Teachers").get().then((snapshot) => {
+        
+        let count = 0
+        snapshot.docs.map(doc => {
+            let data = doc.data()
+            tutor_list.push(data)
+            // let arr_str = JSON.stringify([data.tutors[0]])
+            // let xx = {"bl":arr_str};
+            // res.render("adminSearchProfile",xx)
 
-    const docRefTutor = db.collection('Teachers').doc(global_user.EmailAddress);
-    docRefTutor.get().then((doc)=>{
-        if(doc.exists)
-        {
-            let user_deets = doc.data().student_request
-            console.log(user_deets)
-            if(user_deets.length == 0)
-            {
-                // let n_obj = {
+        })
+    }).then(()=>{ 
+         db.collection("Students").get().then((snapshot) => {
+            snapshot.docs.map(doc => {
+                let data = doc.data()
+                tutor_list.push(data)
 
-                //     "Name" :"No student has sent a request yet!",
-                //     "EmailAddress":"user_deets.EmailAddress",
-                //     "PhoneNumber": user_deets.PhoneNumber,
-                //     "Password":user_deets.Password,
-                //     "Image":user_deets.Image,
-                //     "Address": user_deets.Address,
-                //     "City" : user_deets.City,
-
-                // }
-                // alert("No student has sent a request yet!");
-                res.render("adminDash", global_user)
-            }
-            else
-            {
-                console.log(user_deets)
-                let arr_str = JSON.stringify(user_deets)
-                let xx = {"bl":arr_str};
-                res.render("searchResultsTutor",xx)
-            }
-        }
-        else{
-            console.log("NOT FOUND")
-            res.render("adminDash", global_user)
-        }
+            })
+        }).then(()=>{ 
+            // console.log(tutor_list.length, tutor_list)
+            let arr_str = JSON.stringify(tutor_list)
+            let xx = {"bl":arr_str};
+            res.render("adminSearchProfile",xx)
+        })
     })
+
 })
-app.get('/adminApproveProfile',(req,res)=>{
+app.post('/adminApproveProfile',(req,res)=>{
 
 
     // res.render("adminSearchProfile")
@@ -835,7 +827,7 @@ app.get('/adminApproveProfile',(req,res)=>{
    res.render("adminApproveProfile",xx)
 })
 
-app.get('/adminDeleteProfile',(req,res)=>{
+app.post('/adminDeleteProfile',(req,res)=>{
 
 
     // res.render("adminSearchProfile")
@@ -1013,6 +1005,7 @@ app.post('/loginRequest',(req,res)=>{
     console.log(req.body)
     let email = req.body["Email"]
     let password =  req.body["Password"]
+
     if (req.body["Email"] == '')
     {
         res.render("Login");
@@ -1090,8 +1083,44 @@ app.post('/loginRequest',(req,res)=>{
 
                 }
                 else{
-                    console.log("NOT FOUND")
-                    res.render("Login")
+                    
+                    const docRefAdmin = db.collection('Admin').doc(email);
+                    docRefAdmin.get().then((doc) =>{
+                        if(doc.exists){
+                            // let user_deets = doc.data().Password
+                            // console.log(user_deets)
+                            //if it is tutor.
+                            console.log("Admin found")
+                            if(doc.data().Password == password){
+                                 global_user = {
+                                    // "Name" : user_deets.Name,
+                                    "EmailAddress":email,
+                                    // "PhoneNumber": user_deets.PhoneNumber,
+                                    "Password":doc.data().Password,
+                                    // "HighestQualification":user_deets.HighestQualification,
+                                    // "BirthDay":user_deets.BirthDay,
+                                    // "PreviousExperience":user_deets.PreviousExperience,
+                                    // "Transcript":user_deets.Transcript,
+                                    // "Image" : user_deets.Image,
+                                    // "Address": user_deets.Address,
+                                    // "City": user_deets.City
+        
+                                }
+                                
+                                res.render("adminDash", global_user)
+                            }
+                            else{
+                                console.log("Passwords do not match")
+                                res.render("Login")
+                            }
+        
+                        }
+
+                    })
+
+                    
+
+                    
                 }
             })
 
