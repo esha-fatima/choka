@@ -1221,8 +1221,94 @@ app.get("/publishTutorProfile",(req,res)=>{
 app.get("/reviews",(req,res)=>{
     console.log("/reviews")
     res.render("reviews");
+
+    //now go to a page that displays all the names of the tutors
+    
    
 });
+
+app.post("/viewReq",(req,res)=>{
+    console.log("in view requests")
+    let parsed = JSON.parse(req.body.requested);
+    //let my_email = parsed.
+    console.log(parsed)
+    //now i have parsed...
+    
+    
+    //res.render("reviews");
+
+    //now go to a page that displays all the names of the tutors
+    
+   
+});
+
+
+
+
+
+app.post("/myTutors", (req,res)=>{
+    console.log("in my tutors list")
+    let local_user = JSON.parse(req.body.headers)
+    console.log("local user is ", local_user);
+    let stringy = JSON.stringify(local_user);
+    //get the array of documents which contain the tutors of this bacha
+    const docRef = db.collection('Students').doc(local_user.EmailAddress);
+    docRef.get().then((doc)=>{
+
+            console.log(doc.data())
+
+            let arr_tutors = doc.data().tutor_accepted
+            //get the emails of all the tutors.
+            tutor_emails = []
+            for(let i = 0; i<arr_tutors.length; i= i +1){
+                tutor_emails.push(arr_tutors[i].EmailAddress)
+
+            }
+            console.log("array of all emails is", tutor_emails)
+            //now get the headers of all the tutors
+            let tutor_headers = [];
+
+
+            let promise_array = []
+            for(t = 0; t < tutor_emails.length; t = t+1){
+                
+                promise_array.push(db.collection('Teachers').doc(tutor_emails[t]).get());
+                
+
+            }
+
+
+            Promise.all(promise_array).then((values) => {
+               
+                let len_val = values.length;
+                console.log(len_val)
+                for(i = 0 ; i<len_val; i = i+1){
+                    tutor_headers.push(values[i].data())
+                }
+                console.log(tutor_headers)
+                let string_tutor_headers = JSON.stringify(tutor_headers);
+                console.log("string is", string_tutor_headers)
+                let xx = {
+                    "tutorHeaders":string_tutor_headers,
+                    "header": stringy 
+                }
+            
+            
+                res.render("listTutors", xx)
+
+
+                
+
+            });
+            //now u created a promise array
+
+
+            
+
+    });
+    //now create the header obj 
+    
+})
 
 app.post("/publishTutorProfile",(req,res)=>{
     console.log("/publishTutorProfile")

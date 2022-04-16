@@ -333,6 +333,19 @@
     
 
 }
+.ins_name_three{
+      
+  position: inherit;
+  display: inline;
+  padding-top: 0px;
+  position: absolute;
+  text-align: start;
+  vertical-align:middle;
+  left: 160px;
+  font-size: 60px;
+  
+
+}
 
 
 

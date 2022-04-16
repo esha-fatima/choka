@@ -1,0 +1,91 @@
+<%-include("partials/header");-%>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="v55_251">
+            <div class="search_v119_1837">
+                <img class="v13_23" src = "/views/vector_back.png" />
+                <img class = "v119_1814" src="/views/header_image.jpg" />
+                <img class = "choka_register" src="/views/Group 9.png" />
+                <span class="v13_3">Back</span>
+            </div>
+            <span class="v55_259_todo">My Tutors</span>
+        </br></br></br></br></br></br></br></br></br>
+            <div id = "add" class = "add_to_do">
+                <div  id = "question_container">
+                    <div class="v79_1097_bb_reviewAssessments">
+                        <img src= "filter_1.png" class = "image_dp_2"/>
+                        <h1 id = "chatter" class = "ins_name_three"> Name </h1>
+                        <br>
+                        <h1 id = "wish" class = "comm2"> 4.0</h1>
+                        <br><br><br>
+                        <input class = "v79_1097_revAssessments" type="text" placeholder="Enter review here"/>
+                        <br>
+                        <br>
+                        <input type = "number" placeholder="Enter rating here"/>
+                        <br><br>
+                        <button method = "POST" formaction = "/viewReq" type = "submit" name = "requested" class = "comm3"> View</button>
+                        
+                    
+        
+                    </div>
+                    </br>
+    
+                </div>
+            </div>
+
+            
+            
+            
+            
+            
+        </div>
+        <script>
+            /*
+            let headers_array = '<%-tutorHeaders%>';
+            let my_info = '<%-header%>'
+            my_info = JSON.parse(my_info);
+            console.log("tutor headers are",headers_array)
+            headers_array = JSON.parse(headers_array)
+            console.log("headers array after parsing", headers_array)
+            let len_array = headers_array.length
+           
+            
+
+            
+
+           
+            let container = document.getElementById("add");
+            container.innerHTML = ""
+            for(let j = 0; j<len_array; j = j+1){
+                
+
+                let tutor_name = headers_array[j].jason_obj.Name;
+                let tutor_email = headers_array[j].jason_obj.EmailAddress;
+                let new_obj = {
+                    "tutor_email" : tutor_email,
+                    "student_email":my_info.EmailAddress
+                }
+                
+                let button_value = JSON.stringify(new_obj)
+                let text = `<div  id = "question_container"><div class="v79_1097_bb_createAssessments"><img src= "filter_1.png" class = "image_dp"/><h1 id = "chatter" class = "ins_name_two">`+ tutor_name +`</h1><br><form method = "POST" ><button method = "POST" formaction = "/viewReq" type = "submit" name = "requested" value = `+button_value+`  class = "comm"> View</button></form></div></br></div`
+                container.innerHTML = container.innerHTML + text
+                
+
+            }
+            */
+
+
+           
+
+
+        </script>
+    </body>
+</html> 
+        
+   
+  
+  
+  

@@ -292,6 +292,8 @@
     width: 318px;
     color: rgba(3,133,182,1);
     position: absolute;
+    background-color: transparent;
+    border: none;
     top: 342px;
     left: 52px;
     font-family: Roboto;
