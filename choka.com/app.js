@@ -34,6 +34,7 @@ io.on('connection',socket=>{
     socket.emit("chatidentifier",chat_identifier) // this will emit to only that user
     //socket.broadcast.emit("message", "A user has joined the chat");
     //u can know which user it is from global
+    
     socket.on('sendMessage',message=>{
         console.log("i have received a message")
 
@@ -178,7 +179,8 @@ app.post('/messageRequestTutor',(req,res)=>{
 
 
 app.post('/messageMyStudent',(req,res)=>{
-    console.log("wish to send msg to my bacha")
+    
+    
     //now go to chat.ejs
     console.log(req.body.requested)
     //now get the relevant chat
@@ -191,14 +193,13 @@ app.post('/messageMyStudent',(req,res)=>{
         console.log(deets)
         //now send these deets
         deets = JSON.stringify(deets)
+        
         console.log("after ", deets)
         let obj = {"chat_header": deets}
         //let to_send = JSON.stringify(obj)
         res.render("chatTutor", obj)
 
     })
-
-
 
 })
 
@@ -299,8 +300,11 @@ app.post('/messageRequest',(req,res)=>{
 
 app.post('/displayChats', (req,res)=>{
     //when u get this get the global user
-    let student_name = global_user.Name
-    let student_email = global_user.EmailAddress
+    let local_user = req.body.headers;
+    local_user = JSON.parse(local_user);
+
+    let student_name = local_user.Name
+    let student_email = local_user.EmailAddress
     //make a call to databse and get all the chat headers where this is the student name
     const docRef = db.collection('Students').doc(student_email);
     docRef.get().then((doc)=>{
@@ -355,7 +359,8 @@ app.post('/displayChats', (req,res)=>{
                
                 let stringified_chat_headers = JSON.stringify(chat_headers)
                 console.log("i am here and teh stringified chat headers are", stringified_chat_headers)
-                res.render("displayChats", {"chat_headers": stringified_chat_headers})
+                let string_header = JSON.stringify(local_user)
+                res.render("displayChats", {"chat_headers": stringified_chat_headers, "header":string_header})
 
                 
 
@@ -378,8 +383,11 @@ app.post('/displayChats', (req,res)=>{
 
 app.post('/displayChatsTutor', (req,res)=>{
     //when u get this get the global user
-    let tutor_name = global_user.Name
-    let tutor_email = global_user.EmailAddress
+    let local_user = req.body.headers
+    local_user = JSON.parse(local_user)
+    console.log("indisplay chats for tutor, local user is ", local_user)
+    let tutor_name = local_user.Name
+    let tutor_email = local_user.EmailAddress
     //make a call to databse and get all the chat headers where this is the student name
     const docRef = db.collection('Teachers').doc(tutor_email);
     docRef.get().then((doc)=>{
@@ -438,8 +446,9 @@ app.post('/displayChatsTutor', (req,res)=>{
                 //resolve all the promises and then 
                 //res.render("tutorAssessments");
                 let stringified_chat_headers = JSON.stringify(chat_headers)
+                let stringified_header = JSON.stringify(local_user)
                 console.log("i am here and teh stringified chat headers are", stringified_chat_headers)
-                res.render("displayChatsTutor", {"chat_headers": stringified_chat_headers})
+                res.render("displayChatsTutor", {"chat_headers": stringified_chat_headers, "header":stringified_header})
 
                 
 

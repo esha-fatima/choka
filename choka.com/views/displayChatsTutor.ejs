@@ -37,6 +37,21 @@
         <script>
             
             let headers_array = '<%-chat_headers%>';
+            let header = '<%-header%>';
+            console.log("promise headers are", header)
+            var forms = document.getElementsByTagName("form");
+            for(var i = 0; i < forms.length; i++){
+                forms[i].id = "custom";
+                
+
+                input = document.createElement('input');
+                input.setAttribute('name', "headers");
+                input.setAttribute('value', header);
+                input.setAttribute('type', 'hidden');
+
+                forms[i].appendChild(input);
+                //console.log(forms[i])
+            }
             //console.log(headers_array)
            
             let chat_headers = JSON.parse(headers_array);
@@ -57,7 +72,7 @@
                 }
                 
                 let button_value = JSON.stringify(new_obj)
-                let text = `<div  id = "question_container"><div class="v79_1097_bb_createAssessments"><img src= "filter_1.png" class = "image_dp"/><h1 id = "chatter" class = "ins_name_two">`+ chat_headers[j].student_email +`</h1><br><form method = "POST" ><button method = "POST" formaction = "/messageMyStudent" type = "submit" name = "requested" value = `+button_value+`  class = "comm"> Message</button></form></div></br></div>`
+                let text = `<div  id = "question_container"><div class="v79_1097_bb_createAssessments"><img src= "filter_1.png" class = "image_dp"/><h1 id = "chatter" class = "ins_name_two">`+ chat_headers[j].student_email +`</h1><br><form id = "custom" method = "POST" ><button method = "POST" formaction = "/messageMyStudent" type = "submit" name = "requested" value = `+button_value+`  class = "comm"> Message</button></form></div></br></div>`
                 container.innerHTML = container.innerHTML + text
                 
 
