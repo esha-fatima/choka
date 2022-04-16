@@ -31,7 +31,7 @@
             <span class="v124_205_view" id = "city">City: Lahore</span>
             <br><br>
             <span class="v124_205_view_b" id = "city">Reviews</span>
-            <br><br><br><br>
+            <br><br><br><br><br><br><br>
             <div id = "add" class = "reviews_container">
                 <div  id = "question_container">
                     <div class="rev_con">
@@ -39,7 +39,7 @@
                         </br>
                     
                         </br>
-                        <span class="v79_1115_createAssessments">Question Text</span>
+                        
                         </br>
                         </br>
                         <span id = "review_text" class = "item_rev">yeahh<span>
@@ -54,6 +54,8 @@
                     </br>
     
                 </div>
+
+                
 
 
                 
@@ -116,6 +118,36 @@
 
             let city_tag = document.getElementById("city");
             city_tag.innerHTML = "Location: " + tutor_location
+
+            let cont_tag = document.getElementById("add")
+            cont_tag.innerHTML = "";
+            console.log("tutor rev leng is",tutor_reviews.length)
+            for(let i = 0 ; i<tutor_reviews.length; i = i+1){
+                cont_tag.innerHTML = cont_tag.innerHTML  + 
+
+                `<div  id = "question_container">
+                    <div class="rev_con">
+                        
+                        </br>
+                    
+                        </br>
+                        
+                        </br>
+                        </br>
+                        <span id = "review_text" class = "item_rev">`+tutor_reviews[i]+`<span>
+                        </br>
+                        </br>
+                        
+                        </br>
+                        </br>
+                        
+        
+                    </div>
+                    </br>
+    
+                </div>`
+
+            }
 
 
 
