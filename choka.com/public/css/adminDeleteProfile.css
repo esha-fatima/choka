@@ -75,12 +75,14 @@
     color: rgba(255,255,255,1);
     position: absolute;
     top: 855px;
-    left: 1019px;
+    left: 1014px;
     font-family: Roboto;
     font-weight: Regular;
     font-size: 20px;
     opacity: 1;
     text-align: left;
+    border: 0px;
+    background-color: transparent;
   }
   .search_name {
     color: #fff;
@@ -386,7 +388,7 @@
     border: 0;
   }
 .del_text{
-  width: 250px;
+    width: 250px;
     color: rgba(255,255,255,1);
     position: absolute;
     top: 960px;
@@ -396,4 +398,6 @@
     font-size: 26px;
     opacity: 1;
     text-align: left;
+    background-color: transparent;
+    border: 0px;
 }

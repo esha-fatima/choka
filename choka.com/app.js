@@ -880,6 +880,13 @@ app.post('/adminDeleteProfile', (req,res)=>{
 
 })
 
+// app.post('/deleteProfile', (req,res) =>{
+
+//     var rowId = $row.data('id');
+//     rootRef.child(rowId).remove()
+
+// })
+
 ////////////////////rendering login
 app.post('/findTutors', (req,res)=>{
     //now u are supposed to get the top 3 tutors from database.

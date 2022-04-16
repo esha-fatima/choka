@@ -295,11 +295,11 @@
     position: absolute;
     top: 71px;
     left: 427px;
-    border-top-left-radius: 100px;
+    /* border-top-left-radius: 100px;
     border-top-right-radius: 100px;
     border-bottom-left-radius: 100px;
     border-bottom-right-radius: 100px;
-    overflow: hidden;
+    overflow: hidden; */
   }
   .search_v119_1840 {
     width: 53px;

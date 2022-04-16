@@ -42,8 +42,8 @@
             <!-- <button class = "select_approve" ></button>
             <span class="approve_text">Approve Selected</span> -->
             
-            <button class = "select_del" ></button>
-            <span class = "del_text"> Delete Selected</span>
+            <div class = "select_del" ></div>
+            <button class = "del_text"> Delete Selected</button>
             <div id ="results">
                 <!--
             <div class="search_v39_146"></div>
@@ -92,8 +92,8 @@
             let rating = obj.Rating
             
             //let results = document.getElementById("results");
-            let results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><span class="search_v39_173">Delete Profile</span> <div class="search_name"></div><span class="search_v39_152">Tutor </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span>';
-            results.innerHTML =results_content 
+            let results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><form action = "/deleteProfile" method = "POST" name = "Tutor" ><button class="search_v39_173">Delete Profile</button></form> <div class="search_name"></div><span class="search_v39_152">Tutor </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span>';
+            results.innerHTML = results_content 
             
             
             let len = con.length
@@ -110,7 +110,7 @@
                 experience = obj.Experience
                 rating = obj.Rating
                 results = document.getElementById("results");
-                results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><span class="search_v39_173">Delete Profile</span> <div class="search_name"></div><span class="search_v39_152">Tutor </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span>';
+                results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><form action = "/deleteProfile" method = "POST" name = "Tutor" ><button class="search_v39_173">Delete Profile</button></form> <div class="search_name"></div><span class="search_v39_152">Tutor </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span>';
                 results.innerHTML = results_content
                 
                                  
@@ -129,7 +129,7 @@
                 experience = obj.Experience
                 rating = obj.Rating
                 results = document.getElementById("results");
-                results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><span class="search_v39_173">Delete Profile</span> <div class="search_name"></div><span class="search_v39_152">Tutor </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span>';
+                results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><form action = "/deleteProfile" method = "POST" name = "Tutor" value='+'\"'+email+'\"'+'><button class="search_v39_173">Delete Profile</button></form> <div class="search_name"></div><span class="search_v39_152">Tutor </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span>';
                 results.innerHTML = results_content
                 
             }

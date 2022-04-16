@@ -38,8 +38,8 @@
             <div class="search_v119_1840"></div>
            
             <div class="search_name"></div>
-            <button class = "select_approve" ></button>
-            <span class="approve_text">Approve Selected</span>
+            <div class = "select_approve" ></div>
+            <button class="approve_text">Approve Selected</button>
             
             <button class = "select_del" ></button>
             <span class = "del_text"> Delete Selected</span>
@@ -91,7 +91,7 @@
             let rating = obj.Rating
             
             //let results = document.getElementById("results");
-            let results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><span class="search_v39_173">Delete</span> <div class="search_name"></div><span class="search_v39_152">Tutor </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Approve</span>';
+            let results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><button class="search_v39_173">Delete</button> <div class="search_name"></div><span class="search_v39_152">Tutor </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><form action = "/approveProfile" method = "POST" name = "tutor"><button class="search_v39_172" >Approve</button></form>';
             results.innerHTML =results_content 
             
             
@@ -109,7 +109,7 @@
                 experience = obj.Experience
                 rating = obj.Rating
                 results = document.getElementById("results");
-                results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><span class="search_v39_173">Delete</span> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Approve</span>';
+                results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><button class="search_v39_173">Delete</button> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span></div><button class="search_v39_172">Approve</button>';
                 results.innerHTML = results_content
                 
                                  
@@ -128,7 +128,7 @@
                 experience = obj.Experience
                 rating = obj.Rating
                 results = document.getElementById("results");
-                results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><span class="search_v39_173">Delete</span> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Approve</span>'
+                results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><button class="search_v39_173">Delete</button> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span></div><button class="search_v39_172">Approve</button>'
                 results.innerHTML = results_content
                 
             }
