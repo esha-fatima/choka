@@ -1,0 +1,414 @@
+.v55_251_todo {
+    width: 100%;
+    height: 1024px;
+    background: rgba(238,238,238,1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    overflow: hidden;
+  }
+  .v55_259_todo {
+    width: 618px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 288px;
+    left: 87px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 60px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v55_274_todo {
+    width: 100%;
+    height: 81px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 408px;
+    left: 87px;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .v55_275_todo {
+    width: 462px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 427px;
+    left: 241px;
+    font-family: Roboto;
+    font-weight: Italic;
+    font-size: 40px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v55_276_todo {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 428px;
+    left: 121px;
+    overflow: hidden;
+  }
+  .v55_277_todo {
+    width: 31px;
+    height: 31px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 3px;
+    left: 4px;
+  }
+  .v55_278_todo {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 431px;
+    left: 1210px;
+    overflow: hidden;
+  }
+  .v55_279_todo {
+    width: 26px;
+    height: 26px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 6px;
+    left: 7px;
+  }
+  .name_todo {
+    color: #fff;
+  }
+  .v55_298_todo {
+    width: 100%;
+    height: 352px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 587px;
+    left: 93px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+  }
+  .v55_330_todo {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 627px;
+    left: 1155px;
+    overflow: hidden;
+  }
+  .v55_331_todo {
+    width: 33px;
+    height: 31px;
+    background: rgba(0,0,0,1);
+    opacity: 1;
+    position: absolute;
+    top: 2px;
+    left: 4px;
+  }
+  .v55_299_todo {
+    width: 152px;
+    height: 48px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: absolute;
+    top: 864px;
+    left: 1007px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    overflow: hidden;
+  }
+  .v55_300_todo {
+    width: 131px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 876px;
+    left: 1058px;
+    font-family: Roboto;
+    font-weight: Medium;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v55_302_todo {
+    width: 324px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 801px;
+    left: 396px;
+    font-size: 30px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v55_303_todo {
+    width: 227px;
+    height: 242px;
+    background: url("../images/v55_303.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 616px;
+    left: 124px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    overflow: hidden;
+  }
+  .v55_304_todo {
+    width: 392px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 639px;
+    left: 397px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 45px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v55_305_todo {
+    width: 324px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 721px;
+    left: 396px;
+    font-size: 30px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v55_312_todo {
+    width: 387px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 721px;
+    left: 856px;
+    font-size: 30px;
+    opacity: 1;
+    text-align: left;
+  }
+  .v55_313_todo {
+    width: 361px;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 801px;
+    left: 856px;
+    font-size: 30px;
+    opacity: 1;
+    text-align: left;
+  }
+  .name_todo {
+    color: #fff;
+  }
+  .name_todo {
+    color: #fff;
+  }
+  .v119_1898_todo {
+    width: 100%;
+    height: 213px;
+    background: rgba(3,133,182,1);
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 80px;
+    overflow: hidden;
+  }
+  .v119_1899_todo {
+    width: 338px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 73px;
+    left: 541px;
+    font-family: Roboto;
+    font-weight: Bold;
+    opacity: 1;
+    text-align: left;
+  }
+  .v119_1900_todo {
+    width: 95px;
+    height: 95px;
+    background: url("../images/v119_1900.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 71px;
+    left: 427px;
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    overflow: hidden;
+  }
+  .v119_1901_todo{
+    width: 53px;
+    height: 28px;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 45px;
+    left: 40px;
+  }
+  .v119_1902_todo {
+    width: 364px;
+    color: rgba(255,255,255,1);
+    position: absolute;
+    top: 42px;
+    left: 118px;
+    font-family: Roboto;
+    font-weight: Bold;
+    font-size: 30px;
+    opacity: 1;
+    text-align: left;
+  }
+  .name_todo {
+    color: #fff;
+  }
+  .add_to_do{
+      position: relative;
+      left: 40px;
+  }
+  .image_settings{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 300px;
+    width: 300px;
+    display: block;
+    padding-left: 30px;
+    padding-top: 30px;
+    position: absolute;
+  }
+  .ins_name{
+      
+      position: inherit;
+      display: inline;
+      padding-top: 0px;
+      position: absolute;
+      text-align: start;
+      vertical-align:middle;
+      left: 380px;
+      
+
+  }
+
+  .ins_name_two{
+      
+    position: inherit;
+    display: inline;
+    padding-top: 0px;
+    position: absolute;
+    text-align: start;
+    vertical-align:middle;
+    left: 160px;
+    
+
+}
+
+
+
+  .ins_name_ff{
+      
+    position: inherit;
+    display: inline;
+    padding-top: 0px;
+    position: absolute;
+    text-align: start;
+    vertical-align:middle;
+    left: 380px;
+    font-size: 25px;
+    
+
+}
+
+
+
+  .ins_name_a{
+      
+    position: inherit;
+    display: inline;
+    padding-top: 0px;
+    position: absolute;
+    text-align: start;
+    vertical-align:middle;
+    left: 900px;
+    font-size: 25px;
+    
+
+}
+
+
+
+
+  .ins_subject{
+      
+    position: inherit;
+    display: inline;
+    padding-top: 0px;
+    position: absolute;
+    text-align: start;
+    vertical-align:middle;
+    left:520px;
+    font-size: 25px;
+    
+
+}
+
+.ins_subject_a{
+      
+    position: inherit;
+    display: inline;
+    padding-top: 0px;
+    position: absolute;
+    text-align: start;
+    vertical-align:middle;
+    left:1050px;
+    font-size: 25px;
+
+}
+
+.grade_button{
+  left: 110px;
+  position: absolute;
+  display: block;
+  width: 100px;
+  height: 50px;
+  background-color: rgba(3,133,182,1);
+  color: rgba(255,255,255,1);
+  border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    opacity: 1;
+    font-weight: bold;
+    font-size: 20px;
+}

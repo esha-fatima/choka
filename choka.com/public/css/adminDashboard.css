@@ -1,4 +1,4 @@
-.dashboard_v5_11 {
+.dashboard_1 {
     width: 100%;
     height: 1266px;
     background: rgba(255,255,255,1);
@@ -12,7 +12,7 @@
     border-bottom-right-radius: 25px;
     overflow: hidden;
   }
-  .dashboard_v20_155 {
+  .blue_tab {
     width: 100%;
     height: 213px;
     background: rgba(3,133,182,1);
@@ -25,7 +25,7 @@
     border-bottom-right-radius: 80px;
     overflow: hidden;
   }
-  .dashboard_v119_1818 {
+  .tab_text {
     width: 338px;
     color: rgba(255,255,255,1);
     position: absolute;
@@ -36,7 +36,7 @@
     opacity: 1;
     text-align: left;
   }
-  .dashboard_v119_1817 {
+  .tab_pic {
     width: 95px;
     height: 95px;
     background: url("../images/v119_1817.png");
@@ -53,7 +53,7 @@
     border-bottom-right-radius: 100px;
     overflow: hidden;
   }
-  .dashboard_v103_1450 {
+  .dashboard_2 {
     width: 100px;
     height: 105px;
     background: url("../images/v103_1450.png");
@@ -70,28 +70,31 @@
     border-bottom-right-radius: 100px;
     overflow: hidden;
   }
-  .dashboard_v20_158 {
+  .fa {
+    background-color: transparent;
     width: 53px;
-    height: 34px;
-    background: rgba(255,255,255,1);
+    height: 28px;
+  /*   background: rgba(255,255,255,1); */
     opacity: 1;
+    color: white;
     position: absolute;
-    top: 53px;
+    border: 0;
+    top: 45px;
     left: 40px;
   }
-  .dashboard_v20_157 {
+  .back_text {
     width: 364px;
     color: rgba(255,255,255,1);
     position: absolute;
-    top: 53px;
-    left: 119px;
+    top: 42px;
+    left: 118px;
     font-family: Roboto;
     font-weight: Bold;
     font-size: 30px;
     opacity: 1;
     text-align: left;
   }
-  .dashboard_v22_160 {
+  .welcome_text {
     width: fit-content;
     color: rgba(3,133,182,1);
     position: absolute;
@@ -103,7 +106,7 @@
     opacity: 1;
     text-align: left;
   }
-  .dashboard_v98_1399 {
+  .left_tab {
     width: 360px;
     height: 100%;
     background: rgba(255,255,255,1);
@@ -116,7 +119,7 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     overflow: hidden;
   }
-  .dashboard_v124_172 {
+  .indicator {
     width: 24px;
     height: 24px;
     background: rgba(255,255,255,1);
@@ -126,16 +129,16 @@
     left: 20px;
     overflow: hidden;
   }
-  .dashboard_v124_173 {
+  .indicator2 {
     width: 21px;
     height: 18px;
-    background: transparent;
+    background: rgba(3,133,182,1);
     opacity: 1;
     position: absolute;
     top: 2px;
     left: 1px;
   }
-  .dashboard_v99_1426 {
+  .logout_icon {
     width: 35px;
     height: 35px;
     background: rgba(255,255,255,1);
@@ -145,25 +148,25 @@
     left: 273px;
     overflow: hidden;
   }
-  .dashboard_v99_1427 {
+  .logout_icon2 {
     width: 20px;
     height: 11px;
-    background:transparent;
+    background: rgba(3,133,182,1);
     opacity: 1;
     position: absolute;
     top: 11px;
     left: 2px;
   }
-  .dashboard_v99_1428 {
+  .logout_icon3 {
     width: 18px;
     height: 26px;
-    background: transparent;
+    background: rgba(3,133,182,1);
     opacity: 1;
     position: absolute;
     top: 4px;
     left: 13px;
   }
-  .dashboard_v99_1420 {
+  .settings_icon {
     width: 35px;
     height: 35px;
     background: rgba(255,255,255,1);
@@ -173,7 +176,7 @@
     left: 273px;
     overflow: hidden;
   }
-  .dashboard_v99_1421 {
+  .settings_icon2 {
     width: 26px;
     height: 26px;
     background: url("../images/v99_1421.png");
@@ -186,7 +189,7 @@
     left: 4px;
     overflow: hidden;
   }
-  .dashboard_v99_1422 {
+  .settings_icon3 {
     width: 26px;
     height: 20px;
     background: url("../images/v99_1422.png");
@@ -194,39 +197,39 @@
     position: absolute;
     top: 2px;
     left: 0px;
-    /* border: 2px solid rgba(3,133,182,1); */
+    border: 2px solid rgba(3,133,182,1);
   }
-  .dashboard_v99_1423 {
-    width: 7px;
-    height: 7px;
+  .settings_icon4 {
+    width: 5px;
+    height: 5px;
     background: url("../images/v99_1423.png");
     opacity: 1;
     position: absolute;
     top: 0px;
     left: 5px;
-    /* border: 2px solid rgba(3,133,182,1); */
+    border: 2px solid rgba(3,133,182,1);
   }
-  .dashboard_v99_1424 {
-    width: 7px;
-    height: 7px;
+  .settings_icon5 {
+    width: 5px;
+    height: 5px;
     background: url("../images/v99_1424.png");
     opacity: 1;
     position: absolute;
-    top: 9px;
-    left: 16px;
-    /* border: 2px solid rgba(3,133,182,1); */
+    top: 10px;
+    left: 17px;
+    border: 2px solid rgba(3,133,182,1);
   }
-  .dashboard_v99_1425 {
-    width: 7px;
-    height: 7px;
+  .settings_icon6 {
+    width: 5px;
+    height: 5px;
     background: url("../images/v99_1425.png");
     opacity: 1;
     position: absolute;
-    top: 18px;
+    top: 20px;
     left: 2px;
-    /* border: 2px solid rgba(3,133,182,1); */
+    border: 2px solid rgba(3,133,182,1);
   }
-  .dashboard_v99_1416 {
+  .notifications_icon {
     width: 35px;
     height: 35px;
     background: rgba(255,255,255,1);
@@ -236,8 +239,8 @@
     left: 273px;
     overflow: hidden;
   }
-  .dashboard_v99_1417 {
-    width: 35px;
+  .notifications_icon2 {
+    width: 32px;
     height: 26px;
     background: url("../images/v99_1417.png");
     background-repeat: no-repeat;
@@ -245,29 +248,29 @@
     background-size: cover;
     opacity: 1;
     position: absolute;
-    top: 4px;
+    top: 6px;
     left: 0px;
     overflow: hidden;
   }
-  .dashboard_v99_1418 {
+  /* .notifications_icon3 {
     width: 26px;
     height: 26px;
-    background: transparent;
+    background: rgba(3,133,182,1);
     opacity: 1;
     position: relative;
     top: 0px;
     left: 0px;
   }
-  .dashboard_v99_1419 {
+  .notifications_icon4 {
     width: 10px;
     height: 10px;
-    background: transparent;
+    background: rgba(3,133,182,1);
     opacity: 1;
     position: absolute;
     top: 6px;
     left: 24px;
-  }
-  .dashboard_v99_1409 {
+  } */
+  .tutors_icon {
     width: 35px;
     height: 35px;
     background: transparent;
@@ -276,7 +279,7 @@
     top: 346px;
     left: 273px;
   }
-  .dashboard_v98_1400 {
+  .dashboard_text {
     width: 318px;
     color: rgba(3,133,182,1);
     position: absolute;
@@ -288,35 +291,31 @@
     opacity: 1;
     text-align: left;
   }
-  .dashboard_v99_1401 {
-    width: 318px;
-    color: rgba(3,133,182,1);
-    position: absolute;
-    background-color: transparent;
-    border: none;
-    top: 342px;
-    left: 52px;
-    font-family: Roboto;
-    font-weight: Medium;
-    font-size: 35px;
-    opacity: 1;
-    text-align: left;
-  }
-  .dashboard_v99_1402 {
+  .del_account_text {
     width: 200px;
     color: rgba(3,133,182,1);
-    background-color: transparent;
-    border: none;
     position: absolute;
-    top: 443px;
+    top: 320px;
     left: 52px;
     font-family: Roboto;
     font-weight: Medium;
-    font-size: 35px;
+    font-size: 28px;
     opacity: 1;
     text-align: left;
   }
-  .dashboard_v99_1403 {
+  .blocked_text {
+    width: 200px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 435px;
+    left: 52px;
+    font-family: Roboto;
+    font-weight: Medium;
+    font-size: 28px;
+    opacity: 1;
+    text-align: left;
+  }
+  .reports_text {
     width: 318px;
     color: rgba(3,133,182,1);
     position: absolute;
@@ -324,11 +323,11 @@
     left: 52px;
     font-family: Roboto;
     font-weight: Medium;
-    font-size: 35px;
+    font-size: 30px;
     opacity: 1;
     text-align: left;
   }
-  .dashboard_v99_1404 {
+  .notifications_text {
     width: 318px;
     color: rgba(3,133,182,1);
     position: absolute;
@@ -336,11 +335,11 @@
     left: 52px;
     font-family: Roboto;
     font-weight: Medium;
-    font-size: 35px;
+    font-size: 30px;
     opacity: 1;
     text-align: left;
   }
-  .dashboard_v99_1405 {
+  .settings_text {
     width: 318px;
     color: rgba(3,133,182,1);
     position: absolute;
@@ -348,11 +347,11 @@
     left: 52px;
     font-family: Roboto;
     font-weight: Medium;
-    font-size: 35px;
+    font-size: 30px;
     opacity: 1;
     text-align: left;
   }
-  .dashboard_v99_1406 {
+  .logout_text {
     width: 318px;
     color: rgba(3,133,182,1);
     position: absolute;
@@ -360,14 +359,14 @@
     left: 52px;
     font-family: Roboto;
     font-weight: Medium;
-    font-size: 35px;
+    font-size: 30px;
     opacity: 1;
     text-align: left;
   }
-  .dashboard_v99_1407 {
+  .dashboard_icon {
     width: 35px;
     height: 35px;
-    background: rgba(255,255,255,1);
+    background: transparent;
     opacity: 1;
     position: absolute;
     top: 256px;
@@ -383,7 +382,7 @@
     top: 2px;
     left: 1px;
   }
-  .dashboard_v99_1410 {
+  .blocked_icon {
     width: 35px;
     height: 35px;
     background: rgba(255,255,255,1);
@@ -393,7 +392,7 @@
     left: 273px;
     overflow: hidden;
   }
-  .dashboard_v99_1411 {
+  .blocked_icon2 {
     width: 29px;
     height: 26px;
     background: transparent;
@@ -402,7 +401,7 @@
     top: 3px;
     left: 2px;
   }
-  .dashboard_v99_1414 {
+  .reports_icon {
     width: 35px;
     height: 35px;
     background: rgba(255,255,255,1);
@@ -412,16 +411,16 @@
     left: 273px;
     overflow: hidden;
   }
-  .dashboard_v99_1415 {
+  .reports_icon2 {
     width: 29px;
     height: 29px;
-    background: transparent ;
+    background:transparent;
     opacity: 1;
     position: absolute;
-    top: 2px;
+    top: 5px;
     left: 2px;
   }
-  .dashboard_v99_1431 {
+  .search_box {
     width: 753px;
     height: 194px;
     background: rgba(255,255,255,1);
@@ -437,17 +436,17 @@
     box-shadow: 4px 10px 4px rgba(0, 0, 0, 0.25);
     overflow: hidden;
   }
-
   
-
-
-  .dashboard_v99_1435 {
+  
+  
+  
+  .search_profile_text {
     border: 0;
     background-color: transparent;
     width: 461px;
     color: rgba(3,133,182,1);
     position: absolute;
-    top: 453px;
+    top: 445px;
     left: 512px;
     font-family: Roboto;
     font-weight: SemiBold;
@@ -455,11 +454,11 @@
     opacity: 1;
     text-align: left;
   }
-  .dashboard_v101_1447 {
+  .search_profile_text2 {
     width: 461px;
     color: rgba(0,0,0,1);
     position: absolute;
-    top: 526px;
+    top: 515px;
     left: 512px;
     font-family: Roboto;
     font-weight: Regular;
@@ -467,7 +466,7 @@
     opacity: 1;
     text-align: left;
   }
-  .dashboard_v99_1433 {
+  .approve_profile_box {
     width: 753px;
     height: 194px;
     background: rgba(255,255,255,1);
@@ -483,7 +482,7 @@
     box-shadow: 4px 10px 4px rgba(0, 0, 0, 0.25);
     overflow: hidden;
   }
-  .dashboard_v99_1434 {
+  .delete_profile_box {
     width: 753px;
     height: 194px;
     background: rgba(255,255,255,1);
@@ -499,7 +498,7 @@
     box-shadow: 4px 10px 4px rgba(0, 0, 0, 0.25);
     overflow: hidden;
   }
-  .dashboard_v99_1438 {
+  .search_profile_icon {
     width: 181px;
     height: 144px;
     background: rgba(255,255,255,1);
@@ -518,14 +517,13 @@
     top: 0px;
     left: 1px;
   }
-  .dashboard_v99_1440 {
-    font-weight: bold;
+  .Registeration_text {
     border: 0;
     background-color: transparent;
-    width: 461px;
+    width: 500px;
     color: rgba(3,133,182,1);
     position: absolute;
-    top: 711px;
+    top: 705px;
     left: 512px;
     font-family: Roboto;
     font-weight: SemiBold;
@@ -533,7 +531,7 @@
     opacity: 1;
     text-align: left;
   }
-  .dashboard_v99_1443 {
+  .del_profile_button {
     border: 0;
     background-color: transparent;
     width: 461px;
@@ -547,7 +545,7 @@
     opacity: 1;
     text-align: left;
   }
-  .dashboard_v99_1441 {
+  .register_icon {
     width: 185px;
     height: 150px;
     background: rgba(255,255,255,1);
@@ -557,26 +555,26 @@
     left: 989px;
     overflow: hidden;
   }
-  .dashboard_v99_1442 {
+  /* .dashboard_v99_1442 {
     width: 138px;
     height: 112px;
-    background: transparent;
+    background: rgba(3,133,182,1);
     opacity: 1;
     position: absolute;
     top: 18px;
     left: 23px;
-  }
-  .dashboard_v99_1444 {
+  } */
+  .del_profile_icon {
     width: 141px;
     height: 155px;
     background: rgba(255,255,255,1);
     opacity: 1;
     position: absolute;
-    top: 958px;
+    top: 700px;
     left: 1013px;
     overflow: hidden;
   }
-  .dashboard_v99_1445 {
+  /* .dashboard_v99_1445 {
     width: 141px;
     height: 155px;
     background: url("../images/v99_1445.png");
@@ -588,21 +586,21 @@
     top: 0px;
     left: 140px;
     overflow: hidden;
-  }
+  } */
   .dashboard_v99_1446 {
     width: 141px;
     height: 155px;
-    background: transparent;
+    background:transparent;
     opacity: 1;
-    position: absolute;
+    position: relative;
     top: 0px;
     left: 0px;
   }
-  .dashboard_v101_1448 {
-    width: 461px;
+  .registeration_text2 {
+    width: 480px;
     color: rgba(0,0,0,1);
     position: absolute;
-    top: 786px;
+    top: 778px;
     left: 512px;
     font-family: Roboto;
     font-weight: Regular;
@@ -610,7 +608,7 @@
     opacity: 1;
     text-align: left;
   }
-  .dashboard_v101_1449 {
+  .delete_profile_text2 {
     width: 461px;
     color: rgba(0,0,0,1);
     position: absolute;
@@ -622,23 +620,15 @@
     opacity: 1;
     text-align: left;
   }
-  .dashprofile{
-    left: 1285px;
-    border-radius: 50%;
-  }
-  .dashboard_v103_1543 {
+  .view_profile {
     width: 144px;
-    color: rgb(255, 255, 255);
+    color: rgba(255,255,255,1);
     position: absolute;
-    top: 140px;
-    left: 1250px;
+    top: 149px;
+    left: 1251px;
     font-family: Roboto;
     font-weight: SemiBold;
     font-size: 25px;
     opacity: 1;
-    /* text-align: right!important; */
-  }
-  .dashboard_new{
-    border: none;
-    background-color: transparent;
+    text-align: left;
   }

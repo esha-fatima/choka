@@ -5,9 +5,9 @@
     </head>
     <body>
         <div class="findTutors_v36_17">
-            <img class="v13_23" src = "/views/vector_back.png" />
-            <img class = "v119_1814" src="/views/header_image.jpg" />
-            <img class = "choka_register" src="/views/Group 9.png" />
+            <img class="v13_23" src = "/images/Vectorbackarrow.png"   onclick="location.replace('tutorDashboard')"/>
+            <img class = "v119_1814" src="/images/e-learning-isometric-composition_1284-21095 4logo.png"  />
+            <img class = "choka_register" src="/images/Group 9.png" />
             <span class="v13_3">Back</span>
         </div>
         <div class="filter_v36_35">
@@ -17,7 +17,7 @@
             <div class="filter_v54_337"></div>
             <div class="filter_name"></div>
 
-            <span class="filter_v54_339">Populate Profile</span>
+            <span class="filter_v54_339">Publish Profile</span>
 
 
             <div class="filter_v54_340">
@@ -27,19 +27,21 @@
             <form action = "/filterRequestT" method = "POST">
             
 
-            <img src = "/views/filter_1.png" class = "filter_icon_1">
+            <img src = "/images/Vectorrate.png" class = "filter_icon_1">
             <span class = "filter_e1">Rate</span>
-            <input class="filter_v54_343" type="number"  name = "Rate"/>
+            <input class="filter_v54_343" type="number"  name = "Rate" placeholder="PKR/hour" required/>
 
-            <img src = "/views/filter_2.png" class = "filter_icon_2">
+            <img src = "/images/Vectorclass.png" class = "filter_icon_2">
             <span class = "filter_e2">Class</span>
-            <input class="filter_v54_344" type="number" name = "Class"/>
+            <input class="filter_v54_344" type="number" name = "Class" placeholder="Class number" required/>
 
             <!-- <img src = "/views/filter_3.png" class = "filter_icon_3">
             <span class = "filter_e3">Hours</span>
             <input class="filter_v54_343_b" type="number"  name = "Hours"/> -->
-
-            <img src = "/views/filter_icon_4.png" class = "filter_icon_4">
+            <div class="location">
+                <img src = "/images/Vector (Stroke)location.png"class="location_1">
+                <img src = "/images/Vectorcircle.png" class="location_2">
+            </div>
             <span class = "filter_d1">Location</span>
             <!-- <input class="filter_v54_343_c"  name = "Location"/> -->
             <select class="filter_v54_343_c" name="Location" required>
@@ -55,15 +57,15 @@
                 <option  value="Nishtar Zone"> Nishtar Zone </option>
             </select> 
             
-            <img src = "/views/filter_icon_5.png" class = "filter_icon_5">
+            <img src = "/images/Vectorexperience.png" class = "filter_icon_5">
             <span class = "filter_d2">Experience</span>
-            <input class="filter_v54_343_d" type="number" name = "Experience" placeholder="Years of Experience"/>
+            <input class="filter_v54_343_d" type="number" name = "Experience" placeholder="Years of Experience" required/>
 
-            <img src = "/views/filter_icon_6.png" class = "filter_icon_6">
+            <img src = "/images/Vectordays.png" class = "filter_icon_6">
             <span class = "filter_d3">Days</span>
-            <input class="filter_v54_343_e" type="number" name = "Days"/>
+            <input class="filter_v54_343_e" type="number" name = "Days" placeholder="days/week" required/>
 
-            <img src = "/views/filter_7.png" class = "filter_icon_7">
+            <img src = "/images/Vectorsubject.png" class = "filter_icon_7">
             <span class = "filter_c1">Subject</span>
             <!-- <input class="filter_v54_343_f" name = "Subject" /> -->
             <select class="filter_v54_343_f" name="Subject" required>
@@ -108,7 +110,7 @@
 
             </select> 
 
-            <img src = "/views/filter_9.png" class = "filter_icon_8">
+            <img src = "/images/Vectormode.png" class = "filter_icon_8">
             <span class = "filter_c2">Mode</span>
             <!-- <input class="filter_v54_343_g"  name = "Mode" /> -->
             <select class="filter_v54_343_g" name="Mode" required>
@@ -118,9 +120,9 @@
                 <option  value="Blended learning"> Blended learning </option>
             </select> 
 
-            <img src = "/views/filter_3.png" class = "filter_icon_9">
+            <img src = "/images/Vectorhours.png" class = "filter_icon_9">
             <span class = "filter_c3"> Hours </span>
-            <input class="filter_v54_343_h" type="number" name = "Hours" />
+            <input class="filter_v54_343_h" type="number" name = "Hours" placeholder="hours/day" required/>
                 
             <button class="filter_v54_341" type="submit" >Submit</button>
             </form>

@@ -17,7 +17,7 @@
             <div class="login_2"></div>
             <div class="login_3"></div>
             
-            <img class="v13_23" src = "/images/Vectorbackarrow.png"   />
+            <img class="v13_23" src = "/images/Vectorbackarrow.png"   onclick="location.replace('home')"/>
             <img class = "v119_1814" src="/images/e-learning-isometric-composition-1284-21095-1@2x.png"  />
             <img class = "choka_register" src="/images/Group 9.png" />
             <!-- <span class = "choka_register"></span>  -->
@@ -62,11 +62,11 @@
 
             <span class="v13_58">Phone Number*</span>
             <div class="name"></div>
-            <input class="v13_60" name="PhoneNumber"  type="number" placeholder="Enter phone number" required/>
+            <input class="v13_60" name="PhoneNumber"  minlength="9" maxlength="11" type="number" placeholder="Enter phone number" required/>
 
             <span class="v18_9">Password*</span>
             <div class="name"></div>
-            <input class="v18_11" name="Password"  type="password" placeholder="Enter password here" required/>
+            <input class="v18_11" name="Password" minlength="8" type="password" placeholder="Enter password here" required/>
 
             <div class="v18_12">
                 <div class="v18_13"></div>
@@ -146,7 +146,7 @@
                 <input class="v59_263_r2" name="LastName"  placeholder="Enter last name" required/>
 
                 <span class="v59_264_r2">Phone Number*</span>
-                <input class="v13_60" name="PhoneNumber"  type="number" placeholder="Enter phone number" required/>
+                <input class="v13_60" name="PhoneNumber"  type="number" minlength="9" maxlength="11" placeholder="Enter phone number" required/>
 
                 <div class="name_r2"></div>
                 <span class="v59_270_r2">Qualification*</span>
@@ -167,12 +167,12 @@
 
                 <div class="name_r2"></div>
 
-                <span class="v59_319_r2">Previous Experience*</span>
+                <span class="v59_319_r2" style="width: 1000px;">Previous Experience*</span>
                 <input class="v59_321_r2" name="PreviousExperience"  placeholder="Write about your previous experiences of teaching..." required/>
 
                 <span class="v59_333_r2">Password*</span>
                 <div class="name_r2"></div>
-                <input class="v59_335_r2" name="Password" type="password"  placeholder="Password" required/>
+                <input class="v59_335_r2" name="Password" type="password"  minlength="8" placeholder="Password" required/>
                 
                 <div class="v59_336_r2">
                     <div class="v59_337_r2"></div>

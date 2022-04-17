@@ -1,0 +1,119 @@
+<%-include("partials/header");-%>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="search_v36_36">
+            <span class="search_v39_141">Find a Tutor</span>
+
+            
+
+            <form method="POST">
+                <!-- <input class="findTutors_v36_27" placeholder="Search" name="searchParameters"> -->
+
+                <select class="findTutors_v36_27" name="Role" required>
+                    <option class="opt", disabled selected value="None">Select Role</option>
+                    <option  value="Tutors"> Tutors </option>
+                    <option  value="Students"> Students </option>
+
+                </select> 
+
+
+                <!-- <img class = "findTutors_v36_29" src="/images/Vectorsearch.png" /> -->
+                <button formaction="/searchRequest" class="findTutors_v36_321" > <img class = "findTutors_v36_32" src="/images/Vectorsearch.png" /> </button>
+                <!-- <div class="findTutors_v36_31">
+                    
+                    <button formaction = "/filter" class="findTutors_v36_321"> <img class = "findTutors_v36_32_b" src="/images/Vectorfilter.png" /> </button>
+
+                </div> -->
+               
+            </form>
+            
+            <button id = "next" > <img src="/images/next.png"/> </button>
+            <button id = "previous"> <img src="/images/prev.png"/> </button>
+            
+            <div class="search_name"></div>
+            <span class="search_v43_190">Search Results</span>
+            <div class="search_v119_1837">
+                <img class="v13_23" src = "/images/Vectorbackarrow.png"   onclick="location.replace('adminDash')"/>
+                <img class = "v119_1814" src="/images/e-learning-isometric-composition_1284-21095 4logo.png"  />
+                <img class = "choka_register" src="/images/Group 9.png" />
+                <!-- <img class = "ProfileImage" src="/images/imgbin_user-interface-design-computer-icons-default-png.png" alt="o" /> -->
+                
+                <!-- <span class= "view">View Profile</span> -->
+            </div>
+            
+            <div class="search_v119_1839"></div>
+            <!-- <div class="search_v119_1840"></div> -->
+           
+            <div class="search_name"></div>
+            <div id ="results">
+
+            </div>
+        </div>
+        <script>
+            let index = 0
+            document.getElementById("next").addEventListener("click", next);
+            document.getElementById("previous").addEventListener("click", previous);
+
+
+            let results_array = '<%-bl%>'
+            let results = document.getElementById("results");
+
+            
+            let con = JSON.parse(results_array)
+            //results.innerHTML ='<h1>'+ con+ '</h1>'
+            let obj = con[index]
+            let name = obj.Name
+            let subject = obj.Subject
+            let role = obj.Role
+            let email = obj.EmailAddress
+            results = document.getElementById("results");
+            let results_content = '<div class="search_v39_146"></div><button class="search_v39_171"  name="tutor" value='+'\"'+email+'\"'+'>View Profile</button> <div class="search_name"></div><span class="search_v39_152">Email: '+email+' </span><img class = "search_v39_147" src="/images/header_image.jpg" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+role+'</span><div class="search_v39_170"></div><span class="search_v39_172">Reviews</span>'
+            console.log(results_content)
+            results.innerHTML =results_content 
+            
+            
+            let len = con.length
+            function next(){
+                index = index +1;
+                if(index == len){
+                    index = 0;
+                }
+                
+                obj = con[index]
+                name = obj.Name
+                subject = obj.Subject
+                role = obj.Role
+                email = obj.EmailAddress
+                results = document.getElementById("results");
+                results_content = '<div class="search_v39_146"></div><button class="search_v39_171"  name="tutor" value='+'\"'+email+'\"'+'>View Profile</button> <div class="search_name"></div><span class="search_v39_152">Email: '+email+' </span><img class = "search_v39_147" src="/images/header_image.jpg" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+role+'</span><div class="search_v39_170"></div><span class="search_v39_172">Reviews</span>'
+                results.innerHTML = results_content
+                
+                                 
+                                       
+    
+            }
+            function previous(){
+                index = index -1;
+                if(index == -1){
+                    index = len-1;
+                }
+                
+                obj = con[index]
+                name = obj.Name
+                subject = obj.Subject
+                role = obj.Role
+                email = obj.EmailAddress
+                results = document.getElementById("results");
+                results_content = '<div class="search_v39_146"></div><button class="search_v39_171"  name="tutor" value='+'\"'+email+'\"'+'>View Profile</button> <div class="search_name"></div><span class="search_v39_152">Email: '+email+' </span><img class = "search_v39_147" src="/images/header_image.jpg" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+role+'</span><div class="search_v39_170"></div><span class="search_v39_172">Reviews</span>'
+                results.innerHTML = results_content
+                
+            }
+            
+        </script>
+    </body>
+    </html>
+    <br/>
+    <br/> 
