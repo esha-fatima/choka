@@ -1,0 +1,83 @@
+<%-include("partials/header");-%>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="v55_251">
+            <div class="search_v119_1837">
+                <img class="v13_23" src = "/views/vector_back.png" />
+                <img class = "v119_1814" src="/views/header_image.jpg" />
+                <img class = "choka_register" src="/views/Group 9.png" />
+                <span class="v13_3">Back</span>
+            </div>
+            <span class="v55_259_todo">Past Assessments</span>
+        </br></br></br></br></br></br></br></br></br>
+            <div id = "add" class = "add_to_do">
+                <div  id = "question_container">
+                    <div class="v79_1097_createAssessments">
+                        <img src= "filter_1.png" class = "image_settings"/>
+                        <h1 class = "ins_name"> Name </h1>
+                        </br></br></br></br></br></br></br>
+                        <h1 class = "ins_name_ff"> Subject: </h1> <h1 class = "ins_subject"> Mathematics </h1> 
+                        <h1 class = "ins_name_a"> Subject: </h1> <h1 class = "ins_subject_a"> Mathematics </h1> 
+                    </br></br></br></br></br></br><h1 class = "ins_name_ff"> Submitted at: </h1> <h1 class = "ins_subject">'+' submission_time'+' </h1> <h1 class = "ins_name_a"> Total Score: </h1> <h1 class = "ins_subject_a">'+ 'TotalPoints'+' </h1></br></br>
+                <button> Start Assessments </button>
+
+                        
+                        
+        
+                    </div>
+                    </br>
+    
+                </div>
+            </div>
+
+            
+            
+            
+            
+            
+        </div>
+        <script>
+            let str_array = '<%-headers%>';
+            let header = '<%-header%>';
+            console.log(header)
+            let headers_array = JSON.parse(str_array);
+            console.log(headers_array);
+            let container = document.getElementById("add");
+            container.innerHTML = ""
+            for(let i= 0; i<headers_array.length; i = i+1){
+                let on_start = JSON.stringify(headers_array[i])
+                let creator_name_arr = headers_array[i].assessment_details.creator_name.split('-')
+                let score_assigned = headers_array[i].score;
+                //let score_assigned = (headers_array[i].score.split('-')).pop().parseInt()
+                let percentage = (score_assigned/headers_array[i].assessment_details.TotalPoints)*100;
+                if(score_assigned == "Pending"){
+                    percentage = "Pending"
+                }
+                else{
+                    score_assigned = parseInt((headers_array[i].score.split('-')).pop())
+                    percentage = (score_assigned/headers_array[i].assessment_details.TotalPoints)*100
+
+                }
+                let submission_time = headers_array[i].submission_time;
+                //console.log(submission_time.toString())
+                console.log(Object.keys(headers_array[i]))
+                let TotalPoints = headers_array[i].assessment_details.TotalPoints
+                let creator_name = creator_name_arr.join(' ')
+                let text  = '<div  id = "question_container"><div class="v79_1097_createAssessments"><img src= "filter_1.png" class = "image_settings"/><h1 class = "ins_name">'+creator_name+' </h1></br></br></br></br></br></br></br><h1 class = "ins_name_ff"> Subject: </h1> <h1 class = "ins_subject">'+ headers_array[i].assessment_details.Subject +'</h1> <h1 class = "ins_name_a"> Your Score: </h1> <h1 class = "ins_subject_a">'+ score_assigned +'</h1> </br></br></br></br></br></br><h1 class = "ins_name_ff"> Syllabus: </h1> <h1 class = "ins_subject">'+ headers_array[i].assessment_details.Syllabus +'</h1> <h1 class = "ins_name_a"> Percentage: </h1> <h1 class = "ins_subject_a">'+percentage+'  </h1>  </br></br></br></br></br></br><h1 class = "ins_name_ff"> Submitted: </h1> <h1 class = "ins_subject">'+ submission_time+' </h1> <h1 class = "ins_name_a"> Total Score: </h1> <h1 class = "ins_subject_a">'+ TotalPoints+' </h1></br></br>  </br></br></div></br></div>'
+
+                container.innerHTML = container.innerHTML + text
+
+            }
+
+
+        </script>
+    </body>
+</html> 
+        
+   
+  
+  
+  

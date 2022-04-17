@@ -4,14 +4,17 @@
     background: rgba(255,255,255,1);
     opacity: 1;
     position: relative;
+    overflow-y: scroll;
     top: 0px;
     left: 0px;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
-    overflow: hidden;
+    overflow: scroll;
   }
+
+ 
   .v124_175_view {
     width: 509px;
     color: rgba(0,0,0,1);
@@ -43,18 +46,18 @@
   .v124_176_view {
     width: 336px;
     height: 322px;
-    background: url("../images/v124_176.png");
+    /* background: url("../images/v124_176.png"); */
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     opacity: 1;
     position: absolute;
     top: 271px;
-    left: 834px;
-    border-top-left-radius: 20px;
+    left: 875px;
+    /* border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-bottom-right-radius: 20px; */
     overflow: hidden;
   }
   .name_view {
@@ -243,6 +246,20 @@
     
   }
 
+  .v124_205_view_b {
+    width: 696px;
+    color: rgba(3,133,182,1);
+    position: absolute;
+    top: 850px;
+    left: 125px;
+    font-size: 60px;
+    opacity: 1;
+    text-align: left;
+    
+  }
+
+  
+
   .placeholder_entity_one{
    
     width: 600px;
@@ -300,9 +317,11 @@
   .v124_208_view {
     width: 246px;
     color: rgba(255,255,255,1);
+    background-color: transparent;
+    border: none;
     position: absolute;
-    top: 865px;
-    left: 416px;
+    top: 863px;
+    left: 411px;
     font-family: Roboto;
     font-weight: Regular;
     font-size: 25px;
@@ -341,7 +360,7 @@
     color: rgba(255,255,255,1);
     position: absolute;
     top: 865px;
-    left: 159px;
+    left: 151px;
     font-family: Roboto;
     font-weight: Regular;
     font-size: 25px;

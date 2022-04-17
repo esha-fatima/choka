@@ -6,20 +6,22 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
     <body>
-        
+
+        <div>
         <span class="v13_3">Back to Home</span>
         <form method="POST" >
         <div class="login_1">
             
             <div class="login_2"></div>
-            <div class="login_3"></div>
+            <!-- <div class="login_3"></div> -->
             
-            <img class="v13_23" src = "/views/vector_back.png"   />
-            <img class = "v119_1814" src="/views/header_image.jpg"  />
-            <img class = "choka_register" src="/views/Group 9.png" />
+            <img class="v13_23" src = "/images/Vectorbackarrow.png"   />
+            <img class = "v119_1814" src="/images/e-learning-isometric-composition_1284-21095 4logo.png"  />
+            <img class = "choka_register" src="/images/Group 9.png" />
+            <!-- <span class = "choka_register"></span>  -->
             <span class="v13_3">Back to Home</span>
 
-            <span class="login_7">Sign in</span>
+            <span class="login_7"><b>Sign in</b></span>
             <span class="login_8">Email*</span>
             <div class="login_name"></div>
             <input class="login_9"  name="Email"  placeholder="Enter email">
@@ -28,30 +30,32 @@
             <input type = "password" class="login_11" name="Password"  placeholder="Enter password" />
             <div class="login_12"></div>
             <button class="login_13" formaction="/loginRequest"  method = "POST" >Sign in</button>
-            <div class="login_14">
+            <div class="login_14" >
                 <div class="login_15"></div>
-                <div class="login_16"></div>
+                <img class="login_16" src = "/images/Vectorlock.png">
             </div>
             <div class="login_17">
                 <div class="login_18"></div>
-                <div class="login_19"></div>
+                <img class="login_19" src = "/images/Vectormessege.png">
             </div>
 
             <div>
                 
-                <button class="login_20_1" formaction="/register">Forgot your password? Reset Now</p>
+                <button class="login_20_1" formaction="/home" name="home" value="register"><i>Forgot your password? <b><u>Reset Now</u></b></i></p>
                 
             </div>
 
             <div>
-                <button class="login_20_2" formaction="/register">First Time? Register Now</p>
+                <button class="login_20_2" formaction="/home" name="home" value="register"><i>First Time? <b><u>Register Now</b></u></i></p>
                
             </div>
 
             <!-- <button class="login_20">Forgot your password? Reset Now</button>
             <button class="login_21">First Time? Register</button> -->
-            <img class="login_22" src = "/images/loginpage.jpeg"/>
+            <img class="login_22" src = "/images/login.png"/>
         </div>
-        </form>>
+        </form>
+        </div>
+        
     </body>
 </html>

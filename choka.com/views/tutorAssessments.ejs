@@ -1,0 +1,58 @@
+<%-include("partials/header");-%>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="search_v119_1837">
+      <img class="v13_23" src = "/views/vector_back.png" />
+      <img class = "v119_1814" src="/views/header_image.jpg" />
+      <img class = "choka_register" src="/views/Group 9.png" />
+      <span class="v13_3">Back</span>
+  </div>
+    <div class="v54_449_studentAssessments">
+      <span class="v54_455_studentAssessments">Assessments</span>
+      <div class="v54_460_studentAssessments"></div>
+      <div class="v54_461_studentAssessments"></div>
+      <form method = "POST">
+      <button class="v54_467_studentAssessments" formaction="/create" method = "POST">Create Assesments</button>
+      <button class="v54_462_studentAssessments" formaction="/grade" method = "POST">Grade Assessments</button>
+      </form>
+      
+      
+  
+      <div class="v127_488_studentAssessments">
+        
+        <div class="v127_564_studentAssessments">
+         
+        </div>
+        <div class="v127_579_studentAssessments"></div>
+        <div class="v127_580_studentAssessments"></div>
+        <div class="v127_581_studentAssessments"></div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+          let header = '<%-header%>'
+          console.log("header is", header)
+           var forms = document.getElementsByTagName("form");
+            for(var i = 0; i < forms.length; i++){
+                forms[i].id = "custom";
+                
+
+                input = document.createElement('input');
+                input.setAttribute('name', "headers");
+                input.setAttribute('value', header);
+                input.setAttribute('type', 'hidden');
+
+                forms[i].appendChild(input);
+                console.log(forms[i])
+            }
+
+
+
+  </script>
+
+  </html> 
+  
