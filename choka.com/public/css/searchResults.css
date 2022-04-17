@@ -224,7 +224,7 @@
   .search_v39_170 {
     width: 152px;
     height: 48px;
-    background: rgba(3,133,182,1);
+    background: rgb(182, 51, 3);
     opacity: 1;
     position: absolute;
     top: 845px;
@@ -236,22 +236,9 @@
     overflow: hidden;
   }
   .search_v39_172 {
-    /* background: transparent;
-    border: none;
-    width: 98px;
-    color: rgba(255,255,255,1);
-    position: absolute; */
-    /* top: 858px; */
-    
-    /* font-family: Roboto;
-    font-weight: Regular;
-    font-size: 20px;
-    opacity: 1;
-    text-align: left; */
 
-    /* width: 152px; */
     height: 48px;
-    background: rgba(3,133,182,1);
+    background: transparent;
     color: rgb(255, 255, 255);
     border: none;
     /* fontsize:50px; */
@@ -260,13 +247,41 @@
     font-size:18px;
     opacity: 1;
     position: absolute;
-    top: 845px;
-    left: 824px;
-    /* left: 1000px; */
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
+    top: 845px!important;
+    left: 821px!important;
+    overflow: hidden;
+  }
+  .search_admin {
+
+    height: 48px;
+    background: transparent;
+    color: rgb(255, 255, 255);
+    border: none;
+    /* fontsize:50px; */
+    font-weight: SemiBold;
+    font-family: Roboto;
+    font-size:18px;
+    opacity: 1;
+    position: absolute;
+    top: 855px!important;
+    left: 826px!important;
+    overflow: hidden;
+  }
+  .search_v39_1772 {
+
+    height: 48px;
+    background: transparent;
+    color: rgb(255, 255, 255);
+    border: none;
+    
+    /* fontsize:50px; */
+    font-weight: SemiBold;
+    font-family: Roboto;
+    font-size:18px;
+    opacity: 1;
+    position: absolute;
+    top: 853px!important;
+    left: 823px!important;
     overflow: hidden;
   }
   .search_v39_174 {

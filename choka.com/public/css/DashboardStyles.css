@@ -620,17 +620,21 @@
     opacity: 1;
     text-align: left;
   }
+  .dashprofile{
+    left: 1285px;
+    border-radius: 50%;
+  }
   .dashboard_v103_1543 {
     width: 144px;
-    color: rgba(255,255,255,1);
+    color: rgb(255, 255, 255);
     position: absolute;
     top: 140px;
-    left: 1400px;
+    left: 1250px;
     font-family: Roboto;
     font-weight: SemiBold;
     font-size: 25px;
     opacity: 1;
-    text-align: left;
+    /* text-align: right!important; */
   }
   .dashboard_new{
     border: none;

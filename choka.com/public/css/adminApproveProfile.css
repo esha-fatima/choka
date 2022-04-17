@@ -172,18 +172,13 @@
     width: 120px;
     color: rgba(255,255,255,1);
     position: absolute;
-    top: 845px;
-    left: 909px;
+    top: 855px;
+    left: 813px;
     font-family: Roboto;
     font-weight: Regular;
     font-size: 20px;
     opacity: 1;
     text-align: left;
-
-    padding-top: 20px;
-    padding-right: 30px;
-    padding-bottom: 20px;
-    padding-left: 30px;
   }
   .search_v39_174 {
     width: 1050px;
@@ -359,8 +354,6 @@
     font-size: 26px;
     opacity: 1;
     text-align: left; 
-    background-color: transparent;
-    border: 0px;
   }
   .select_del{
     width: 242px;

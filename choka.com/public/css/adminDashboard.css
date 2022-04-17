@@ -240,7 +240,7 @@
     overflow: hidden;
   }
   .notifications_icon2 {
-    width: 35px;
+    width: 32px;
     height: 26px;
     background: url("../images/v99_1417.png");
     background-repeat: no-repeat;
@@ -248,11 +248,11 @@
     background-size: cover;
     opacity: 1;
     position: absolute;
-    top: 4px;
+    top: 6px;
     left: 0px;
     overflow: hidden;
   }
-  .notifications_icon3 {
+  /* .notifications_icon3 {
     width: 26px;
     height: 26px;
     background: rgba(3,133,182,1);
@@ -269,11 +269,11 @@
     position: absolute;
     top: 6px;
     left: 24px;
-  }
+  } */
   .tutors_icon {
     width: 35px;
     height: 35px;
-    background: rgba(3,133,182,1);
+    background: transparent;
     opacity: 1;
     position: absolute;
     top: 346px;
@@ -299,7 +299,7 @@
     left: 52px;
     font-family: Roboto;
     font-weight: Medium;
-    font-size: 35px;
+    font-size: 28px;
     opacity: 1;
     text-align: left;
   }
@@ -311,7 +311,7 @@
     left: 52px;
     font-family: Roboto;
     font-weight: Medium;
-    font-size: 35px;
+    font-size: 28px;
     opacity: 1;
     text-align: left;
   }
@@ -323,7 +323,7 @@
     left: 52px;
     font-family: Roboto;
     font-weight: Medium;
-    font-size: 35px;
+    font-size: 30px;
     opacity: 1;
     text-align: left;
   }
@@ -335,7 +335,7 @@
     left: 52px;
     font-family: Roboto;
     font-weight: Medium;
-    font-size: 35px;
+    font-size: 30px;
     opacity: 1;
     text-align: left;
   }
@@ -347,7 +347,7 @@
     left: 52px;
     font-family: Roboto;
     font-weight: Medium;
-    font-size: 35px;
+    font-size: 30px;
     opacity: 1;
     text-align: left;
   }
@@ -359,29 +359,29 @@
     left: 52px;
     font-family: Roboto;
     font-weight: Medium;
-    font-size: 35px;
+    font-size: 30px;
     opacity: 1;
     text-align: left;
   }
   .dashboard_icon {
     width: 35px;
     height: 35px;
-    background: rgba(255,255,255,1);
+    background: transparent;
     opacity: 1;
     position: absolute;
     top: 256px;
     left: 273px;
     overflow: hidden;
   }
-  /* .dashboard_v99_1408 {
+  .dashboard_v99_1408 {
     width: 32px;
     height: 29px;
-    background: rgba(3,133,182,1);
+    background: transparent;
     opacity: 1;
     position: absolute;
     top: 2px;
     left: 1px;
-  } */
+  }
   .blocked_icon {
     width: 35px;
     height: 35px;
@@ -395,7 +395,7 @@
   .blocked_icon2 {
     width: 29px;
     height: 26px;
-    background: rgba(3,133,182,1);
+    background: transparent;
     opacity: 1;
     position: absolute;
     top: 3px;
@@ -414,10 +414,10 @@
   .reports_icon2 {
     width: 29px;
     height: 29px;
-    background: rgba(3,133,182,1);
+    background:transparent;
     opacity: 1;
     position: absolute;
-    top: 2px;
+    top: 5px;
     left: 2px;
   }
   .search_box {
@@ -508,15 +508,15 @@
     left: 993px;
     overflow: hidden;
   }
-  /* .dashboard_v99_1439 {
+  .dashboard_v99_1439 {
     width: 181px;
     height: 144px;
-    background: rgba(3,133,182,1);
+    background: transparent;
     opacity: 1;
     position: absolute;
     top: 0px;
     left: 1px;
-  } */
+  }
   .Registeration_text {
     border: 0;
     background-color: transparent;
@@ -570,7 +570,7 @@
     background: rgba(255,255,255,1);
     opacity: 1;
     position: absolute;
-    top: 958px;
+    top: 700px;
     left: 1013px;
     overflow: hidden;
   }
@@ -587,15 +587,15 @@
     left: 140px;
     overflow: hidden;
   } */
-  /* .dashboard_v99_1446 {
+  .dashboard_v99_1446 {
     width: 141px;
     height: 155px;
-    background: rgba(3,133,182,1);
+    background:transparent;
     opacity: 1;
     position: relative;
     top: 0px;
     left: 0px;
-  } */
+  }
   .registeration_text2 {
     width: 480px;
     color: rgba(0,0,0,1);
