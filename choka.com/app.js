@@ -1820,7 +1820,7 @@ app.post('/gradingDone',(req,res,next)=>{
     let parsed = JSON.parse(req.body.submit_button)
     console.log("parsed is", parsed)
     let student_id = parsed.student_id;
-    let key = student_id + " " + global_user.EmailAddress
+    let key = student_id + " " + parsed.assessment_details.creator_email
     //now find the one with this key and change the score and grade status only
     const docRef = db.collection('PastAssessments');
     db.collection('PastAssessments').doc(key).update({
@@ -1829,8 +1829,15 @@ app.post('/gradingDone',(req,res,next)=>{
 
     }).then(()=>{
         
-        console.log("changes madeeee")
-        res.render("tutorAssessments")
+        db.collection('Teachers').doc(parsed.assessment_details.creator_email).get().then((doc)=>{
+            let local_user = doc.data().jason_obj;
+            local_user = JSON.stringify(local_user)
+            console.log("local user in grading done", local_user)
+            res.render("tutorAssessments", {"header":local_user});
+
+
+        })
+        
     })
 
     
@@ -1966,7 +1973,10 @@ app.post('/submitAssessmentRequest',(req, res, next)=>{
 
 
 app.post('/grade',(req, res, next)=>{
+    
     console.log("in grade assessments")
+    console.log(req.body)
+    let local_user = req.body.headers
     // u can pull the email of the person who sent this request
     
     let email_tutor = JSON.parse(req.body.headers).EmailAddress
