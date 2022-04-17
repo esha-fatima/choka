@@ -620,7 +620,7 @@ app.post('/filterRequest',(req,res)=>{
 })
 
 app.post('/filterTutor',(req,res)=>{
-    console.log("/filterTutor", global_user)
+    ///console.log("/filterTutor", global_user)
 
     db.collection("subjects").get().then((snapshot) => {
         snapshot.docs.map(doc => {
