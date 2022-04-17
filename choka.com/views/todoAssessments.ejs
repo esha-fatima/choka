@@ -6,9 +6,9 @@
     <body>
         <div class="v55_251">
             <div class="search_v119_1837">
-                <img class="v13_23" src = "/views/vector_back.png" />
-                <img class = "v119_1814" src="/views/header_image.jpg" />
-                <img class = "choka_register" src="/views/Group 9.png" />
+                <img class="v13_23" src = "/images/Vectorbackarrow.png"  onclick="location.replace('studentAssessments')" />
+                <img class = "v119_1814" src="/images/e-learning-isometric-composition_1284-21095 4logo.png"  />
+                <img class = "choka_register" src="/images/Group 9.png" />
                 <span class="v13_3">Back</span>
             </div>
             <span class="v55_259_todo">To-Do Assessments</span>
@@ -16,7 +16,7 @@
             <div id = "add" class = "add_to_do">
                 <div  id = "question_container">
                     <div class="v79_1097_createAssessments">
-                        <img src= "filter_1.png" class = "image_settings"/>
+                        <img src= "imgbin_user-interface-design-computer-icons-default-png.png" class = "image_settings"/>
                         <h1 class = "ins_name"> Name </h1>
                         </br></br></br></br></br></br></br>
                         <h1 class = "ins_name_ff"> Subject: </h1> <h1 class = "ins_subject"> Mathematics </h1> 
@@ -25,6 +25,7 @@
                     <h1 class = "ins_name_ff"> Subject: </h1> <h1 class = "ins_subject"> Mathematics </h1> 
                     <h1 class = "ins_name_a"> Subject: </h1> <h1 class = "ins_subject_a"> Mathematics </h1>
                 </br></br>
+                <!-- <button class="login_13" formaction="/loginRequest"  method = "POST" >Start Assessments</button> -->
                 <button> Start Assessments </button>
 
                         
@@ -54,7 +55,7 @@
                 let on_start = JSON.stringify(headers_array[i])
                 let creator_name_arr = headers_array[i].creator_name.split('-')
                 let creator_name = creator_name_arr.join(' ')
-                let text  = '<div  id = "question_container"><div class="v79_1097_createAssessments"><img src= "filter_1.png" class = "image_settings"/><h1 class = "ins_name">'+creator_name+' </h1></br></br></br></br></br></br></br><h1 class = "ins_name_ff"> Subject: </h1> <h1 class = "ins_subject">'+ headers_array[i].Subject +'</h1> <h1 class = "ins_name_a"> Max Score: </h1> <h1 class = "ins_subject_a">'+ headers_array[i].TotalPoints +'</h1> </br></br></br></br></br></br><h1 class = "ins_name_ff"> Syllabus: </h1> <h1 class = "ins_subject">'+ headers_array[i].Syllabus +'</h1> <h1 class = "ins_name_a"> Subject: </h1> <h1 class = "ins_subject_a"> Mathematics </h1></br></br><form method = "POST"><button type = "submit" formaction = "/startAssessment" name = "assessment_details" value = '+ on_start+'> Start Assessments </button></form></div></br></div>'
+                let text  = '<div  id = "question_container"><div class="v79_1097_createAssessments"><img src= "/images/imgbin_user-interface-design-computer-icons-default-png.png" class = "image_settings"/><h1 class = "ins_name">'+creator_name+' </h1></br></br></br></br></br></br></br><h1 class = "ins_name_ff"> Subject: </h1> <h1 class = "ins_subject">'+ headers_array[i].Subject +'</h1> <h1 class = "ins_name_a"> Max Score: </h1> <h1 class = "ins_subject_a">'+ headers_array[i].TotalPoints +'</h1> </br></br></br></br></br></br><h1 class = "ins_name_ff"> Syllabus: </h1> <h1 class = "ins_subject">'+ headers_array[i].Syllabus +'</h1> <h1 class = "ins_name_a"> Subject: </h1> <h1 class = "ins_subject_a"> Mathematics </h1></br></br><form method = "POST"> <div class="startass1"></div><button class="startass2" type = "submit" formaction = "/startAssessment" name = "assessment_details" value = '+ on_start+'> Start Assessments </button></form></div></br></div>'
 
                 container.innerHTML = container.innerHTML + text
 

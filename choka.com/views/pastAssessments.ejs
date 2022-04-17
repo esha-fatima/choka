@@ -6,9 +6,9 @@
     <body>
         <div class="v55_251">
             <div class="search_v119_1837">
-                <img class="v13_23" src = "/views/vector_back.png" />
-                <img class = "v119_1814" src="/views/header_image.jpg" />
-                <img class = "choka_register" src="/views/Group 9.png" />
+                <img class="v13_23" src = "/images/Vectorbackarrow.png"  onclick="location.replace('studentAssessments')"  />
+                <img class = "v119_1814" src="/images/e-learning-isometric-composition_1284-21095 4logo.png"  />
+                <img class = "choka_register" src="/images/Group 9.png" />
                 <span class="v13_3">Back</span>
             </div>
             <span class="v55_259_todo">Past Assessments</span>
@@ -16,7 +16,7 @@
             <div id = "add" class = "add_to_do">
                 <div  id = "question_container">
                     <div class="v79_1097_createAssessments">
-                        <img src= "filter_1.png" class = "image_settings"/>
+                        <img src= "imgbin_user-interface-design-computer-icons-default-png.png" class = "image_settings" alt = "hello"/>
                         <h1 class = "ins_name"> Name </h1>
                         </br></br></br></br></br></br></br>
                         <h1 class = "ins_name_ff"> Subject: </h1> <h1 class = "ins_subject"> Mathematics </h1> 
@@ -66,7 +66,7 @@
                 console.log(Object.keys(headers_array[i]))
                 let TotalPoints = headers_array[i].assessment_details.TotalPoints
                 let creator_name = creator_name_arr.join(' ')
-                let text  = '<div  id = "question_container"><div class="v79_1097_createAssessments"><img src= "filter_1.png" class = "image_settings"/><h1 class = "ins_name">'+creator_name+' </h1></br></br></br></br></br></br></br><h1 class = "ins_name_ff"> Subject: </h1> <h1 class = "ins_subject">'+ headers_array[i].assessment_details.Subject +'</h1> <h1 class = "ins_name_a"> Your Score: </h1> <h1 class = "ins_subject_a">'+ score_assigned +'</h1> </br></br></br></br></br></br><h1 class = "ins_name_ff"> Syllabus: </h1> <h1 class = "ins_subject">'+ headers_array[i].assessment_details.Syllabus +'</h1> <h1 class = "ins_name_a"> Percentage: </h1> <h1 class = "ins_subject_a">'+percentage+'  </h1>  </br></br></br></br></br></br><h1 class = "ins_name_ff"> Submitted: </h1> <h1 class = "ins_subject">'+ submission_time+' </h1> <h1 class = "ins_name_a"> Total Score: </h1> <h1 class = "ins_subject_a">'+ TotalPoints+' </h1></br></br>  </br></br></div></br></div>'
+                let text  = '<div  id = "question_container"><div class="v79_1097_createAssessments"><img src= "/images/imgbin_user-interface-design-computer-icons-default-png.png" class = "image_settings"/><h1 class = "ins_name">'+creator_name+' </h1></br></br></br></br></br></br></br><h1 class = "ins_name_ff"> Subject: </h1> <h1 class = "ins_subject">'+ headers_array[i].assessment_details.Subject +'</h1> <h1 class = "ins_name_a"> Your Score: </h1> <h1 class = "ins_subject_a">'+ score_assigned +'</h1> </br></br></br></br></br></br><h1 class = "ins_name_ff"> Syllabus: </h1> <h1 class = "ins_subject">'+ headers_array[i].assessment_details.Syllabus +'</h1> <h1 class = "ins_name_a"> Percentage: </h1> <h1 class = "ins_subject_a">'+percentage+'  </h1>  </br></br></br></br></br></br><h1 class = "ins_name_ff"> Submitted: </h1> <h1 class = "ins_subject">'+ submission_time+' </h1> <h1 class = "ins_name_a"> Total Score: </h1> <h1 class = "ins_subject_a">'+ TotalPoints+' </h1></br></br>  </br></br></div></br></div>'
 
                 container.innerHTML = container.innerHTML + text
 

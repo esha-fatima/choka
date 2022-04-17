@@ -71,12 +71,10 @@
             <div class="search_name"></div>
             <span class="search_v43_190">Search Results</span>
             <div class="search_v119_1837">
-                <img class="v13_23" src = "/images/Vectorbackarrow.png"   />
+                <img class="v13_23" src = "/images/Vectorbackarrow.png"    onclick="location.replace('dashboard')"/>
                 <img class = "v119_1814" src="/images/e-learning-isometric-composition_1284-21095 4logo.png"  />
                 <img class = "choka_register" src="/images/Group 9.png" />
-                <!-- <img class = "ProfileImage" src="/images/imgbin_user-interface-design-computer-icons-default-png.png" alt="o" /> -->
-                
-                <!-- <span class= "view">View Profile</span> -->
+                <span class="v13_3">Back</span>
             </div>
             
             <div class="search_v119_1839"></div>
@@ -114,7 +112,7 @@
             let email = obj.EmailAddress
             
             //let results = document.getElementById("results");
-            let results_content = '<form action="/tuitionRequest" id = "custom" method="POST"><div class="search_v39_146"></div><button class="search_v39_171" name="tutor" value='+'\"'+email+'\"'+'>Send Request</button></form> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><img class = "search_v39_147" src="/images/header_image.jpg" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><form id = "custom" method = "POST"><button class="search_v39_172" type = "submit" name = "requested" value ="'+name+" "+experience+" "+email+'" method = "POST" formaction = "/messageRequest">Message</button></form>';
+            let results_content = '<form action="/tuitionRequest" id = "custom" method="POST"><div class="search_v39_146"></div><button class="search_v39_171" formaction="/tuitionRequest" method="POST" name="tutor" value='+'\"'+email+'\"'+'>Send Request</button> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><img class = "search_v39_147" src= "/images/imgbin_user-interface-design-computer-icons-default-png.png" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_1772">Message</span></form>'
             console.log(results_content)
             results.innerHTML =results_content 
             var forms = document.getElementsByTagName("form");
@@ -146,7 +144,7 @@
                 rating = obj.Rating
                 email = obj.EmailAddress
                 results = document.getElementById("results");
-                results_content = '<form action="/tuitionRequest" method="POST" id = "custom"><div class="search_v39_146"></div><button class="search_v39_171"  name="tutor" value='+'\"'+email+'\"'+'>Send Request</button></form> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><img class = "search_v39_147" src="/images/header_image.jpg" /></div><span class="search_v39_148">'+name+4+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><form id = "custom" method = "POST"><button type = "submit" name = "requested" value ="'+name+" "+experience+" "+email+'" method = "POST" formaction = "/messageRequest">Message</button></form></span>';
+                results_content = '<form action="/tuitionRequest" id = "custom" method="POST"><div class="search_v39_146"></div><button class="search_v39_171" formaction="/tuitionRequest" method="POST" name="tutor" value='+'\"'+email+'\"'+'>Send Request</button> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><img class = "search_v39_147" src= "/images/imgbin_user-interface-design-computer-icons-default-png.png" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_1772">Message</span></form>'
                 results.innerHTML = results_content
                 
                                  
@@ -166,7 +164,7 @@
                 rating = obj.Rating
                 email = obj.EmailAddress
                 results = document.getElementById("results");
-                results_content = '<form action="/tuitionRequest" id = "custom" method="POST"><div class="search_v39_146"></div><button class="search_v39_171" formaction="/tuitionRequest" method="POST" name="tutor" value='+'\"'+email+'\"'+'>Send Request</button> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><img class = "search_v39_147" src="/images/header_image.jpg" /></div><span class="search_v39_148">'+name+5+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Message</span></form>'
+                results_content = '<form action="/tuitionRequest" id = "custom" method="POST"><div class="search_v39_146"></div><button class="search_v39_171" formaction="/tuitionRequest" method="POST" name="tutor" value='+'\"'+email+'\"'+'>Send Request</button> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><img class = "search_v39_147" src= "/images/imgbin_user-interface-design-computer-icons-default-png.png" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_1772">Message</span></form>'
                 results.innerHTML = results_content
                 
             }
