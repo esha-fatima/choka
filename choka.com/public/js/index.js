@@ -57,6 +57,7 @@ socket.on('someMessage',message=>{
 
 function sender(){
     let val = message_typed.value;
+    message_typed.value = "";
     let chat_identifier2 = send_button.value;
     console.log("message typed is", val);
     console.log(chat_identifier2)

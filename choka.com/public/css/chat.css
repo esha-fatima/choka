@@ -62,10 +62,12 @@
   .v44_227_chat {
     width: 900px;
     height: 81px;
-    background: rgb(109, 56, 56);
+    background: rgb(179, 200, 223);
     opacity: 1;
-    
-    
+    position: relative;
+    display: flex;
+    left: 65px;
+    border-color: rgb(163, 162, 160);
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
     border-bottom-left-radius: 40px;
