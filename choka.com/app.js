@@ -120,13 +120,17 @@ db.collection('TodoAssessments').get().then((vals)=>{
 
 app.post('/filter',(req,res)=>{
     console.log("posting filter")
-    //let local_user = JSON.parse(req.body.headers)
-    console.log("local user after parsing is", req.body)
+    let local_user = JSON.parse(req.body.headers)
+    console.log("local user after parsing is", local_user)
+
     //local_user = JSON.stringify(local_user)
     //console.log(local_user)
 
+    let xx = {
+        "header":req.body
+    }
+    res.render("filter", local_user)
 
-    res.render("filter")
 })
 
 app.post('/messageRequestTutor',(req,res)=>{
@@ -742,8 +746,15 @@ app.post('/filterRequest',(req,res)=>{
 })
 
 app.post('/filterTutor',(req,res)=>{
-    console.log("/filterTutor", global_user)
-
+    ///console.log("/filterTutor", global_user)
+    //local user here
+    console.log("insideee filter tutor", req.body.headers)
+    //get zara ka local user
+    db.collection("Students").doc(req.body.headers).get().then((doc)=>{
+        let local_user = doc.data().jason_obj
+        console.log("local user is", local_user)
+        //console.log(doc.data())
+    
     db.collection("subjects").get().then((snapshot) => {
         snapshot.docs.map(doc => {
             let data = doc.data()
@@ -763,11 +774,13 @@ app.post('/filterTutor',(req,res)=>{
                     }
                 }
                 let arr_str = JSON.stringify(tutor_list)
-                let xx = {"bl":arr_str};
+                let l_s = JSON.stringify(local_user)
+                let xx = {"bl":arr_str,"header":l_s};
                 res.render("SearchResults",xx)
             }              
         })
     });
+});
 })
 
 // /filterStudents
