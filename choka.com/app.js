@@ -111,7 +111,7 @@ app.use(express.static("public"));
 
 //go to db and get the last assessment id and then set the global variable here
 
-db.collection('TodoAssessments').get().then((vals)=>{
+db.collection('Quiz').get().then((vals)=>{
     n_assessments = vals.size+1
     //console.log("vals length initialized to", n_assessments)
 
@@ -856,9 +856,11 @@ app.post("/tuitionRequest",(req,res)=>{
 app.post("/tuitionAccept",(req,res)=>{
     // console.log(12, req.body.tutor)
     let local_user = req.body.headers
+    local_user["Rating"] = -1
+    local_user["Reviews"] = "";
     local_user = JSON.parse(local_user)
 
-   
+    
 
     let student = req.body.student
     console.log(11111,student)
@@ -1091,6 +1093,7 @@ app.post('/loginRequest',(req,res)=>{
                     "Class":doc.data().Class,
                     "Days":doc.data().Days,
                     "Hours":doc.data().Hours,
+                   
                 }
                 global_user = n_obj;
                 console.log(global_user)
@@ -1681,6 +1684,7 @@ app.post("/myTutors", (req,res)=>{
 
                 let already_string = JSON.stringify(already_reviewd);
                 console.log("already string", already_string)
+                console.log("\n\n\n\n")
                 console.log("all tutor headers", string_tutor_headers)
                 let xx = {
                     "tutorHeaders":string_tutor_headers,
@@ -1922,6 +1926,7 @@ app.post('/parentregistration',(req, res, next)=>{
         "Address": "None Added",
         "City": "None Added",
         "Rating": 0,
+        "Reviews":[]
         
     }
 
@@ -2097,7 +2102,7 @@ app.post('/gradingDone',(req,res,next)=>{
     let parsed = JSON.parse(req.body.submit_button)
     console.log("parsed is", parsed)
     let student_id = parsed.student_id;
-    let key = student_id + " " + parsed.assessment_details.creator_email
+    let key = student_id + " " + parsed.assessment_details.creator_email+ " " + parsed.assessment_details.id;
     //now find the one with this key and change the score and grade status only
     const docRef = db.collection('PastAssessments');
     db.collection('PastAssessments').doc(key).update({
@@ -2179,7 +2184,7 @@ app.post('/submitAssessmentRequest',(req, res, next)=>{
     console.log("my email is", user_email)
     
    
-    let p_key = user_email + " " + assessment_header.creator_email
+    let p_key = user_email + " " + assessment_header.creator_email+" "+assessment_header.id
     console.log("pkey is", p_key)
     //save in past_assessments
     const docRef = db.collection('PastAssessments').doc(p_key);
@@ -2364,7 +2369,7 @@ app.post('/createAssessmentRequest',(req, res, next)=>{
                 //for every recipient add an entry into the To do waala table 
                 let promise_list = []
                 for(let j = 0; j<recipients_list.length; j = j+1){
-                    let key = recipients_list[j] +" "+local_user.EmailAddress;
+                    let key = recipients_list[j] +" "+local_user.EmailAddress+ " "+assessmentid.toString();
                     
                     promise_list.push(db.collection('TodoAssessments').doc(key).set({
 
