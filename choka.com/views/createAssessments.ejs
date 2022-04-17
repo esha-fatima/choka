@@ -141,6 +141,7 @@
         
         <script>
             let bachey = '<%-bachey%>';
+            let header = '<%-header%>'
             let bachey_arr = JSON.parse(bachey)
             let question_count = 1
             let add_button = document.getElementById("plus1")
@@ -150,6 +151,21 @@
             for(let i = 0; i <bachey_arr.length; i = i +1){
                 target.innerHTML = target.innerHTML + '<input type="checkbox" id = '+bachey_arr[i]+'  name=' + bachey_arr[i]+' value="yes"><label for='+bachey_arr[i]+'>'+ bachey_arr[i]+'</label><br>'
                 
+            }
+
+            console.log("header is", header)
+           var forms = document.getElementsByTagName("form");
+            for(var i = 0; i < forms.length; i++){
+                forms[i].id = "custom";
+                
+
+                input = document.createElement('input');
+                input.setAttribute('name', "headers");
+                input.setAttribute('value', header);
+                input.setAttribute('type', 'hidden');
+
+                forms[i].appendChild(input);
+                console.log(forms[i])
             }
 
 

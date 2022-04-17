@@ -44,6 +44,8 @@
         </div>
         <script>
             let str_array = '<%-headers%>';
+            let header = '<%-header%>'
+            console.log(header)
             let headers_array = JSON.parse(str_array);
             console.log(headers_array);
             let container = document.getElementById("add");
@@ -56,6 +58,20 @@
 
                 container.innerHTML = container.innerHTML + text
 
+            }
+
+            var forms = document.getElementsByTagName("form");
+            for(var i = 0; i < forms.length; i++){
+                forms[i].id = "custom";
+                
+
+                input = document.createElement('input');
+                input.setAttribute('name', "headers");
+                input.setAttribute('value', header);
+                input.setAttribute('type', 'hidden');
+
+                forms[i].appendChild(input);
+                console.log(forms[i])
             }
 
 

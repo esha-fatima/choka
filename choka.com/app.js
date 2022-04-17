@@ -11,7 +11,7 @@ const socketio = require('socket.io');
 
 
  
-let n_assessments = 300
+let n_assessments = 0;
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
@@ -106,6 +106,14 @@ db.settings({timestampsInSnapshots:true});
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
+
+//go to db and get the last assessment id and then set the global variable here
+
+db.collection('TodoAssessments').get().then((vals)=>{
+    n_assessments = vals.size+1
+    //console.log("vals length initialized to", n_assessments)
+
+})
 
 
 app.post('/filter',(req,res)=>{
@@ -742,6 +750,7 @@ app.post("/tuitionAccept",(req,res)=>{
                 let xx = {"header":sent}
                 res.render("tutorDashboard", xx)
         }).catch(()=>{
+
             db.collection('Students').doc(student).set({
                 tutor_accepted: [local_user]
                 
@@ -1200,6 +1209,8 @@ app.get("/dashboard",(req,res)=>{
    
 });
 
+
+
 app.get("/publishProfile",(req,res)=>{
     console.log("publishProfile")
     res.render("publishProfile", global_user)
@@ -1215,11 +1226,52 @@ app.get("/publishTutorProfile",(req,res)=>{
 app.get("/reviews",(req,res)=>{
     console.log("/reviews")
     res.render("reviews");
+    
 
     //now go to a page that displays all the names of the tutors
     
    
 });
+
+
+app.post("/tutorReviews",(req,res)=>{
+    console.log("inside tutor reviews")
+    console.log(req.body)
+    let headers = JSON.parse(req.body.headers)
+    console.log(headers)
+    let local_user = headers;
+    //now from these headers go to db and get all the doc data
+    const docref2 =  db.collection('Teachers').doc(headers.EmailAddress);
+    docref2.get().then((doc)=>{
+        console.log("tutor's data is ",doc.data())
+        let reviews_parsed = JSON.stringify(doc.data().Reviews)
+        let tutor_data = {
+            "Name" : doc.data().jason_obj.Name,
+            "Email" : doc.data().jason_obj.EmailAddress,
+            "Reviews":reviews_parsed,
+            "Rating" : doc.data().Rating,
+            "PreviousExperience":doc.data().PreviousExperience,
+            "Location":doc.data().Location,
+            "PhoneNumber":doc.data().PhoneNumber,
+            "localCity":local_user.City,
+            "localEmailAddress":local_user.EmailAddress,
+            "localAddress" : local_user.Address,
+            "localName":local_user.Name,
+            "localPassword":local_user.Password,
+            "localImage":local_user.Image,
+            "localPhoneNumber":local_user.PhoneNumber
+
+        }
+        
+        
+        res.render("TutorDetails",tutor_data);
+
+
+
+
+    })
+
+})
 
 app.post("/viewReq",(req,res)=>{
     console.log("in view requests")
@@ -1439,7 +1491,7 @@ app.post("/submitReview",(req,res)=>{
             console.log("old rating is ", old_rating);
             console.log("old review is ", old_reviews)
             old_rating = parseInt(old_rating);
-            
+
             let new_rating = (old_rating*(old_reviews.length));
             console.log("rating to be added is",  rating_to_be_added)
             rating_to_be_added = parseInt(rating_to_be_added);
@@ -1622,7 +1674,8 @@ app.post('/parentregistration',(req, res, next)=>{
                 City: "None Added",
                 student_request:[],
                 student_accepted:[],
-                Rating:0
+                Rating:0,
+                Reviews: []
             }).then(()=>{
                 new_user = JSON.stringify(new_user)
                 let header = {
@@ -1641,20 +1694,38 @@ app.post('/parentregistration',(req, res, next)=>{
 //ASSESSMENTS MODULE
 app.post('/studentsAssessments',(req, res, next)=>{
     console.log("in students assessments")
-    res.render("studentAssessments")
+    let obj = {
+        "header": req.body.headers
+    }
+    
+    res.render("studentAssessments",obj)
 
 })
 app.post('/tutorAssessments',(req, res, next)=>{
     console.log("in tutors assessments")
-    res.render("tutorAssessments")
+    console.log(req.body.headers)
+    let local_user = JSON.parse(req.body.headers)
+    console.log("local user is", local_user)
+    let obj = {"header": req.body.headers}
+
+    res.render("tutorAssessments",obj)
 
 })
 app.post('/create',(req, res, next)=>{
     console.log("in create assessments")
+    console.log(req.body.headers)
+    let local_user = JSON.parse(req.body.headers)
+    console.log("local user is", local_user)
+    //get the bachas of this tutor
+    db.collection('Teachers').doc(local_user.EmailAddress).get().then((doc)=>{
+        let recipient_ids = doc.data().student_accepted//['eshafatima2001@gmail.com', '123@gmail.com']
+        let rec_str = JSON.stringify(recipient_ids)
+        console.log("the ids are")
+        console.log(rec_str)
+        res.render("createAssessments",{"bachey":rec_str, "header":req.body.headers})
+    })
+    //let recipient_ids = ['eshafatima2001@gmail.com', '123@gmail.com']
     
-    let recipient_ids = ['eshafatima2001@gmail.com', '123@gmail.com']
-    let rec_str = JSON.stringify(recipient_ids)
-    res.render("createAssessments",{"bachey":rec_str})
 
 
 })
@@ -1665,10 +1736,12 @@ app.post('/todoAssessments',(req, res, next)=>{
     //we are going to iterate over all possible emails
     //now at backend iterate through to do assessments to do and get docs via ur emaillll 
     //then 
+    let local_user = JSON.parse(req.body.headers)
+    console.log("local user is", local_user)
     let assessment_headers = []
     const docRef = db.collection('TodoAssessments');
-    console.log("email is ", global_user.EmailAddress)
-    docRef.where('id', '==', global_user.EmailAddress).get().then((value)=>{
+    console.log("email is ", local_user.EmailAddress)
+    docRef.where('id', '==', local_user.EmailAddress).get().then((value)=>{
         
         console.log("retreived isss")
         value.forEach(doc=>{
@@ -1692,7 +1765,8 @@ app.post('/todoAssessments',(req, res, next)=>{
 
         })
         let str_array = JSON.stringify(assessment_headers);
-        let obj_to_be_sent = {"headers":str_array}
+
+        let obj_to_be_sent = {"headers":str_array, "header":req.body.headers}
         res.render("todoAssessments", obj_to_be_sent)
 
 
@@ -1705,11 +1779,15 @@ app.post('/todoAssessments',(req, res, next)=>{
 })
 
 app.post('/startAssessment',(req, res, next)=>{
+
     console.log("in start assessments")
+    console.log("body is", req.body)
     console.log(req.body.assessment_details)
     let assessment_header = JSON.parse(req.body.assessment_details);
     console.log("assessment to start is ", assessment_header)
+    assessment_header["my_email"] = JSON.parse(req.body.headers).EmailAddress 
     let stringified = JSON.stringify(assessment_header)
+    console.log("final assignment content is ", stringified)
     res.render("startAssessment",{"assessment_content":stringified})
 
 
@@ -1767,9 +1845,11 @@ app.post('/gradingDone',(req,res,next)=>{
 app.post('/pastAssessments',(req,res,next)=>{
     console.log("in past assessments")
     let assessment_headers = []
+    let local_user = JSON.parse(req.body.headers);
+    console.log(local_user)
     const docRef = db.collection('PastAssessments');
-    console.log("email is ", global_user.EmailAddress)
-    docRef.where('student_id', '==', global_user.EmailAddress).get().then((value)=>{
+    console.log("email is ", local_user.EmailAddress)
+    docRef.where('student_id', '==', local_user.EmailAddress).get().then((value)=>{
 
             value.forEach(doc=>{
                 console.log(doc.id, '=>', doc.data());
@@ -1791,7 +1871,8 @@ app.post('/pastAssessments',(req,res,next)=>{
         //now stringify the assessment headers array
         let stringified_arr = JSON.stringify(assessment_headers)
         console.log(stringified_arr)
-        res.render("pastAssessments", {"headers":stringified_arr})
+        
+        res.render("pastAssessments", {"headers":stringified_arr, "header":req.body.headers})
 
 
     })
@@ -1803,16 +1884,18 @@ app.post('/pastAssessments',(req,res,next)=>{
 
 app.post('/submitAssessmentRequest',(req, res, next)=>{
     console.log("in submit assessments")
+    console.log(req.body)
+    
     let submission_time = new Date().toDateString()
     console.log("submission time is ", submission_time)
     console.log(req.body)
     
     let assessment_header = JSON.parse(req.body.submit_button)
-    console.log(assessment_header)
-    //first we need to push them into past assessments pending vs graded
-    //delete from to do where id is of this bacha who just submitted
-    // in past assessments, primary key will be student email plus space plus creator email.
-    let p_key = global_user.EmailAddress + " " + assessment_header.creator_email
+    let user_email = assessment_header.my_email;
+    console.log("my email is", user_email)
+    
+   
+    let p_key = user_email + " " + assessment_header.creator_email
     console.log("pkey is", p_key)
     //save in past_assessments
     const docRef = db.collection('PastAssessments').doc(p_key);
@@ -1820,7 +1903,15 @@ app.post('/submitAssessmentRequest',(req, res, next)=>{
         if(doc.exists){
             console.log("already doneee exists");
 
-            res.render("studentAssessments");
+            db.collection('Students').doc(user_email).get().then((doc)=>{
+                let local_user = doc.data().jason_obj;
+                local_user = JSON.stringify(local_user)
+                res.render("studentAssessments", {"header":local_user});
+
+
+            })
+
+            
 
         }
         else{
@@ -1833,10 +1924,11 @@ app.post('/submitAssessmentRequest',(req, res, next)=>{
                 let dashed_ans = ans_arr.join('-')
                 answers_arr.push(dashed_ans)
             }
+            
             console.log("answers array is ", answers_arr)
             db.collection('PastAssessments').doc(p_key).set({
                 assessment_details:assessment_header,
-                student_id :global_user.EmailAddress,
+                student_id :user_email,
                 submission_time: submission_time, 
                 answers: answers_arr,
                 grade_status: "Pending",
@@ -1844,9 +1936,20 @@ app.post('/submitAssessmentRequest',(req, res, next)=>{
             }).then(()=>{
                 console.log("added to past assessments")
                 //now redirect the user to the pageeee
-                res.render("studentAssessments")
+                db.collection('Students').doc(user_email).get().then((doc)=>{
+                    let local_user = doc.data().jason_obj;
+                    local_user = JSON.stringify(local_user)
+                    res.render("studentAssessments", {"header":local_user});
+    
+    
+                })
+    
+
+                
 
             })
+            
+            
 
 
         }
@@ -1865,8 +1968,11 @@ app.post('/submitAssessmentRequest',(req, res, next)=>{
 app.post('/grade',(req, res, next)=>{
     console.log("in grade assessments")
     // u can pull the email of the person who sent this request
-    let email_tutor = global_user.EmailAddress
+    
+    let email_tutor = JSON.parse(req.body.headers).EmailAddress
+    console.log(email_tutor)
     // now make a caa
+    
     const docRef = db.collection('PastAssessments');
     let assessment_headers = []
     docRef.get().then((val)=>{
@@ -1886,7 +1992,7 @@ app.post('/grade',(req, res, next)=>{
         console.log(assessment_headers)
         //now u have to stringify this array and send it as an object
         let stringified_arr = JSON.stringify(assessment_headers)
-        res.render("gradeAssessments", {"headers":stringified_arr})
+        res.render("gradeAssessments", {"headers":stringified_arr, "header":req.body.headers})
         
 
         
@@ -1908,13 +2014,14 @@ app.post('/createAssessmentRequest',(req, res, next)=>{
     let recipients_list = []
     console.log("nparams is", n_req_params)
 
-    for(let x = 6; x<n_req_params-3; x=x+1){
+    for(let x = 6; x<n_req_params-4; x=x+1){
         recipients_list.push(Object.keys(req.body)[x])
         console.log("added")
     }
     //get the intended recipients of the assessments
     //generate a random assessmentid
     console.log(recipients_list)
+    let local_user = JSON.parse(req.body.headers)
     /////CHANGE THIS AND USE FIREBASE TOO GENERATE THE ASSESSMENT ID COZ SERVER MAY START AGAINNNN
     let assessmentid = n_assessments + 1;
     n_assessments = n_assessments + 1;
@@ -1931,12 +2038,13 @@ app.post('/createAssessmentRequest',(req, res, next)=>{
     }
 
     //we need to convert the creator name to dash separated form also
-    let creator_name_arr = global_user.Name.split(" ")
+    let creator_name_arr = local_user.Name.split(" ")
     let creator_name = creator_name_arr.join('-')
     console.log("arrqt is", arr_qt)
+    
     console.log("generated id is ", assessmentid)
     let assessment_obj = {  "id" : assessmentid.toString(),
-                            "creator_email": global_user.EmailAddress,
+                            "creator_email": local_user.EmailAddress,
                             "creator_name" : creator_name,
                             "Subject":req.body.Subject,
                             "Syllabus":req.body.Syllabus,
@@ -1969,7 +2077,7 @@ app.post('/createAssessmentRequest',(req, res, next)=>{
                 //for every recipient add an entry into the To do waala table 
                 let promise_list = []
                 for(let j = 0; j<recipients_list.length; j = j+1){
-                    let key = recipients_list[j] +" "+global_user.EmailAddress;
+                    let key = recipients_list[j] +" "+local_user.EmailAddress;
                     
                     promise_list.push(db.collection('TodoAssessments').doc(key).set({
 
@@ -1982,7 +2090,8 @@ app.post('/createAssessmentRequest',(req, res, next)=>{
                 console.log("promise list",promise_list);
                 //now when ur doneee only then redirect
                 Promise.all(promise_list).then((values) => {
-                    res.render("tutorAssessments");
+                    let obj = {"header": req.body.headers}
+                    res.render("tutorAssessments",obj);
 
                 });
                 
