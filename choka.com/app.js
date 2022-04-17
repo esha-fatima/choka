@@ -31,7 +31,7 @@ let global_user = ""
 
 io.on('connection',socket=>{
     console.log("connected");
-    socket.emit("chatidentifier",chat_identifier) // this will emit to only that user
+    //socket.emit("chatidentifier",chat_identifier) // this will emit to only that user
     //socket.broadcast.emit("message", "A user has joined the chat");
     //u can know which user it is from global
     
@@ -43,6 +43,7 @@ io.on('connection',socket=>{
         let sender_email = message_arr[2]
         let rec_id = message_arr[1]
         let message_to_be_sent = message_arr[0]
+        console.log("mesg array is", message_arr)
         const docRef = db.collection('Chats').doc(rec_id);
         docRef.get().then((doc)=>{
             if(doc.exists){
@@ -60,7 +61,8 @@ io.on('connection',socket=>{
                     jason_obj:message_history_object
                 }).then(()=>{
                     //console.log("firebase updated");
-                    let message_to_be_emitted = message_to_be_sent + "_" + rec_id
+                    let message_to_be_emitted = message_to_be_sent + "_" + rec_id+"_"+sender_email
+                    
                     //the ur supposed to emit to the user with teh chat id...and see if they can receive and render it
                     io.emit("someMessage", message_to_be_emitted)
                 });

@@ -53,6 +53,7 @@
         
     </head>
     <body class = "body_chat">
+        <input type = "hidden" id = "cc">
         <div class="v36_38_chat">
             <div class="search_v119_1837">
                 <img class="v13_23" src = "/views/vector_back.png" />
@@ -82,7 +83,7 @@
             let message_log = object_header.jason_obj
             let my_email = object_header.tutor_email
             let recipient_email =  object_header.student_email
-            
+            document.getElementById("cc").value = recipient_email + " " + my_email
             let title_span = document.getElementById("title")
             console.log("first")
             //parse the message log
@@ -95,6 +96,26 @@
             let keys = Object.keys(message_obj);
             title_span.innerHTML = name
             console.log(message_obj)
+            let dummy_keys = []
+            for(let d = 0; d<n_keys; d = d+1){
+                
+                let match_finding = d +1
+                for(let x = 0; x<n_keys; x = x+1){
+                    let val = keys[x];
+                    let rubbish = val.split("_");
+                    let number = rubbish.pop();
+                    if(match_finding == number){
+                        //this means this is the right one
+                        dummy_keys.push(val);
+                        break;
+                    }
+                    
+
+                }
+                
+            }
+            console.log(dummy_keys)
+            keys = dummy_keys;
             let i = 0
             
             //console.log((keys[0].split("_"))[0])

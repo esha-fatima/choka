@@ -53,6 +53,7 @@
         
     </head>
     <body class = "body_chat">
+        <input type = "hidden" id = "cc">
         <div class="v36_38_chat">
 
             <div class="search_v119_1837">
@@ -83,7 +84,7 @@
             let message_log = object_header.jason_obj
             let my_email = object_header.student_email
             let recipient_email =  object_header.tutor_email
-            
+            document.getElementById("cc").value = my_email + " " + recipient_email 
             let title_span = document.getElementById("title")
             console.log("first")
             //parse the message log
@@ -97,6 +98,32 @@
             title_span.innerHTML = name
             console.log(message_obj)
             let i = 0
+            console.log("keys are", keys)
+            //we are going to sort the keys waala array
+            let dummy_keys = []
+            for(let d = 0; d<n_keys; d = d+1){
+                
+                let match_finding = d +1
+                for(let x = 0; x<n_keys; x = x+1){
+                    let val = keys[x];
+                    let rubbish = val.split("_");
+                    let number = rubbish.pop();
+                    if(match_finding == number){
+                        //this means this is the right one
+                        dummy_keys.push(val);
+                        break;
+                    }
+                    
+
+                }
+                
+            }
+            console.log(dummy_keys)
+            keys = dummy_keys;
+
+
+
+            //////////////////////////////////
             
             //console.log((keys[0].split("_"))[0])
             for( i = 0; i<n_keys; i = i +1){
@@ -115,7 +142,8 @@
             let chat_id = object_header.student_email +"/"+object_header.tutor_email
             console.log("chatidddd is", chat_id)
             adj.insertAdjacentHTML('beforeend',`<input id = "text" name = "typed_text" class="v44_227_chat" placeholder="Type message"/> <button name = "chat_identifier" value = `+chat_id+` id = "send">Send</button>`) 
-            
+        
+           
         </script>
         <script src = "../socket.io/socket.io.js"> </script>
         <script src = "/js/index.js"> </script>
