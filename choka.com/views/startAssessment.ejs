@@ -117,6 +117,10 @@
         //now parse it here
         let content_object = JSON.parse(assignment_content);
         console.log(content_object)
+        let naam = content_object.creator_name;
+        naam = naam.split("-");
+        naam = naam.join(" ");
+        document.getElementById("creator_name").innerHTML = "Created by: " + naam;
         let total_minutes = content_object.Minutes
         let subject = content_object.Subject
         let syllabus = content_object.Syllabus
