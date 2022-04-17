@@ -17,11 +17,11 @@
         <div class = "start_header">
         </br>
             <h2 id = "header_subject" class = "start_subject"></h2>
-            <h2 class = "start_creator">Created by: Rose Dunhill</h2>
+            <h2 id = "creator_name" class = "start_creator">Created by: Rose Dunhill</h2>
             <h2 id = "header_points"class = "start_score"></h2>
             
                 <div class = "timer">
-                    <p class = "start_time">Starting time: 50</p>
+                    <p  id = "tt" class = "start_time">Starting time: 50</p>
                     <p id = "time_remaining"class = "time_remaining">Time remaining: 50</p>
                     <p id = "total_time" class = "time_allotted"> </p>
 
@@ -132,7 +132,12 @@
         header_subject.innerHTML ="Subject:" +  subject
         header_points.innerHTML = "Total Points:" + total_points
         header_time.innerHTML = "Time allotted:" +  total_minutes + " minutes"
-
+        let hell= "Starting time: "+ new Date()
+        hell = hell.split(" ")
+        hell = hell.slice(3,7)
+        hell = hell.join(" ")
+        console.log("hell is",hell)
+        tt.innerHTML = "Starting time: "+ hell;
         
 
         let n_questions = content_object.QuestionText.length
@@ -163,7 +168,7 @@
         }
 
         let date_started = new Date();
-        let date_end = new Date(date_started.getTime() + 50*60000).getTime();
+        let date_end = new Date(date_started.getTime() + parseInt(total_minutes)*60000).getTime();
         console.log("data started is", date_started)
         console.log("date ended", date_end)
         var x = setInterval(function() {
