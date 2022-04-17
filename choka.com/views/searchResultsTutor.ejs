@@ -68,7 +68,7 @@
             <div class="search_name"></div>
             <span class="search_v43_190">Search Results</span>
             <div class="search_v119_1837">
-                <img class="v13_23" src = "/images/Vectorbackarrow.png"   />
+                <img class="v13_23" src = "/images/Vectorbackarrow.png"  onclick="location.replace('tutorDashboard')" />
                 <img class = "v119_1814" src="/images/e-learning-isometric-composition_1284-21095 4logo.png"  />
                 <img class = "choka_register" src="/images/Group 9.png" />
                 <span class="v13_3">Back</span>
@@ -107,7 +107,7 @@
 
             
             results = document.getElementById("results");
-            let results_content = '<form method="POST"><div class="search_v39_146"></div><button class="search_v39_171" formaction="/tuitionAccept"  name="student" value="'+email+'" type = "submit">Accept Request</button></form> <div class="search_name"></div><span class="search_v39_152">Class: '+grade+' </span><img class = "search_v39_147" src="/images/header_image.jpg" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_1691">'+Rate+'PKR/hour</span><div class="search_v39_170"></div><form method = "POST"><button class="search_v39_172" type = "submit" name = "requested" value ="'+name+" "+experience+" "+email+'" method = "POST" formaction = "/messageRequestTutor">Message</button></form>';
+            let results_content = '<form method="POST"><div class="search_v39_146"></div><button class="search_v39_171" formaction="/tuitionAccept"  name="student" value="'+email+'" type = "submit">Accept Request</button></form> <div class="search_name"></div><span class="search_v39_152">Class: '+grade+' </span><img class = "search_v39_147" src= "/images/imgbin_user-interface-design-computer-icons-default-png.png" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_1691">'+Rate+'PKR/hour</span><div class="search_v39_170"></div><form method = "POST"><button class="search_v39_172" type = "submit" name = "requested" value ="'+name+" "+experience+" "+email+'" method = "POST" formaction = "/messageRequestTutor">Message</button></form>';
             results.innerHTML =results_content 
             
             
@@ -131,7 +131,7 @@
 
                 
                 results = document.getElementById("results");
-                let results_content ='<form method="POST"><div class="search_v39_146"></div><button class="search_v39_171" formaction="/tuitionAccept"  name="student" value="'+email+'" type = "submit">Accept Request</button></form> <div class="search_name"></div><span class="search_v39_152">Class: '+grade+' </span><img class = "search_v39_147" src="/images/header_image.jpg" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_1691">'+Rate+'PKR/hour</span><div class="search_v39_170"></div><form method = "POST"><button class="search_v39_172" type = "submit" name = "requested" value ="'+name+" "+experience+" "+email+'" method = "POST" formaction = "/messageRequestTutor">Message</button></form>';
+                let results_content ='<form method="POST"><div class="search_v39_146"></div><button class="search_v39_171" formaction="/tuitionAccept"  name="student" value="'+email+'" type = "submit">Accept Request</button></form> <div class="search_name"></div><span class="search_v39_152">Class: '+grade+' </span><img class = "search_v39_147" src= "/images/imgbin_user-interface-design-computer-icons-default-png.png" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_1691">'+Rate+'PKR/hour</span><div class="search_v39_170"></div><form method = "POST"><button class="search_v39_172" type = "submit" name = "requested" value ="'+name+" "+experience+" "+email+'" method = "POST" formaction = "/messageRequestTutor">Message</button></form>';
                 results.innerHTML = results_content
                                        
     
@@ -153,7 +153,7 @@
 
                 
                 results = document.getElementById("results");
-                let results_content = '<form method="POST"><div class="search_v39_146"></div><button class="search_v39_171" formaction="/tuitionAccept"  name="student" value="'+email+'" type = "submit">Accept Request</button></form> <div class="search_name"></div><span class="search_v39_152">Class: '+grade+' </span><img class = "search_v39_147" src="/images/header_image.jpg" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_1691">'+Rate+'PKR/hour</span><div class="search_v39_170"></div><form method = "POST"><button class="search_v39_172" type = "submit" name = "requested" value ="'+name+" "+experience+" "+email+'" method = "POST" formaction = "/messageRequestTutor">Message</button></form>';
+                let results_content = '<form method="POST"><div class="search_v39_146"></div><button class="search_v39_171" formaction="/tuitionAccept"  name="student" value="'+email+'" type = "submit">Accept Request</button></form> <div class="search_name"></div><span class="search_v39_152">Class: '+grade+' </span><img class = "search_v39_147" src= "/images/imgbin_user-interface-design-computer-icons-default-png.png" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_1691">'+Rate+'PKR/hour</span><div class="search_v39_170"></div><form method = "POST"><button class="search_v39_172" type = "submit" name = "requested" value ="'+name+" "+experience+" "+email+'" method = "POST" formaction = "/messageRequestTutor">Message</button></form>';
                 results.innerHTML = results_content
                 
             }
