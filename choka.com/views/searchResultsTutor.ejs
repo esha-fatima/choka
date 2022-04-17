@@ -124,21 +124,9 @@
            //let results = document.getElementById("results");
            
             results = document.getElementById("results");
-            let results_content = '<form method="POST"><div class="search_v39_146"></div><button class="search_v39_171" formaction="/tuitionAccept"  name="student" value="'+email+'" type = "submit">Accept Request</button></form> <div class="search_name"></div><span class="search_v39_152">Class: '+grade+' </span><img class = "search_v39_147" src= "/images/imgbin_user-interface-design-computer-icons-default-png.png" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_1691">'+Rate+'PKR/hour</span><div class="search_v39_170"></div><form method = "POST"><button class="search_v39_172" type = "submit" name = "requested" value ="'+name+" "+experience+" "+email+'" method = "POST" formaction = "/messageRequestTutor">Message</button></form>';
+            let results_content = '<form id = "custom" method="POST"><div class="search_v39_146"></div><button class="search_v39_171" formaction="/tuitionAccept"  name="student" value="'+email+'" type = "submit">Accept Request</button></form> <div class="search_name"></div><span class="search_v39_152">Class: '+grade+' </span><img class = "search_v39_147" src= "/images/imgbin_user-interface-design-computer-icons-default-png.png" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_1691">'+Rate+'PKR/hour</span><div class="search_v39_170"></div><form method = "POST"><button class="search_v39_172" type = "submit" name = "requested" value ="'+name+" "+experience+" "+email+'" method = "POST" formaction = "/messageRequestTutor">Message</button></form>';
             results.innerHTML =results_content 
-            var forms = document.getElementsByTagName("form");
-            for(var i = 0; i < forms.length; i++){
-                forms[i].id = "custom";
-                
-
-                input = document.createElement('input');
-                input.setAttribute('name', "headers");
-                input.setAttribute('value', header);
-                input.setAttribute('type', 'hidden');
-
-                forms[i].appendChild(input);
-                //console.log(forms[i])
-            }
+            
             
             let len = con.length
             function next(){
@@ -160,7 +148,7 @@
 
                 
                 results = document.getElementById("results");
-                let results_content ='<form method="POST"><div class="search_v39_146"></div><button class="search_v39_171" formaction="/tuitionAccept"  name="student" value="'+email+'" type = "submit">Accept Request</button></form> <div class="search_name"></div><span class="search_v39_152">Class: '+grade+' </span><img class = "search_v39_147" src= "/images/imgbin_user-interface-design-computer-icons-default-png.png" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_1691">'+Rate+'PKR/hour</span><div class="search_v39_170"></div><form method = "POST"><button class="search_v39_172" type = "submit" name = "requested" value ="'+name+" "+experience+" "+email+'" method = "POST" formaction = "/messageRequestTutor">Message</button></form>';
+                let results_content ='<form id = "custom" method="POST"><div class="search_v39_146"></div><button class="search_v39_171" formaction="/tuitionAccept"  name="student" value="'+email+'" type = "submit">Accept Request</button></form> <div class="search_name"></div><span class="search_v39_152">Class: '+grade+' </span><img class = "search_v39_147" src= "/images/imgbin_user-interface-design-computer-icons-default-png.png" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_1691">'+Rate+'PKR/hour</span><div class="search_v39_170"></div><form method = "POST"><button class="search_v39_172" type = "submit" name = "requested" value ="'+name+" "+experience+" "+email+'" method = "POST" formaction = "/messageRequestTutor">Message</button></form>';
                 results.innerHTML = results_content
                                        
     
@@ -182,9 +170,24 @@
 
                 
                 results = document.getElementById("results");
-                let results_content = '<form method="POST"><div class="search_v39_146"></div><button class="search_v39_171" formaction="/tuitionAccept"  name="student" value="'+email+'" type = "submit">Accept Request</button></form> <div class="search_name"></div><span class="search_v39_152">Class: '+grade+' </span><img class = "search_v39_147" src= "/images/imgbin_user-interface-design-computer-icons-default-png.png" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_1691">'+Rate+'PKR/hour</span><div class="search_v39_170"></div><form method = "POST"><button class="search_v39_172" type = "submit" name = "requested" value ="'+name+" "+experience+" "+email+'" method = "POST" formaction = "/messageRequestTutor">Message</button></form>';
+                let results_content = '<form id = "custom" method="POST"><div class="search_v39_146"></div><button class="search_v39_171" formaction="/tuitionAccept"  name="student" value="'+email+'" type = "submit">Accept Request</button></form> <div class="search_name"></div><span class="search_v39_152">Class: '+grade+' </span><img class = "search_v39_147" src= "/images/imgbin_user-interface-design-computer-icons-default-png.png" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_1691">'+Rate+'PKR/hour</span><div class="search_v39_170"></div><form method = "POST"><button class="search_v39_172" type = "submit" name = "requested" value ="'+name+" "+experience+" "+email+'" method = "POST" formaction = "/messageRequestTutor">Message</button></form>';
                 results.innerHTML = results_content
                 
+            }
+
+
+            var forms = document.getElementsByTagName("form");
+            for(var i = 0; i < forms.length; i++){
+                forms[i].id = "custom";
+                
+
+                input = document.createElement('input');
+                input.setAttribute('name', "headers");
+                input.setAttribute('value', header);
+                input.setAttribute('type', 'hidden');
+
+                forms[i].appendChild(input);
+                //console.log(forms[i])
             }
             
         </script>
