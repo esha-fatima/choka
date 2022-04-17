@@ -1,0 +1,119 @@
+<%-include("partials/header");-%>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/b3a8e06bd3.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <form action = "/adminDash" method="POST"></form>
+        <div class="dashboard_1">
+            <div class="blue_tab">
+
+            </div>
+            <span class="tab_text">
+                choka.com
+            </span>
+            
+            <div class="tab_pic"></div>
+            <div class="dashboard_2"></div>
+            <button <i class="fa fa-long-arrow-left"> </i> </button>
+            <span class="back_text">Back to Home</span>
+            <span class="welcome_text" id = "n"></span>
+            <div class="left_tab"></div>
+            <div class="indicator">
+                <div class="indicator2"></div>
+            </div>
+            <div class="logout_icon">
+                <div class="logout_icon2"></div>
+                <div class="logout_icon3"></div>
+            </div>
+            <div class="settings_icon">
+                <div class="settings_icon2">
+                    <div class="settings_icon3"></div>
+                    <div class="settings_icon4"></div>
+                    <div class="settings_icon5"></div>
+                    <div class="settings_icon6"></div>
+                </div>
+            </div>
+            <div class="notifications_icon">
+                <div class="notifications_icon2">
+                    <div class="notifications_icon3"></div>
+                    <div class="notifications_icon4"></div>
+                </div>
+            </div>
+            <div class="tutors_icon"></div>
+            <span class="dashboard_text">Dashboard</span>
+            <span class="del_account_text">Deleted Accounts</span>
+            <span class="blocked_text">Blocked Accounts</span>
+            <span class="reports_text">Reports</span>
+            <span class="notifications_text">Notifications</span>
+            <span class="settings_text">Settings</span>
+            <span class="logout_text">Log out</span>
+            <div class="dashboard_icon">
+                <!-- <div class="dashboard_v99_1408"></div> -->
+            </div>
+            <div class="blocked_icon">
+                <div class="blocked_icon2"></div>
+            </div>
+            <div class="reports_icon">
+                <div class="reports_icon2"></div>
+            </div>
+            <div class="search_box"></div>
+            <form action="/adminSearchProfile" method = "POST">
+            <button class="search_profile_text" >Search Profiles</button>
+            </form>
+            <span class="search_profile_text2">Search Profiles all over the application</span>
+            <div class="approve_profile_box"></div>
+            <div class="delete_profile_box"></div>
+            <div class="search_profile_icon">
+<!--                 <div class="dashboard_v99_1439"></div> -->
+            </div>
+          <form  action="/adminApproveProfile" method = "POST">
+            <button class="Registeration_text">Registeration Requests </button>
+          </form>
+          
+          <form action="/adminDeleteProfile" method = "POST">
+            <button class="del_profile_button" >Delete Profile</button>
+          </form>
+            <div class="register_icon">
+<!--                 <div class="dashboard_v99_1442"></div> -->
+            </div>
+            <div class="del_profile_icon">
+<!--                 <div class="dashboard_v99_1445">
+                    <div class="dashboard_v99_1446"></div>
+                </div> -->
+            </div>
+            <span class="registeration_text2" >Approve or delete tutors registeration requests</span>
+            <span class="delete_profile_text2">Delete any user's profile</span>
+            <span class="view_profile">View Profile</span>
+        </div>
+        <script>
+            let name = 'Admin'
+            name = "Welcome " + name + " !";
+            let tt = document.getElementById("n");
+            tt.innerText = name;
+            /*
+            let find_button = document.getElementsByClassName("dashboard_v99_1435")
+            find_button.addEventListener("click", myFunction);
+            function myFunction(){
+                console.log("here")
+                const xhttp = new HttpRequest();
+                xhttp.open("GET", "http://localhost:3000/");
+                xhttp.send();
+                const books = JSON.parse(xhttp.responseText);
+            }
+*/
+
+            
+
+            
+            
+
+
+
+        </script>
+    </body>
+    </html>
+    <br/>
+    <br/> 
+

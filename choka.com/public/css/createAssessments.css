@@ -1370,6 +1370,7 @@
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     overflow: hidden;
+    
   }
   .v79_1119_createAssessments {
     width: 143px;
@@ -1388,6 +1389,8 @@
     opacity: 1;
     text-align: left;
     height: 55px;
+    border:none;
+
   }
   .v79_1119_createAssessments_b {
     width: 143px;
@@ -1407,6 +1410,7 @@
     left: 2px;
     text-align: center;
     height: 55px;
+    border:none;
   }
 
   .v88_1208_createAssessments {

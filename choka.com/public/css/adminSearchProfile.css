@@ -32,21 +32,17 @@
       top: 760px;
       left: 1400px;
       position: absolute;
-      image-resolution: 1000px;
-      border:none;
   }
   #previous{
     top: 760px;
     left: 50px;
     position: absolute;
-    image-resolution: 1000px;
-    border:none;
 
   }
 
 
   .search_v39_146 {
-    width: 1300px;
+    width: 1177px;
     height: 300px;
     background: rgba(255,255,255,1);
     opacity: 1;
@@ -64,12 +60,6 @@
     width: 152px;
     height: 48px;
     background: rgba(3,133,182,1);
-    color: white;
-    border: none;
-    /* fontsize:50px; */
-    font-weight: SemiBold;
-    font-family: Roboto;
-    font-size:18px;
     opacity: 1;
     position: absolute;
     top: 845px;
@@ -81,21 +71,16 @@
     overflow: hidden;
   }
   .search_v39_173 {
-    background: transparent;
-    border: none;
-    width: 500px;
-    /* width: 131px; */
+    width: 131px;
     color: rgba(255,255,255,1);
     position: absolute;
-    top: 858px;
-    left: 1008px;
+    top: 855px;
+    left: 1060px;
     font-family: Roboto;
     font-weight: Regular;
-    font-size: 18px;
+    font-size: 20px;
     opacity: 1;
     text-align: left;
-    padding-bottom: 10px;
-    margin-right: 110px;
   }
   .search_name {
     color: #fff;
@@ -113,19 +98,18 @@
   .search_v39_147 {
     width: 218px;
     height: 231px;
-    /* background: url("../images/v39_147.png"); */
+    background: url("../images/v39_147.png");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    background: transparent;
     opacity: 1;
     position: absolute;
-    top: 660px;
+    top: 646px;
     left: 124px;
-    /* border-top-left-radius: 100px;
+    border-top-left-radius: 100px;
     border-top-right-radius: 100px;
     border-bottom-left-radius: 100px;
-    border-bottom-right-radius: 100px; */
+    border-bottom-right-radius: 100px;
     overflow: hidden;
   }
   .search_v39_148 {
@@ -158,57 +142,6 @@
   .search_name {
     color: #fff;
   }
-  .msg_button{
-
-    /* background: transparent;
-    border: none;
-    top: 845px;
-    margin-right: 25px!important;
-    margin-bottom: 20px; */
-
-    width: 152px;
-    height: 48px;
-    background: rgba(3,133,182,1);
-    color: rgb(149, 16, 16);
-    border: none;
-    /* fontsize:50px; */
-    font-weight: SemiBold;
-    font-family: Roboto;
-    font-size:18px;
-    opacity: 1;
-    position: absolute;
-    top: 845px;
-    left: 10px;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
-    overflow: hidden;
-
-  }
-  .search_v39_1691 {
-    width: 153px;
-    color: rgba(0,0,0,1);
-    position: absolute;
-    /* top: 711px; */
-    /* top: 800px; */
-    top: 761px;
-    left: 972px;
-    font-family: Roboto;
-    font-weight: Regular;
-    font-size: 30px;
-    opacity: 1;
-    text-align: left;
-
-    /* width: 324px; */
-    /* color: rgba(0,0,0,1); */
-    /* position: absolute; */
-    
-    /* left: 396px; */
-    /* font-size: 30px; */
-    /* opacity: 1; */
-    /* text-align: left; */
-  }
   .search_v39_169 {
     width: 153px;
     color: rgba(0,0,0,1);
@@ -224,7 +157,7 @@
   .search_v39_170 {
     width: 152px;
     height: 48px;
-    background: rgb(182, 51, 3);
+    background: rgba(3,133,182,1);
     opacity: 1;
     position: absolute;
     top: 845px;
@@ -236,53 +169,16 @@
     overflow: hidden;
   }
   .search_v39_172 {
-
-    height: 48px;
-    background: transparent;
-    color: rgb(255, 255, 255);
-    border: none;
-    /* fontsize:50px; */
-    font-weight: SemiBold;
-    font-family: Roboto;
-    font-size:18px;
-    opacity: 1;
+    width: 152px;
+    color: rgba(255,255,255,1);
     position: absolute;
-    top: 845px!important;
-    left: 821px!important;
-    overflow: hidden;
-  }
-  .search_admin {
-
-    height: 48px;
-    background: transparent;
-    color: rgb(255, 255, 255);
-    border: none;
-    /* fontsize:50px; */
-    font-weight: SemiBold;
+    top: 840px;
+    left: 813px;
     font-family: Roboto;
-    font-size:18px;
+    font-weight: Regular;
+    font-size: 20px;
     opacity: 1;
-    position: absolute;
-    top: 855px!important;
-    left: 826px!important;
-    overflow: hidden;
-  }
-  .search_v39_1772 {
-
-    height: 48px;
-    background: transparent;
-    color: rgb(255, 255, 255);
-    border: none;
-    
-    /* fontsize:50px; */
-    font-weight: SemiBold;
-    font-family: Roboto;
-    font-size:18px;
-    opacity: 1;
-    position: absolute;
-    top: 853px!important;
-    left: 823px!important;
-    overflow: hidden;
+    text-align: left;
   }
   .search_v39_174 {
     width: 1050px;
@@ -404,9 +300,6 @@
     border-bottom-left-radius: 100px;
     border-bottom-right-radius: 100px;
     overflow: hidden;
-  }
-  .findTutors_v36_321 {
-    border: none !important;
   }
   .search_v119_1840 {
     width: 53px;

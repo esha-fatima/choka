@@ -79,22 +79,7 @@
            
             <div class="search_name"></div>
             <div id ="results">
-                <!--
-            <div class="search_v39_146"></div>
-            <div class="search_v39_171"></div>
-            <span class="search_v39_173">Accept Request</span>
-            <div class="search_name"></div>
-            <span class="search_v39_152">Experience: 3 years </span>
-            <div class="search_v39_147"></div>
-            <span class="search_v39_148">Mr. Bean</span>
-            <span class="search_v39_149">Mathematics & Science</span>
-            <div class="search_name"></div>
-            <div class="search_name"></div>
-            <span class="search_v39_169">4.0</span>
-            <div class="search_v39_170"></div>
-            <span class="search_v39_172">Message</span>
-            <div class="search_v39_174"></div>
-            -->
+
             </div>
         </div>
         <script>
@@ -117,7 +102,7 @@
 
             let results_array = '<%-bl%>'
             let results = document.getElementById("results");
-            //let results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><span class="search_v39_173">Accept Request</span> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Message</span><div class="search_v39_174"></div>';
+            
             
             let con = JSON.parse(results_array)
             //results.innerHTML ='<h1>'+ con+ '</h1>'
@@ -126,15 +111,20 @@
             let obj = objx
             let name = obj.Name
             let subject = obj.Subject
-            let experience = obj.Experience
-            let rating = obj.Rating
+            let experience = "exp"
+            // let rating = obj.Rating
             let email = obj.EmailAddress
+            let grade = obj.Class
+            let Rate = obj.Rate
+
             
             //let results = document.getElementById("results");
             
            
            //let results = document.getElementById("results");
-           let results_content = '<form action="/tuitionRequest" id = "custom" method="POST"><div class="search_v39_146"></div><button class="search_v39_171" formaction="/tuitionRequest" method="POST" name="tutor" value='+'\"'+email+'\"'+'>Send Request</button></form> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><img class = "search_v39_147" src="/images/header_image.jpg" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172"><form method = "POST"><button type = "submit" name = "requested" value ="'+name+" "+experience+" "+email+'" method = "POST" formaction = "/messageRequestTutor">Message</button></form></span>';
+           
+            results = document.getElementById("results");
+            let results_content = '<form action="/tuitionRequest" id = "custom" method="POST"><div class="search_v39_146"></div><button class="search_v39_171" formaction="/tuitionAccept"  name="student" value="'+email+'" type = "submit">Accept Request</button></form> <div class="search_name"></div><span class="search_v39_152">Class: '+grade+' </span><img class = "search_v39_147" src="/images/header_image.jpg" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_1691">'+Rate+'PKR/hour</span><div class="search_v39_170"></div><form method = "POST"><button class="search_v39_172" type = "submit" name = "requested" value ="'+name+" "+experience+" "+email+'" method = "POST" formaction = "/messageRequestTutor">Message</button></form>';
             results.innerHTML =results_content 
             var forms = document.getElementsByTagName("form");
             for(var i = 0; i < forms.length; i++){
@@ -159,16 +149,19 @@
                 
                 obj = con[index]
                 
-                name = obj.Name
-                subject = obj.Subject
-                experience = obj.Experience
-                rating = obj.Rating
-                email = obj.EmailAddress
-                results = document.getElementById("results");
-                results_content = '<form action="/tuitionAccept" id = "custom" method="POST"><div class="search_v39_146"></div><img class = "search_v39_147" src="/images/header_image.jpg" /><button class="search_v39_173" name="student" value='+'\"'+obj+'\"'+'>Accept Request</button> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Message</span></form>';
-                results.innerHTML = results_content
+                let obj = objx
+                let name = obj.Name
+                let subject = obj.Subject
+                let experience = "exp"
+                // let rating = obj.Rating
+                let email = obj.EmailAddress
+                let grade = obj.Class
+                let Rate = obj.Rate
+
                 
-                                 
+                results = document.getElementById("results");
+                let results_content = '<form action="/tuitionRequest" id = "custom" method="POST"><div class="search_v39_146"></div><button class="search_v39_171" formaction="/tuitionAccept"  name="student" value="'+email+'" type = "submit">Accept Request</button></form> <div class="search_name"></div><span class="search_v39_152">Class: '+grade+' </span><img class = "search_v39_147" src="/images/header_image.jpg" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_1691">'+Rate+'PKR/hour</span><div class="search_v39_170"></div><form method = "POST"><button class="search_v39_172" type = "submit" name = "requested" value ="'+name+" "+experience+" "+email+'" method = "POST" formaction = "/messageRequestTutor">Message</button></form>';
+                results.innerHTML = results_content
                                        
     
             }
@@ -179,13 +172,17 @@
                 }
                 
                 obj = con[index]
-                name = obj.Name
-                subject = obj.Subject
-                experience = obj.Experience
-                rating = obj.Rating
-                email = obj.EmailAddress
+                let name = obj.Name
+                let subject = obj.Subject
+                let experience = "exp"
+                // let rating = obj.Rating
+                let email = obj.EmailAddress
+                let grade = obj.Class
+                let Rate = obj.Rate
+
+                
                 results = document.getElementById("results");
-                results_content = '<form action="/tuitionAccept" id = "custom" method="POST"><div class="search_v39_146"></div><img class = "search_v39_147" src="/images/header_image.jpg" /><button class="search_v39_173" name="student" value='+'\"'+obj+'\"'+'>Accept Request</button> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Message</span></form>'
+                let results_content = '<form action="/tuitionRequest" id = "custom" method="POST"><div class="search_v39_146"></div><button class="search_v39_171" formaction="/tuitionAccept"  name="student" value="'+email+'" type = "submit">Accept Request</button></form> <div class="search_name"></div><span class="search_v39_152">Class: '+grade+' </span><img class = "search_v39_147" src="/images/header_image.jpg" /></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_1691">'+Rate+'PKR/hour</span><div class="search_v39_170"></div><form method = "POST"><button class="search_v39_172" type = "submit" name = "requested" value ="'+name+" "+experience+" "+email+'" method = "POST" formaction = "/messageRequestTutor">Message</button></form>';
                 results.innerHTML = results_content
                 
             }

@@ -143,7 +143,8 @@ app.post('/messageRequestTutor',(req,res)=>{
     console.log("chat identifier is ", chat_identifier)
     const docRef = db.collection('Chats').doc(chat_identifier);
     docRef.get().then((doc)=>{
-        if(doc.exists){
+        if(doc.exists)
+        {
             console.log("doc is", doc.data());
             let message_history_object = doc.data().jason_obj
             let tutor_in_chat = doc.data().tutor_email
@@ -181,7 +182,7 @@ app.post('/messageRequestTutor',(req,res)=>{
             });
 
         }
-    })
+    });
 
 
 
@@ -303,7 +304,46 @@ app.post('/messageRequest',(req,res)=>{
 
 
 
+app.post("/resetPassword",(req,res)=>{
+    
+    res.render("forgetPassword");
+})
 
+app.post("/reset",(req,res)=>{
+    console.log(req.body)
+    let email = req.body["Email"]
+    let password =  req.body["Password"]
+    let confrim_pass = req.body["Confirm_Password"]
+
+    if (req.body["Email"] == '' || password == '' || password != confrim_pass)
+    {
+        res.render("forgetPassword");
+    }
+    else
+    {
+       
+            db.collection('Students').doc(email).update({
+                Password : password
+
+            }).then(()=>{
+                console.log("Password Changed");
+                res.render("login", global_user);
+            }).catch((doc)=>{
+            
+                db.collection('Teachers').doc(email).update({
+                    Password : password
+    
+                }).then(()=>{
+                    console.log("Password Changed");
+                    res.render("login", global_user);
+                }).catch((doc)=>{
+                    console.log("User not Found")
+                    res.render("forgetPassword",global_user)
+                })
+            })
+    }
+    
+});
 
 
 
@@ -460,28 +500,10 @@ app.post('/displayChatsTutor', (req,res)=>{
                 console.log("i am here and teh stringified chat headers are", stringified_chat_headers)
                 res.render("displayChatsTutor", {"chat_headers": stringified_chat_headers, "header":stringified_header})
 
-                
-
             });
-            //now u have all the promises
-
-           
-           
-
-
-        })
-        
-
-
-        
+        })    
     })
-    
-    
-   
-
 })
-
-
 
 
 
@@ -513,25 +535,122 @@ app.post('/searchRequest',(req,res)=>{
  })
 
 
- app.post('/searchRequestFromTutor',(req,res)=>{
-    //when u get request to search for THE STUDENT IN THE STUDENTS' DB
-    console.log("here")
-    //u will have the search parameters stored in the body of the request
-    ////search
-    //3 results
-    //then get all the relevnat details from firebase and get the search results in the form of an array
-    let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
-    let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
-    let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
-    let results_array = [
-       obj1, obj2, obj3
-       ]
-   let ff = JSON.stringify(results_array)
-   console.log(ff)
-   let xx = {"bl":ff};
-   //console.log(res)
-   res.render("searchResultsTutor",xx)
+ app.post('/adminSearchProfile', (req,res)=>{
+    
+    // console.log(45, global_user.EmailAddress)
+    let user_list = []
+    db.collection("Teachers").get().then((snapshot) => {
+        
+        // let count = 0
+        snapshot.docs.map(doc => {
+            let data = doc.data()
+            user_list.push(data)
 
+        })
+    }).then(()=>{ 
+         db.collection("Students").get().then((snapshot) => {
+            snapshot.docs.map(doc => {
+                let data = doc.data()
+                user_list.push(data)
+
+            })
+        }).then(()=>{ 
+            // console.log(tutor_list.length, tutor_list)
+            let arr_str = JSON.stringify(user_list)
+            let xx = {"bl":arr_str};
+            res.render("adminSearchProfile",xx)
+        })
+    })
+})
+
+// app.post('/adminApproveProfile', (req,res)=>{
+    
+//     console.log(45, global_user.EmailAddress)
+//     let tutor_list = []
+//     db.collection("Teachers").get().then((snapshot) => {
+        
+//         snapshot.docs.map(doc => {
+//             let data = doc.data()
+//             tutor_list.push(data)
+//             // let arr_str = JSON.stringify([data.tutors[0]])
+//             // let xx = {"bl":arr_str};
+//             // res.render("adminSearchProfile",xx)
+
+//         })
+//     }).then(()=>{ 
+//             // console.log(tutor_list.length, tutor_list)
+//             let arr_str = JSON.stringify(tutor_list)
+//             let xx = {"bl":arr_str};
+//             res.render("adminApproveProfile",xx)
+//         })
+// })
+
+
+
+
+app.post('/adminDeleteProfile', (req,res)=>{
+    
+    // console.log(45, global_user.EmailAddress)
+    let user_list = []
+    db.collection("Teachers").get().then((snapshot) => {
+        
+        snapshot.docs.map(doc => {
+            let data = doc.data()
+            user_list.push(data)
+
+        })
+    }).then(()=>{ 
+         db.collection("Students").get().then((snapshot) => {
+            snapshot.docs.map(doc => {
+                let data = doc.data()
+                user_list.push(data)
+
+            })
+        }).then(()=>{ 
+            // console.log(tutor_list.length, tutor_list)
+            let arr_str = JSON.stringify(user_list)
+            let xx = {"bl":arr_str};
+            res.render("adminDeleteProfile",xx)
+        })
+    })
+
+})
+
+app.post('/deleteProfile', (req,res) =>{
+    let del_user = req.body.user
+
+    const docRefTutor = db.collection('Teachers').doc(del_user);
+    docRefTutor.get().then((doc)=>{
+        if(doc.exists)
+        {
+            
+            docRefTutor.delete().then((doc)=>{
+                        console.log("t", del_user)
+                        res.render("adminDash")
+                    })
+        }
+        else
+        {
+            const docRef = db.collection('Students').doc(del_user);
+
+            docRef.delete().then((doc)=>{
+                console.log("s", del_user)
+                res.render("adminDash")
+                    
+                }).catch((doc)=>{
+                    
+                    const docRefTutor = db.collection('Teachers').doc(del_user);
+                    docRefTutor.delete().then((doc)=>{
+                        console.log("t", del_user)
+                        res.render("adminDash")
+                    })
+                })    
+        }
+    })
+
+    
+
+    
 })
 
 
@@ -562,11 +681,13 @@ app.post('/filterRequestT',(req,res)=>{
         Rate:req.body.Rate,
         Days:req.body.Days,
         Location:req.body.Location,
-        Classes:req.body.Class,
+        Address:req.body.Location,
+        Class:req.body.Class,
         Subject:req.body.Subject,
         Mode:req.body.Mode,
         Hours:req.body.Hours,
-        Experience:req.body.Experience
+        Experience:req.body.Experience,
+        jason_obj:global_user
     }).then(()=>{
             db.collection('subjects').doc(req.body.Subject).update({
                 tutors: firebase.firestore.FieldValue.arrayUnion(local_user)
@@ -604,13 +725,14 @@ app.post('/filterRequest',(req,res)=>{
     local_user["Hours"]=req.body.Hours,
     console.log("local user is", local_user)
     db.collection("Students").doc(local_user.EmailAddress).update({
-        Pay:req.body.Pay,
+        Pay:req.body.Rate,
         Days:req.body.Days,
         Location:req.body.Location,
-        Classes:req.body.Class,
+        Class:req.body.Class,
         Subject:req.body.Subject,
         Mode:req.body.Mode,
         Hours:req.body.Hours,
+        jason_obj:global_user
         // Experience:req.body.Experience
     }).then(()=>{
         let new_user = JSON.stringify(local_user);
@@ -629,11 +751,14 @@ app.post('/filterTutor',(req,res)=>{
             {
                 let obj = data.tutors
                 let tutor_list = []
+                
                 for(let i=0;i<obj.length; i++)
                 {
                     tutor = data.tutors[i]
-                    if(tutor.Mode == req.body.Mode && tutor.Location == req.body.Location && tutor.Rating >= req.body.Rating && tutor.Rate <= req.body.Rate && tutor.Experience >= req.body.Experience && tutor.Class >= req.body.Class && tutor.Days >= req.body.Days && tutor.Hours >= req.body.Hours)
+                    console.log(tutor)
+                    if(tutor.Mode == req.body.Mode && tutor.Location == req.body.Location && parseInt(tutor.Rating) >= parseInt (req.body.Rating) && parseInt (tutor.Rate) <= parseInt (req.body.Rate) && parseInt (tutor.Experience) >= parseInt (req.body.Experience) && parseInt (tutor.Class) >= parseInt (req.body.Class) && parseInt (tutor.Days) >= parseInt (req.body.Days) && parseInt (tutor.Hours) >= parseInt (req.body.Hours))
                     {
+                        console.log("inside",tutor)
                         tutor_list.push(data.tutors[i])
                     }
                 }
@@ -645,6 +770,7 @@ app.post('/filterTutor',(req,res)=>{
     });
 })
 
+// /filterStudents
 
 
 app.post('/filterStudent',(req,res)=>{
@@ -663,7 +789,7 @@ app.post('/filterStudent',(req,res)=>{
                 for(let i=0;i<obj.length; i++)
                 {
                     tutor = obj.tutors[i]
-                    if(tutor.Mode == req.body.Mode && tutor.Location == req.body.Location && tutor.Rating >= req.body.Rating && tutor.Rate <= req.body.Rate && tutor.Experience >= req.body.Experience && tutor.Class >= req.body.Class && tutor.Days >= req.body.Days && tutor.Hours >= req.body.Hours)
+                    if(tutor.Mode == req.body.Mode && tutor.Location == req.body.Location && parseInt (tutor.Rate) >= parseInt (req.body.Rate) && parseInt (tutor.Experience) <= parseInt (req.body.Experience) && parseInt (tutor.Class) <= parseInt (req.body.Class) && parseInt (tutor.Days) <= parseInt (req.body.Days) && parseInt (tutor.Hours) <= parseInt (req.body.Hours))
                     {
                         tutor_list.push(data.tutors[i])
                     }
@@ -682,21 +808,7 @@ app.post('/filterStudent',(req,res)=>{
 })
 
 
-app.post('/filterFromTutor',(req,res)=>{
-    let obj1 =  {'Name': 'Student1', 'Subject': 'Physics', 'Experience': '3', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
-    let obj2 =  {'Name': 'Student2', 'Subject': 'Sociology', 'Experience': '2', 'Rating':'1.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
-    let obj3 = {'Name': 'Student3', 'Subject': 'English', 'Experience': '6', 'Rating':'4.0', 'Image': 'xx','EmailAddress':'eshafatima2001@gmail.com'}
-    let results_array = [
-       obj1, obj2, obj3
-       ]
-   let ff = JSON.stringify(results_array)
-   console.log(ff)
-   let xx = {"bl":ff};
-   //console.log(res)
-   res.render("searchResultsTutor",xx)
-     
 
-})
 
 
 app.post("/tuitionRequest",(req,res)=>{
@@ -736,6 +848,8 @@ app.post("/tuitionAccept",(req,res)=>{
    
 
     let student = req.body.student
+    console.log(11111,student)
+    console.log(3333333,global_user.EmailAddress)
 
     db.collection("Teachers").doc(local_user.EmailAddress).update({
         // student_request: firebase.firestore.FieldValue.arrayRemove(student),
@@ -774,6 +888,54 @@ app.post("/tuitionAccept",(req,res)=>{
 
 
 })
+app.get("/adminDash",(req,res)=>{
+    res.render("adminDash");
+});
+
+
+
+
+app.post('/adminSearchProfile', (req,res)=>{
+    //do a search from the databse and get the top 2 students liveing in the same city as thus particular tutor
+    //store the name, department and the bidding price of the top 2 students living in the sam area as a json object like below
+    console.log(45, global_user.EmailAddress)
+
+    const docRefTutor = db.collection('Teachers').doc(global_user.EmailAddress);
+    docRefTutor.get().then((doc)=>{
+        if(doc.exists)
+        {
+            let user_deets = doc.data().student_request
+            console.log(user_deets)
+            if(user_deets.length == 0)
+            {
+                // let n_obj = {
+
+                //     "Name" :"No student has sent a request yet!",
+                //     "EmailAddress":"user_deets.EmailAddress",
+                //     "PhoneNumber": user_deets.PhoneNumber,
+                //     "Password":user_deets.Password,
+                //     "Image":user_deets.Image,
+                //     "Address": user_deets.Address,
+                //     "City" : user_deets.City,
+
+                // }
+                // alert("No student has sent a request yet!");
+                res.render("adminDash", global_user)
+            }
+            else
+            {
+                console.log(user_deets)
+                let arr_str = JSON.stringify(user_deets)
+                let xx = {"bl":arr_str};
+                res.render("searchResultsTutor",xx)
+            }
+        }
+        else{
+            console.log("NOT FOUND")
+            res.render("adminDash", global_user)
+        }
+    })
+})
 
 
 
@@ -795,25 +957,21 @@ app.post('/findTutors', (req,res)=>{
             
             try{
                 let arr_str = JSON.stringify([data.tutors[0]])
-            let xx = {
+                let xx = {
                         "bl":arr_str,
                         "header":local_user
 
         
                     };
-            res.render("SearchResults",xx)
+                res.render("SearchResults",xx)
             }
-            catch{
-                
-            }
-                
-            // }
+            catch{}
+            
         })
-        })
-        
+    })   
     
 // 
-})
+}) 
 
 
 app.post('/findStudents', (req,res)=>{
@@ -835,13 +993,37 @@ app.post('/findStudents', (req,res)=>{
 
             let arr_str = JSON.stringify(user_deets)
             local_user = JSON.stringify(local_user)
-            console.log("header after stringifying is", local_user)
-            let xx = {"bl":arr_str,"header":local_user};
-            res.render("searchResultsTutor",xx)
+            
+            if(user_deets.length == 0)
+            {
+                // let n_obj = {
+
+                //     "Name" :"No student has sent a request yet!",
+                //     "EmailAddress":"user_deets.EmailAddress",
+                //     "PhoneNumber": user_deets.PhoneNumber,
+                //     "Password":user_deets.Password,
+                //     "Image":user_deets.Image,
+                //     "Address": user_deets.Address,
+                //     "City" : user_deets.City,
+
+                // }
+                // alert("No student has sent a request yet!");
+                let ff = {"header":local_user}
+                res.render("tutorDashboard", ff)
+            }
+            else
+            {
+                console.log("header after stringifying is", local_user)
+                let xx = {"bl":arr_str,"header":local_user};
+                res.render("searchResultsTutor",xx)
+                console.log(user_deets)
+                
+                //res.render("searchResultsTutor",xx)
+            }
         }
         else{
             console.log("NOT FOUND")
-            res.render("Login")
+            res.render("tutorDashboard", global_user)
         }
     })
 
@@ -859,18 +1041,25 @@ app.post('/loginRequest',(req,res)=>{
     console.log(req.body)
     let email = req.body["Email"]
     let password =  req.body["Password"]
-    const docRef = db.collection('Students').doc(email);
+    if (req.body["Email"] == '')
+    {
+        res.render("Login");
+    }
+    else
+    {
+        const docRef = db.collection('Students').doc(email);
 
-    docRef.get().then((doc)=>{
+        docRef.get().then((doc)=>{
         if(doc.exists){
             //then check the password from database
             console.log("User found");
-            //console.log(doc.data());
+            
             let user_deets = doc.data().jason_obj
             console.log(user_deets)
             // const myBoolean = comparePassword(password, user_deets.Password);
             // CryptoJS.AES.encrypt(password, key)
-            if((password) == user_deets.Password)
+            console.log(password, doc.data().Password);
+            if((password) === doc.data().Password)
             {
                 //this means passwords match and
                 console.log("Passwords match")
@@ -879,11 +1068,16 @@ app.post('/loginRequest',(req,res)=>{
                     "Name" :user_deets.Name,
                     "EmailAddress":user_deets.EmailAddress,
                     "PhoneNumber": user_deets.PhoneNumber,
-                    "Password":user_deets.Password,
                     "Image":user_deets.Image,
                     "Address": user_deets.Address,
                     "City" : user_deets.City,
-
+                    "Subject": doc.data().Subject,
+                    "Location":doc.data().Location,
+                    "Rate":doc.data().Rate,
+                    "Mode":doc.data().Mode,
+                    "Class":doc.data().Class,
+                    "Days":doc.data().Days,
+                    "Hours":doc.data().Hours,
                 }
                 global_user = n_obj;
                 console.log(global_user)
@@ -901,29 +1095,37 @@ app.post('/loginRequest',(req,res)=>{
             }
             
         }
-        else{
+        else
+        {
             
             const docRefTutor = db.collection('Teachers').doc(email);
             docRefTutor.get().then((doc)=>{
-                if(doc.exists){
+                if(doc.exists)
+                {
                     let user_deets = doc.data().jason_obj
                     console.log(user_deets)
                     //if it is tutor.
                     console.log("Tutor found")
-                    if(user_deets.Password == password){
+                    if(doc.data().Password == password){
                         let  n_obj = {
                             "Name" : user_deets.Name,
                             "EmailAddress":user_deets.EmailAddress,
                             "PhoneNumber": user_deets.PhoneNumber,
-                            "Password":user_deets.Password,
                             "HighestQualification":user_deets.HighestQualification,
                             "BirthDay":user_deets.BirthDay,
                             "PreviousExperience":user_deets.PreviousExperience,
                             "Transcript":user_deets.Transcript,
                             "Image" : user_deets.Image,
                             "Address": user_deets.Address,
-                            "City": user_deets.City
-
+                            "City": user_deets.City,
+                            "Subject": doc.data().Subject,
+                            "Location":doc.data().Location,
+                            "Rate":doc.data().Rate,
+                            "Mode":doc.data().Mode,
+                            "Class":doc.data().Class,
+                            "Days":doc.data().Days,
+                            "Hours":doc.data().Hours,
+                            "Experience":doc.data().Experience
                         }
                         global_user = n_obj
                         let new_user = JSON.stringify(n_obj)
@@ -940,8 +1142,30 @@ app.post('/loginRequest',(req,res)=>{
 
                 }
                 else{
-                    console.log("NOT FOUND")
-                    res.render("Login")
+                    const docRefTutor = db.collection('Admin').doc(email);
+                    docRefTutor.get().then((doc)=>{
+                        if(doc.exists)
+                        {
+                            // let user_deets = doc.data().Password
+                            // console.log(user_deets)
+                            //if it is tutor.
+                            console.log("Admin found")
+                            if(doc.data().Password == password){
+                                
+                                
+                                res.render("adminDash")
+                            }
+                            else{
+                                console.log("Passwords do not match")
+                                res.render("Login")
+                            }
+
+                        }
+                        else{
+                            console.log("NOT FOUND")
+                            res.render("Login")
+                        }
+                    })
                 }
             })
 
@@ -949,6 +1173,8 @@ app.post('/loginRequest',(req,res)=>{
 
         }
     });
+    }
+    
 
 
 
@@ -973,20 +1199,6 @@ app.post("/viewprofile",(req,res)=>{
     res.render("viewProfile",xx)
 })
 
-// app.post("/delProfile",(req,res)=>{
-
-//     //get the details of the person who is logged in a json object and then send it to the frontend.
-//     //hardcodig it for now
-
-//     const docRef = db.collection('Students').doc(global_user.EmailAddress);
-//     docRef.delete().then((doc)=>{
-//         res.render("home")
-//     });
-
-//     console.log("in vw")
-//     console.log(global_user)
-//     res.render("home")
-// })
 
 app.post('/delProfile',(req,res)=>{
     
@@ -1027,6 +1239,10 @@ app.post("/publishProfile",(req,res)=>{
 
     console.log(local_user)
     res.render("publishProfile",header)
+})
+
+app.post("/filterS",(req,res)=>{
+    res.render("filterStudents")
 })
 
 
@@ -1121,27 +1337,44 @@ app.post("/editProfile",(req,res)=>{
     let stringg = JSON.stringify(local_user)
     let xx = {"header": stringg}
     console.log("old email is ", old_email)
+
+
+
+    
     // docRef.get().then((doc)=>{
-        console.log("length is", Object.keys(local_user).length)
-        if(Object.keys(local_user).length==11){
+       
+
+        
+        // console.log("length is", Object.keys(global_user).length)
+        // if(Object.keys(global_user).length==12){
 
             db.collection('Teachers').doc(old_email).update({
-                jason_obj:local_user
+                jason_obj:local_user,
+                PhoneNumber: req.body['contact'],
+                City: req.body['city'],
+                Address:req.body['address'],
+                EmailAddress:req.body['email']
             }).then(()=>{
                 console.log("firebase updated");
                 res.render("viewProfile", xx);
-            });
+            }).catch((doc)=>{
+                db.collection('Students').doc(old_email).update({
+                    jason_obj:local_user,
+                    PhoneNumber: req.body['contact'],
+                    City: req.body['city'],
+                    Address: req.body['address'],
+                    EmailAddress: req.body['email']
+                }).then(()=>{
+                    console.log("firebase updated");
+                    res.render("viewProfile", xx);
+                });
+            })
 
-        }
-        else{
-            db.collection('Students').doc(old_email).update({
-                jason_obj:local_user
-            }).then(()=>{
-                console.log("firebase updated");
-                res.render("viewProfile", xx);
-            });
+        // }
+        // else{
+            
 
-        }
+        // }
         
         //get the doc and then 
 
@@ -1199,9 +1432,9 @@ app.get("/home",(req,res)=>{
    
 });
 
-app.get("/filterStudent",(req,res)=>{
+app.get("/filterS",(req,res)=>{
     console.log(2)
-    res.render("filterStudent", global_user)
+    res.render("filterStudents")
    
 });
 
@@ -1219,10 +1452,35 @@ app.get("/publishProfile",(req,res)=>{
    
 });
 
-app.get("/publishTutorProfile",(req,res)=>{
-    console.log("/publishTutorProfile")
-    res.render("publishProfile");
+
+app.get("/tutorDashboard",(req,res)=>{
+    console.log("tutorDashboard", global_user)
+    res.render("tutorDashboard", global_user)
    
+});
+
+app.get("/searchResults",(req,res)=>{
+    // console.log("searchResults")
+    res.render("searchResults", global_user)
+   
+});
+
+app.get("/tutorAssessments",(req,res)=>{
+    res.render("tutorAssessments", global_user)
+   
+});
+
+app.get("/studentAssessments",(req,res)=>{
+    res.render("studentAssessments", global_user)
+   
+});
+
+app.get("/todoAssessments",(req,res)=>{
+    res.render("todoAssessments", global_user)
+   
+});
+app.get("/publishTutorProfile",(req,res)=>{
+    res.render("populateProfile");
 });
 
 app.get("/reviews",(req,res)=>{
@@ -1585,7 +1843,6 @@ app.post('/studentregistration',(req, res, next)=>{
         "Name" : request_object["FirstName"] + " "+ request_object["LastName"],
         "EmailAddress":request_object["Email"],
         "PhoneNumber": request_object["PhoneNumber"],
-        "Password": request_object["Password"],
         "Image":request_object["Image"],
         "Address": "None Added",
         "City" : "None Added"
@@ -1610,9 +1867,10 @@ app.post('/studentregistration',(req, res, next)=>{
                 Password: request_object["Password"],
                 Image: request_object["Image"],
                 Address: "None Added",
-                City: "None Added",
+                City: "Lahore",
                 tutor_accepted:[],
-                tutor_request: []
+                tutor_request: [],
+                Role: "Student"
 
                 // student_request:[]
             }).then(()=>{
@@ -1623,9 +1881,7 @@ app.post('/studentregistration',(req, res, next)=>{
                     "header":new_user
                 }
                 // res.redirect("/home");
-                //now the student has registered...
-                //make a global user and 
-                res.render("dashboard", header)
+                res.render("publishProfile",header)
             });
 
         }
@@ -1641,7 +1897,6 @@ app.post('/parentregistration',(req, res, next)=>{
         "Name" : request_object["FirstName"] + " "+ request_object["LastName"],
         "EmailAddress":request_object["Email"],
         "PhoneNumber": request_object["PhoneNumber"],
-        "Password": request_object["Password"],
         "HighestQualification":request_object["HighestQualification"],
         "BirthDay":request_object["BirthDay"],
         "PreviousExperience":request_object["PreviousExperience"],
@@ -1649,7 +1904,8 @@ app.post('/parentregistration',(req, res, next)=>{
         "Image" : request_object["Image"],
         "Address": "None Added",
         "City": "None Added",
-        "Rating": 0
+        "Rating": 0,
+        
     }
 
     global_user = new_user
@@ -1677,7 +1933,9 @@ app.post('/parentregistration',(req, res, next)=>{
                 student_request:[],
                 student_accepted:[],
                 Rating:0,
-                Reviews: []
+                Reviews: [],
+                Role: "Tutor",
+
             }).then(()=>{
                 new_user = JSON.stringify(new_user)
                 let header = {
@@ -1776,7 +2034,7 @@ app.post('/todoAssessments',(req, res, next)=>{
     });
     
     //return;
-  
+
 
 })
 
@@ -2130,4 +2388,4 @@ app.post('/createAssessmentRequest',(req, res, next)=>{
 
 server.listen(port, '0.0.0.0', ()=>{ // '0.0.0.0' is for running via docker only
      console.log("Server has started on port 3000");
-});
+})

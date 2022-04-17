@@ -1,0 +1,140 @@
+<%-include("partials/header");-%>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    </head>
+    <body>
+        <form action = "/adminApproveProfile" method="POST"></form>
+        <div class="search_v36_36">
+            <span class="search_v39_141">Registeration Requests</span>
+
+            
+
+            <form method="POST">
+                <input class="findTutors_v36_27" placeholder="Search" name="searchParameters">
+                <div class="findTutors_v36_29"> </div>
+                <div class="findTutors_v36_31">
+                    <button formaction="/searchRequest"> <img class = "findTutors_v36_32" src="public\images\bx_search.png" /> </button>
+                    <button formaction = "/filter"> <img class = "findTutors_v36_32_b" src="/views/filter.png" /> </button>
+
+                </div>
+               
+            </form>
+            
+            <button id = "next" > <img src="public\images\bx_search.png"/> </button>
+            <button id = "previous"> <img src="public\images\bx_search.png"/> </button>
+            
+            <div class="search_name"></div>
+            <button class="search_v43_190">Select All</button>
+            <div class="search_v119_1837">
+                <!-- <button class = "nav_bar" <i class = ""></button> -->
+                <img class="v13_23" src = "/views/vector_back.png" />
+                <img class = "v119_1814" src="/views/header_image.jpg" />
+                <img class = "choka_register" src="/views/Group 9.png" />
+                <span class="v13_3">Back</span>
+            </div>
+            
+            <div class="search_v119_1839"></div>
+            <div class="search_v119_1840"></div>
+           
+            <div class="search_name"></div>
+            <div class = "select_approve" ></div>
+            <button class="approve_text">Approve Selected</button>
+            
+            <button class = "select_del" ></button>
+            <span class = "del_text"> Delete Selected</span>
+            <div id ="results">
+                <!--
+            <div class="search_v39_146"></div>
+            <div class="search_v39_171"></div>
+            <span class="search_v39_173">Send Request</span>
+            <div class="search_name"></div>
+            <span class="search_v39_152">Experience: 3 years </span>
+            <div class="search_v39_147"></div>
+            <span class="search_v39_148">Mr. Bean</span>
+            <span class="search_v39_149">Mathematics & Science</span>
+            <div class="search_name"></div>
+            <div class="search_name"></div>
+            <span class="search_v39_169">4.0</span>
+            <div class="search_v39_170"></div>
+            <span class="search_v39_172">Message</span>
+            <div class="search_v39_174"></div>
+            -->
+            </div>
+        </div>
+        <script>
+            let index = 0
+            document.getElementById("next").addEventListener("click", next);
+            document.getElementById("previous").addEventListener("click", previous);
+            /*
+            let obj1 = JSON.stringify( {"Name": "Rose Dunhill", "Subject": "Physics", "Experience": "3", "Rating":"4.0", "Image": "xx"})
+            let obj2 = JSON.stringify( {"Name": "William Jonas", "Subject": "Sociology", "Experience": "2", "Rating":"1.0", "Image": "xx"})
+            let obj3 = JSON.stringify({"Name": "Sherry", "Subject": "English", "Experience": "6", "Rating":"4.0", "Image": "xx"})
+            let results_array = [
+                obj1, obj2, obj3
+                ]
+            let ff = JSON.stringify(results_array)
+*/
+
+            let results_array = '<%-bl%>'
+            let results = document.getElementById("results");
+            //let results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><span class="search_v39_173">Send Request</span> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><div class="search_v39_170"></div><span class="search_v39_172">Message</span><div class="search_v39_174"></div>';
+            
+            let con = JSON.parse(results_array)
+            //results.innerHTML ='<h1>'+ con+ '</h1>'
+            let objx = con[index]
+            
+            let obj = objx
+            let name = obj.Name
+            let subject = obj.Subject
+            let role = obj.role
+            let rating = obj.Rating
+            
+            //let results = document.getElementById("results");
+            let results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><button class="search_v39_173">Delete</button> <div class="search_name"></div><span class="search_v39_152">Tutor </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span><form action = "/approveProfile" method = "POST" name = "tutor"><button class="search_v39_172" >Approve</button></form>';
+            results.innerHTML =results_content 
+            
+            
+            let len = con.length
+            function next(){
+                index = index +1;
+                if(index == len){
+                    index = 0;
+                }
+                
+                obj = con[index]
+                
+                name = obj.Name
+                subject = obj.Subject
+                experience = obj.Experience
+                rating = obj.Rating
+                results = document.getElementById("results");
+                results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><button class="search_v39_173">Delete</button> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span></div><button class="search_v39_172">Approve</button>';
+                results.innerHTML = results_content
+                
+                                 
+                                       
+    
+            }
+            function previous(){
+                index = index -1;
+                if(index == -1){
+                    index = len-1;
+                }
+                
+                obj = con[index]
+                name = obj.Name
+                subject = obj.Subject
+                experience = obj.Experience
+                rating = obj.Rating
+                results = document.getElementById("results");
+                results_content = '<div class="search_v39_146"></div><div class="search_v39_171"></div><button class="search_v39_173">Delete</button> <div class="search_name"></div><span class="search_v39_152">Experience: '+experience+' years </span><div class="search_v39_147"></div><span class="search_v39_148">'+name+'</span>'+'<span class="search_v39_149">'+subject+'</span>'+'<div class="search_name"></div>' +'<span class="search_v39_169">'+rating+'</span></div><button class="search_v39_172">Approve</button>'
+                results.innerHTML = results_content
+                
+            }
+            
+        </script>
+    </body>
+    </html>
+    <br/>
+    <br/> 
