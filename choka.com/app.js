@@ -786,7 +786,7 @@ app.post('/filterTutor',(req,res)=>{
 // /filterStudents
 
 
-app.post('/filterStudent',(req,res)=>{
+app.post('/filterStudents',(req,res)=>{
     let local_user = req.body.headers;
     console.log("inside filter student")
     console.log("local user after parsing is ", JSON.parse(local_user))
@@ -1255,7 +1255,11 @@ app.post("/publishProfile",(req,res)=>{
 })
 
 app.post("/filterS",(req,res)=>{
-    res.render("filterStudents")
+    console.log("inside filters", req.body.headers)
+    let xx = {
+        "header": req.body.headers
+    }
+    res.render("filterStudents",xx)
 })
 
 
