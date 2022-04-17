@@ -850,7 +850,128 @@ app.post('/adminApproveProfile', (req,res)=>{
     })
 
 
+app.post("/resetPassword",(req,res)=>{
+    
+    res.render("forgetPassword");
+})
 
+app.post("/reset",(req,res)=>{
+    console.log(req.body)
+    let email = req.body["Email"]
+    let password =  req.body["Password"]
+    let confrim_pass = req.body["Confirm_Password"]
+
+    if (req.body["Email"] == '' || password == '' || password != confrim_pass)
+    {
+        res.render("forgetPassword");
+    }
+    else
+    {
+        // const docRef = db.collection('Students').doc(email);
+
+        // docRef.get().then((doc)=>{
+        // if(doc.exists){
+            //then check the password from database
+            // console.log("User found");
+            //console.log(doc.data());
+            // doc.data().jason_obj.password = password
+            // doc.data().jason_obj.Confirm_Password = password
+            
+
+            db.collection('Students').doc(email).update({
+                Password : password
+
+            }).then(()=>{
+                console.log("Password Changed");
+                res.render("login", global_user);
+            }).catch((doc)=>{
+            
+                db.collection('Teachers').doc(email).update({
+                    Password : password
+    
+                }).then(()=>{
+                    console.log("Password Changed");
+                    res.render("login", global_user);
+                }).catch((doc)=>{
+                    console.log("User not Found")
+                    res.render("forgetPassword",global_user)
+                })
+            })
+            // const myBoolean = comparePassword(password, user_deets.Password);
+            // CryptoJS.AES.encrypt(password, key)
+            // if((password) == user_deets.Password)
+            // {
+            //     //this means passwords match and
+            //     console.log("Passwords match")
+            //     let n_obj = {
+
+            //         "Name" :user_deets.Name,
+            //         "EmailAddress":user_deets.EmailAddress,
+            //         "PhoneNumber": user_deets.PhoneNumber,
+            //         "Password":user_deets.Password,
+            //         "Image":user_deets.Image,
+            //         "Address": user_deets.Address,
+            //         "City" : user_deets.City,
+
+            //     }
+            //     global_user = n_obj;
+            //     console.log(global_user)
+            //     res.render("dashboard", global_user)
+
+            // }
+            // else{
+            //     res.render("Login")
+            //     console.log("Passwords do not match")
+            // }
+            
+        //}
+        // else{
+            
+        //     const docRefTutor = db.collection('Teachers').doc(email);
+        //     docRefTutor.get().then((doc)=>{
+        //         if(doc.exists){
+        //             // let user_deets = doc.data().jason_obj
+        //             // console.log(user_deets)
+        //             //if it is tutor.
+        //             console.log("Tutor found")
+        //             doc.data().jason_obj.password = password
+        //             doc.data().jason_obj.Confirm_Password = password
+        //             console.log("Password Changed")
+                    // if(user_deets.Password == password){
+                    //      global_user = {
+                    //         "Name" : user_deets.Name,
+                    //         "EmailAddress":user_deets.EmailAddress,
+                    //         "PhoneNumber": user_deets.PhoneNumber,
+                    //         "Password":user_deets.Password,
+                    //         "HighestQualification":user_deets.HighestQualification,
+                    //         "BirthDay":user_deets.BirthDay,
+                    //         "PreviousExperience":user_deets.PreviousExperience,
+                    //         "Transcript":user_deets.Transcript,
+                    //         "Image" : user_deets.Image,
+                    //         "Address": user_deets.Address,
+                    //         "City": user_deets.City
+
+                    //     }
+                        
+                    //     res.render("tutorDashboard", global_user)
+                    // }
+                    // else{
+                    //     console.log("Passwords do not match")
+                    //     res.render("Login")
+                    // }
+
+            //     }
+               
+            // })
+
+
+
+        // }
+    // });
+    }
+    
+   
+});
 
 app.post('/adminDeleteProfile', (req,res)=>{
     
@@ -1066,7 +1187,7 @@ app.post('/loginRequest',(req,res)=>{
             console.log(user_deets)
             // const myBoolean = comparePassword(password, user_deets.Password);
             // CryptoJS.AES.encrypt(password, key)
-            if((password) == user_deets.Password)
+            if((password) == doc.data().Password)
             {
                 //this means passwords match and
                 console.log("Passwords match")
