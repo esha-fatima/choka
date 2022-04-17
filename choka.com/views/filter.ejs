@@ -131,5 +131,28 @@
         </div>
         </div>
     </body>
+
+    <script>
+        
+        
+        let email_address = '<%-EmailAddress%>';
+        
+        console.log(email_address)
+        
+        var forms = document.getElementsByTagName("form");
+            for(var i = 0; i < forms.length; i++){
+                forms[i].id = "custom";
+                
+
+                input = document.createElement('input');
+                input.setAttribute('name', "headers");
+                input.setAttribute('value', email_address);
+                input.setAttribute('type', 'hidden');
+
+                forms[i].appendChild(input);
+                //console.log(forms[i])
+            }
+
+    </script>
 </html> 
   
